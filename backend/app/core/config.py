@@ -1,0 +1,32 @@
+import os
+from typing import Optional
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    # Database configuration
+    DATABASE_URL: str = "postgresql://noteai:noteai_secret_password@localhost:5433/noteai_pkm"
+
+    # Qdrant Vector DB
+    QDRANT_URL: str = "http://localhost:6333"
+    QDRANT_COLLECTION: str = "noteai_knowledge"
+
+    # Cloud LLM APIs
+    GEMINI_API_KEY: Optional[str] = None
+    OPENAI_API_KEY: Optional[str] = None
+    LLM_PROVIDER: str = "gemini"
+    LLM_MODEL: str = "gemini-1.5-flash"
+
+    # App directories & behavior
+    CONTENT_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "content"))
+    ENVIRONMENT: str = "development"
+    PORT: int = 8000
+    HOST: str = "0.0.0.0"
+    WATCHDOG_ENABLED: bool = True
+
+    model_config = SettingsConfigDict(
+        env_file=os.path.join(os.path.dirname(__file__), "..", "..", ".env"),
+        env_file_encoding="utf-8",
+        extra="ignore"
+    )
+
+settings = Settings()

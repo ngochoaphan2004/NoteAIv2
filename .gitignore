@@ -1,0 +1,78 @@
+# ==============================================================================
+# NOTEAI.V2 GITIGNORE
+# ==============================================================================
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment Variables & Secrets (CRITICAL)
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+backend/.env
+frontend/.env
+
+# Node & Frontend
+node_modules/
+dist/
+dist-ssr/
+.cache/
+.quartz-cache/
+public/
+prof/
+tsconfig.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# AI Models & FastEmbed Caches
+fastembed_cache/
+.fastembed/
+models--*
+
+# Docker & Database local data
+postgres_data/
+qdrant_data/
+docker_noteai_*
+*.sqlite3
+*.db
+
+# Editors & IDEs
+.obsidian/
+.vscode/
+.idea/
+*.swp
+*.swo
