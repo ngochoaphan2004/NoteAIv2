@@ -76,3 +76,7 @@ docker_noteai_*
 .idea/
 *.swp
 *.swo
+
+
+# PDF files
+content\assets\Cambridge-18.pdf
