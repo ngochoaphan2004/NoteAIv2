@@ -13,7 +13,7 @@ tags:
 # 📖 Bài Làm: Cambridge 18 - Test 1 Reading (Passage 3)
 
 > **Chủ đề bài đọc:** _Conquering Earth's space junk problem_ (Giải quyết vấn nạn rác thải không gian của Trái Đất)  
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] — Phiên Thứ 6 (Reading Keyword Mapping)  
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Thứ 5 (Reading Keyword Mapping)  
 > **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-read-p3.pdf`  
 > **Mục tiêu phiên:** 20 phút làm bài (14 câu) + 25 phút mổ xẻ cấu trúc bài đọc, lập bảng Keyword Mapping và trích xuất từ vựng cốt lõi.
 
@@ -133,4 +133,4 @@ _(Sau khi làm xong bài, ghi lại các cặp từ đồng nghĩa/paraphrase gi
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]]
+- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]

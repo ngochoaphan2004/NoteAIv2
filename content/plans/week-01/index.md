@@ -1,5 +1,5 @@
 ---
-title: "Kế Hoạch Tuần 1 (08/10 – 11/10)"
+title: "Kế Hoạch Tuần 1 (14/10 – 20/10)"
 aliases:
   - study-planner
   - plans/week-01
@@ -7,95 +7,48 @@ tags:
   - study-planner
   - week-01
   - baseline
+  - kick-off
 ---
 
-# 📅 Kế Hoạch Tuần 1: 08/10 – 11/10/2026
+# 📅 Kế Hoạch Tuần 1: 14/10 – 20/10/2026 (Khởi Động Mới)
 
-> **Khung thời gian:** Thứ 5 (08/10/2026) đến hết Chủ Nhật (11/10/2026)  
-> **Nguyên tắc cốt lõi:** Cố định nghiêm ngặt mỗi phiên ở mức **45 – 50 phút** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
-> **Trạng thái tuần:** Đã kết thúc & Tổng kết (Chuyển giao các phần chưa hoàn thành sang Tuần 2)
-
----
-
-## 🗓️ 1. Bảng Tổng Quan Lịch Trình Tuần 1
-
-| Ngày & Thứ                     | Kỹ Năng & Khung Giờ                               | Phương Pháp Thực Thi (Execution)                                                                                                                                                                                                                                                                                                                                                             |                           Trạng Thái                            |
-| :----------------------------- | :------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------: |
-| **Thứ 5**<br>_(08/10/2026)_    | **Listening (Đánh giá Baseline)**<br>`45 phút`    | • **30p:** Thực hiện 1 bài kiểm tra Listening tiêu chuẩn (Cambridge 18 Test 1). Tuyệt đối không dừng audio giữa chừng.<br>• **15p:** Lưu trữ, đối soát đáp án và trích xuất lỗi sai. 👉 **[[plans/week-01/test-1-listening\|Xem chi tiết bài làm Test 1 Listening]]**                                                                                                                        |         [x] **Hoàn thành (12/40 - Band 4.0 Baseline)**          |
-| **Thứ 6**<br>_(09/10/2026)_    | **Reading (Khớp dữ liệu)**<br>`45 phút`           | • **20p:** Xử lý 1 Passage 3 trong bộ Cambridge bằng kỹ thuật _keyword mapping_ (khớp từ khóa giữa câu hỏi và bài đọc).<br>• **25p:** Phân tích ngược cấu trúc bài đọc. Trích xuất 5–7 cụm từ học thuật cốt lõi và các cơ chế liên kết câu (_cohesive devices_). 👉 **[[plans/week-01/test-1-reading-p3\|Xem chi tiết đề & bài làm Passage 3]]**                                             | [ ] **Chưa hoàn thành (Do công việc bận - Chuyển sang Tuần 2)** |
-| **Thứ 7**<br>_(10/10/2026)_    | **Writing Task 1 (Báo cáo số liệu)**<br>`45 phút` | • **15p:** Khảo sát một biểu đồ biến động thời gian (Line/Bar graph). Xác định các xu hướng vĩ mô (_macro trends_) và các điểm dữ liệu ngoại lai (_outliers_).<br>• **30p:** Viết văn bản báo cáo. Loại bỏ hoàn toàn ngôn ngữ chủ quan, tính từ cảm xúc và mọi suy diễn cá nhân không có cơ sở từ biểu đồ. 👉 **[[plans/week-01/test-1-writing\|Xem chi tiết đề & bài làm Test 1 Writing]]** |    [x] **Hoàn thành (Viết 198 từ & Chẩn đoán Band 4.5–5.0)**    |
-| **Chủ Nhật**<br>_(11/10/2026)_ | **Speaking & System Review**<br>`50 phút`         | • **20p:** Ghi âm toàn bộ quá trình trả lời liên tục 1 đề Speaking Part 2. Không được phép dừng lại hay sửa lỗi giữa chừng để thu thập dữ liệu độ trôi chảy thực tế.<br>• **30p:** Nghe lại để phát hiện lỗi ngập ngừng và lặp từ. Đồng bộ toàn bộ dữ liệu từ vựng/lỗi sai của 4 ngày vào hệ thống lặp lại ngắt quãng (Spaced Repetition / Anki) để lưu trữ dài hạn.                         | [ ] **Chưa hoàn thành (Do công việc bận - Chuyển sang Tuần 2)** |
+> **Khung thời gian:** Thứ 4 (14/10/2026) đến hết Thứ 3 (20/10/2026)  
+> **Nguyên tắc cốt lõi:** Cố định mỗi phiên ở mức **30 – 35 phút (Micro-sessions)** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
+> **Trạng thái tuần:** Đang diễn ra — Ngày 1 (Hôm nay: Thứ 4, 14/10/2026)
 
 ---
 
-## 📝 2. Chi Tiết Thực Thi & Nhật Ký Từng Ngày
+## 🗓️ 1. Bảng Tổng Quan Lịch Trình 7 Ngày
 
-### 🎯 Thứ 5 (08/10/2026) — Listening Baseline (45 Phút)
-
-- [x] **30 phút làm bài:** Đã hoàn thành bài làm Cambridge 18 Test 1 Listening.
-- [x] **Đối soát & Đánh giá:** Đã đối chiếu 40 câu, ghi nhận **12 / 40 câu đúng (Band 4.0 Baseline)** (làm 18 câu lúc thi, đạt độ chính xác 66.7% trên các câu làm được; Part 4 bỏ trống đã lưu trữ đáp án đối chiếu).
-- 🔗 **Bài làm chi tiết & Chữa bài:** 👉 [[plans/week-01/test-1-listening|Bài Làm Cambridge 18 - Test 1 Listening (Đề + Script + Chữa 40 câu + Báo cáo năng lực)]]
-
----
-
-### 🎯 Thứ 6 (09/10/2026) — Reading Keyword Mapping (45 Phút)
-
-- [ ] **20 phút làm bài:** Xử lý Passage 3 (_Conquering Earth's space junk problem_ - Cam 18 Test 1) bằng kỹ thuật _keyword mapping_.
-- [ ] **25 phút mổ xẻ:** Phân tích ngược cấu trúc bài đọc. Trích xuất 5–7 cụm từ học thuật cốt lõi và các cơ chế liên kết câu (_cohesive devices_).
-- 📌 **Ghi chú thực tế:** Do công việc phát sinh bận rộn cuối tuần, chưa kịp làm bài. Bảng làm bài tương tác và đề PDF đã được chuẩn bị đầy đủ tại: 👉 [[plans/week-01/test-1-reading-p3|Bài Làm Reading Passage 3 - Cam 18 (Đề thi PDF + Bảng 14 câu + Keyword Mapping)]]. Bài tập này được **chuyển giao để xử lý vào Thứ 3 của Tuần 2**.
+| Ngày & Thứ | Kỹ Năng & Thời Lượng | Phương Pháp Thực Thi Trọng Tâm (Execution Focus) | Trạng Thái |
+| :--- | :--- | :--- | :---: |
+| **Thứ 4 (Hôm nay)**<br>_(14/10/2026)_ | **Listening Baseline (Test 1)**<br>`35 phút` | • **30p:** Làm bài thi nghe tiêu chuẩn Cambridge 18 Test 1 (40 câu). Không dừng audio.<br>• **5p:** Lưu trữ bảng bài làm trung thực vào hệ thống. 👉 **[[plans/week-01/test-1-listening\|Làm bài Test 1 Listening]]** | 🎯 **Hôm nay** |
+| **Thứ 5**<br>_(15/10/2026)_ | **Reading Keyword Mapping**<br>`35 phút` | • **20p:** Xử lý Reading Passage 3 (_Conquering Earth's space junk problem_).<br>• **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]** | [ ] Sắp tới |
+| **Thứ 6**<br>_(16/10/2026)_ | **Writing Task 1 Báo Cáo**<br>`35 phút` | • **15p:** Khảo sát biểu đồ đường tỷ lệ dân số thành thị châu Á (1970–2040).<br>• **20p:** Viết văn bản báo cáo Task 1, chuẩn hóa ngữ pháp nội động từ không chia bị động. 👉 **[[plans/week-01/test-1-writing\|Viết bài Writing Task 1]]** | [ ] Sắp tới |
+| **Thứ 7**<br>_(17/10/2026)_ | **Speaking Part 2 Routine**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A challenge at work_).<br>• **20p:** Thu âm 2 phút liên tục, kiểm tra độ trôi chảy (Fluency) và đếm lỗi ngập ngừng. | [ ] Sắp tới |
+| **Chủ Nhật**<br>_(18/10/2026)_ | **Listening Core Pacing**<br>`35 phút` | • **10p:** Drill phân biệt bẫy âm số đuôi `-teen` vs `-ty` & quy tắc số ít/số nhiều.<br>• **25p:** Luyện nghe Part 2 & 3, rèn luyện kỹ thuật Pre-reading gạch chân từ neo (_Anchor Words_). | [ ] Sắp tới |
+| **Thứ 2**<br>_(19/10/2026)_ | **Reading Scanning & Speed**<br>`35 phút` | • **20p:** Xử lý 1 Passage củng cố kỹ năng quét từ khóa và tăng tốc độ đọc hiểu.<br>• **15p:** Trích xuất 5 cụm từ học thuật quan trọng vào sổ tay từ vựng. | [ ] Sắp tới |
+| **Thứ 3**<br>_(20/10/2026)_ | **FSRS Review & Retrospective**<br>`30 phút` | • **15p:** Ôn tập toàn bộ flashcards đến hạn trên FSRS để duy trì tỷ lệ nhớ $\ge 90\%$.<br>• **15p:** Tổng kết chỉ số học tập Tuần 1 và phân bổ kế hoạch Tuần 2. 👉 **[[plans/week-01/vocab-week-01\|Mở Sổ Từ Vựng Tuần 1]]** | [ ] Sắp tới |
 
 ---
 
-### 🎯 Thứ 7 (10/10/2026) — Writing Task 1 Báo Cáo Dữ Liệu (45 Phút)
+## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 4 (14/10/2026)
 
-- [x] **15 phút phân tích:** Đã khảo sát biểu đồ đường tỷ lệ dân số thành thị của 4 quốc gia châu Á (1970 – 2040).
-- [x] **30 phút viết bài:** Đã hoàn thành văn bản báo cáo Task 1 (198 từ) và phác thảo mở bài Task 2 (29 từ).
-- [x] **Chẩn đoán & Chữa bài:** Đã lập bảng đối soát lỗi ngữ pháp, cấu trúc câu và bản viết nâng cấp Band 7.5+.
-- 📖 **Lý thuyết ngữ pháp trọng tâm:** 👉 [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo Trong Task 1]]
-- 🔗 **Bài làm chi tiết:** 👉 [[plans/week-01/test-1-writing|Bài Làm Cambridge 18 - Test 1 Writing (Đề Task 1 & Task 2 + Báo cáo dữ liệu + Chẩn đoán chi tiết)]]
+### 🎯 Listening Baseline — Cambridge 18 Test 1 (35 Phút)
 
----
-
-### 🎯 Chủ Nhật (11/10/2026) — Speaking Part 2 & Đồng Bộ SRS (50 Phút)
-
-- [ ] **20 phút thu âm:** Ghi âm toàn bộ quá trình trả lời liên tục 1 đề Speaking Part 2 (không dừng lại hay sửa lỗi giữa chừng).
-- [ ] **30 phút tổng duyệt:** Nghe lại để phát hiện lỗi ngập ngừng, lặp từ. Đồng bộ toàn bộ dữ liệu từ vựng/lỗi sai của 4 ngày vào hệ thống Anki/SRS để lưu trữ dài hạn.
-- 📌 **Ghi chú thực tế:** Chưa thực hiện thu âm do công việc bận rộn. Phần từ vựng 46 từ của Tuần 1 đã được trích xuất và đóng gói thành công vào Master Deck. Phần thực hành nói Part 2 được **chuyển giao sang Thứ 6 của Tuần 2**.
+- [ ] **Bước 1 (30 phút):** Mở audio Cambridge 18 Test 1 và làm bài liên tục trên bảng tương tác.
+- [ ] **Bước 2 (5 phút):** Nhấn nút _"Sao Chép Shorthand Cho AI Đối Soát"_ hoặc gửi đáp án để hệ thống lưu trữ trung thực.
+- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/test-1-listening|Bài Làm Cambridge 18 - Test 1 Listening (Đề thi PDF + Bảng 40 câu tương tác)]]
+- 💡 **Mẹo làm bài:** Chú ý các bẫy số nhà, mã bưu chính (`dw307yz`), giới hạn từ (_ONE WORD ONLY_) ở Part 1.
 
 ---
 
-## 📊 3. Đánh Giá Tổng Kết Tuần 1 (Weekly Retrospective)
+## 🔗 3. Mạng Lưới Kiến Thức Liên Quan
 
-### 📌 3.1. Thống Kê Tiến Độ
-
-- **Tổng số phiên theo kế hoạch:** 4 phiên.
-- **Số phiên đã hoàn thành:** 2 phiên (`50%` số lượng).
-- **Số phiên chưa hoàn thành:** 2 phiên (Reading Passage 3 và Speaking Part 2) do công việc bận rộn.
-- **Đánh giá giá trị thực tế:** Dù bị gián đoạn 2 buổi vì lý do công việc ngoài dự kiến, 2 phiên đã hoàn thành mang lại **giá trị định lượng Baseline cực kỳ quan trọng**:
-  1. Xác lập chính xác điểm xuất phát Listening (Band 4.0 - 12/40 câu) và nhận diện nguyên nhân cốt lõi khiến mất điểm.
-  2. Xác lập chính xác điểm xuất phát Writing Task 1 (Band 4.5–5.0) với đầy đủ bảng phân tích 4 tiêu chí chấm điểm và các lỗi ngữ pháp hệ thống.
-
----
-
-### 🎯 3.2. Bài Học Kinh Nghiệm & Điều Chỉnh Cho Tuần 2
-
-1. **Quản trị tải trọng nhận thức khi bận việc (Cognitive Load & Time-boxing):**
-   - Các phiên 45–50 phút dễ bị bỏ dở khi có công việc đột xuất.
-   - _Điều chỉnh:_ Tuần 2 sẽ chia nhỏ các phiên học thành các khung **30 – 35 phút (Micro-sessions)** với mục tiêu đơn nhiệm cụ thể, giúp duy trì việc học đều đặn ngay cả trong những ngày bận rộn.
-2. **Không bỏ rơi nhiệm vụ dang dở (No Abandonment):**
-   - Bài Reading Passage 3 và đề Speaking Part 2 chưa làm ở tuần 1 được tích hợp ngay vào lịch trình Tuần 2, đảm bảo không bị đứt đoạn kiến thức.
-3. **Tập trung cao độ vào việc sửa lỗi hệ thống:**
-   - Thay vì cố làm quá nhiều đề mới, tuần tới tập trung sửa triệt để các lỗi đã phát hiện: bẫy số Listening (`-teen` vs `-ty`), nội động từ trong Writing (`increased` thay vì `has been increased`), và kỹ năng đọc đề đón đầu (_pre-reading_).
-
----
-
-## 🔗 4. Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch tiếp theo:** [[plans/week-02/|Kế Hoạch Tuần 2 (12/10 – 18/10/2026)]]
 - 🎧 **Bài làm Listening:** [[plans/week-01/test-1-listening|Bài Làm Test 1 Listening (Cam 18)]]
 - 📖 **Bài làm Reading:** [[plans/week-01/test-1-reading-p3|Bài Làm Test 1 Reading Passage 3 (Cam 18)]]
 - ✍️ **Bài làm Writing:** [[plans/week-01/test-1-writing|Bài Làm Test 1 Writing (Cam 18)]]
-- 📖 **Chuyên đề ngữ pháp Task 1:** [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo Trong Task 1]]
+- 📖 **Chuyên đề ngữ pháp:** [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo]]
 - 📚 **Sổ từ vựng trong tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1 (Listening, Reading, Writing)]]
-- 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5 (Listening & Reading 8.0+)]]
-- 🌐 **Tài nguyên học tập:** [[resources-learning-tools|Kho tài liệu luyện đề & công cụ hỗ trợ]]
+- 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5]]
+- 🌐 **Tài nguyên học tập:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ Luyện Thi IELTS]]

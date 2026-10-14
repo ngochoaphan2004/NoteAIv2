@@ -115,4 +115,159 @@ export const api = {
     if (!res.ok) throw new Error("Lỗi tạo kế hoạch thích ứng");
     return res.json();
   },
+
+  // System Configuration & Monitoring
+  async getConfig(): Promise<SystemConfig> {
+    const res = await fetch(`${API_BASE}/system/config`);
+    if (!res.ok) throw new Error("Không thể tải cấu hình hệ thống");
+    return res.json();
+  },
+
+  async updateConfig(payload: UpdateConfigPayload): Promise<{ success: boolean; message: string }> {
+    const res = await fetch(`${API_BASE}/system/config`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Không thể cập nhật cấu hình hệ thống");
+    return res.json();
+  },
+
+  async testLLM(): Promise<TestLLMResponse> {
+    try {
+      const res = await fetch(`${API_BASE}/system/test-llm`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        return {
+          success: false,
+          message: data?.detail || data?.message || `Lỗi máy chủ (${res.status}): ${res.statusText}`,
+          error: data?.error || `HTTP ${res.status}`,
+        };
+      }
+      return data || {
+        success: false,
+        message: "Phản hồi không hợp lệ từ máy chủ",
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: err?.message || "Không thể kết nối đến máy chủ",
+        error: String(err),
+      };
+    }
+  },
+
+  // Cronjob Scheduler
+  async getCronStatus(): Promise<CronStatus> {
+    const res = await fetch(`${API_BASE}/cron/status`);
+    if (!res.ok) throw new Error("Không thể lấy trạng thái Cronjob");
+    return res.json();
+  },
+
+  async triggerCron(): Promise<CronTriggerResult> {
+    const res = await fetch(`${API_BASE}/cron/trigger`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("Lỗi kích hoạt Cronjob");
+    return res.json();
+  },
+
+  // System Logs & Health
+  async getLogs(logType: "app" | "error" = "app", lines = 100): Promise<LogResponse> {
+    const res = await fetch(`${API_BASE}/system/logs?log_type=${logType}&lines=${lines}`);
+    if (!res.ok) throw new Error("Không thể tải nhật ký máy chủ");
+    return res.json();
+  },
+
+  async getHealthMetrics(): Promise<HealthMetrics> {
+    const res = await fetch(`${API_BASE}/system/health-metrics`);
+    if (!res.ok) throw new Error("Không thể lấy chỉ số sức khỏe máy chủ");
+    return res.json();
+  },
 };
+
+export interface SystemConfig {
+  llm_provider: string;
+  llm_model: string;
+  llm_models: string;
+  has_gemini_key: boolean;
+  gemini_api_key_masked: string;
+  has_openai_key: boolean;
+  openai_api_key_masked: string;
+  database_url: string;
+  qdrant_url: string;
+  qdrant_collection: string;
+  content_dir: string;
+  environment: string;
+  watchdog_enabled: boolean;
+  cron_timezone: string;
+  cron_schedule: string;
+  ports: {
+    database_postgres: number;
+    qdrant_rest: number;
+    qdrant_grpc: number;
+    fastapi_backend: number;
+    quartz_preview: number;
+    frontend_spa: number;
+  };
+}
+
+export interface UpdateConfigPayload {
+  llm_provider?: string;
+  llm_model?: string;
+  llm_models?: string;
+  gemini_api_key?: string;
+  openai_api_key?: string;
+  watchdog_enabled?: boolean;
+}
+
+export interface TestLLMResponse {
+  success: boolean;
+  model_used?: string;
+  latency_ms?: number;
+  provider?: string;
+  response?: string;
+  message: string;
+  error?: string;
+}
+
+export interface CronStatus {
+  is_running: boolean;
+  schedule: string;
+  last_run_time: string | null;
+  last_run_status: string;
+  logs: string[];
+}
+
+export interface CronTriggerResult {
+  message: string;
+  result: {
+    success: boolean;
+    duration_seconds: number;
+    executed_at: string;
+    logs: string[];
+  };
+}
+
+export interface HealthMetrics {
+  status: string;
+  log_directory: string;
+  disk: {
+    total_gb: number;
+    used_gb: number;
+    free_gb: number;
+    free_percentage: string;
+  };
+}
+
+export interface LogResponse {
+  log_type: string;
+  file: string;
+  total_lines_returned: number;
+  lines: string[];
+}
+

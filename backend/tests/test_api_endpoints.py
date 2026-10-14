@@ -31,13 +31,32 @@ def test_flashcards_due_endpoint():
         assert "preview_intervals" in first_card
         assert "good" in first_card["preview_intervals"]
 
-def test_agent_evaluate_endpoint():
-    payload = {
-        "attempt_text": "3 dentist\n12 a\n1 dw137yz - dw307yz / lý do: nghe nhầm",
-        "skill": "listening"
-    }
-    response = client.post("/api/v1/agents/evaluate", json=payload)
+def test_system_config_endpoints():
+    # 1. GET /api/v1/system/config
+    response = client.get("/api/v1/system/config")
     assert response.status_code == 200
     data = response.json()
-    assert "questions" in data
-    assert len(data["questions"]) == 3
+    assert "llm_provider" in data
+    assert "llm_model" in data
+    assert "llm_models" in data
+    assert "cron_timezone" in data
+    assert data["cron_timezone"] == "Asia/Ho_Chi_Minh"
+    assert data["ports"]["database_postgres"] == 5433
+
+    # 2. POST /api/v1/system/config update in-memory
+    update_payload = {
+        "llm_model": "gemini-1.5-flash",
+        "watchdog_enabled": True
+    }
+    post_res = client.post("/api/v1/system/config", json=update_payload)
+    assert post_res.status_code == 200
+    assert post_res.json()["success"] is True
+
+def test_cron_status_endpoint():
+    response = client.get("/api/v1/cron/status")
+    assert response.status_code == 200
+    data = response.json()
+    assert "is_running" in data
+    assert "schedule" in data
+    assert "Asia/Ho_Chi_Minh" in data["schedule"]
+

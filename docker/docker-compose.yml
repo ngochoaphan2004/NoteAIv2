@@ -8,6 +8,7 @@ services:
       POSTGRES_PASSWORD: noteai_secret_password
       POSTGRES_DB: noteai_pkm
     ports:
+      # Host port 5433 -> Container port 5432 (Tránh xung đột với CVAT trên host port 5432)
       - "5433:5432"
     volumes:
       - noteai_postgres_data:/var/lib/postgresql/data
@@ -16,6 +17,11 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   qdrant:
     image: qdrant/qdrant:v1.12.1
@@ -31,6 +37,51 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Container hợp nhất toàn bộ dự án: Backend (FastAPI), Frontend (Vite React), và Static Garden (Quartz v4)
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: noteai_app
+    restart: unless-stopped
+    ports:
+      - "8000:8000" # FastAPI Backend & Swagger Docs (/docs)
+      - "5173:5173" # Interactive React SPA Frontend
+      - "8088:8088" # Quartz v4 Digital Garden Preview
+    environment:
+      - DATABASE_URL=postgresql://noteai:noteai_secret_password@postgres:5432/noteai_pkm
+      - QDRANT_URL=http://qdrant:6333
+      - QDRANT_COLLECTION=noteai_knowledge
+      - CONTENT_DIR=/app/content
+      - LOG_DIR=/app/logs
+      - HOST=0.0.0.0
+      - PORT=8000
+    env_file:
+      - ../backend/.env
+    volumes:
+      # Mount thư mục ghi chú Markdown để Watchdog & Quartz live-reload khi bạn sửa note
+      - ../content:/app/content
+      # Mount thư mục backend & frontend code để cập nhật nóng (Hot-Reload)
+      - ../backend:/app/backend
+      - ../frontend/src:/app/frontend/src
+      # Persistent Logging: Lưu trữ bền vững toàn bộ log trên máy host/VPS (Tránh mất log khi container restart)
+      - ../logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   noteai_postgres_data:

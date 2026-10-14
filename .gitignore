@@ -30,6 +30,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Persistent Logs & Rotation
+logs/*.log
+logs/*.log.*
+logs/supervisor/
+!logs/.gitkeep
+*.log
+
 # Python & Backend
 __pycache__/
 *.py[cod]

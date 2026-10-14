@@ -48,3 +48,10 @@ def generate_adaptive_plan(req: PlanRequest):
 
     final_state = agent_graph.invoke(initial_state)
     return final_state.get("plan_output", {})
+
+@router.get("/llm-status")
+def get_llm_status():
+    """Kiểm tra danh sách mô hình LLM cấu hình, mô hình vừa dùng và lịch sử fallback Rate Limit"""
+    from app.services.llm_service import llm_service
+    return llm_service.get_status()
+

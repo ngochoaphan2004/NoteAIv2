@@ -18,8 +18,7 @@ Trang tổng hợp toàn bộ ghi chú học IELTS. Các file mới sẽ tự đ
 
 ### 🗓️ Kế Hoạch Học Tập Theo Tuần (Weekly Study Plans)
 
-- [[plans/week-01/|Kế Hoạch Tuần 1: 08/10 – 11/10/2026]] — _Lịch trình 4 ngày (Baseline): Listening Baseline (Band 4.0), Reading Keyword Mapping, Writing Task 1 (Band 4.5–5.0), Speaking Part 2._
-- [[plans/week-02/|Kế Hoạch Tuần 2: 12/10 – 18/10/2026]] — _Lịch trình 7 ngày (Micro-sessions 30–35p): Sửa lỗi bẫy số Listening, Phục hồi Reading Passage 3, Viết lại Task 1 chuẩn ngữ pháp, Speaking Part 2._
+- [[plans/week-01/|Kế Hoạch Tuần 1: 14/10 – 20/10/2026]] — _Lịch trình 7 ngày mới khởi động từ hôm nay (Micro-sessions 30–35p): Listening Baseline Cam 18 Test 1, Reading Keyword Mapping, Writing Task 1, Speaking Part 2._
 
 ### 🎯 Lộ Trình & Mục Tiêu (Roadmaps)
 

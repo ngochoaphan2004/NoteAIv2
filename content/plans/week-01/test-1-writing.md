@@ -13,7 +13,7 @@ tags:
 
 # ✍️ Bài Làm: Cambridge 18 - Test 1 Writing
 
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] — Phiên Thứ 7 (Writing Task 1 Báo Cáo Dữ Liệu)  
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Thứ 6 (Writing Task 1 Báo Cáo Dữ Liệu)  
 > **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-write.pdf`  
 > **Mục tiêu phiên:** 15 phút khảo sát biểu đồ, xác định xu hướng vĩ mô (_macro trends_) & cực trị (_outliers_) + 30 phút viết bài báo cáo Task 1 (tối thiểu 150 từ); tham khảo đề Task 2 (tối thiểu 250 từ).
 
@@ -102,20 +102,16 @@ tags:
   <div class="ielts-stats-bar">
     <div class="ielts-stat-item">
       <span class="ielts-stat-label">Số từ:</span>
-      <span class="ielts-stat-val ielts-word-count">198 từ</span>
-      <span class="ielts-progress-pill ielts-pill-success">✅ Đạt yêu cầu (198/150 từ)</span>
+      <span class="ielts-stat-val ielts-word-count">0 từ</span>
+      <span class="ielts-progress-pill">Mục tiêu: 150 từ</span>
     </div>
     <div class="ielts-save-indicator">
-      <span class="ielts-save-text">🟢 Đã lưu vào bài làm hệ thống</span>
+      <span class="ielts-save-text">🟢 Tự động lưu LocalStorage</span>
     </div>
   </div>
 
   <div class="ielts-editor-wrapper">
-    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài báo cáo Task 1 của bạn tại đây...">The percent of the population in four Asian countries living in cities has been increased for 50 years from 1970 to 2020. And popullation of the next 20 years will be increase significantly.
-Overall, the population of four countries living in cities are increase. Malaysia and Indonesia are the highest increase. In 1990, Malaysia was the highest  percentage of population living in cites. But it has been decreased 10% just for 20 years.
-In specific, Malaysia has 30% population in 1970 and it pass over Philippines in 1990 (45%) and pass over 70% in 2010. And in spire, it will increase over 60% in 2040. Otherwise, Indonesia was started just 13% in 1970 and it inscrease smoothly in 2000. It pass ThaiLan and Philippines to acchive over 50% in 2020, and over 60% in 2040.
-With Thailand was started 20% in 1970. It has keep the inscrease speed smoothly but it slower than any countries else. And it pass 50% in 2040. For Philippines, it start with highest percentage over 32% in 1970 and it pass 50% in 1990.
-Overrall all of four countries have been increase in 50 years, and its keep increase in the next 20%.</textarea>
+    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài báo cáo Task 1 của bạn tại đây..."></textarea>
   </div>
 
   <div class="ielts-card-actions">
@@ -365,5 +361,5 @@ Overrall all of four countries have been increase in 50 years, and its keep incr
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]]
+- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
 - 📚 **Sổ từ vựng trong tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1 (Listening, Reading, Writing)]]

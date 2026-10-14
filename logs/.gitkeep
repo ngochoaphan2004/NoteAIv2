@@ -1,0 +1,5 @@
+# Giữ thư mục logs trên Git
+*.log
+*.log.*
+supervisor/
+

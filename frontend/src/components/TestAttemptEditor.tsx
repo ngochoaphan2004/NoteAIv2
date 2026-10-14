@@ -11,10 +11,7 @@ import {
 
 export const TestAttemptEditor: React.FC = () => {
   const [attemptText, setAttemptText] = useState(
-    `3 dentist
-12 a
-24 c
-1 dw137yz - dw307yz / lý do: nghe nhầm w thành 3`,
+    ``,
   );
   const [skill, setSkill] = useState("listening");
   const [result, setResult] = useState<EvaluationResponse | null>(null);

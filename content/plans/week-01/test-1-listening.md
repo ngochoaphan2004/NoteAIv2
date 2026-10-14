@@ -11,9 +11,9 @@ tags:
 
 # 🎧 Bài Làm: Cambridge 18 - Test 1 Listening
 
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] — Phiên Thứ 5 (Baseline)  
-> **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1.pdf` & `Test1-script.pdf`  
-> **Mục đích:** Lưu trữ trung thực bài làm thực tế và đối soát đáp án chính thức theo ghi chú của người học.
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Hôm Nay: Thứ 4 (14/10)  
+> **Tài liệu gốc:** `content/assets/Test1.pdf` & `content/assets/Test1-script.pdf`  
+> **Mục đích:** Bảng làm bài thi sạch sẽ, tích hợp nhập nhanh 40 câu, tính giờ và lưu trữ trung thực.
 
 ---
 
@@ -26,8 +26,8 @@ tags:
 
 </details>
 
-<details open>
-<summary><b>📜 2. Audio Script: Lời Thoại Test 1 Listening (Test1-script.pdf)</b></summary>
+<details>
+<summary><b>📜 2. Audio Script: Lời Thoại Test 1 Listening (Test1-script.pdf) - Mở sau khi làm bài</b></summary>
 
 ![[assets/Test1-script.pdf]]
 
@@ -35,120 +35,129 @@ tags:
 
 ---
 
-## 📋 Bảng Ghi Nhận Bài Làm & Đối Soát Chi Tiết (40 Câu)
+## 💡 Hướng Dẫn Nhập Liệu Nhanh (Shorthand Syntax)
+
+Khi gửi bài làm cho AI để tự động tạo bảng đối soát, bạn có thể gõ nhanh theo cú pháp:
+
+- **Làm đúng:** `3 dentist`, `12 a`, `24 c`
+- **Làm sai (đối chiếu):** `1 dw137yz - dw307yz`, `4 car - parking / lý do: nghe nhầm danh từ`
+- **Bỏ trống:** `16 - b / audio nói nhanh`
+
+---
+
+## 📋 Bảng Ghi Nhận Bài Làm Tương Tác (40 Câu)
+
+<div class="ielts-sheet-card" data-sheet-id="cam18-test1-listening" data-start-q="1" data-end-q="40" data-timer="30">
+  <div class="ielts-card-header">
+    <div class="ielts-header-title">
+      <span class="ielts-badge">Listening Test</span>
+      <span class="ielts-target-pill">Cambridge 18 - Test 1 (40 Câu)</span>
+    </div>
+    <div class="ielts-timer-widget">
+      <span class="ielts-timer-display">30:00</span>
+      <div class="ielts-timer-controls">
+        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
+        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
+        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ielts-stats-bar">
+    <div class="ielts-stat-item">
+      <span class="ielts-stat-label">Tiến độ:</span>
+      <span class="ielts-stat-val ielts-sheet-progress">0 / 40 câu đã điền</span>
+    </div>
+    <div class="ielts-save-indicator">
+      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
+    </div>
+  </div>
+
+  <div class="ielts-grid-answers"></div>
+
+  <div class="ielts-card-actions">
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy-shorthand">
+      📋 Sao Chép Shorthand Cho AI Đối Soát
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-clear-sheet">
+      🗑️ Xóa Bài Làm
+    </button>
+  </div>
+</div>
+
+---
+
+## 📊 Bảng Đối Soát Bài Làm
 
 ### 🔹 Part 1 (Questions 1 – 10)
 
-|  STT   | Bài Làm Lúc Thi   | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy                                                                                                                             |
-| :----: | :---------------- | :---------------- | :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1**  | `dw137yz`         | `dw307yz`         |   ❌    | **Bẫy số:** Nghe nhầm âm đuôi `13` (-teen) với `30` (-ty).                                                                                                  |
-| **2**  | `14`              | `24 April`        |   ❌    | **Bẫy ngày tháng:** Nghe nhầm ngày `14` thay vì `24` và bỏ sót tên tháng `April`.                                                                           |
-| **3**  | `dentist`         | `dentist`         |   ✅    | Bắt chuẩn xác danh từ địa điểm khám nha khoa.                                                                                                               |
-| **4**  | `car`             | `parking`         |   ❌    | **Bẫy thông tin gây nhiễu (Distractor):** _"parking was so difficult find and it costs so much"_ — người nói phàn nàn về bãi đỗ xe chứ không phải chiếc xe. |
-| **5**  | `claxby`          | `claxby`          |   ✅    | Bắt đúng chính tả đánh vần tên riêng.                                                                                                                       |
-| **6**  | `late 10 minutes` | `late`            |   ❌    | **Bẫy giới hạn từ (ONE WORD ONLY):** Điền 3 từ bị tính sai luật thi, chỉ cần tính từ `late`.                                                                |
-| **7**  | `evening`         | `evening`         |   ✅    | Bắt chuẩn xác thời gian trong ngày.                                                                                                                         |
-| **8**  | `supermarket`     | `supermarket`     |   ✅    | Danh từ ghép viết liền đúng chính tả.                                                                                                                       |
-| **9**  | `pollution`       | `pollution`       |   ✅    | Danh từ ô nhiễm đúng chính tả.                                                                                                                              |
-| **10** | `storage`         | `storage`         |   ✅    | Bắt chuẩn danh từ kho chứa / lưu trữ.                                                                                                                       |
-
-> **Tổng kết Part 1:** `6 / 10 câu đúng` _(Đúng: 6 | Sai: 4 | Bỏ trống: 0)_
+| STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
+| :---: | :--- | :--- | :---: | :--- |
+| **1** | `[ ]` | | ⚪ | |
+| **2** | `[ ]` | | ⚪ | |
+| **3** | `[ ]` | | ⚪ | |
+| **4** | `[ ]` | | ⚪ | |
+| **5** | `[ ]` | | ⚪ | |
+| **6** | `[ ]` | | ⚪ | |
+| **7** | `[ ]` | | ⚪ | |
+| **8** | `[ ]` | | ⚪ | |
+| **9** | `[ ]` | | ⚪ | |
+| **10** | `[ ]` | | ⚪ | |
 
 ---
 
 ### 🔹 Part 2 (Questions 11 – 20)
 
-|  STT   | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy & Paraphrase                                                                                                                                            |
-| :----: | :-------------- | :---------------- | :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **11** | `b`             | `c`               |   ❌    | **Paraphrase:** _"a bit squashed"_ = chỗ ngồi bị xếp sát nhau, chật chội.                                                                                                               |
-| **12** | `a`             | `a`               |   ✅    | Nhận diện đúng thông tin: tuổi tác tình nguyện viên ít quan trọng hơn các tiêu chí khác.                                                                                                |
-| **13** | `b`             | `a`               |   ❌    | **Paraphrase:** _"training doesnt end when you start working for us it takes place before, during and after period of work"_ -> đào tạo liên tục (_continuous_).                        |
-| **14** | `d`             | `b`               |   ❌    | **Paraphrase từ vựng:** _commitment_ (sự cam kết) được diễn đạt bằng _dedication_ (sự tận tụy với công việc).                                                                           |
-| **15** | `e`             | `e`               |   ✅    | Nhận diện đúng yếu tố thời gian rảnh / sẵn sàng cống hiến (_availability_).                                                                                                             |
-| **16** | _(bỏ trống)_    | `b`               |   ⚪    | **Bỏ trống lúc thi.** Ghi chú học tập: _"If you have the creativity to come up with an imaginative or novel way of fundraising"_ (_creativity / imaginative / novel_ = ý tưởng mới lạ). |
-| **17** | `f`             | `g`               |   ❌    | Hoạt động dọn rác (Litter collection) đòi hỏi thể lực tốt (_a good level of fitness_).                                                                                                  |
-| **18** | `c`             | `d`               |   ❌    | Hoạt động vui chơi với trẻ em ('Playmates') cần kỹ năng nuôi dạy trẻ (_parenting skills_).                                                                                              |
-| **19** | `a`             | `a`               |   ✅    | Kể chuyện (Storytelling) đòi hỏi kinh nghiệm diễn xuất sân khấu (_experience on stage_).                                                                                                |
-| **20** | `g`             | `g` _(hoặc `f`)_  |   ✅    | Bạn ghi nhận làm `g`. _(Ghi chú đối chiếu đề gốc Cam 18: `f` — shopping cần a good memory)._                                                                                            |
-
-> **Tổng kết Part 2:** `4 / 10 câu đúng` _(Đúng: 4 | Sai: 5 | Bỏ trống: 1)_
+| STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
+| :---: | :--- | :--- | :---: | :--- |
+| **11** | `[ ]` | | ⚪ | |
+| **12** | `[ ]` | | ⚪ | |
+| **13** | `[ ]` | | ⚪ | |
+| **14** | `[ ]` | | ⚪ | |
+| **15** | `[ ]` | | ⚪ | |
+| **16** | `[ ]` | | ⚪ | |
+| **17** | `[ ]` | | ⚪ | |
+| **18** | `[ ]` | | ⚪ | |
+| **19** | `[ ]` | | ⚪ | |
+| **20** | `[ ]` | | ⚪ | |
 
 ---
 
 ### 🔹 Part 3 (Questions 21 – 30)
 
-|  STT   | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Đối Chiếu                                                                      |
-| :----: | :-------------- | :---------------- | :-----: | :----------------------------------------------------------------------------------------------- |
-| **21** | `a`             | `a`               |   ✅    | Bắt đúng thái độ / phản ứng ban đầu của Hugo về độ khốc liệt của thị trường việc làm thời trang. |
-| **22** | _(bỏ trống)_    | `b`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `b`.                                                           |
-| **23** | _(bỏ trống)_    | `a`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `a`.                                                           |
-| **24** | _(bỏ trống)_    | `c`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `c`.                                                           |
-| **25** | _(bỏ trống)_    | `b`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `b`.                                                           |
-| **26** | _(bỏ trống)_    | `a`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `a`.                                                           |
-| **27** | `b`             | `b`               |   ✅    | Nhận diện đúng nội dung kiến thức thị trường bán lẻ thời trang.                                  |
-| **28** | `d`             | `e`               |   ❌    | Nghe nhầm chi tiết thực tế của chuỗi cung ứng.                                                   |
-| **29** | _(bỏ trống)_    | `c`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `c` (trong cặp đáp án A & C).                                  |
-| **30** | _(bỏ trống)_    | `a`               |   ⚪    | Bỏ trống lúc thi, đối soát đáp án `a` (trong cặp đáp án A & C).                                  |
-
-> **Tổng kết Part 3:** `2 / 10 câu đúng` _(Đúng: 2 | Sai: 1 | Bỏ trống: 7)_
+| STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
+| :---: | :--- | :--- | :---: | :--- |
+| **21** | `[ ]` | | ⚪ | |
+| **22** | `[ ]` | | ⚪ | |
+| **23** | `[ ]` | | ⚪ | |
+| **24** | `[ ]` | | ⚪ | |
+| **25** | `[ ]` | | ⚪ | |
+| **26** | `[ ]` | | ⚪ | |
+| **27** | `[ ]` | | ⚪ | |
+| **28** | `[ ]` | | ⚪ | |
+| **29** | `[ ]` | | ⚪ | |
+| **30** | `[ ]` | | ⚪ | |
 
 ---
 
 ### 🔹 Part 4 (Questions 31 – 40)
 
-_(Toàn bộ Part 4 bỏ trống lúc làm bài thi do không kịp tốc độ; dưới đây là bảng lưu trữ đáp án đối chiếu để phục vụ quá trình học tập và phân tích transcript)_
-
-|  STT   | Bài Làm Lúc Thi | Đáp Án Đối Soát              | Kết Quả | Ghi Chú Phân Tích Nội Dung                                      |
-| :----: | :-------------- | :--------------------------- | :-----: | :-------------------------------------------------------------- |
-| **31** | _(bỏ trống)_    | `fences`                     |   ⚪    | Hàng rào bảo vệ chống voi phá hoại (danh từ số nhiều).          |
-| **32** | _(bỏ trống)_    | `family`                     |   ⚪    | Cấu trúc bầy đàn gia đình voi.                                  |
-| **33** | _(bỏ trống)_    | `helicopters`                |   ⚪    | Trực thăng vận chuyển (danh từ số nhiều).                       |
-| **34** | _(bỏ trống)_    | `trees` _(đề Cam: `stress`)_ |   ⚪    | Ghi chú: Đề gốc Cam 18 là `stress` (voi hung dữ do căng thẳng). |
-| **35** | _(bỏ trống)_    | `sides`                      |   ⚪    | Danh từ số nhiều chỉ hai bên sườn.                              |
-| **36** | _(bỏ trống)_    | `breathing`                  |   ⚪    | Danh từ / V-ing chỉ nhịp thở của voi.                           |
-| **37** | _(bỏ trống)_    | `feet`                       |   ⚪    | Danh từ số nhiều bất quy tắc (foot -> feet).                    |
-| **38** | _(bỏ trống)_    | `employment`                 |   ⚪    | Cơ hội việc làm tạo ra cho cư dân địa phương.                   |
-| **39** | _(bỏ trống)_    | `weapons`                    |   ⚪    | Vũ khí săn trộm (danh từ số nhiều).                             |
-| **40** | _(bỏ trống)_    | `tourism`                    |   ⚪    | Ngành du lịch sinh thái.                                        |
-
-> **Tổng kết Part 4:** `0 / 10 câu đúng` _(Đúng: 0 | Sai: 0 | Bỏ trống: 10)_
+| STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
+| :---: | :--- | :--- | :---: | :--- |
+| **31** | `[ ]` | | ⚪ | |
+| **32** | `[ ]` | | ⚪ | |
+| **33** | `[ ]` | | ⚪ | |
+| **34** | `[ ]` | | ⚪ | |
+| **35** | `[ ]` | | ⚪ | |
+| **36** | `[ ]` | | ⚪ | |
+| **37** | `[ ]` | | ⚪ | |
+| **38** | `[ ]` | | ⚪ | |
+| **39** | `[ ]` | | ⚪ | |
+| **40** | `[ ]` | | ⚪ | |
 
 ---
 
-## 📊 Báo Cáo Đánh Giá Thực Tế (Baseline Diagnostic Report)
+## 🔗 Liên Kết Học Tập
 
-### 1. Tổng Kết Điểm Số
-
-- **Số câu thực tế làm lúc thi:** **`18 / 40 câu`**
-- **Số câu làm đúng:** **`12 / 18 câu`** (Đạt độ chính xác **`66.7%`** trên số câu làm được)
-- **Tổng số câu đúng trên bài thi:** **`12 / 40 câu`**
-- **Ước lượng IELTS Band Score:** **`Band 4.0` (Academic Listening Baseline)**
-
----
-
-### 2. Phân Tích Năng Lực & Thực Trạng
-
-1. **Độ chính xác tương đối tốt ở các câu làm được (Part 1 & 2):**
-   - Khi có đủ thời gian nghe và bắt kịp mạch, bạn làm đúng 6/10 câu ở Part 1 và 4 câu ở Part 2.
-   - Bạn có tư duy ghi chú và tự phân tích paraphrase rất xuất sắc (các ghi chú về _squashed_, _continuous training_, _dedication = commitment_, _fundraising creativity_).
-2. **Khó khăn về Tốc độ & Khả năng duy trì mạch nghe (Pacing & Endurance):**
-   - Từ giữa Part 2 (câu 16) trở đi, đặc biệt là Part 3 (bỏ trống 7 câu) và Part 4 (bỏ trống toàn bộ 10 câu), bạn gặp áp lực lớn về tốc độ nói nhanh và không kịp đọc trước câu hỏi dẫn đến bị trôi mạch nghe.
-   - Đây là thực trạng rất tự nhiên ở giai đoạn Baseline (mức khởi điểm).
-3. **Các lỗi kỹ thuật làm bài:**
-   - **Bẫy số & phát âm:** Câu 1 nhầm `-teen` vs `-ty` (`13` vs `30`), câu 2 nhầm ngày `14` vs `24` và quên ghi tên tháng `April`.
-   - **Giới hạn số từ:** Câu 6 điền thừa từ (`late 10 minutes` thay vì `late` theo quy định _ONE WORD ONLY_).
-
----
-
-### 3. Kế Hoạch Cải Thiện Cho Các Tuần Tiếp Theo
-
-- [ ] **Luyện drill phản xạ số & ngày tháng:** 10-15 phút/ngày để phân biệt dứt khoát âm nhấn đuôi `-TEEN` (kéo dài) vs `-TY` (ngắn).
-- [ ] **Tập kỹ thuật đọc đề trước (Pre-reading):** Dành 30 giây gạch chân từ khóa cố định trước mỗi section để không bị mất dấu khi băng chạy.
-- [ ] **Tập luyện nghe Part 4 có transcript:** Đọc theo lời thoại (Shadowing) và làm quen với tốc độ bài giảng học thuật.
-
----
-
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]]
-- 📖 **Sổ tay từ vựng:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1 (Listening, Reading, Writing)]]
+- 📅 **Trở về Hub tuần:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
+- 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]

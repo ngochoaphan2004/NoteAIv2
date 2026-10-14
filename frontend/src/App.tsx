@@ -5,6 +5,7 @@ import { StatsDashboard } from "./components/StatsDashboard";
 import { TestAttemptEditor } from "./components/TestAttemptEditor";
 import { RAGSearch } from "./components/RAGSearch";
 import DailySession from "./components/DailySession";
+import { ConfigSettings } from "./components/ConfigSettings";
 import {
   CalendarDays,
   BookOpen,
@@ -12,6 +13,7 @@ import {
   Search,
   BarChart3,
   Cpu,
+  Settings,
 } from "lucide-react";
 
 const queryClient = new QueryClient({
@@ -23,7 +25,7 @@ const queryClient = new QueryClient({
   },
 });
 
-type Tab = "session" | "flashcards" | "test" | "rag" | "stats";
+type Tab = "session" | "flashcards" | "test" | "rag" | "stats" | "config";
 
 const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
   {
@@ -50,6 +52,11 @@ const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
     id: "stats",
     icon: <BarChart3 className="w-3.5 h-3.5" />,
     label: "Viễn Trắc & Thống Kê",
+  },
+  {
+    id: "config",
+    icon: <Settings className="w-3.5 h-3.5" />,
+    label: "Cấu Hình & Hệ Thống",
   },
 ];
 
@@ -115,6 +122,7 @@ export const AppContent: React.FC = () => {
         {activeTab === "test" && <TestAttemptEditor />}
         {activeTab === "rag" && <RAGSearch />}
         {activeTab === "stats" && <StatsDashboard />}
+        {activeTab === "config" && <ConfigSettings />}
       </main>
 
       {/* Hardware & Network Status Footer */}

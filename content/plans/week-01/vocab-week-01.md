@@ -1,5 +1,5 @@
 ---
-title: "Sổ Từ Vựng Tuần 1 (08/10 – 11/10)"
+title: "Sổ Từ Vựng Tuần 1 (14/10 – 20/10)"
 aliases:
   - vocab-week-01
   - vocab-cam18-week01
@@ -13,16 +13,16 @@ tags:
   - cambridge18
   - week-01
   - b2-c1
-sr-due: "2026-10-11"
+sr-due: "2026-10-14"
 ---
 
-# 📚 Sổ Tay Từ Vựng Trọng Tâm: Tuần 1 (08/10 – 11/10/2026)
+# 📚 Sổ Tay Từ Vựng Trọng Tâm: Tuần 1 (14/10 – 20/10/2026)
 
 > **Phạm vi học:** Toàn bộ từ vựng & cấu trúc học thuật cốt lõi trong Tuần 1:
 > • 🎧 **Listening:** Cambridge 18 Test 1 (Part 1 – Part 4)  
 > • 📖 **Reading:** Cambridge 18 Test 1 Passage 3 (_Conquering Earth's space junk problem_)  
 > • ✍️ **Writing:** Task 1 (_Asian Urbanization_) & Task 2 (_Aims of Science_)  
-> 📅 **Tuần học:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]]  
+> 📅 **Tuần học:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]  
 > 📥 **Gói thẻ Anki tự động (1 Master Deck duy nhất):** [⬇️ Tải file IELTS_Master_Deck.apkg](./assets/IELTS_Master_Deck.apkg)
 
 ---
@@ -149,7 +149,7 @@ _(Đáp án: 1. surpassed | 2. debris | 3. breakthroughs | 4. mitigate | 5. vuln
 
 ## 🔗 5. Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]]
+- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
 - 📖 **Chuyên đề ngữ pháp Task 1:** [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo Trong Task 1]]
 - 🎧 **Bài làm Listening:** [[plans/week-01/test-1-listening|Bài Làm Test 1 Listening (Cam 18)]]
 - 📖 **Bài làm Reading:** [[plans/week-01/test-1-reading-p3|Bài Làm Reading Passage 3 (Cam 18)]]

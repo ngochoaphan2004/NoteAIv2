@@ -1,15 +1,20 @@
+import logging
 from typing import Dict, Any, List
-from app.agents.state import AgentState
+from app.core.config import settings
+from app.services.llm_service import llm_service
+
+logger = logging.getLogger("planner_agent")
 
 class PlanningAgent:
     def generate_plan(self, week_number: int, telemetry_summary: Dict[str, Any]) -> Dict[str, Any]:
         """
         Tạo kế hoạch học tập thích ứng (Adaptive Pacing) phân bổ thành các Micro-sessions 30-35 phút
-        dựa trên telemetry lỗi sai và tiến độ FSRS.
+        dựa trên telemetry lỗi sai và tiến độ FSRS. Sử dụng LLM Multi-Model Fallback khi có API Key.
         """
         target_score = "5.0 -> 7.5"
         
-        sessions: List[Dict[str, Any]] = [
+        # Lịch học Micro-sessions chuẩn mực mặc định
+        default_sessions: List[Dict[str, Any]] = [
             {
                 "session_id": 1,
                 "duration_minutes": 35,
@@ -40,11 +45,33 @@ class PlanningAgent:
             }
         ]
 
+        ai_advice: str = ""
+
+        # Nếu có API key, gọi LLM qua LLMService với cơ chế Multi-Model Fallback
+        if settings.GEMINI_API_KEY or settings.OPENAI_API_KEY:
+            try:
+                prompt = (
+                    f"Người học đang ở lộ trình IELTS {target_score}, bắt đầu Tuần {week_number}. "
+                    f"Thông tin lỗi sai và viễn trắc gần đây: {telemetry_summary}. "
+                    f"Hãy đưa ra 3 lời khuyên ngắn gọn (mỗi câu tối đa 20 từ) về cách phân bổ "
+                    f"các Micro-sessions 30-35 phút để đạt hiệu quả cao nhất mà không bị quá tải."
+                )
+                system_message = (
+                    "Bạn là Chuyên gia Lập Kế Hoạch Luyện Thi IELTS NoteAI.v2 theo triết lý Cognitive Load Control. "
+                    "Trả lời súc tích, cụ thể, bằng tiếng Việt."
+                )
+                ai_advice = llm_service.generate_text(prompt, system_message=system_message)
+                logger.info(f"PlanningAgent: Đã tạo lời khuyên thích ứng qua model: {llm_service.last_used_model}")
+            except Exception as e:
+                logger.warning(f"PlanningAgent: Không thể gọi LLM ({e}), sử dụng chiến lược baseline mặc định.")
+
         return {
             "week": week_number,
             "target": target_score,
             "strategy": "Micro-sessions 30-35p thích ứng theo sai số thực tế",
-            "micro_sessions": sessions,
+            "micro_sessions": default_sessions,
+            "ai_adaptive_advice": ai_advice if ai_advice else "Tập trung hoàn thành 100% các phiên 30-35 phút đơn nhiệm để duy trì đà học liên tục.",
+            "used_llm_model": llm_service.last_used_model,
             "checklist": [
                 f"Đạt tỷ lệ nhớ lại (Retention Rate) >= 90% trên FSRS Tuần {week_number}",
                 "Khắc phục triệt để bẫy số nhiều/số ít trong Listening Part 1",

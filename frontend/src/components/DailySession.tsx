@@ -22,9 +22,9 @@ interface DailySessionProps {
 export const DailySession: React.FC<DailySessionProps> = ({
   onNavigateToFlashcards,
 }) => {
-  // Đường dẫn mặc định trỏ thẳng vào kế hoạch Tuần 2 (đang diễn ra)
+  // Đường dẫn mặc định trỏ thẳng vào kế hoạch Tuần 1 (đang diễn ra từ 14/10)
   const [currentUrl, setCurrentUrl] = useState(
-    `${QUARTZ_BASE_URL}/plans/week-02/`,
+    `${QUARTZ_BASE_URL}/plans/week-01/`,
   );
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -39,15 +39,10 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   const quickNavLinks = [
     {
-      label: "Tuần 2 (Đang học)",
-      path: "/plans/week-02/",
+      label: "Tuần 1 (14/10 – 20/10)",
+      path: "/plans/week-01/",
       icon: <Calendar className="w-3.5 h-3.5 text-apple-blue" />,
       badge: "Hiện tại",
-    },
-    {
-      label: "Tuần 1 (Baseline)",
-      path: "/plans/week-01/",
-      icon: <BookOpen className="w-3.5 h-3.5" />,
     },
     {
       label: "Tất cả kế hoạch",
