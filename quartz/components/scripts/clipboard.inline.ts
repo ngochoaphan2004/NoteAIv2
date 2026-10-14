@@ -18,18 +18,41 @@ document.addEventListener("nav", () => {
       button.type = "button";
       button.innerHTML = svgCopy;
       button.ariaLabel = "Copy source";
+      async function copyText(text: string): Promise<void> {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return;
+          } catch {
+            // Permissions policy blocked navigator.clipboard in iframe, fallback below
+          }
+        }
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand("copy");
+        } finally {
+          textArea.remove();
+        }
+      }
+
       function onClick() {
-        navigator.clipboard.writeText(source).then(
-          () => {
+        copyText(source)
+          .then(() => {
             button.blur();
             button.innerHTML = svgCheck;
             setTimeout(() => {
               button.innerHTML = svgCopy;
               button.style.borderColor = "";
             }, 2000);
-          },
-          (error) => console.error(error),
-        );
+          })
+          .catch((error) => console.error(error));
       }
       button.addEventListener("click", onClick);
       window.addCleanup(() => button.removeEventListener("click", onClick));
