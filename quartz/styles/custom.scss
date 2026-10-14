@@ -16,9 +16,15 @@
    * - macOS / iOS: Native San Francisco (SF Pro Text, SF Pro Display, SF Mono)
    * - Windows / Linux: Inter & JetBrains Mono (Full Vietnamese diacritics support)
    */
-  --bodyFont: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
-  --headerFont: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
-  --codeFont: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --bodyFont:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui,
+    sans-serif;
+  --headerFont:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui,
+    sans-serif;
+  --codeFont:
+    "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas,
+    monospace;
 
   /* macOS Smooth Curves & Spatial Shadows */
   --apple-radius-sm: 6px;
@@ -26,9 +32,12 @@
   --apple-radius-lg: 12px;
   --apple-radius-pill: 999px;
 
-  --apple-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --apple-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
-  --apple-shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --apple-shadow-subtle:
+    0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --apple-shadow-card:
+    0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --apple-shadow-elevated:
+    0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
 
   --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -121,7 +130,12 @@ article > h1:first-of-type {
   margin-bottom: 0.6rem !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--headerFont);
   color: var(--dark);
   text-wrap: balance;
@@ -154,7 +168,7 @@ h2 {
   margin-bottom: 0.5rem !important;
 
   @media all and ($mobile) {
-    font-size: 1.10rem !important;
+    font-size: 1.1rem !important;
     margin-top: 1.1rem !important;
     margin-bottom: 0.45rem !important;
   }
@@ -177,7 +191,9 @@ h3 {
 }
 
 /* Sub-items (H4, H5, H6) */
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-size: 0.92rem !important;
   font-weight: 600;
   letter-spacing: -0.005em;
@@ -189,7 +205,9 @@ h4, h5, h6 {
    3. Body Text, Paragraphs & Lists
    -------------------------------------------------------------------------- */
 
-body, p, li {
+body,
+p,
+li {
   font-family: var(--bodyFont);
   font-size: 0.92rem;
   line-height: 1.64;
@@ -203,7 +221,8 @@ body, p, li {
   }
 }
 
-ul, ol {
+ul,
+ol {
   padding-left: 1.2rem;
   margin: 0.45rem 0;
 
@@ -216,13 +235,17 @@ li {
   margin: 0.16rem 0;
 }
 
-strong, b {
+strong,
+b {
   font-weight: 600;
   color: var(--dark);
 }
 
 /* Code & Tabular Alignment */
-code, kbd, samp, pre {
+code,
+kbd,
+samp,
+pre {
   font-family: var(--codeFont);
   font-size: 0.82rem;
   letter-spacing: 0;
@@ -284,12 +307,20 @@ pre {
 
         &:hover {
           color: var(--dark);
-          background-color: color-mix(in srgb, var(--darkgray) 10%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(--darkgray) 10%,
+            transparent
+          );
           opacity: 1;
         }
 
         &.active {
-          background-color: color-mix(in srgb, var(--secondary) 15%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(--secondary) 15%,
+            transparent
+          );
           color: var(--secondary) !important;
           font-weight: 600;
           opacity: 1;
@@ -387,7 +418,11 @@ pre {
 
     &:hover {
       border-color: var(--gray) !important;
-      background-color: color-mix(in srgb, var(--lightgray) 80%, var(--secondary)) !important;
+      background-color: color-mix(
+        in srgb,
+        var(--lightgray) 80%,
+        var(--secondary)
+      ) !important;
       transform: translateY(-1px);
     }
   }
@@ -440,7 +475,11 @@ pre {
     border-radius: var(--apple-radius-lg) !important;
     backdrop-filter: blur(24px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    background-color: color-mix(in srgb, var(--light) 85%, transparent) !important;
+    background-color: color-mix(
+      in srgb,
+      var(--light) 85%,
+      transparent
+    ) !important;
     border: 1px solid color-mix(in srgb, var(--darkgray) 18%, transparent) !important;
     box-shadow: var(--apple-shadow-elevated) !important;
     padding: 0.9rem 1.1rem !important;
@@ -484,7 +523,8 @@ pre {
       padding: 0.55rem 0.8rem;
       font-size: 0.83rem;
       line-height: 1.48;
-      border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 80%, transparent);
+      border-bottom: 1px solid
+        color-mix(in srgb, var(--lightgray) 80%, transparent);
     }
 
     tr:last-child td {

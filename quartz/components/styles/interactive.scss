@@ -19,8 +19,9 @@
 .ielts-writing-card:focus-within,
 .ielts-sheet-card:focus-within {
   border-color: var(--secondary);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--secondary) 25%, transparent),
-              var(--apple-shadow-elevated, 0 12px 32px rgba(0, 0, 0, 0.08));
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--secondary) 25%, transparent),
+    var(--apple-shadow-elevated, 0 12px 32px rgba(0, 0, 0, 0.08));
 }
 
 /* --------------------------------------------------------------------------
@@ -87,8 +88,12 @@
 }
 
 @keyframes pulse {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .ielts-timer-controls {
@@ -193,7 +198,9 @@
   line-height: 1.6;
   outline: none;
   box-sizing: border-box;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ielts-textarea:focus {

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { api } from '../services/api';
-import { Search, FileText, Sparkles } from 'lucide-react';
+import React, { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { api } from "../services/api";
+import { Search, FileText, Sparkles } from "lucide-react";
 
 export const RAGSearch: React.FC = () => {
-  const [query, setQuery] = useState('space junk collision mitigation');
+  const [query, setQuery] = useState("space junk collision mitigation");
   const [results, setResults] = useState<any[]>([]);
 
   const searchMutation = useMutation({
@@ -21,7 +21,8 @@ export const RAGSearch: React.FC = () => {
           Truy Vấn Ngữ Nghĩa Kho Tri Thức (Qdrant Vector DB)
         </h2>
         <p className="text-xs text-apple-subtextLight dark:text-apple-subtextDark mb-4">
-          Vector Embeddings chạy CPU qua FastEmbed (BAAI/bge-small-en-v1.5) tìm kiếm theo độ tương đồng Cosine
+          Vector Embeddings chạy CPU qua FastEmbed (BAAI/bge-small-en-v1.5) tìm
+          kiếm theo độ tương đồng Cosine
         </p>
 
         <div className="flex gap-2">
@@ -31,7 +32,7 @@ export const RAGSearch: React.FC = () => {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && searchMutation.mutate()}
+              onKeyDown={(e) => e.key === "Enter" && searchMutation.mutate()}
               placeholder="Nhập khái niệm, từ vựng hoặc chủ đề IELTS cần tra cứu..."
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-apple-blue"
             />
@@ -42,7 +43,7 @@ export const RAGSearch: React.FC = () => {
             className="px-5 py-2.5 bg-apple-blue text-white rounded-xl text-xs font-semibold hover:bg-apple-blueHover transition flex items-center gap-1.5 shadow-sm disabled:opacity-50"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            {searchMutation.isPending ? 'Đang tìm...' : 'Tìm Kiếm'}
+            {searchMutation.isPending ? "Đang tìm..." : "Tìm Kiếm"}
           </button>
         </div>
       </div>

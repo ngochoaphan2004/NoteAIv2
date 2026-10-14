@@ -22,13 +22,13 @@ tags:
 
 Chiến lược an toàn và tối ưu nhất cho người học Việt Nam là: **Đẩy mạnh Listening & Reading để "gánh" Writing & Speaking**.
 
-| Kỹ Năng | Target Band | Vai Trò Chiến Lược |
-| :--- | :---: | :--- |
-| 🎧 **Listening** | **8.0 – 8.5** | Kỹ năng gánh điểm chủ lực (chỉ được sai tối đa 3-5 câu). |
-| 🔍 **Reading** | **8.0 – 8.5** | Kỹ năng gánh điểm chủ lực (chỉ được sai tối đa 3-5 câu). |
-| ✍️ **Writing** | **6.5 – 7.0** | Viết mạch lạc, đúng trọng tâm đề, kiểm soát tốt lỗi ngữ pháp & từ vựng. |
-| 🗣️ **Speaking** | **6.5 – 7.0** | Nói tự nhiên, trôi chảy, phản xạ tốt, phát âm chuẩn IPA và có ngữ điệu. |
-| 🏆 **OVERALL** | **7.5** | $\frac{8.5 + 8.5 + 6.5 + 6.5}{4} = 7.5$ (hoặc $\frac{8.0 + 8.0 + 7.0 + 7.0}{4} = 7.5$) |
+| Kỹ Năng          |  Target Band  | Vai Trò Chiến Lược                                                                     |
+| :--------------- | :-----------: | :------------------------------------------------------------------------------------- |
+| 🎧 **Listening** | **8.0 – 8.5** | Kỹ năng gánh điểm chủ lực (chỉ được sai tối đa 3-5 câu).                               |
+| 🔍 **Reading**   | **8.0 – 8.5** | Kỹ năng gánh điểm chủ lực (chỉ được sai tối đa 3-5 câu).                               |
+| ✍️ **Writing**   | **6.5 – 7.0** | Viết mạch lạc, đúng trọng tâm đề, kiểm soát tốt lỗi ngữ pháp & từ vựng.                |
+| 🗣️ **Speaking**  | **6.5 – 7.0** | Nói tự nhiên, trôi chảy, phản xạ tốt, phát âm chuẩn IPA và có ngữ điệu.                |
+| 🏆 **OVERALL**   |    **7.5**    | $\frac{8.5 + 8.5 + 6.5 + 6.5}{4} = 7.5$ (hoặc $\frac{8.0 + 8.0 + 7.0 + 7.0}{4} = 7.5$) |
 
 > [!NOTE]
 >
@@ -40,8 +40,8 @@ Chiến lược an toàn và tối ưu nhất cho người học Việt Nam là:
 ## 📅 2. Chi Tiết 4 Giai Đoạn Về Đích
 
 ### 🧱 Giai Đoạn 1: Xây Lại Nền Tảng Vững Chắc (1.5 – 2 Tháng)
->
-> *Mục tiêu cốt lõi: Triệt tiêu mọi lỗi sai cơ bản. Ở mục tiêu band 7.5, giám khảo sẽ trừ điểm rất nặng các lỗi sơ đẳng.*
+
+> _Mục tiêu cốt lõi: Triệt tiêu mọi lỗi sai cơ bản. Ở mục tiêu band 7.5, giám khảo sẽ trừ điểm rất nặng các lỗi sơ đẳng._
 
 - [ ] **Ngữ pháp trọng điểm:** Không học lan man, nắm chắc và dùng nhuần nhuyễn:
   - 12 Thì tiếng Anh (đặc biệt: Hiện tại hoàn thành, Quá khứ đơn, Tương lai).
@@ -53,37 +53,37 @@ Chiến lược an toàn và tối ưu nhất cho người học Việt Nam là:
   - Đọc đúng trọng âm từ (Word Stress), bật rõ âm đuôi (Ending Sounds: /s/, /z/, /ed/, /t/).
   - Làm quen quy tắc nối âm (Connected Speech) để phục vụ cho nghe - nói.
 - [ ] **Từ vựng nền tảng theo chủ đề:**
-  - Học từ theo các topic kinh điển: *Environment, Education, Crime, Technology, Health, Work*.
+  - Học từ theo các topic kinh điển: _Environment, Education, Crime, Technology, Health, Work_.
 - 📚 **Tài liệu khuyên dùng:**
-  - *English Grammar in Use* (Raymond Murphy - Cambridge)
-  - *English Vocabulary in Use* (Cambridge)
-  - *English Pronunciation in Use* (Cambridge)
+  - _English Grammar in Use_ (Raymond Murphy - Cambridge)
+  - _English Vocabulary in Use_ (Cambridge)
+  - _English Pronunciation in Use_ (Cambridge)
 
 ---
 
 ### 🎯 Giai Đoạn 2: Làm Quen Format & Chiến Thuật Từng Dạng Bài (2 Tháng)
->
-> *Mục tiêu cốt lõi: Hiểu rõ cấu trúc bài thi, nắm vững phương pháp làm cho từng dạng câu hỏi.*
+
+> _Mục tiêu cốt lõi: Hiểu rõ cấu trúc bài thi, nắm vững phương pháp làm cho từng dạng câu hỏi._
 
 - [ ] **Listening & Reading:**
-  - Mổ xẻ từng dạng câu hỏi: *Multiple Choice, True/False/Not Given, Yes/No/Not Given, Matching Headings, Sentence Completion...*
+  - Mổ xẻ từng dạng câu hỏi: _Multiple Choice, True/False/Not Given, Yes/No/Not Given, Matching Headings, Sentence Completion..._
   - Rèn luyện kỹ năng **Skimming** (đọc lướt nắm ý chính) và **Scanning** (đọc quét định vị từ khóa).
 - [ ] **Writing:**
-  - **Task 1:** Nắm vững cấu trúc 4 đoạn cho từng biểu đồ: *Line graph, Bar chart, Pie chart, Table, Map, Process*.
-  - **Task 2:** Cấu trúc các dạng bài: *Opinion (Agree/Disagree), Discussion, Advantages/Disadvantages, Causes - Solutions*.
+  - **Task 1:** Nắm vững cấu trúc 4 đoạn cho từng biểu đồ: _Line graph, Bar chart, Pie chart, Table, Map, Process_.
+  - **Task 2:** Cấu trúc các dạng bài: _Opinion (Agree/Disagree), Discussion, Advantages/Disadvantages, Causes - Solutions_.
   - **Kỹ năng Outlining:** Tập phân tích đề bài và lập dàn ý hoàn chỉnh trong đúng **5 phút** trước khi đặt bút viết.
 - [ ] **Speaking:**
   - Luyện phản xạ trả lời câu hỏi ngắn trong **Part 1**.
-  - Chuẩn bị sẵn kho ý tưởng (Idea Bank) cho các chủ đề kinh điển: *Work/Study, Hometown, Accommodation, Hobbies*.
+  - Chuẩn bị sẵn kho ý tưởng (Idea Bank) cho các chủ đề kinh điển: _Work/Study, Hometown, Accommodation, Hobbies_.
 - 📚 **Tài liệu khuyên dùng:**
-  - *Cambridge Grammar / Vocabulary for IELTS*
-  - *The Official Cambridge Guide to IELTS*
+  - _Cambridge Grammar / Vocabulary for IELTS_
+  - _The Official Cambridge Guide to IELTS_
 
 ---
 
 ### 🔥 Giai Đoạn 3: Luyện Đề Chuyên Sâu & Sửa Sâu Lỗi Sai (2 – 3 Tháng)
->
-> *Mục tiêu cốt lõi: Cày đề có phương pháp. Nguyên tắc vàng: "Thời gian chữa đề phải gấp đôi thời gian làm đề".*
+
+> _Mục tiêu cốt lõi: Cày đề có phương pháp. Nguyên tắc vàng: "Thời gian chữa đề phải gấp đôi thời gian làm đề"._
 
 - [ ] **Listening & Reading:**
   - Luyện bộ đề **Cambridge IELTS từ quyển 11 đến 19**.
@@ -94,14 +94,14 @@ Chiến lược an toàn và tối ưu nhất cho người học Việt Nam là:
   - Nhờ giáo viên hoặc dùng AI phân tích lỗi theo 4 tiêu chí (TR, CC, LR, GRA).
   - Nâng cấp vốn từ với **Collocations** và **Idioms** tự nhiên, tránh dùng từ hoa mỹ gượng gạo.
 - 📚 **Tài liệu khuyên dùng:**
-  - *Cambridge IELTS Tests 11 – 19*
-  - *IELTS Trainer 1 & 2*
+  - _Cambridge IELTS Tests 11 – 19_
+  - _IELTS Trainer 1 & 2_
 
 ---
 
 ### ⚡ Giai Đoạn 4: Tăng Tốc & Mô Phỏng Áp Lực Phòng Thi (1 Tháng Cuối)
->
-> *Mục tiêu cốt lõi: Tối ưu hóa tâm lý, nhịp sinh học và tốc độ làm bài thực tế.*
+
+> _Mục tiêu cốt lõi: Tối ưu hóa tâm lý, nhịp sinh học và tốc độ làm bài thực tế._
 
 - [ ] **Thi thử ép thời gian (Time Constraint Mock Test):**
   - Reading: Thay vì làm 60 phút, ép bản thân hoàn thành trong **50 – 55 phút** để tạo vùng đệm an toàn trong phòng thi thật.
@@ -109,11 +109,11 @@ Chiến lược an toàn và tối ưu nhất cho người học Việt Nam là:
 - [ ] **Tổng duyệt & Giữ phong độ:**
   - Ôn lại sổ tay lỗi sai (Error Log) và danh sách từ vựng cá nhân.
   - **Tuyệt đối không nhồi nhét kiến thức mới** gây hoang mang.
-  - Duy trì "tắm" tiếng Anh thụ động mỗi ngày 30 phút qua Podcast (*BBC 6 Minute English, TED Talks*).
+  - Duy trì "tắm" tiếng Anh thụ động mỗi ngày 30 phút qua Podcast (_BBC 6 Minute English, TED Talks_).
 
 ---
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan (Knowledge Network)
 
-- 🌐 **Công cụ & Web luyện thi:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ]] *(Nơi luyện đề thi thử IELTS Online Tests, Mini-ielts, TED Talks, Simon Writing)*
-- 📅 **Kế hoạch học tập tuần 1:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] *(Lịch trình hành động chi tiết)*
+- 🌐 **Công cụ & Web luyện thi:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ]] _(Nơi luyện đề thi thử IELTS Online Tests, Mini-ielts, TED Talks, Simon Writing)_
+- 📅 **Kế hoạch học tập tuần 1:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] _(Lịch trình hành động chi tiết)_

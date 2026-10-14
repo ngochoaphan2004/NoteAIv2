@@ -20,7 +20,7 @@ tags:
 ## 1. 📚 Kho Sách Gốc & Đề Thi Chuẩn (Official Cambridge)
 
 ### 📘 Sách Cambridge IELTS 18 (Full Bản Gốc PDF)
->
+
 > **Nội dung:** Trọn bộ 4 bài thi Academic (Listening, Reading, Writing, Speaking), Audio Transcripts, Đáp án chính thức và bài mẫu Writing chấm bởi giám khảo Examiner.  
 > **Dung lượng:** `52.4 MB`  
 > 🔗 **Thao tác:** [↗️ Mở Cambridge 18 trong tab mới](./assets/Cambridge-18.pdf) | [⬇️ Tải xuống Cambridge 18 Full PDF](./assets/Cambridge-18.pdf)
@@ -36,10 +36,10 @@ tags:
 
 ## 2. 🧪 Luyện Đề & Thi Thử (Mock Test)
 
-| Tên Nền Tảng | Đường Dẫn | Đặc Điểm Nổi Bật | Lời Khuyên Sử Dụng |
-| :--- | :--- | :--- | :--- |
-| **IELTS Online Tests** | [ieltsonlinetests.com](https://ieltsonlinetests.com) | • Giao diện mô phỏng thi trên máy tính (Computer-delivered).<br>• Kho đề thi thử phong phú, có phân tích kết quả. | Đề thường khó hơn đề thi thật một chút, rất tốt để rèn tâm lý phòng thi và làm quen thao tác trên máy. |
-| **Mini-ielts** | [mini-ielts.com](https://mini-ielts.com) | • Chia bài tập thành các bài test ngắn theo từng Part/dạng câu hỏi. | Phù hợp khi không có đủ 60 phút làm trọn vẹn 1 test; dùng để drill sâu dạng bài yếu (Listening/Reading). |
+| Tên Nền Tảng           | Đường Dẫn                                            | Đặc Điểm Nổi Bật                                                                                                  | Lời Khuyên Sử Dụng                                                                                       |
+| :--------------------- | :--------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| **IELTS Online Tests** | [ieltsonlinetests.com](https://ieltsonlinetests.com) | • Giao diện mô phỏng thi trên máy tính (Computer-delivered).<br>• Kho đề thi thử phong phú, có phân tích kết quả. | Đề thường khó hơn đề thi thật một chút, rất tốt để rèn tâm lý phòng thi và làm quen thao tác trên máy.   |
+| **Mini-ielts**         | [mini-ielts.com](https://mini-ielts.com)             | • Chia bài tập thành các bài test ngắn theo từng Part/dạng câu hỏi.                                               | Phù hợp khi không có đủ 60 phút làm trọn vẹn 1 test; dùng để drill sâu dạng bài yếu (Listening/Reading). |
 
 ---
 
@@ -87,9 +87,9 @@ tags:
 > [!TIP]
 > **Chiến lược phối hợp công cụ:**
 >
-> 1. **Giai đoạn nền tảng / yếu kỹ năng:** Dùng *Mini-ielts* + *Cambridge Dictionary* + *ZIM/DOL*.
-> 2. **Giai đoạn tăng tốc (Writing/Speaking):** Học tư duy viết của *Simon* + chấm bằng *Write & Improve* + đọc *The Guardian* lấy ý tưởng.
-> 3. **Giai đoạn luyện đề (1-2 tháng trước thi):** Giải full test trên *IELTS Online Tests* để quen áp lực thời gian.
+> 1. **Giai đoạn nền tảng / yếu kỹ năng:** Dùng _Mini-ielts_ + _Cambridge Dictionary_ + _ZIM/DOL_.
+> 2. **Giai đoạn tăng tốc (Writing/Speaking):** Học tư duy viết của _Simon_ + chấm bằng _Write & Improve_ + đọc _The Guardian_ lấy ý tưởng.
+> 3. **Giai đoạn luyện đề (1-2 tháng trước thi):** Giải full test trên _IELTS Online Tests_ để quen áp lực thời gian.
 
 ---
 
@@ -101,6 +101,6 @@ tags:
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan (Knowledge Network)
 
-- 🎯 **Lộ trình áp dụng:** [[roadmap-5.0-to-7.5|Lộ Trình Từ 5.0 Lên 7.5]] *(Xem chi tiết các giai đoạn áp dụng các tài liệu này)*
-- 📅 **Kế hoạch học tập:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] *(Kế hoạch thực thi 4 ngày)*
+- 🎯 **Lộ trình áp dụng:** [[roadmap-5.0-to-7.5|Lộ Trình Từ 5.0 Lên 7.5]] _(Xem chi tiết các giai đoạn áp dụng các tài liệu này)_
+- 📅 **Kế hoạch học tập:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] _(Kế hoạch thực thi 4 ngày)_
 - 📋 **Biểu mẫu bài thi:** [[template-test-attempt|Mẫu Ghi Nhận Bài Test (40 Câu)]]

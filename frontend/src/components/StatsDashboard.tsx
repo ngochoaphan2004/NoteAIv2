@@ -1,21 +1,34 @@
-import React from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '../services/api';
-import { RefreshCw, BookOpen, Clock, Award, Activity, Database } from 'lucide-react';
+import React from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { api } from "../services/api";
+import {
+  RefreshCw,
+  BookOpen,
+  Clock,
+  Award,
+  Activity,
+  Database,
+} from "lucide-react";
 
 export const StatsDashboard: React.FC = () => {
   const queryClient = useQueryClient();
 
-  const { data: stats, isLoading, refetch } = useQuery({
-    queryKey: ['flashcards', 'stats'],
+  const {
+    data: stats,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["flashcards", "stats"],
     queryFn: () => api.getStats(),
   });
 
   const syncMutation = useMutation({
     mutationFn: () => api.syncMarkdownCards(),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['flashcards'] });
-      alert(`Đồng bộ thành công! Đã nạp ${data.cards_added} thẻ mới và cập nhật ${data.cards_updated} thẻ từ ${data.files_scanned} file markdown.`);
+      queryClient.invalidateQueries({ queryKey: ["flashcards"] });
+      alert(
+        `Đồng bộ thành công! Đã nạp ${data.cards_added} thẻ mới và cập nhật ${data.cards_updated} thẻ từ ${data.files_scanned} file markdown.`,
+      );
     },
     onError: (err: any) => {
       alert(`Lỗi đồng bộ: ${err.message}`);
@@ -39,7 +52,8 @@ export const StatsDashboard: React.FC = () => {
             Động Cơ Trí Nhớ FSRS v4 & Viễn Trắc Tri Thức
           </h2>
           <p className="text-xs text-apple-subtextLight dark:text-apple-subtextDark mt-1">
-            Mô hình toán học DSR (Difficulty, Stability, Retrievability) lưu trữ trong PostgreSQL
+            Mô hình toán học DSR (Difficulty, Stability, Retrievability) lưu trữ
+            trong PostgreSQL
           </p>
         </div>
         <button
@@ -47,8 +61,12 @@ export const StatsDashboard: React.FC = () => {
           disabled={syncMutation.isPending}
           className="px-5 py-2.5 bg-apple-blue text-white rounded-xl text-xs font-semibold hover:bg-apple-blueHover transition flex items-center gap-2 shadow-sm disabled:opacity-50"
         >
-          <RefreshCw className={`w-4 h-4 ${syncMutation.isPending ? 'animate-spin' : ''}`} />
-          {syncMutation.isPending ? 'Đang đồng bộ...' : 'Đồng Bộ Từ Markdown (SSOT)'}
+          <RefreshCw
+            className={`w-4 h-4 ${syncMutation.isPending ? "animate-spin" : ""}`}
+          />
+          {syncMutation.isPending
+            ? "Đang đồng bộ..."
+            : "Đồng Bộ Từ Markdown (SSOT)"}
         </button>
       </div>
 
@@ -110,7 +128,10 @@ export const StatsDashboard: React.FC = () => {
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {Object.entries(stats.states || {}).map(([state, count]) => (
-            <div key={state} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+            <div
+              key={state}
+              className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl"
+            >
               <span className="text-xs font-semibold text-apple-subtextLight dark:text-apple-subtextDark block mb-1">
                 {state}
               </span>

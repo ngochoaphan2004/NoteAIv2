@@ -8,8 +8,8 @@ Tài liệu này đặc tả toàn diện kiến trúc kỹ thuật của hệ t
 
 ### 1. Triết Lý Cốt Lõi: Hybrid Dual-Engine
 
-* **Engine 1 - Static Knowledge Garden (Read-only):** Sử dụng **Quartz v4** (TypeScript, Preact, Unified AST). Phục vụ việc duyệt web siêu tốc, xem biểu đồ liên kết kiến thức (Interactive Knowledge Graph) và xuất bản tự động lên GitHub Pages.
-* **Engine 2 - Local Autonomous Runtime (Read-Write / AI-powered):** Sử dụng **FastAPI**, **LangGraph**, **Qdrant**, **PostgreSQL**, **FSRS v4** và **Vite React SPA**. Phục vụ các tác vụ tương tác: lật flashcard theo thuật toán DSR, đối soát bài thi IELTS qua AI, lập kế hoạch học tập thích ứng (Adaptive Pacing) và giám sát viễn trắc (MLOps Telemetry).
+- **Engine 1 - Static Knowledge Garden (Read-only):** Sử dụng **Quartz v4** (TypeScript, Preact, Unified AST). Phục vụ việc duyệt web siêu tốc, xem biểu đồ liên kết kiến thức (Interactive Knowledge Graph) và xuất bản tự động lên GitHub Pages.
+- **Engine 2 - Local Autonomous Runtime (Read-Write / AI-powered):** Sử dụng **FastAPI**, **LangGraph**, **Qdrant**, **PostgreSQL**, **FSRS v4** và **Vite React SPA**. Phục vụ các tác vụ tương tác: lật flashcard theo thuật toán DSR, đối soát bài thi IELTS qua AI, lập kế hoạch học tập thích ứng (Adaptive Pacing) và giám sát viễn trắc (MLOps Telemetry).
 
 ### 2. Nguyên Tắc Thiết Kế (Architectural Principles)
 
@@ -38,7 +38,7 @@ flowchart TB
     subgraph Backend ["⚡ Local Autonomous Backend (FastAPI - Port 8000)"]
         direction TB
         GATEWAY["API Gateway (FastAPI Controller)"]
-        
+
         subgraph Agents ["🤖 Multi-Agent System (LangGraph)"]
             ROUTER["State Graph Router"]
             EVAL_AGENT["Evaluator Agent\n(Rubric + Guardrails)"]
@@ -80,13 +80,13 @@ flowchart TB
 
 Để tránh xung đột với các tiến trình và container khác đang chạy trên hệ thống:
 
-| Dịch vụ | Host Port | Container Port | Mục đích kỹ thuật | Ghi chú an toàn |
-| :--- | :---: | :---: | :--- | :--- |
-| **PostgreSQL 16** | `5433` | `5432` | Lưu trữ thẻ Flashcard & Review Logs (FSRS v4) | **Tuyệt đối không dùng 5432** (cvat_db đang sử dụng) |
-| **Qdrant Vector DB** | `6333` | `6333` | REST API tìm kiếm ngữ nghĩa tri thức | Port `6334` dùng cho gRPC nội bộ |
-| **FastAPI Backend** | `8000` | - | REST API Gateway & Multi-Agent Engine | Swagger UI tại `/docs` |
-| **Interactive SPA** | `5173` | - | Giao diện React/Vite (Flashcards & Dashboard) | Chạy dev server qua Vite |
-| **Quartz v4** | `8088` | - | Web tĩnh Digital Garden xem trước cục bộ | Mặc định xuất bản lên GitHub Pages |
+| Dịch vụ              | Host Port | Container Port | Mục đích kỹ thuật                             | Ghi chú an toàn                                      |
+| :------------------- | :-------: | :------------: | :-------------------------------------------- | :--------------------------------------------------- |
+| **PostgreSQL 16**    |  `5433`   |     `5432`     | Lưu trữ thẻ Flashcard & Review Logs (FSRS v4) | **Tuyệt đối không dùng 5432** (cvat_db đang sử dụng) |
+| **Qdrant Vector DB** |  `6333`   |     `6333`     | REST API tìm kiếm ngữ nghĩa tri thức          | Port `6334` dùng cho gRPC nội bộ                     |
+| **FastAPI Backend**  |  `8000`   |       -        | REST API Gateway & Multi-Agent Engine         | Swagger UI tại `/docs`                               |
+| **Interactive SPA**  |  `5173`   |       -        | Giao diện React/Vite (Flashcards & Dashboard) | Chạy dev server qua Vite                             |
+| **Quartz v4**        |  `8088`   |       -        | Web tĩnh Digital Garden xem trước cục bộ      | Mặc định xuất bản lên GitHub Pages                   |
 
 ---
 
@@ -106,18 +106,18 @@ stateDiagram-v2
     [*] --> FileEventDetected: Lưu file Markdown
     FileEventDetected --> ParseContent: Bóc tách AST & Shorthand Syntax
     ParseContent --> RouteAction: Phân loại nội dung
-    
+
     RouteAction --> EvaluatorAgent: Bài Test / Luyện Tập Lỗi Sai
     RouteAction --> IngestionAgent: Bài Ghi Chú / Từ Vựng Mới
     RouteAction --> PlannerAgent: Kế Hoạch Tuần / Retrospective
-    
+
     EvaluatorAgent --> RAGQuery: Truy xuất ngữ cảnh từ Qdrant
     RAGQuery --> ScoreValidation: Ép Schema Pydantic v2 (Guardrail)
     ScoreValidation --> UpdateMarkdown: Ghi chú giải & Bảng đối soát
-    
+
     IngestionAgent --> IndexQdrant: Tạo Vector Embeddings (CPU)
     IngestionAgent --> ExtractFlashcards: Sinh Thẻ FSRS vào PostgreSQL
-    
+
     UpdateMarkdown --> EndNode
     IndexQdrant --> EndNode
     ExtractFlashcards --> EndNode
@@ -158,9 +158,9 @@ class EvaluationOutput(BaseModel):
 
 Thuật toán FSRS v4 mô hình hóa trí nhớ con người qua 3 biến số toán học:
 
-* **Difficulty ($D \in [1, 10]$):** Độ khó nội tại của khái niệm/từ vựng.
-* **Stability ($S > 0$ ngày):** Độ ổn định của trí nhớ; là số ngày để xác suất nhớ lại giảm còn 90%.
-* **Retrievability ($R \in [0, 1]$):** Xác suất người học nhớ lại khái niệm tại thời điểm $t$:
+- **Difficulty ($D \in [1, 10]$):** Độ khó nội tại của khái niệm/từ vựng.
+- **Stability ($S > 0$ ngày):** Độ ổn định của trí nhớ; là số ngày để xác suất nhớ lại giảm còn 90%.
+- **Retrievability ($R \in [0, 1]$):** Xác suất người học nhớ lại khái niệm tại thời điểm $t$:
   $$R(t, S) = \left(1 + \text{factor} \cdot \frac{t}{S}\right)^{-0.5}$$
 
 ### 2. Sơ Đồ Cơ Sở Dữ Liệu Quan Hệ (SQLModel / PostgreSQL 3NF)
@@ -203,17 +203,17 @@ erDiagram
 
 ### 1. Kỹ Thuật Chunking
 
-* Sử dụng `MarkdownHeaderTextSplitter` kết hợp bảng phân tích AST.
-* Giữ nguyên cấu trúc phân cấp: Heading 1 (`#`), Heading 2 (`##`), Heading 3 (`###`).
-* Giữ nguyên vẹn toàn bộ Markdown Table (Bảng từ vựng, Bảng đối soát lỗi) và Code block, không để thuật toán cắt ngang giữa bảng.
+- Sử dụng `MarkdownHeaderTextSplitter` kết hợp bảng phân tích AST.
+- Giữ nguyên cấu trúc phân cấp: Heading 1 (`#`), Heading 2 (`##`), Heading 3 (`###`).
+- Giữ nguyên vẹn toàn bộ Markdown Table (Bảng từ vựng, Bảng đối soát lỗi) và Code block, không để thuật toán cắt ngang giữa bảng.
 
 ### 2. Bộ Nhúng FastEmbed & Cơ Sở Dữ Liệu Qdrant
 
-* **Engine:** `fastembed` (Rust core, ONNX Runtime).
-* **Mô hình nhúng:** `BAAI/bge-small-en-v1.5` (chiều vector: 384) hoặc `BAAI/bge-m3` (chiều vector: 1024).
-* **Khoảng cách vector:** Cosine Distance.
-* **Cấu hình chỉ mục HNSW:** $m=16$, $ef\_construct=100$.
-* **Payloads lọc đa chiều:** `file_path`, `heading_path`, `skill`, `cefr_level`, `tags`.
+- **Engine:** `fastembed` (Rust core, ONNX Runtime).
+- **Mô hình nhúng:** `BAAI/bge-small-en-v1.5` (chiều vector: 384) hoặc `BAAI/bge-m3` (chiều vector: 1024).
+- **Khoảng cách vector:** Cosine Distance.
+- **Cấu hình chỉ mục HNSW:** $m=16$, $ef\_construct=100$.
+- **Payloads lọc đa chiều:** `file_path`, `heading_path`, `skill`, `cefr_level`, `tags`.
 
 ---
 
@@ -221,15 +221,15 @@ erDiagram
 
 ### 1. Backend Controller - Service - Repository Pattern
 
-* **API Routers (Controllers):** Nhận HTTP Request, validate dữ liệu qua Pydantic schemas, gọi tầng Service và trả về response chuẩn JSON.
-* **Services Layer:** Triển khai nghiệp vụ độc lập: `FSRSService`, `RAGEngine`, `LangGraphEngine`, `MarkdownParser`.
-* **Repository / Database Layer:** SQLModel kết nối PostgreSQL pool, quản lý session bất đồng bộ (`async_sessionmaker`).
+- **API Routers (Controllers):** Nhận HTTP Request, validate dữ liệu qua Pydantic schemas, gọi tầng Service và trả về response chuẩn JSON.
+- **Services Layer:** Triển khai nghiệp vụ độc lập: `FSRSService`, `RAGEngine`, `LangGraphEngine`, `MarkdownParser`.
+- **Repository / Database Layer:** SQLModel kết nối PostgreSQL pool, quản lý session bất đồng bộ (`async_sessionmaker`).
 
 ### 2. Frontend React 19 Interactive SPA
 
-* **Công nghệ:** Vite + React 19 + TypeScript + Tailwind CSS + TanStack Query + Lucide Icons + Recharts.
-* **Module Flashcard Player:** Lật thẻ 3D, hỗ trợ phím tắt (`Space`, `1`, `2`, `3`, `4`), hiển thị trước khoảng cách lặp (Next Interval) trên từng nút.
-* **Module Analytics:** Biểu đồ tỷ lệ ghi nhớ (Retention Curve), Heatmap lịch học, biểu đồ tiến độ điểm thi Listening/Reading.
+- **Công nghệ:** Vite + React 19 + TypeScript + Tailwind CSS + TanStack Query + Lucide Icons + Recharts.
+- **Module Flashcard Player:** Lật thẻ 3D, hỗ trợ phím tắt (`Space`, `1`, `2`, `3`, `4`), hiển thị trước khoảng cách lặp (Next Interval) trên từng nút.
+- **Module Analytics:** Biểu đồ tỷ lệ ghi nhớ (Retention Curve), Heatmap lịch học, biểu đồ tiến độ điểm thi Listening/Reading.
 
 ---
 

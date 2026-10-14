@@ -19,15 +19,15 @@ tags:
 
 ## 🗓️ 1. Bảng Tổng Quan Lịch Trình Tuần 2
 
-| Ngày & Thứ | Kỹ Năng & Khung Giờ | Phương Pháp Thực Thi Trọng Tâm (Execution Focus) | Trạng Thái |
-| :--- | :--- | :--- | :---: |
-| **Thứ 2**<br>*(12/10/2026)* | **Listening Core Fix (Part 1)**<br>`35 phút` | • **10p:** Drill phân biệt bẫy âm số đuôi `-teen` vs `-ty` & quy tắc ngày tháng.<br>• **25p:** Làm bài nghe Cambridge 18 Test 2 Part 1 (10 câu). Đọc kỹ giới hạn từ (*ONE WORD ONLY*). 👉 **[[plans/week-02/test-2-listening-p1\|Xem bài luyện Listening Part 1]]** | [ ] Sắp diễn ra |
-| **Thứ 3**<br>*(13/10/2026)* | **Reading Recovery (Passage 3)**<br>`35 phút` | • **20p:** Xử lý dứt điểm bài Reading Passage 3 Cam 18 (*Conquering Earth's space junk problem*) chuyển giao từ Tuần 1.<br>• **15p:** Thực hành lập bảng Keyword Mapping (đoạn chứa thông tin & tóm tắt từ). 👉 **[[plans/week-01/test-1-reading-p3\|Xem đề & bảng làm bài Passage 3]]** | [ ] Sắp diễn ra |
-| **Thứ 4**<br>*(14/10/2026)* | **Writing Task 1 Rewriting Drill**<br>`30 phút` | • **10p:** Khắc phục lỗi chia bị động sai cho nội động từ (*increased* thay vì *has been increased*).<br>• **20p:** Viết lại đoạn Mở bài + 1 Overview duy nhất + 1 Thân bài ngắn (80–100 từ) chuẩn ngữ pháp. 👉 **[[plans/week-02/writing-task1-repair-drill\|Xem bài tập viết lại Task 1]]** | [ ] Sắp diễn ra |
-| **Thứ 5**<br>*(15/10/2026)* | **Listening Pacing & Pre-reading**<br>`35 phút` | • **10p:** Rèn luyện kỹ thuật Pre-reading 30 giây gạch chân *Anchor Words* (từ neo không paraphrase).<br>• **25p:** Luyện nghe Cambridge 18 Test 2 Part 2. Áp dụng quy tắc "buông bỏ trong 2 giây" để không bị trôi mạch. | [ ] Sắp diễn ra |
-| **Thứ 6**<br>*(16/10/2026)* | **Speaking Part 2 Kick-off**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (*A difficult challenge at work*).<br>• **20p:** Thu âm 2 phút liên tục bằng điện thoại và tự đếm số lần ngập ngừng / từ lặp. 👉 **[[plans/week-02/speaking-part2-routine\|Xem đề Speaking Part 2]]** | [ ] Sắp diễn ra |
-| **Thứ 7**<br>*(17/10/2026)* | **Reading Passage 1 Confidence**<br>`35 phút` | • **20p:** Xử lý Passage 1 Cambridge 18 Test 2 để củng cố kỹ năng quét từ khóa và tăng tốc độ đọc hiểu.<br>• **15p:** Trích xuất 5 cụm từ học thuật quan trọng vào sổ tay từ vựng. | [ ] Sắp diễn ra |
-| **Chủ Nhật**<br>*(18/10/2026)* | **Weekly Review & Anki Mastery**<br>`30 phút` | • **15p:** Đồng bộ toàn bộ từ vựng Tuần 2 vào Master Deck và ôn 30 thẻ qua Anki.<br>• **15p:** Tổng kết chỉ số học tập tuần 2 và chuẩn bị kế hoạch Tuần 3. 👉 **[[plans/week-02/vocab-week-02\|Xem sổ từ vựng Tuần 2]]** | [ ] Sắp diễn ra |
+| Ngày & Thứ                     | Kỹ Năng & Khung Giờ                             | Phương Pháp Thực Thi Trọng Tâm (Execution Focus)                                                                                                                                                                                                                                              |   Trạng Thái    |
+| :----------------------------- | :---------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------: |
+| **Thứ 2**<br>_(12/10/2026)_    | **Listening Core Fix (Part 1)**<br>`35 phút`    | • **10p:** Drill phân biệt bẫy âm số đuôi `-teen` vs `-ty` & quy tắc ngày tháng.<br>• **25p:** Làm bài nghe Cambridge 18 Test 2 Part 1 (10 câu). Đọc kỹ giới hạn từ (_ONE WORD ONLY_). 👉 **[[plans/week-02/test-2-listening-p1\|Xem bài luyện Listening Part 1]]**                           | [ ] Sắp diễn ra |
+| **Thứ 3**<br>_(13/10/2026)_    | **Reading Recovery (Passage 3)**<br>`35 phút`   | • **20p:** Xử lý dứt điểm bài Reading Passage 3 Cam 18 (_Conquering Earth's space junk problem_) chuyển giao từ Tuần 1.<br>• **15p:** Thực hành lập bảng Keyword Mapping (đoạn chứa thông tin & tóm tắt từ). 👉 **[[plans/week-01/test-1-reading-p3\|Xem đề & bảng làm bài Passage 3]]**      | [ ] Sắp diễn ra |
+| **Thứ 4**<br>_(14/10/2026)_    | **Writing Task 1 Rewriting Drill**<br>`30 phút` | • **10p:** Khắc phục lỗi chia bị động sai cho nội động từ (_increased_ thay vì _has been increased_).<br>• **20p:** Viết lại đoạn Mở bài + 1 Overview duy nhất + 1 Thân bài ngắn (80–100 từ) chuẩn ngữ pháp. 👉 **[[plans/week-02/writing-task1-repair-drill\|Xem bài tập viết lại Task 1]]** | [ ] Sắp diễn ra |
+| **Thứ 5**<br>_(15/10/2026)_    | **Listening Pacing & Pre-reading**<br>`35 phút` | • **10p:** Rèn luyện kỹ thuật Pre-reading 30 giây gạch chân _Anchor Words_ (từ neo không paraphrase).<br>• **25p:** Luyện nghe Cambridge 18 Test 2 Part 2. Áp dụng quy tắc "buông bỏ trong 2 giây" để không bị trôi mạch.                                                                     | [ ] Sắp diễn ra |
+| **Thứ 6**<br>_(16/10/2026)_    | **Speaking Part 2 Kick-off**<br>`30 phút`       | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A difficult challenge at work_).<br>• **20p:** Thu âm 2 phút liên tục bằng điện thoại và tự đếm số lần ngập ngừng / từ lặp. 👉 **[[plans/week-02/speaking-part2-routine\|Xem đề Speaking Part 2]]**                                 | [ ] Sắp diễn ra |
+| **Thứ 7**<br>_(17/10/2026)_    | **Reading Passage 1 Confidence**<br>`35 phút`   | • **20p:** Xử lý Passage 1 Cambridge 18 Test 2 để củng cố kỹ năng quét từ khóa và tăng tốc độ đọc hiểu.<br>• **15p:** Trích xuất 5 cụm từ học thuật quan trọng vào sổ tay từ vựng.                                                                                                            | [ ] Sắp diễn ra |
+| **Chủ Nhật**<br>_(18/10/2026)_ | **Weekly Review & Anki Mastery**<br>`30 phút`   | • **15p:** Đồng bộ toàn bộ từ vựng Tuần 2 vào Master Deck và ôn 30 thẻ qua Anki.<br>• **15p:** Tổng kết chỉ số học tập tuần 2 và chuẩn bị kế hoạch Tuần 3. 👉 **[[plans/week-02/vocab-week-02\|Xem sổ từ vựng Tuần 2]]**                                                                      | [ ] Sắp diễn ra |
 
 ---
 
@@ -43,7 +43,7 @@ tags:
 
 ### 🎯 Thứ 3 (13/10/2026) — Reading Recovery (Hoàn Thành Passage 3 Dang Dở)
 
-- [ ] **Xử lý nợ đọng:** Làm 14 câu bài đọc rác thải vũ trụ (*Space junk problem* - Cam 18 Test 1) trên giao diện tương tác có sẵn.
+- [ ] **Xử lý nợ đọng:** Làm 14 câu bài đọc rác thải vũ trụ (_Space junk problem_ - Cam 18 Test 1) trên giao diện tương tác có sẵn.
 - [ ] **Keyword Mapping:** Đối chiếu 5 cặp từ đồng nghĩa/paraphrase then chốt giữa câu hỏi và đoạn văn.
 - 🔗 **Bài làm chi tiết:** 👉 [[plans/week-01/test-1-reading-p3|Bài Làm Reading Passage 3 - Cam 18 (Đề thi PDF + Bảng 14 câu + Keyword Mapping)]]
 
@@ -60,7 +60,7 @@ tags:
 
 ### 🎯 Thứ 5 (15/10/2026) — Listening Pacing & Section 2 Strategy
 
-- [ ] **Pre-reading 30 giây:** Tập kỹ năng gạch chân *Anchor Words* (tên người, địa danh, thuật ngữ) trước khi nghe.
+- [ ] **Pre-reading 30 giây:** Tập kỹ năng gạch chân _Anchor Words_ (tên người, địa danh, thuật ngữ) trước khi nghe.
 - [ ] **Quy tắc buông bỏ:** Nếu mất dấu một câu, chuyển mắt ngay sang câu tiếp theo trong vòng 2 giây để giữ mạch nghe.
 - [ ] **Thực hành Test 2 Section 2:** Làm bài nghe tình huống thực tế và đối soát.
 
@@ -68,7 +68,7 @@ tags:
 
 ### 🎯 Thứ 6 (16/10/2026) — Speaking Part 2 Kick-off (2 Phút Tối Giản)
 
-- [ ] **Chuẩn bị dàn ý 1 phút:** Ghi 4 gạch đầu dòng theo công thức WH-Questions (*Who/What, When/Where, How, Why*).
+- [ ] **Chuẩn bị dàn ý 1 phút:** Ghi 4 gạch đầu dòng theo công thức WH-Questions (_Who/What, When/Where, How, Why_).
 - [ ] **Thu âm 2 phút:** Bật điện thoại ghi âm nói liên tục 2 phút không dừng lại.
 - [ ] **Tự đánh giá:** Nghe lại đếm số lần ngập ngừng và ghi chú từ vựng lặp.
 - 🔗 **Bài làm chi tiết:** 👉 [[plans/week-02/speaking-part2-routine|Bài Thực Hành Speaking Part 2 (Dàn Ý & Ghi Âm 2 Phút)]]

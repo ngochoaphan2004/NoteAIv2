@@ -38,15 +38,15 @@ tags:
 > **Quy tắc vàng:** Trong 1 phút chuẩn bị, không viết thành câu văn hoàn chỉnh. Chỉ ghi 4–5 cụm từ then chốt để làm "bàn đạp" khi nói:
 
 1. **Who & What (Dự án gì, cùng với ai?):**
-   - *A major software migration project at my company* (hoặc một nhiệm vụ thực tế trong công việc của bạn).
-   - *Worked alongside two close colleagues.*
+   - _A major software migration project at my company_ (hoặc một nhiệm vụ thực tế trong công việc của bạn).
+   - _Worked alongside two close colleagues._
 2. **When & Where (Thời gian & địa điểm):**
-   - *Took place around three months ago, right before a major product launch.*
+   - _Took place around three months ago, right before a major product launch._
 3. **How & Difficulties (Khó khăn & cách vượt qua):**
-   - *Struggled with very tight deadlines and unforeseen technical bugs.*
-   - *Had to burn the midnight oil, collaborate closely, and prioritise core tasks.*
+   - _Struggled with very tight deadlines and unforeseen technical bugs._
+   - _Had to burn the midnight oil, collaborate closely, and prioritise core tasks._
 4. **Why & Feelings (Cảm xúc khi hoàn thành):**
-   - *Relieved, immensely proud, strengthened teamwork.*
+   - _Relieved, immensely proud, strengthened teamwork._
 
 ---
 
@@ -55,22 +55,22 @@ tags:
 1. **Bật ứng dụng ghi âm (Voice Memos / Recorder) trên điện thoại.**
 2. **Đặt đồng hồ đếm ngược đúng 2:00 phút.**
 3. **Bắt đầu nói liên tục:**
-   - *Tuyệt đối không dừng lại để xóa ghi âm làm lại nếu lỡ nói sai một từ.*
-   - *Nếu bị vấp hoặc bí từ: dùng các từ đệm tự nhiên như: "To put it another way...", "What I mean is...", "Moving on to..." để tiếp tục mạch nói.*
+   - _Tuyệt đối không dừng lại để xóa ghi âm làm lại nếu lỡ nói sai một từ._
+   - _Nếu bị vấp hoặc bí từ: dùng các từ đệm tự nhiên như: "To put it another way...", "What I mean is...", "Moving on to..." để tiếp tục mạch nói._
 4. **Nghe lại bản ghi âm và tự đánh giá theo 3 tiêu chí:**
    - Số lần ngập ngừng dài (ngừng trên 3 giây mà không có từ đệm).
-   - Các từ vựng bị lặp lại quá nhiều (ví dụ nói *very difficult* 5 lần).
+   - Các từ vựng bị lặp lại quá nhiều (ví dụ nói _very difficult_ 5 lần).
    - Tốc độ nói: Đều đặn hay nói quá nhanh lúc đầu rồi bị hụt hơi ở phút thứ 2?
 
 ---
 
 ## 📋 3. Nhật Ký Ghi Nhận Thực Hành Của Bạn
 
-| Tiêu Chí Tự Quan Sát | Ghi Nhận Thực Tế Của Bạn Sau Khi Nghe Lại | Hướng Cải Thiện Cho Tuần Sau |
-| :--- | :--- | :--- |
-| **Thời lượng nói thực tế:** | *(chờ điền: ví dụ 1p45s hay 2p10s)* | Mục tiêu: Duy trì nói trong khoảng 1 phút 50 giây – 2 phút. |
-| **Số lần ngập ngừng ngắt quãng:** | *(chờ điền)* | Hạn chế "ờ, à"; thay bằng từ đệm học thuật. |
-| **Từ vựng bị lặp nhiều:** | *(chờ điền)* | Ghi chú lại để đưa vào thẻ Anki tra cứu từ đồng nghĩa. |
+| Tiêu Chí Tự Quan Sát              | Ghi Nhận Thực Tế Của Bạn Sau Khi Nghe Lại | Hướng Cải Thiện Cho Tuần Sau                                |
+| :-------------------------------- | :---------------------------------------- | :---------------------------------------------------------- |
+| **Thời lượng nói thực tế:**       | _(chờ điền: ví dụ 1p45s hay 2p10s)_       | Mục tiêu: Duy trì nói trong khoảng 1 phút 50 giây – 2 phút. |
+| **Số lần ngập ngừng ngắt quãng:** | _(chờ điền)_                              | Hạn chế "ờ, à"; thay bằng từ đệm học thuật.                 |
+| **Từ vựng bị lặp nhiều:**         | _(chờ điền)_                              | Ghi chú lại để đưa vào thẻ Anki tra cứu từ đồng nghĩa.      |
 
 ---
 

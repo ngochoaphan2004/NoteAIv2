@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { api, FlashcardItem } from '../services/api';
-import { RotateCcw, CheckCircle, Volume2, Sparkles, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { api, FlashcardItem } from "../services/api";
+import {
+  RotateCcw,
+  CheckCircle,
+  Volume2,
+  Sparkles,
+  AlertCircle,
+} from "lucide-react";
 
 export const FlashcardReviewer: React.FC = () => {
   const queryClient = useQueryClient();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const { data: cards = [], isLoading, error, refetch } = useQuery({
-    queryKey: ['flashcards', 'due'],
+  const {
+    data: cards = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ["flashcards", "due"],
     queryFn: () => api.getDueCards(30),
   });
 
@@ -21,7 +32,7 @@ export const FlashcardReviewer: React.FC = () => {
       if (currentIndex + 1 < cards.length) {
         setCurrentIndex((prev) => prev + 1);
       } else {
-        queryClient.invalidateQueries({ queryKey: ['flashcards'] });
+        queryClient.invalidateQueries({ queryKey: ["flashcards"] });
       }
     },
   });
@@ -29,10 +40,10 @@ export const FlashcardReviewer: React.FC = () => {
   // Xử lý phím tắt
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
+      if (e.code === "Space") {
         e.preventDefault();
         setIsFlipped((prev) => !prev);
-      } else if (isFlipped && ['1', '2', '3', '4'].includes(e.key)) {
+      } else if (isFlipped && ["1", "2", "3", "4"].includes(e.key)) {
         e.preventDefault();
         const rating = parseInt(e.key);
         if (cards[currentIndex]) {
@@ -40,8 +51,8 @@ export const FlashcardReviewer: React.FC = () => {
         }
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFlipped, currentIndex, cards, reviewMutation]);
 
   if (isLoading) {
@@ -57,7 +68,9 @@ export const FlashcardReviewer: React.FC = () => {
     return (
       <div className="p-6 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-2xl text-center">
         <AlertCircle className="w-10 h-10 text-red-500 mx-auto mb-2" />
-        <p className="text-red-700 dark:text-red-300 font-medium">Lỗi kết nối Backend FSRS</p>
+        <p className="text-red-700 dark:text-red-300 font-medium">
+          Lỗi kết nối Backend FSRS
+        </p>
         <p className="text-xs text-red-500 mt-1">{(error as Error).message}</p>
         <button
           onClick={() => refetch()}
@@ -77,7 +90,8 @@ export const FlashcardReviewer: React.FC = () => {
           Tuyệt vời! Bạn đã hoàn thành phiên ôn tập hôm nay
         </h3>
         <p className="text-sm text-apple-subtextLight dark:text-apple-subtextDark mb-6">
-          Toàn bộ các thẻ đến hạn đã được cập nhật lại theo công thức toán học DSR của FSRS v4.
+          Toàn bộ các thẻ đến hạn đã được cập nhật lại theo công thức toán học
+          DSR của FSRS v4.
         </p>
         <button
           onClick={() => {
@@ -99,7 +113,9 @@ export const FlashcardReviewer: React.FC = () => {
     <div className="max-w-xl mx-auto">
       {/* Thanh tiến độ */}
       <div className="flex items-center justify-between text-xs text-apple-subtextLight dark:text-apple-subtextDark mb-3 px-1 font-medium">
-        <span>Thẻ {currentIndex + 1} / {cards.length}</span>
+        <span>
+          Thẻ {currentIndex + 1} / {cards.length}
+        </span>
         <span className="flex items-center gap-1">
           <Sparkles className="w-3.5 h-3.5 text-apple-orange" />
           FSRS v4 Scheduler ({currentCard.state})
@@ -122,10 +138,14 @@ export const FlashcardReviewer: React.FC = () => {
         <div>
           <div className="flex items-center justify-between mb-4">
             <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-xs font-semibold uppercase tracking-wider">
-              {currentCard.tags?.split(',')[0] || 'IELTS'}
+              {currentCard.tags?.split(",")[0] || "IELTS"}
             </span>
             <span className="text-xs text-apple-subtextLight dark:text-apple-subtextDark">
-              Nhấn <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-[10px] font-mono border">Space</kbd> để lật
+              Nhấn{" "}
+              <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-[10px] font-mono border">
+                Space
+              </kbd>{" "}
+              để lật
             </span>
           </div>
 
@@ -174,50 +194,58 @@ export const FlashcardReviewer: React.FC = () => {
       {isFlipped && (
         <div className="grid grid-cols-4 gap-3 mt-6">
           <button
-            onClick={() => reviewMutation.mutate({ cardId: currentCard.id, rating: 1 })}
+            onClick={() =>
+              reviewMutation.mutate({ cardId: currentCard.id, rating: 1 })
+            }
             className="flex flex-col items-center justify-center p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-2xl hover:bg-red-100 dark:hover:bg-red-900/50 transition group"
           >
             <span className="text-xs font-bold text-red-600 dark:text-red-400 group-hover:scale-105 transition">
               Again (1)
             </span>
             <span className="text-[11px] text-red-500 font-mono mt-0.5">
-              {currentCard.preview_intervals?.again || '1m'}
+              {currentCard.preview_intervals?.again || "1m"}
             </span>
           </button>
 
           <button
-            onClick={() => reviewMutation.mutate({ cardId: currentCard.id, rating: 2 })}
+            onClick={() =>
+              reviewMutation.mutate({ cardId: currentCard.id, rating: 2 })
+            }
             className="flex flex-col items-center justify-center p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-2xl hover:bg-amber-100 dark:hover:bg-amber-900/50 transition group"
           >
             <span className="text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:scale-105 transition">
               Hard (2)
             </span>
             <span className="text-[11px] text-amber-500 font-mono mt-0.5">
-              {currentCard.preview_intervals?.hard || '1d'}
+              {currentCard.preview_intervals?.hard || "1d"}
             </span>
           </button>
 
           <button
-            onClick={() => reviewMutation.mutate({ cardId: currentCard.id, rating: 3 })}
+            onClick={() =>
+              reviewMutation.mutate({ cardId: currentCard.id, rating: 3 })
+            }
             className="flex flex-col items-center justify-center p-3.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/50 transition group"
           >
             <span className="text-xs font-bold text-apple-blue dark:text-apple-blueDark group-hover:scale-105 transition">
               Good (3)
             </span>
             <span className="text-[11px] text-blue-500 font-mono mt-0.5">
-              {currentCard.preview_intervals?.good || '3d'}
+              {currentCard.preview_intervals?.good || "3d"}
             </span>
           </button>
 
           <button
-            onClick={() => reviewMutation.mutate({ cardId: currentCard.id, rating: 4 })}
+            onClick={() =>
+              reviewMutation.mutate({ cardId: currentCard.id, rating: 4 })
+            }
             className="flex flex-col items-center justify-center p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 rounded-2xl hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition group"
           >
             <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition">
               Easy (4)
             </span>
             <span className="text-[11px] text-emerald-500 font-mono mt-0.5">
-              {currentCard.preview_intervals?.easy || '7d'}
+              {currentCard.preview_intervals?.easy || "7d"}
             </span>
           </button>
         </div>

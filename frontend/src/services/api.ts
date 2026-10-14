@@ -1,4 +1,4 @@
-const API_BASE = '/api/v1';
+const API_BASE = "/api/v1";
 
 export interface FlashcardItem {
   id: string;
@@ -51,59 +51,68 @@ export const api = {
   // Flashcards FSRS
   async getDueCards(limit = 20): Promise<FlashcardItem[]> {
     const res = await fetch(`${API_BASE}/flashcards/due?limit=${limit}`);
-    if (!res.ok) throw new Error('Không thể tải danh sách thẻ đến hạn');
+    if (!res.ok) throw new Error("Không thể tải danh sách thẻ đến hạn");
     return res.json();
   },
 
   async reviewCard(cardId: string, rating: number): Promise<any> {
-    const res = await fetch(`${API_BASE}/flashcards/${cardId}/review?rating=${rating}`, {
-      method: 'POST',
-    });
-    if (!res.ok) throw new Error('Lỗi cập nhật đánh giá thẻ');
+    const res = await fetch(
+      `${API_BASE}/flashcards/${cardId}/review?rating=${rating}`,
+      {
+        method: "POST",
+      },
+    );
+    if (!res.ok) throw new Error("Lỗi cập nhật đánh giá thẻ");
     return res.json();
   },
 
   async syncMarkdownCards(): Promise<any> {
     const res = await fetch(`${API_BASE}/flashcards/sync-markdown`, {
-      method: 'POST',
+      method: "POST",
     });
-    if (!res.ok) throw new Error('Lỗi đồng bộ thẻ từ Markdown');
+    if (!res.ok) throw new Error("Lỗi đồng bộ thẻ từ Markdown");
     return res.json();
   },
 
   async getStats(): Promise<FlashcardStats> {
     const res = await fetch(`${API_BASE}/flashcards/stats`);
-    if (!res.ok) throw new Error('Không thể tải thống kê FSRS');
+    if (!res.ok) throw new Error("Không thể tải thống kê FSRS");
     return res.json();
   },
 
   // RAG Search
   async searchRAG(query: string, limit = 5): Promise<any[]> {
-    const res = await fetch(`${API_BASE}/rag/query?query=${encodeURIComponent(query)}&limit=${limit}`, {
-      method: 'POST',
-    });
-    if (!res.ok) throw new Error('Lỗi truy vấn Vector DB');
+    const res = await fetch(
+      `${API_BASE}/rag/query?query=${encodeURIComponent(query)}&limit=${limit}`,
+      {
+        method: "POST",
+      },
+    );
+    if (!res.ok) throw new Error("Lỗi truy vấn Vector DB");
     return res.json();
   },
 
   // Agents
-  async evaluateAttempt(text: string, skill = 'listening'): Promise<EvaluationResponse> {
+  async evaluateAttempt(
+    text: string,
+    skill = "listening",
+  ): Promise<EvaluationResponse> {
     const res = await fetch(`${API_BASE}/agents/evaluate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ attempt_text: text, skill }),
     });
-    if (!res.ok) throw new Error('Lỗi khi chấm bài');
+    if (!res.ok) throw new Error("Lỗi khi chấm bài");
     return res.json();
   },
 
   async generatePlan(weekNumber = 2): Promise<any> {
     const res = await fetch(`${API_BASE}/agents/plan`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ week_number: weekNumber }),
     });
-    if (!res.ok) throw new Error('Lỗi tạo kế hoạch thích ứng');
+    if (!res.ok) throw new Error("Lỗi tạo kế hoạch thích ứng");
     return res.json();
   },
 };

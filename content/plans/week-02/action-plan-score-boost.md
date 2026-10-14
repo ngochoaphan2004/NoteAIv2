@@ -33,12 +33,12 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
 
 ### 🚨 Các vấn đề bộc lộ từ bài thi Test 1
 
-- **Độ chính xác rất tốt khi bắt kịp (66.7%):** Bạn làm đúng 6/10 câu Part 1 và 4 câu Part 2, đồng thời có ghi chú paraphrase rất nhạy bén (*dedication = commitment*, *squashed*, *continuous*).
+- **Độ chính xác rất tốt khi bắt kịp (66.7%):** Bạn làm đúng 6/10 câu Part 1 và 4 câu Part 2, đồng thời có ghi chú paraphrase rất nhạy bén (_dedication = commitment_, _squashed_, _continuous_).
 - **Mất điểm oan ở Part 1:**
   - Nhầm âm đuôi: `dw137yz` ❌ (đáp án đúng `dw307yz`).
   - Nhầm ngày tháng: `14` ❌ (đáp án đúng `24 April` - quên ghi tên tháng).
-  - Vi phạm giới hạn từ: `late 10 minutes` ❌ (yêu cầu *ONE WORD ONLY*, chỉ điền `late`).
-- **Hiệu ứng tuyết lăn (Snowball Effect) ở Part 2/3/4:** Do không kịp đọc đề trước (*pre-reading*), khi băng chạy nhanh và bị lỡ 1 câu, tâm lý hoang mang khiến bạn trôi mất dấu cả đoạn, dẫn đến bỏ trống 7 câu ở Part 3 và toàn bộ 10 câu ở Part 4.
+  - Vi phạm giới hạn từ: `late 10 minutes` ❌ (yêu cầu _ONE WORD ONLY_, chỉ điền `late`).
+- **Hiệu ứng tuyết lăn (Snowball Effect) ở Part 2/3/4:** Do không kịp đọc đề trước (_pre-reading_), khi băng chạy nhanh và bị lỡ 1 câu, tâm lý hoang mang khiến bạn trôi mất dấu cả đoạn, dẫn đến bỏ trống 7 câu ở Part 3 và toàn bộ 10 câu ở Part 4.
 
 ### 🛠️ Kế hoạch hành động 4 bước khắc phục
 
@@ -47,7 +47,7 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
      - Số đuôi `-teen` (13, 14, 15...): Trọng âm rơi vào chính âm đuôi `/tiːn/`, nguyên âm dài và kéo dài dứt khoát.
      - Số đuôi `-ty` (30, 40, 50...): Trọng âm rơi vào âm tiết đầu, âm đuôi `/ti/` đọc rất nhanh và cụt.
    - **Quy tắc ngày tháng:** Luôn viết cả Ngày và Tháng nếu câu hỏi chỉ mốc thời gian (ví dụ: `24 April` hoặc `April 24`).
-   - **Quy tắc giới hạn từ (Word Limit):** Đọc kỹ dòng in hoa đầu bài: *ONE WORD AND/OR A NUMBER* nghĩa là tối đa 1 chữ cái và 1 cụm số. Điền 2 chữ là sai tự động.
+   - **Quy tắc giới hạn từ (Word Limit):** Đọc kỹ dòng in hoa đầu bài: _ONE WORD AND/OR A NUMBER_ nghĩa là tối đa 1 chữ cái và 1 cụm số. Điền 2 chữ là sai tự động.
 2. **Kỹ thuật Đọc Đề Đón Đầu (Pre-reading in 30 Seconds):**
    - Trong 30 giây trước mỗi Section, không đọc toàn bộ câu văn. Chỉ dùng bút gạch chân **Anchor Words (Từ neo)**:
      - Tên riêng, địa danh, mốc thời gian, thuật ngữ khoa học (những từ này người nói trong audio **bắt buộc phải đọc nguyên văn, không thể paraphrase**).
@@ -55,7 +55,7 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
 3. **Quy tắc "Buông Bỏ Trong 2 Giây" (No Freeze Rule):**
    - Nếu băng vừa nói qua một câu mà bạn không kịp nghe thấy đáp án, **lập tức buông bỏ câu đó trong vòng 2 giây** và di chuyển mắt xuống câu tiếp theo. Tuyệt đối không dừng lại để tiếc nuối hay suy nghĩ, vì sẽ làm mất luôn 2–3 câu phía sau.
 4. **Luyện nghe Part 4 có Transcript (Shadowing / Sentence-by-sentence):**
-   - Không nghe chay cả bài 10 câu. Hãy mở transcript, vừa nghe vừa dò chữ để mắt và tai khớp được cách người bản xứ nối âm (*connected speech*) và nuốt âm.
+   - Không nghe chay cả bài 10 câu. Hãy mở transcript, vừa nghe vừa dò chữ để mắt và tai khớp được cách người bản xứ nối âm (_connected speech_) và nuốt âm.
 
 ---
 
@@ -63,8 +63,8 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
 
 ### 🚨 Thực trạng
 
-- Bài đọc Passage 3 Tuần 1 (*Conquering Earth's space junk problem*) chưa kịp hoàn thành do công việc bận rộn.
-- Passage 3 là phần khó nhất trong bài thi Reading (văn phong trừu tượng, bẫy từ vựng sâu). Nếu lao vào làm một mạch 45 phút khi đang mệt mỏi sau giờ làm việc, não bộ sẽ bị quá tải (*Cognitive Overload*).
+- Bài đọc Passage 3 Tuần 1 (_Conquering Earth's space junk problem_) chưa kịp hoàn thành do công việc bận rộn.
+- Passage 3 là phần khó nhất trong bài thi Reading (văn phong trừu tượng, bẫy từ vựng sâu). Nếu lao vào làm một mạch 45 phút khi đang mệt mỏi sau giờ làm việc, não bộ sẽ bị quá tải (_Cognitive Overload_).
 
 ### 🛠️ Kế hoạch hành động 3 bước
 
@@ -87,10 +87,10 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
 
 - **Đạt được:** Bài viết 198 từ, vượt chỉ tiêu độ dài 150 từ; có tư duy phân tích chia đoạn (Mở bài, Tổng quan, 2 Thân bài).
 - **3 lỗi nghiêm trọng cần sửa dứt điểm:**
-  1. *Lỗi chia bị động sai cho nội động từ:* Bạn viết `has been increased` ❌. Động từ xu hướng (*increase, rise, fall, drop*) là nội động từ, số liệu tự tăng chứ không bị ai tăng $\rightarrow$ Bắt buộc viết: `increased` hoặc `has increased`.
-  2. *Lỗi thì quá khứ và động từ khiếm khuyết:* Viết thiếu đuôi quá khứ (`pass`, `start` ❌ $\rightarrow$ `passed`, `started`); viết sai sau *will* (`will be increase` ❌ $\rightarrow$ `will increase` hoặc `is projected to rise`).
-  3. *Lỗi cấu trúc bài viết:* Viết 2 lần Overview (ở đoạn 2 và lặp lại ở đoạn 5).
-  4. *Sai lệch số liệu:* Nhầm lẫn đường nét giữa Malaysia và Philippines.
+  1. _Lỗi chia bị động sai cho nội động từ:_ Bạn viết `has been increased` ❌. Động từ xu hướng (_increase, rise, fall, drop_) là nội động từ, số liệu tự tăng chứ không bị ai tăng $\rightarrow$ Bắt buộc viết: `increased` hoặc `has increased`.
+  2. _Lỗi thì quá khứ và động từ khiếm khuyết:_ Viết thiếu đuôi quá khứ (`pass`, `start` ❌ $\rightarrow$ `passed`, `started`); viết sai sau _will_ (`will be increase` ❌ $\rightarrow$ `will increase` hoặc `is projected to rise`).
+  3. _Lỗi cấu trúc bài viết:_ Viết 2 lần Overview (ở đoạn 2 và lặp lại ở đoạn 5).
+  4. _Sai lệch số liệu:_ Nhầm lẫn đường nét giữa Malaysia và Philippines.
 
 ### 🛠️ Kế hoạch hành động khắc phục
 
@@ -101,7 +101,7 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
      - Câu 2 (Điểm nổi bật nhất): Đối tượng X ghi nhận mức tăng mạnh nhất và vượt qua các đối tượng khác để dẫn đầu.
    - **Không viết kết luận ở cuối bài Task 1!**
 2. **Bộ 4 Cụm Từ Xu Hướng Học Thuật Cần Thuộc Lòng:**
-   - Thay vì lặp lại *increase*, sử dụng:
+   - Thay vì lặp lại _increase_, sử dụng:
      - `experienced substantial growth` (trải qua sự tăng trưởng đáng kể).
      - `witnessed a dramatic surge` (chứng kiến một cú tăng vọt ngoạn mục).
      - `overtook [X] to become the highest...` (vượt qua X để trở thành mức cao nhất).
@@ -120,21 +120,21 @@ Dưới đây là cẩm nang hành động thực chiến từng bước cho t�
 ### 🛠️ Giải pháp 2 phút tối giản (Thứ 6 Tuần 2)
 
 - **Không cần học thuộc bài dài dòng.** Khi gặp đề Speaking Part 2, tận dụng 1 phút chuẩn bị để ghi nhanh 4 gạch đầu dòng theo công thức **WH-Questions**:
-  1. **Who / What:** Ai/Cái gì? (*My colleague / A project*)
-  2. **Where / When:** Ở đâu/Khi nào? (*At my company last month*)
-  3. **How:** Diễn ra như thế nào? (*Faced tight deadlines, worked together*)
-  4. **Why:** Tại sao lại đáng nhớ/Cảm xúc của bạn? (*Felt proud, learned a lot*)
+  1. **Who / What:** Ai/Cái gì? (_My colleague / A project_)
+  2. **Where / When:** Ở đâu/Khi nào? (_At my company last month_)
+  3. **How:** Diễn ra như thế nào? (_Faced tight deadlines, worked together_)
+  4. **Why:** Tại sao lại đáng nhớ/Cảm xúc của bạn? (_Felt proud, learned a lot_)
 - Bật ghi âm trên điện thoại và nói liên tục 2 phút. Sau đó nghe lại chỉ để đếm xem mình có bị lặp từ nào nhiều lần không.
 
 ---
 
 ## ⏱️ 6. Chiến Lược Quản Trị Thời Gian Cho Người Đi Làm Bận Rộn
 
-| Tình Huống Thực Tế | Chiến Thuật Ứng Phó (Adaptive Tactics) |
-| :--- | :--- |
-| **Ngày bận tăng ca, về muộn (Kiệt sức):** | • Không cố ép làm đề thi dài 45 phút.<br>• Kích hoạt chế độ **Micro-Habit (15 phút)**: Ôn 20 thẻ Anki trên điện thoại hoặc nghe 1 đoạn Part 1 ngắn.<br>• *Nguyên tắc cốt lõi:* Không để đứt mạch tiếp xúc với tiếng Anh 2 ngày liên tiếp. |
-| **Ngày làm việc bình thường (Rảnh 35–40 phút):** | • Thực hiện đúng 1 phiên trọng tâm theo lịch Tuần 2 (đặt đồng hồ đếm ngược 30 phút, tắt thông báo điện thoại). |
-| **Cuối tuần (Thứ 7 & Chủ Nhật):** | • Dành 45 phút giải quyết dứt điểm các bài đọc/nghe hoàn chỉnh và tổng kết tuần. |
+| Tình Huống Thực Tế                               | Chiến Thuật Ứng Phó (Adaptive Tactics)                                                                                                                                                                                                    |
+| :----------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ngày bận tăng ca, về muộn (Kiệt sức):**        | • Không cố ép làm đề thi dài 45 phút.<br>• Kích hoạt chế độ **Micro-Habit (15 phút)**: Ôn 20 thẻ Anki trên điện thoại hoặc nghe 1 đoạn Part 1 ngắn.<br>• _Nguyên tắc cốt lõi:_ Không để đứt mạch tiếp xúc với tiếng Anh 2 ngày liên tiếp. |
+| **Ngày làm việc bình thường (Rảnh 35–40 phút):** | • Thực hiện đúng 1 phiên trọng tâm theo lịch Tuần 2 (đặt đồng hồ đếm ngược 30 phút, tắt thông báo điện thoại).                                                                                                                            |
+| **Cuối tuần (Thứ 7 & Chủ Nhật):**                | • Dành 45 phút giải quyết dứt điểm các bài đọc/nghe hoàn chỉnh và tổng kết tuần.                                                                                                                                                          |
 
 ---
 

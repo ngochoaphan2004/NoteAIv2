@@ -12,7 +12,7 @@ tags:
 
 # 📖 Bài Làm: Cambridge 18 - Test 1 Reading (Passage 3)
 
-> **Chủ đề bài đọc:** *Conquering Earth's space junk problem* (Giải quyết vấn nạn rác thải không gian của Trái Đất)  
+> **Chủ đề bài đọc:** _Conquering Earth's space junk problem_ (Giải quyết vấn nạn rác thải không gian của Trái Đất)  
 > **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] — Phiên Thứ 6 (Reading Keyword Mapping)  
 > **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-read-p3.pdf`  
 > **Mục tiêu phiên:** 20 phút làm bài (14 câu) + 25 phút mổ xẻ cấu trúc bài đọc, lập bảng Keyword Mapping và trích xuất từ vựng cốt lõi.
@@ -78,53 +78,53 @@ tags:
 
 ### 🔹 Questions 27 – 31: Matching Information (Đoạn văn chứa thông tin)
 
-| STT | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :---: | :--- | :---: | :--- |
-| **27** | *(chờ điền)* | [ ] | |
-| **28** | *(chờ điền)* | [ ] | |
-| **29** | *(chờ điền)* | [ ] | |
-| **30** | *(chờ điền)* | [ ] | |
-| **31** | *(chờ điền)* | [ ] | |
+|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
+| :----: | :-------------- | :--------------: | :------------------------------------------------ |
+| **27** | _(chờ điền)_    |       [ ]        |                                                   |
+| **28** | _(chờ điền)_    |       [ ]        |                                                   |
+| **29** | _(chờ điền)_    |       [ ]        |                                                   |
+| **30** | _(chờ điền)_    |       [ ]        |                                                   |
+| **31** | _(chờ điền)_    |       [ ]        |                                                   |
 
 ---
 
 ### 🔹 Questions 32 – 35: Summary Completion (Điền từ tóm tắt)
 
-| STT | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :---: | :--- | :---: | :--- |
-| **32** | *(chờ điền)* | [ ] | |
-| **33** | *(chờ điền)* | [ ] | |
-| **34** | *(chờ điền)* | [ ] | |
-| **35** | *(chờ điền)* | [ ] | |
+|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
+| :----: | :-------------- | :--------------: | :------------------------------------------------ |
+| **32** | _(chờ điền)_    |       [ ]        |                                                   |
+| **33** | _(chờ điền)_    |       [ ]        |                                                   |
+| **34** | _(chờ điền)_    |       [ ]        |                                                   |
+| **35** | _(chờ điền)_    |       [ ]        |                                                   |
 
 ---
 
 ### 🔹 Questions 36 – 40: Matching Features (Nối thông tin / Quan điểm)
 
-| STT | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :---: | :--- | :---: | :--- |
-| **36** | *(chờ điền)* | [ ] | |
-| **37** | *(chờ điền)* | [ ] | |
-| **38** | *(chờ điền)* | [ ] | |
-| **39** | *(chờ điền)* | [ ] | |
-| **40** | *(chờ điền)* | [ ] | |
+|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
+| :----: | :-------------- | :--------------: | :------------------------------------------------ |
+| **36** | _(chờ điền)_    |       [ ]        |                                                   |
+| **37** | _(chờ điền)_    |       [ ]        |                                                   |
+| **38** | _(chờ điền)_    |       [ ]        |                                                   |
+| **39** | _(chờ điền)_    |       [ ]        |                                                   |
+| **40** | _(chờ điền)_    |       [ ]        |                                                   |
 
 ---
 
 ## 🧭 Bảng Bóc Tách Keyword Mapping (Kỹ Thuật Khớp Từ Khóa)
 
-*(Sau khi làm xong bài, ghi lại các cặp từ đồng nghĩa/paraphrase giữa câu hỏi và bài đọc)*
+_(Sau khi làm xong bài, ghi lại các cặp từ đồng nghĩa/paraphrase giữa câu hỏi và bài đọc)_
 
-| Câu hỏi (Question Prompt) | Bài đọc (Passage Evidence) | Bản chất Paraphrase / Bẫy nhận diện |
-| :--- | :--- | :--- |
-| *Ví dụ:* space debris | space junk / derelict satellites | Sử dụng danh từ đồng nghĩa trực tiếp |
-| ... | ... | ... |
+| Câu hỏi (Question Prompt) | Bài đọc (Passage Evidence)       | Bản chất Paraphrase / Bẫy nhận diện  |
+| :------------------------ | :------------------------------- | :----------------------------------- |
+| _Ví dụ:_ space debris     | space junk / derelict satellites | Sử dụng danh từ đồng nghĩa trực tiếp |
+| ...                       | ...                              | ...                                  |
 
 ---
 
 ## 📌 Không Gian Tự Đánh Giá & Ghi Chú Của Bạn
 
-- **Thời gian làm bài thực tế:** `... phút` *(Mục tiêu: ≤ 20 phút)*
+- **Thời gian làm bài thực tế:** `... phút` _(Mục tiêu: ≤ 20 phút)_
 - **Số câu hoàn thành:** `... / 14 câu`
 - **Các đoạn văn/câu hỏi tốn nhiều thời gian nhất:**
 - **Bài học kinh nghiệm về quản lý thời gian:**

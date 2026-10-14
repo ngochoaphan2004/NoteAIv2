@@ -13,7 +13,7 @@ tags:
 # ✍️ Bài Tập Thực Hành: Viết Lại & Khắc Phục Lỗi Ngữ Pháp Task 1
 
 > **Tuần thực hiện:** [[plans/week-02/|Kế Hoạch Tuần 2 (12/10 – 18/10/2026)]] — Phiên Thứ 4 (Writing Task 1 Rewriting)  
-> **Mục tiêu phiên:** 30 phút rèn luyện sửa dứt điểm lỗi chia bị động nội động từ (*has been increased*), chuẩn hóa cấu trúc 1 Overview duy nhất, và ứng dụng các cụm từ thay thế *increase*.  
+> **Mục tiêu phiên:** 30 phút rèn luyện sửa dứt điểm lỗi chia bị động nội động từ (_has been increased_), chuẩn hóa cấu trúc 1 Overview duy nhất, và ứng dụng các cụm từ thay thế _increase_.  
 > **Lý thuyết hỗ trợ:** [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo Trong Task 1]]
 
 ---
@@ -23,13 +23,13 @@ tags:
 ### 🔹 Thử Thách 1: Sửa Lỗi Nội Động Từ Bị Động Hóa
 
 > [!WARNING]
-> **Quy tắc cốt lõi:** Các động từ mô tả xu hướng số liệu như *increase, rise, decrease, fall, fluctuate* là **nội động từ (intransitive verbs)**. Tuyệt đối KHÔNG chia bị động (`was increased`, `has been decreased` ❌).
+> **Quy tắc cốt lõi:** Các động từ mô tả xu hướng số liệu như _increase, rise, decrease, fall, fluctuate_ là **nội động từ (intransitive verbs)**. Tuyệt đối KHÔNG chia bị động (`was increased`, `has been decreased` ❌).
 
-| Câu Gốc Bị Lỗi (Từ Bài Viết Tuần 1) | Vấn Đề Ngữ Pháp | Nhiệm Vụ Viết Lại Chuẩn Xác Của Bạn |
-| :--- | :--- | :--- |
-| *1. "The percent of the population has been increased for 50 years."* | Sai bị động `has been increased` & dùng `percent` thay vì `percentage`. | $\rightarrow$ **Viết lại:** *The percentage of the population living in cities increased over a 50-year period.* |
-| *2. "And popullation of the next 20 years will be increase significantly."* | Bắt đầu bằng *And*, sai chính tả `popullation`, sai sau will `will be increase`. | $\rightarrow$ **Viết lại:** *Furthermore, this figure is projected to rise significantly over the following two decades.* |
-| *3. "In 1990, Malaysia was the highest percentage. But it has been decreased 10%."* | Nước không phải là phần trăm (`was the highest percentage`), sai bị động `has been decreased`. | $\rightarrow$ **Viết lại:** *In 1990, Malaysia had the highest proportion of city dwellers, before experiencing a slight drop of around 5%.* |
+| Câu Gốc Bị Lỗi (Từ Bài Viết Tuần 1)                                                 | Vấn Đề Ngữ Pháp                                                                                | Nhiệm Vụ Viết Lại Chuẩn Xác Của Bạn                                                                                                          |
+| :---------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| _1. "The percent of the population has been increased for 50 years."_               | Sai bị động `has been increased` & dùng `percent` thay vì `percentage`.                        | $\rightarrow$ **Viết lại:** _The percentage of the population living in cities increased over a 50-year period._                             |
+| _2. "And popullation of the next 20 years will be increase significantly."_         | Bắt đầu bằng _And_, sai chính tả `popullation`, sai sau will `will be increase`.               | $\rightarrow$ **Viết lại:** _Furthermore, this figure is projected to rise significantly over the following two decades._                    |
+| _3. "In 1990, Malaysia was the highest percentage. But it has been decreased 10%."_ | Nước không phải là phần trăm (`was the highest percentage`), sai bị động `has been decreased`. | $\rightarrow$ **Viết lại:** _In 1990, Malaysia had the highest proportion of city dwellers, before experiencing a slight drop of around 5%._ |
 
 ---
 
@@ -38,8 +38,8 @@ tags:
 > [!TIP]
 > **Công thức Overview chuẩn mực 2 câu (Band 7.0+):**
 >
-> - **Câu 1 (Xu hướng bao quát toàn bộ):** *Overall, all four nations experienced consistent urban growth over the period examined, a trend that is anticipated to continue.*
-> - **Câu 2 (Điểm nổi bật nhất về tốc độ/thứ hạng):** *Notably, Malaysia and Indonesia exhibited the most substantial increases, with Malaysia overtaking the others to become the most urbanised country.*
+> - **Câu 1 (Xu hướng bao quát toàn bộ):** _Overall, all four nations experienced consistent urban growth over the period examined, a trend that is anticipated to continue._
+> - **Câu 2 (Điểm nổi bật nhất về tốc độ/thứ hạng):** _Notably, Malaysia and Indonesia exhibited the most substantial increases, with Malaysia overtaking the others to become the most urbanised country._
 
 ---
 

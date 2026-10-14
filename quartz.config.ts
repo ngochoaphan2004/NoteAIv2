@@ -1,5 +1,5 @@
-import { QuartzConfig } from "./quartz/cfg"
-import * as Plugin from "./quartz/plugins"
+import { QuartzConfig } from "./quartz/cfg";
+import * as Plugin from "./quartz/plugins";
 
 /**
  * Quartz 4 Configuration
@@ -69,7 +69,10 @@ const config: QuartzConfig = {
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest", prettyLinks: false }),
+      Plugin.CrawlLinks({
+        markdownLinkResolution: "shortest",
+        prettyLinks: false,
+      }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
@@ -92,6 +95,6 @@ const config: QuartzConfig = {
       Plugin.CustomOgImages(),
     ],
   },
-}
+};
 
-export default config
+export default config;
