@@ -65,17 +65,20 @@ class PlanService:
         week_files = sorted(glob.glob(os.path.join(plans_dir, "week-*", "index.md")))
         updated_files = []
 
-        # Lấy danh sách các bài thi đã làm từ PostgreSQL
+        # Lấy danh sách các bài thi đã làm từ PostgreSQL (có fallback nếu DB offline)
         completed_skills_and_files = set()
-        with Session(engine) as session:
-            attempts = session.exec(select(TestAttempt)).all()
-            for att in attempts:
-                if att.source_file:
-                    clean_sf = att.source_file.strip("/").replace("\\", "/")
-                    completed_skills_and_files.add(clean_sf)
-                    completed_skills_and_files.add(os.path.basename(clean_sf).replace(".md", ""))
-                if att.skill:
-                    completed_skills_and_files.add(att.skill.lower())
+        try:
+            with Session(engine) as session:
+                attempts = session.exec(select(TestAttempt)).all()
+                for att in attempts:
+                    if att.source_file:
+                        clean_sf = att.source_file.strip("/").replace("\\", "/")
+                        completed_skills_and_files.add(clean_sf)
+                        completed_skills_and_files.add(os.path.basename(clean_sf).replace(".md", ""))
+                    if att.skill:
+                        completed_skills_and_files.add(att.skill.lower())
+        except Exception as db_err:
+            logger.warning(f"Không thể truy vấn CSDL PostgreSQL cho lịch sử bài thi: {db_err}")
 
         for week_file in week_files:
             try:
@@ -220,10 +223,11 @@ class PlanService:
             bullets = [b.strip() for b in focus_clean.split("<br>") if b.strip()]
             clean_bullets = []
             for b in bullets:
-                if b.startswith("👉"):
+                if b.startswith("👉") or b.startswith("[["):
                     continue
-                clean_b = b.lstrip("•").strip()
-                clean_bullets.append(f"- {checked_box} {clean_b}")
+                clean_b = b.split("👉")[0].strip().lstrip("•").strip()
+                if clean_b:
+                    clean_bullets.append(f"- {checked_box} {clean_b}")
             bullet_md = "\n".join(clean_bullets)
 
             task_section_content = f"""
@@ -284,19 +288,47 @@ class PlanService:
                     if line.startswith("|") and today.strftime("%d/%m") in line:
                         parts = [p.strip() for p in re.split(r"(?<!\\)\|", line)]
                         if len(parts) >= 6:
-                            skill = re.sub(r"<[^>]+>", " ", parts[2]).replace("**", "").strip()
-                            focus = parts[3]
+                            raw_skill = parts[2]
+                            duration_match = re.search(r"`([^`]+)`", raw_skill)
+                            if not duration_match:
+                                duration_match = re.search(r"(\d+\s*phút)", raw_skill)
+                            duration = duration_match.group(1).strip() if duration_match else "35 phút"
+
+                            clean_skill = re.sub(r"<[^>]+>", " ", raw_skill)
+                            clean_skill = re.sub(r"`[^`]*`", "", clean_skill)
+                            clean_skill = clean_skill.replace("**", "").strip()
+
+                            raw_focus = parts[3]
                             status = parts[4]
                             is_done = "Đã" in status or "✅" in status
 
-                            link_match = re.search(r"\[\[([^\\|\]]+)", focus)
+                            link_match = re.search(r"\[\[([^\\|\]]+)", raw_focus)
                             link_path = link_match.group(1) if link_match else ""
+
+                            # Xử lý steps sạch sẽ
+                            raw_steps = [s.strip() for s in raw_focus.split("<br>") if s.strip()]
+                            clean_steps = []
+                            for s in raw_steps:
+                                if s.startswith("👉") or s.startswith("[["):
+                                    continue
+                                s_clean = s.split("👉")[0].strip()
+                                s_clean = s_clean.lstrip("•").strip()
+                                s_clean = re.sub(r"\*\*([^*]+)\*\*", r"\1", s_clean)
+                                s_clean = re.sub(r"_([^_]+)_", r"\1", s_clean)
+                                s_clean = re.sub(r"`([^`]+)`", r"\1", s_clean)
+                                s_clean = s_clean.strip()
+                                if s_clean:
+                                    clean_steps.append(s_clean)
+
+                            clean_focus = " • ".join(clean_steps) if clean_steps else raw_focus.split("👉")[0].strip()
 
                             return {
                                 "today": today_info["formatted_full"],
                                 "week": os.path.basename(os.path.dirname(week_file)),
-                                "skill": skill,
-                                "focus": focus.split("👉")[0].strip(),
+                                "skill": clean_skill,
+                                "duration": duration,
+                                "focus": clean_focus,
+                                "steps": clean_steps,
                                 "link": link_path,
                                 "is_done": is_done,
                                 "status": status
@@ -306,7 +338,9 @@ class PlanService:
             "today": today_info["formatted_full"],
             "week": None,
             "skill": "Ôn tập FSRS Flashcards",
+            "duration": "15 phút",
             "focus": "Hoàn thành toàn bộ thẻ nhớ đến hạn hôm nay.",
+            "steps": ["Hoàn thành toàn bộ thẻ nhớ đến hạn hôm nay."],
             "link": "",
             "is_done": False,
             "status": "🎯 Hôm nay"

@@ -229,7 +229,9 @@ export const api = {
     today: string;
     week: string | null;
     skill: string;
+    duration?: string;
     focus: string;
+    steps?: string[];
     link: string;
     is_done: boolean;
     status: string;

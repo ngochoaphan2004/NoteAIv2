@@ -22,11 +22,21 @@ tags:
 ## 📑 Tài Liệu Đề Thi (Đọc Trực Tiếp Trên Web)
 
 <details open>
-<summary><b>📄 Đề Bài: Cambridge 18 - Test 1 Reading Passage 3 (Test1-read-p3.pdf)</b></summary>
+<summary><b>📄 Đề Bài PDF & Hình Ảnh: Cambridge 18 - Test 1 Reading Passage 3</b></summary>
 
-> 🔗 **Thao tác:** [↗️ Mở Đề Reading Passage 3 trong tab mới](./assets/Test1-read-p3.pdf) | [⬇️ Tải xuống Đề PDF](./assets/Test1-read-p3.pdf)
+> 🔗 **Thao tác nhanh:** [↗️ Mở Đề Reading Passage 3 trong tab mới](./assets/Test1-read-p3.pdf) | [⬇️ Tải xuống Đề PDF](./assets/Test1-read-p3.pdf)
 
-![[assets/Test1-read-p3.pdf]]
+### 📄 Bài Đọc (Passage Text - Conquering Earth's space junk problem)
+
+![[assets/cam18-test1-reading-p3-p1.jpg]]
+
+![[assets/cam18-test1-reading-p3-p2.jpg]]
+
+### ❓ Câu Hỏi Đề Thi (Questions 27 – 40)
+
+![[assets/cam18-test1-reading-p3-p3.jpg]]
+
+![[assets/cam18-test1-reading-p3-p4.jpg]]
 
 </details>
 

@@ -36,7 +36,7 @@ tags:
 ### 🎯 Reading Keyword Mapping — 35 phút
 
 - [ ] **20p:** Xử lý Reading Passage 3 (_Conquering Earth's space junk problem_).
-- [ ] **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]**
+- [ ] **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc.
 - [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Gửi Câu Trả Lời Cho AI"_.
 - 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/test-1-reading-p3|Làm bài Reading Passage 3]]
 - 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
