@@ -87,3 +87,5 @@ docker_noteai_*
 
 # PDF files
 content\assets\Cambridge-18.pdf
+
+.vps_files/

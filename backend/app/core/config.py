@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # Database configuration
-    DATABASE_URL: str = "postgresql://noteai:noteai_secret_password@localhost:5433/noteai_pkm"
+    DATABASE_URL: str = "postgresql://noteai:noteai_secret_password@localhost:5432/noteai_pkm"
 
     # Qdrant Vector DB
     QDRANT_URL: str = "http://localhost:6333"

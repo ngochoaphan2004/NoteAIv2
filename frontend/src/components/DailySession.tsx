@@ -15,7 +15,10 @@ import {
   CheckCheck,
 } from "lucide-react";
 
-const QUARTZ_BASE_URL = "http://localhost:8088";
+const QUARTZ_BASE_URL =
+  typeof window !== "undefined"
+    ? `${window.location.protocol}//${window.location.hostname}:8088`
+    : "http://localhost:8088";
 
 interface DailySessionProps {
   onNavigateToFlashcards: () => void;

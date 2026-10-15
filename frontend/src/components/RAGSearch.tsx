@@ -26,7 +26,7 @@ const PRESET_QUESTIONS = [
 ];
 
 export const RAGSearch: React.FC = () => {
-  const [question, setQuestion] = useState(PRESET_QUESTIONS[0]);
+  const [question, setQuestion] = useState("");
   const [topK, setTopK] = useState(4);
   const [qaResult, setQaResult] = useState<AskResponse | null>(null);
   const [showSources, setShowSources] = useState(true);
