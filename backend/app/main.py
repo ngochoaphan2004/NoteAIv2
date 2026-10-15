@@ -13,6 +13,7 @@ from app.api.v1.rag import router as rag_router
 from app.api.v1.agents import router as agents_router
 from app.api.v1.cron import router as cron_router
 from app.api.v1.system import router as system_router
+from app.api.v1.plans import router as plans_router
 
 # 1. Khởi tạo hệ thống Ghi Log Bền Vững (Persistent Rotating File + Console)
 setup_logging()
@@ -85,6 +86,7 @@ app.include_router(rag_router, prefix="/api/v1")
 app.include_router(agents_router, prefix="/api/v1")
 app.include_router(cron_router, prefix="/api/v1")
 app.include_router(system_router, prefix="/api/v1")
+app.include_router(plans_router, prefix="/api/v1")
 
 @app.get("/")
 def health_check():

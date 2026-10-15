@@ -34,6 +34,12 @@ class CronSchedulerService:
             return
         self.is_running = True
         logger.info("[CRON] Khởi động Internal Cron Scheduler Daemon...")
+        # Đồng bộ ngay kế hoạch khi khởi động
+        try:
+            from app.services.plan_service import plan_service
+            plan_service.sync_all_plans()
+        except Exception as e:
+            logger.warning(f"[CRON] Initial plan sync deferred: {e}")
         self._task = asyncio.create_task(self._cron_loop())
 
     async def stop(self):
@@ -174,6 +180,21 @@ class CronSchedulerService:
                 )
         except Exception as e:
             logs.append(f"  ⚠️ Cảnh báo Job 3 (DB stats): {e}")
+
+        # -------------------------------------------------------------
+        # Job 4: Tự động đồng bộ kế hoạch theo ngày và tiến độ học tập (Daily Plan & Progress Auto-Sync)
+        # -------------------------------------------------------------
+        try:
+            logs.append("🗓️ [4/4] Tự động đồng bộ kế hoạch học tập theo ngày và tiến độ làm bài...")
+            from app.services.plan_service import plan_service
+            plan_res = plan_service.sync_all_plans()
+            updated = plan_res.get("updated_files", [])
+            if updated:
+                logs.append(f"  ✅ Đã tự động cập nhật kế hoạch cho {len(updated)} file: {', '.join(updated)}")
+            else:
+                logs.append(f"  ✅ Kế hoạch học tập ngày {plan_res.get('today')} đã đồng bộ chuẩn mực.")
+        except Exception as e:
+            logs.append(f"  ⚠️ Cảnh báo Job 4 (Plan Sync): {e}")
 
         end_time = datetime.now(VN_TZ)
         duration_sec = round((end_time - start_time).total_seconds(), 2)

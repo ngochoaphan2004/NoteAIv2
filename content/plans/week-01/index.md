@@ -15,7 +15,7 @@ tags:
 > **Khung thời gian:** Thứ 4 (14/10/2026) đến hết Chủ Nhật (18/10/2026)  
 > **Nguyên tắc cốt lõi:** Cố định mỗi phiên ở mức **30 – 35 phút (Micro-sessions)** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
 > **Quy tắc chu kỳ tuần:** Lịch trình tuần kết thúc trọn vẹn vào ngày **Chủ Nhật (18/10)**, tuần kế tiếp bắt đầu từ Thứ 2 (19/10/2026).  
-> **Trạng thái tuần:** Đang diễn ra — Ngày 1 (Hôm nay: Thứ 4, 14/10/2026)
+> **Trạng thái tuần:** Đang diễn ra — Ngày 2 (Hôm nay: Thứ 5, 15/10/2026)
 
 ---
 
@@ -23,24 +23,23 @@ tags:
 
 | Ngày & Thứ | Kỹ Năng & Thời Lượng | Phương Pháp Thực Thi Trọng Tâm (Execution Focus) | Trạng Thái |
 | :--- | :--- | :--- | :---: |
-| **Thứ 4 (Hôm nay)**<br>_(14/10/2026)_ | **Listening Baseline (Test 1)**<br>`35 phút` | • **30p:** Làm bài thi nghe tiêu chuẩn Cambridge 18 Test 1 (40 câu). Không dừng audio.<br>• **5p:** Gửi câu trả lời trực tiếp cho AI lưu trữ trung thực. 👉 **[[plans/week-01/test-1-listening\|Làm bài Test 1 Listening]]** | 🎯 **Hôm nay** |
-| **Thứ 5**<br>_(15/10/2026)_ | **Reading Keyword Mapping**<br>`35 phút` | • **20p:** Xử lý Reading Passage 3 (_Conquering Earth's space junk problem_).<br>• **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]** | [ ] Sắp tới |
+| **Thứ 4**<br>_(14/10/2026)_ | **Listening Baseline (Test 1)**<br>`35 phút` | • **30p:** Làm bài thi nghe tiêu chuẩn Cambridge 18 Test 1 (40 câu). Không dừng audio.<br>• **5p:** Gửi câu trả lời trực tiếp cho AI lưu trữ trung thực. 👉 **[[plans/week-01/test-1-listening\|Làm bài Test 1 Listening]]** | ⏳ **Cần hoàn thành bù** |
+| **Thứ 5 (Hôm nay)**<br>_(15/10/2026)_ | **Reading Keyword Mapping**<br>`35 phút` | • **20p:** Xử lý Reading Passage 3 (_Conquering Earth's space junk problem_).<br>• **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]** | 🎯 **Hôm nay** |
 | **Thứ 6**<br>_(16/10/2026)_ | **Writing Task 1 Báo Cáo**<br>`35 phút` | • **15p:** Khảo sát biểu đồ đường tỷ lệ dân số thành thị châu Á (1970–2040).<br>• **20p:** Viết văn bản báo cáo Task 1, chuẩn hóa ngữ pháp nội động từ không chia bị động. 👉 **[[plans/week-01/test-1-writing\|Viết bài Writing Task 1]]** | [ ] Sắp tới |
 | **Thứ 7**<br>_(17/10/2026)_ | **Speaking Part 2 Routine**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A challenge at work_).<br>• **20p:** Thu âm 2 phút liên tục, kiểm tra độ trôi chảy (Fluency) và đếm lỗi ngập ngừng. | [ ] Sắp tới |
 | **Chủ Nhật**<br>_(18/10/2026)_ | **Core Review & Retrospective**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` & quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập FSRS flashcards đến hạn, tổng kết tuần 1 và chuẩn bị Tuần 2 (19/10–25/10). 👉 **[[plans/week-01/vocab-week-01\|Mở Sổ Từ Vựng Tuần 1]]** | [ ] Sắp tới |
 
 ---
 
-## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 4 (14/10/2026)
+## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 5 (15/10/2026)
 
-### 🎯 Listening Baseline — Cambridge 18 Test 1 (35 Phút)
+### 🎯 Reading Keyword Mapping — 35 phút
 
-- [ ] **Bước 1 (30 phút):** Mở audio Cambridge 18 Test 1 và làm bài liên tục trên bảng tương tác.
-- [ ] **Bước 2 (5 phút):** Nhấn nút _"Gửi Câu Trả Lời Cho AI"_ trực tiếp từ bảng tương tác để hệ thống lưu trữ trung thực.
-- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/test-1-listening|Test 1 Listening (Đề thi PDF + Bảng 40 câu tương tác)]]
-- 💡 **Mẹo làm bài:** Chú ý các bẫy số nhà, mã bưu chính (`dw307yz`), giới hạn từ (_ONE WORD ONLY_) ở Part 1.
-
----
+- [ ] **20p:** Xử lý Reading Passage 3 (_Conquering Earth's space junk problem_).
+- [ ] **15p:** Thực hành lập bảng Keyword Mapping đối chiếu từ khóa câu hỏi và bài đọc. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]**
+- [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Gửi Câu Trả Lời Cho AI"_.
+- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/test-1-reading-p3|Làm bài Reading Passage 3]]
+- 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
 
 ## 🔗 3. Mạng Lưới Kiến Thức Liên Quan
 

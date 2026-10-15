@@ -223,6 +223,31 @@ export const api = {
     if (!res.ok) throw new Error("Không thể lấy chỉ số sức khỏe máy chủ");
     return res.json();
   },
+
+  // Study Plans & Daily Automation
+  async getTodayPlan(): Promise<{
+    today: string;
+    week: string | null;
+    skill: string;
+    focus: string;
+    link: string;
+    is_done: boolean;
+    status: string;
+  }> {
+    const res = await fetch(`${API_BASE}/plans/today`);
+    if (!res.ok) throw new Error("Không thể lấy thông tin kế hoạch hôm nay");
+    return res.json();
+  },
+
+  async syncPlans(): Promise<{
+    status: string;
+    today: string;
+    updated_files: string[];
+  }> {
+    const res = await fetch(`${API_BASE}/plans/sync`, { method: "POST" });
+    if (!res.ok) throw new Error("Lỗi kích hoạt đồng bộ kế hoạch");
+    return res.json();
+  },
 };
 
 export interface SystemConfig {

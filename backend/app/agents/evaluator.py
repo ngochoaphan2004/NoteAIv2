@@ -86,6 +86,45 @@ class EvaluatorAgent:
             recommended_drills=drills
         )
 
+        # Lưu trung thực bài làm vào PostgreSQL và tự động đồng bộ kế hoạch tuần
+        try:
+            from sqlmodel import Session
+            from app.core.database import engine
+            from app.models.test_attempt import TestAttempt, QuestionAnalysis
+            from app.services.plan_service import plan_service
+
+            with Session(engine) as session:
+                attempt = TestAttempt(
+                    title=state.source_file or f"Bài làm {state.skill.capitalize()}",
+                    skill=state.skill,
+                    source_file=state.source_file,
+                    score=correct_count if has_any_key else None,
+                    total_questions=len(questions),
+                    band_score=band_score,
+                    raw_attempt_text=raw_text
+                )
+                session.add(attempt)
+                session.commit()
+                session.refresh(attempt)
+
+                for q in questions:
+                    qa = QuestionAnalysis(
+                        attempt_id=attempt.id,
+                        question_number=q.question_number,
+                        user_answer=q.user_answer,
+                        correct_answer=q.correct_answer,
+                        is_correct=q.is_correct,
+                        trap_type=q.trap_type,
+                        analysis=q.explanation
+                    )
+                    session.add(qa)
+                session.commit()
+
+            # Tự động cập nhật kế hoạch tuần theo tiến độ bài làm vừa hoàn thành
+            plan_service.mark_task_attempt(skill=state.skill, source_file=state.source_file)
+        except Exception as e:
+            logger.error(f"Lỗi khi lưu bài làm hoặc đồng bộ kế hoạch: {e}", exc_info=True)
+
         return state
 
     @staticmethod
