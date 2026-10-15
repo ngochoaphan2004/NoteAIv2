@@ -90,7 +90,6 @@ class MarkdownParser:
                     return None
 
                 word = get_clean(word_idx)
-                if not word or word.lower() in ("từ vựng", "word", "stt", "stt."):
                 if (
                     not word
                     or word.lower() in ("từ vựng", "word", "stt", "stt.")

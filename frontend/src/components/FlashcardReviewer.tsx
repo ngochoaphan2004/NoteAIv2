@@ -86,14 +86,12 @@ export const FlashcardReviewer: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const {
-    data: cards = [],
     data: rawCards = [],
     isLoading,
     error,
     refetch,
   } = useQuery({
     queryKey: ["flashcards", "due"],
-    queryFn: () => api.getDueCards(30),
     queryFn: () => api.getDueCards(50),
   });
 

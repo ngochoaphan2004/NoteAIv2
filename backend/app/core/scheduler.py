@@ -133,7 +133,6 @@ class CronSchedulerService:
                             session.add(new_card)
                             total_added += 1
                 session.commit()
-                    session.commit()
 
             logs.append(f"  ✅ Đồng bộ thành công: Thêm mới {total_added} thẻ, cập nhật {total_updated} thẻ từ {len(vocab_files)} file từ vựng.")
         except Exception as e:
