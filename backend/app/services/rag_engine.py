@@ -2,6 +2,7 @@ import os
 import re
 import uuid
 import logging
+import threading
 from typing import List, Dict, Any, Optional
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
@@ -16,6 +17,8 @@ class RAGEngine:
         self._client: Optional[QdrantClient] = None
         self._embedder: Optional[TextEmbedding] = None
         self.embedding_dim = 384  # Dimension của BAAI/bge-small-en-v1.5
+        self._collection_ready: bool = False
+        self._lock = threading.Lock()
 
     @property
     def embedder(self) -> TextEmbedding:
@@ -31,23 +34,41 @@ class RAGEngine:
         return self._client
 
     def ensure_collection(self) -> bool:
-        """Đảm bảo Collection Qdrant đã được tạo với cấu hình Cosine Distance"""
-        try:
-            collections = self.client.get_collections().collections
-            exists = any(c.name == self.collection_name for c in collections)
-            if not exists:
-                logger.info(f"Creating Qdrant collection '{self.collection_name}' with dimension {self.embedding_dim}...")
-                self.client.create_collection(
-                    collection_name=self.collection_name,
-                    vectors_config=qmodels.VectorParams(
-                        size=self.embedding_dim,
-                        distance=qmodels.Distance.COSINE
-                    )
-                )
+        """Đảm bảo Collection Qdrant đã được tạo với cấu hình Cosine Distance (thread-safe, tránh 409 Conflict)"""
+        if self._collection_ready:
             return True
-        except Exception as e:
-            logger.warning(f"Qdrant connection deferred or not ready: {e}")
-            return False
+
+        with self._lock:
+            if self._collection_ready:
+                return True
+            try:
+                exists = self.client.collection_exists(self.collection_name)
+                if not exists:
+                    try:
+                        logger.info(f"Creating Qdrant collection '{self.collection_name}' with dimension {self.embedding_dim}...")
+                        self.client.create_collection(
+                            collection_name=self.collection_name,
+                            vectors_config=qmodels.VectorParams(
+                                size=self.embedding_dim,
+                                distance=qmodels.Distance.COSINE
+                            )
+                        )
+                    except Exception as create_err:
+                        err_str = str(create_err).lower()
+                        if "already exists" in err_str or "conflict" in err_str or "409" in err_str:
+                            logger.info(f"Qdrant collection '{self.collection_name}' đã tồn tại sẵn (race condition resolved).")
+                        else:
+                            raise create_err
+
+                self._collection_ready = True
+                return True
+            except Exception as e:
+                err_str = str(e).lower()
+                if "already exists" in err_str or "conflict" in err_str or "409" in err_str:
+                    self._collection_ready = True
+                    return True
+                logger.warning(f"Qdrant connection deferred or not ready: {e}")
+                return False
 
     def chunk_markdown(self, content: str, source_file: str) -> List[Dict[str, Any]]:
         """
