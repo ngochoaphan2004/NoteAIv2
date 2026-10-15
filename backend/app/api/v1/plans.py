@@ -30,3 +30,4 @@ def trigger_plan_sync() -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Lỗi khi kích hoạt đồng bộ kế hoạch: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
+
