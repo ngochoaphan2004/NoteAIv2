@@ -38,6 +38,20 @@ export interface QuestionResult {
   explanation?: string;
 }
 
+export interface ContextSource {
+  source_file: string;
+  heading: string;
+  content: string;
+  score: number;
+}
+
+export interface AskResponse {
+  question: string;
+  answer: string;
+  sources: ContextSource[];
+  model_used?: string;
+}
+
 export interface EvaluationResponse {
   score_fraction?: string;
   band_score?: number;
@@ -80,7 +94,20 @@ export const api = {
     return res.json();
   },
 
-  // RAG Search
+  // RAG Q&A & Search
+  async askRAG(question: string, topK = 4): Promise<AskResponse> {
+    const res = await fetch(`${API_BASE}/rag/ask`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, top_k: topK }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.detail || "Lỗi hỏi đáp RAG");
+    }
+    return res.json();
+  },
+
   async searchRAG(query: string, limit = 5): Promise<any[]> {
     const res = await fetch(
       `${API_BASE}/rag/query?query=${encodeURIComponent(query)}&limit=${limit}`,
@@ -89,6 +116,14 @@ export const api = {
       },
     );
     if (!res.ok) throw new Error("Lỗi truy vấn Vector DB");
+    return res.json();
+  },
+
+  async reindexRAG(): Promise<{ status: string; files_indexed: number; total_chunks: number }> {
+    const res = await fetch(`${API_BASE}/rag/reindex`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("Lỗi lập chỉ mục lại Vector DB");
     return res.json();
   },
 

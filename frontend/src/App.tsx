@@ -11,6 +11,7 @@ import {
   BookOpen,
   CheckSquare,
   Search,
+  Bot,
   BarChart3,
   Cpu,
   Settings,
@@ -45,8 +46,8 @@ const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
   },
   {
     id: "rag",
-    icon: <Search className="w-3.5 h-3.5" />,
-    label: "Tra Cứu RAG",
+    icon: <Bot className="w-3.5 h-3.5" />,
+    label: "Hỏi Đáp AI (RAG)",
   },
   {
     id: "stats",

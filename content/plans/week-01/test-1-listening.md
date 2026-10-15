@@ -1,5 +1,5 @@
 ---
-title: "Bài Làm Test 1 Listening (Cam 18)"
+title: "[14/10] Test 1 Listening"
 aliases:
   - test-cam18-test1-listening
 tags:
@@ -11,7 +11,7 @@ tags:
 
 # 🎧 Bài Làm: Cambridge 18 - Test 1 Listening
 
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Hôm Nay: Thứ 4 (14/10)  
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]] — Phiên Hôm Nay: Thứ 4 (14/10)  
 > **Tài liệu gốc:** `content/assets/Test1.pdf` & `content/assets/Test1-script.pdf`  
 > **Mục đích:** Bảng làm bài thi sạch sẽ, tích hợp nhập nhanh 40 câu, tính giờ và lưu trữ trung thực.
 
@@ -76,13 +76,17 @@ Khi gửi bài làm cho AI để tự động tạo bảng đối soát, bạn c
   <div class="ielts-grid-answers"></div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand Cho AI Đối Soát
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Câu Trả Lời Cho AI
     </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-clear-sheet">
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
+      📋 Sao Chép Shorthand
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
       🗑️ Xóa Bài Làm
     </button>
   </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---
@@ -159,5 +163,5 @@ Khi gửi bài làm cho AI để tự động tạo bảng đối soát, bạn c
 
 ## 🔗 Liên Kết Học Tập
 
-- 📅 **Trở về Hub tuần:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
+- 📅 **Trở về Hub tuần:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]]
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]

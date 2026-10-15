@@ -137,13 +137,17 @@ Khi gửi bài làm cho AI để tự động tạo bảng đối soát, bạn c
   <div class="ielts-grid-answers"></div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy-shorthand">
-      📋 Sao Chép Đáp Án Cho AI (Shorthand)
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Câu Trả Lời Cho AI
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
+      📋 Sao Chép Shorthand
     </button>
     <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
       🔄 Làm Lại Đề Này
     </button>
   </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---

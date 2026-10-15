@@ -1,5 +1,5 @@
 ---
-title: "Bài Làm Test 1 Reading Passage 3 (Cam 18)"
+title: "[15/10] Test 1 Reading P3"
 aliases:
   - test-cam18-test1-reading-p3
 tags:
@@ -13,7 +13,7 @@ tags:
 # 📖 Bài Làm: Cambridge 18 - Test 1 Reading (Passage 3)
 
 > **Chủ đề bài đọc:** _Conquering Earth's space junk problem_ (Giải quyết vấn nạn rác thải không gian của Trái Đất)  
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Thứ 5 (Reading Keyword Mapping)  
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]] — Phiên Thứ 5 (Reading Keyword Mapping)  
 > **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-read-p3.pdf`  
 > **Mục tiêu phiên:** 20 phút làm bài (14 câu) + 25 phút mổ xẻ cấu trúc bài đọc, lập bảng Keyword Mapping và trích xuất từ vựng cốt lõi.
 
@@ -65,13 +65,17 @@ tags:
   <div class="ielts-grid-answers"></div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy-shorthand">
-      📋 Sao Chép Đáp Án Cho AI (Shorthand)
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Câu Trả Lời Cho AI
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
+      📋 Sao Chép Shorthand
     </button>
     <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
       🔄 Làm Lại Đề Này
     </button>
   </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---
@@ -133,4 +137,4 @@ _(Sau khi làm xong bài, ghi lại các cặp từ đồng nghĩa/paraphrase gi
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
+- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]]

@@ -663,7 +663,7 @@ a.internal {
     }
   }
 
-  iframe.pdf {
+  iframe.pdf, object.pdf, embed.pdf {
     min-height: 680px;
     height: 72vh;
     width: 100%;

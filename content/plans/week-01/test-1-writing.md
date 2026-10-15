@@ -1,5 +1,5 @@
 ---
-title: "Bài Làm Test 1 Writing (Cam 18)"
+title: "[16/10] Test 1 Writing"
 aliases:
   - test-cam18-test1-writing
 tags:
@@ -13,7 +13,7 @@ tags:
 
 # ✍️ Bài Làm: Cambridge 18 - Test 1 Writing
 
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]] — Phiên Thứ 6 (Writing Task 1 Báo Cáo Dữ Liệu)  
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]] — Phiên Thứ 6 (Writing Task 1 Báo Cáo Dữ Liệu)  
 > **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-write.pdf`  
 > **Mục tiêu phiên:** 15 phút khảo sát biểu đồ, xác định xu hướng vĩ mô (_macro trends_) & cực trị (_outliers_) + 30 phút viết bài báo cáo Task 1 (tối thiểu 150 từ); tham khảo đề Task 2 (tối thiểu 250 từ).
 
@@ -361,5 +361,5 @@ tags:
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 20/10/2026)]]
+- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]]
 - 📚 **Sổ từ vựng trong tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1 (Listening, Reading, Writing)]]

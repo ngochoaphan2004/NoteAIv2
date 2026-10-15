@@ -320,3 +320,71 @@
   background: #34c759 !important;
   color: #ffffff !important;
 }
+
+/* --------------------------------------------------------------------------
+   AI Evaluation & Feedback Container (Direct from Note)
+   -------------------------------------------------------------------------- */
+.ielts-ai-response {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--apple-radius-lg, 12px);
+  background: color-mix(in srgb, var(--light) 95%, var(--lightgray) 5%);
+  border: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.ielts-ai-banner {
+  padding: 0.85rem 1rem;
+  border-radius: var(--apple-radius-md, 9px);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ielts-ai-banner-info {
+  background: rgba(0, 122, 255, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.25);
+  color: var(--dark);
+}
+
+.ielts-ai-banner-success {
+  background: rgba(52, 199, 89, 0.12);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  color: var(--dark);
+}
+
+.ielts-ai-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--apple-radius-sm, 6px);
+  border: 1px solid color-mix(in srgb, var(--gray) 20%, transparent);
+  margin-bottom: 1rem;
+}
+
+.ielts-ai-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.ielts-ai-table th {
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--lightgray) 60%, transparent);
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in srgb, var(--gray) 20%, transparent);
+}
+
+.ielts-ai-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gray) 15%, transparent);
+}
+
+.ielts-ai-drills {
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--lightgray) 40%, transparent);
+  border-radius: var(--apple-radius-md, 9px);
+  font-size: 0.82rem;
+}
+

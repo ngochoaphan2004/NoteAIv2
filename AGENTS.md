@@ -51,6 +51,10 @@ Bộ quy tắc dưới đây là **bất biến và bắt buộc tuân thủ tuy
   - `writing-task1-...md` / `writing-task2-...md`.
   - `speaking-part1-...md` / `speaking-part2-...md`.
   - `test-<số>-<kỹ-năng>.md` (ví dụ: `test-1-listening.md`).
+- **Quy tắc Chu Kỳ Kế Hoạch Tuần (Weekly Calendar Boundary Rule):**
+  - Kế hoạch trong tuần **BẮT BUỘC kết thúc vào ngày Chủ Nhật (CN)** của tuần đó, **TUYỆT ĐỐI KHÔNG kéo dài sang tuần khác** (không để Thứ 2, Thứ 3 tuần mới nằm trong tuần cũ).
+  - Nếu khởi động giữa tuần (ví dụ Thứ 4, 14/10), tuần khởi đầu sẽ kéo dài từ Thứ 4 đến hết Chủ Nhật cùng tuần (`14/10 – 18/10`).
+  - Tuần kế tiếp sẽ bắt đầu trọn vẹn từ Thứ 2 đến Chủ Nhật tiếp theo (`19/10 – 25/10`).
 
 ---
 
@@ -58,7 +62,15 @@ Bộ quy tắc dưới đây là **bất biến và bắt buộc tuân thủ tuy
 
 Mọi file Markdown trong `content/` **bắt buộc** phải có YAML Frontmatter hợp lệ:
 
-- **`title:`** Bắt buộc, chuỗi Tiếng Việt rõ nghĩa (ví dụ: `title: "Kế hoạch Tuần 1 (08/10 – 11/10)"`).
+- **`title:`** Bắt buộc, chuỗi Tiếng Việt rõ nghĩa.
+  - **Quy tắc Tiêu Đề Ngắn Gọn Theo Ngày Tháng (Concise Plan Execution Date Rule):** Khi tạo các file Markdown thuộc kế hoạch học tập (`plans/week-XX/...`, các bài test `test-*.md`, từ vựng `vocab-*.md`, hoặc các phiên luyện tập hàng ngày), **BẮT BUỘC chỉ đưa ngày và tháng (`DD/MM`) thực hiện theo plan vào đầu trường `title`, và viết tên thật ngắn gọn, súc tích** (bỏ bớt các tiền tố dài như "Bài Làm", "Sổ Từ Vựng Trọng Tâm", bỏ năm `/YYYY`) để tiêu đề hiển thị trọn vẹn, dễ đọc trên Explorer/Sidebar/Tab mà không bị tràn hay cắt cụt chữ.
+    - **Bài test / Nhiệm vụ trong ngày:** Định dạng `[DD/MM] Tên Ngắn Gọn`
+      - *Ví dụ:* `title: "[14/10] Test 1 Listening"` (thay vì `[14/10/2026] Bài Làm Test 1 Listening (Cam 18)`)
+      - *Ví dụ:* `title: "[15/10] Test 1 Reading P3"` (thay vì `[15/10/2026] Bài Làm Test 1 Reading Passage 3 (Cam 18)`)
+      - *Ví dụ:* `title: "[16/10] Test 1 Writing"` (thay vì `[16/10/2026] Bài Làm Test 1 Writing (Cam 18)`)
+    - **Hub kế hoạch tuần / Sổ từ vựng tuần:** Định dạng `[DD/MM - DD/MM] Tên Ngắn Gọn` (kết thúc vào Chủ Nhật).
+      - *Ví dụ:* `title: "[14/10 - 18/10] Kế Hoạch Tuần 1"`
+      - *Ví dụ:* `title: "[14/10 - 18/10] Từ Vựng Tuần 1"` (thay vì `[14/10 – 20/10/2026] Sổ Từ Vựng Trọng Tâm Tuần 1`)
 - **`aliases:`** Khuyến nghị cho bài học/ngữ pháp và bắt buộc cho từ vựng để hỗ trợ tìm kiếm chéo và semantic linking (ví dụ: `[vocab-week-01, cam18-vocab]`).
 - **`tags:`** Danh sách ít nhất 1 tag phân loại: kỹ năng (`listening`, `reading`), nguồn đề (`cambridge18`), tuần học (`week-01`), và cấp độ CEFR (`b2-c1`).
 - **`sr-due:`** Định dạng `YYYY-MM-DD` đối với tài liệu từ vựng/ôn tập để tích hợp thuật toán Spaced Repetition.

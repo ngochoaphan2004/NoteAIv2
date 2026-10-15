@@ -337,6 +337,200 @@ document.addEventListener("nav", () => {
       });
     });
 
+    // -----------------------------------------------------------------------
+    // AI Submission Directly from Note (No tab-switching required)
+    // -----------------------------------------------------------------------
+    const cardActions = card.querySelector<HTMLElement>(".ielts-card-actions");
+    let btnSubmit = card.querySelector<HTMLButtonElement>(".ielts-btn-submit-ai");
+    if (!btnSubmit && cardActions) {
+      btnSubmit = document.createElement("button");
+      btnSubmit.type = "button";
+      btnSubmit.className = "ielts-btn ielts-btn-primary ielts-btn-submit-ai";
+      btnSubmit.innerHTML = `🚀 Gửi Câu Trả Lời Cho AI`;
+      cardActions.insertBefore(btnSubmit, cardActions.firstChild);
+    }
+
+    let aiResponseContainer = card.querySelector<HTMLElement>(".ielts-ai-response");
+    if (!aiResponseContainer) {
+      aiResponseContainer = document.createElement("div");
+      aiResponseContainer.className = "ielts-ai-response";
+      aiResponseContainer.style.display = "none";
+      card.appendChild(aiResponseContainer);
+    }
+
+    btnSubmit?.addEventListener("click", async () => {
+      const lines: string[] = [];
+      let filledCount = 0;
+
+      for (let q = startQ; q <= endQ; q++) {
+        const val = (answers[String(q)] || "").trim();
+        if (val) {
+          lines.push(`${q} ${val}`);
+          filledCount++;
+        }
+      }
+
+      if (filledCount === 0) {
+        alert("Bảng đáp án đang trống! Hãy điền câu trả lời trước khi gửi cho AI.");
+        return;
+      }
+
+      const origText = btnSubmit.innerHTML;
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = `⏳ Đang gửi cho AI đọc...`;
+
+      const badgeText = card.querySelector(".ielts-badge")?.textContent?.toLowerCase() || "";
+      const skill = badgeText.includes("reading") ? "reading" : "listening";
+
+      try {
+        const response = await fetch("http://localhost:8000/api/v1/agents/evaluate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            attempt_text: lines.join("\n"),
+            skill: skill,
+            source_file: window.location.pathname,
+          }),
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.detail || `Lỗi HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        // Render AI Result Box inside note
+        if (aiResponseContainer) {
+          const totalQ = endQ - startQ + 1;
+          const questionsList = result.questions || [];
+
+          aiResponseContainer.innerHTML = `
+            ${
+              result.score_fraction
+                ? `
+              <div class="ielts-ai-banner ielts-ai-banner-success">
+                <span style="font-size: 1.5rem;">🎉</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">Kết Quả Chấm Điểm Chính Thức</div>
+                  <div style="font-size: 0.82rem; margin-top: 3px;">
+                    <strong>${result.score_fraction} câu đúng</strong> &bull; Band Score: <strong style="color: #007aff; font-size: 1rem;">${result.band_score}</strong>
+                  </div>
+                </div>
+              </div>`
+                : `
+              <div class="ielts-ai-banner ielts-ai-banner-info">
+                <span style="font-size: 1.5rem;">🛡️</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: #007aff;">Nguyên Tắc Vàng: Lưu Trữ Trung Thực Bài Làm</div>
+                  <div style="font-size: 0.82rem; margin-top: 3px; color: var(--darkgray);">
+                    Hệ thống đã lưu trữ trung thực <strong>${filledCount}/${totalQ} câu trả lời</strong> của bạn. AI <strong>tuyệt đối không tự suy đoán điểm số</strong> khi bạn chưa cung cấp bảng đáp án chính thức.
+                  </div>
+                </div>
+              </div>`
+            }
+
+            <div class="ielts-ai-table-wrap">
+              <table class="ielts-ai-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px; text-align: center;">Câu</th>
+                    <th>Đáp Án Của Bạn</th>
+                    <th style="width: 120px;">Trạng Thái</th>
+                    <th>Ghi Chú Phân Tích</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${questionsList
+                    .map(
+                      (q: any) => `
+                    <tr>
+                      <td style="font-weight: 700; text-align: center;">${q.question_number}</td>
+                      <td style="font-family: monospace; font-weight: 600;">${
+                        q.user_answer ||
+                        '<span style="color:#8e8e93; font-style:italic;">(bỏ trống)</span>'
+                      }</td>
+                      <td>
+                        ${
+                          q.is_correct === true
+                            ? '<span style="color:#34c759; font-weight:700;">✅ Đúng</span>'
+                            : q.is_correct === false
+                              ? '<span style="color:#ff3b30; font-weight:700;">❌ Sai</span>'
+                              : '<span style="color:#8e8e93; font-style:italic;">⚪ Đã ghi nhận</span>'
+                        }
+                      </td>
+                      <td style="color: var(--darkgray); font-size: 0.78rem;">${
+                        q.trap_type || q.explanation || "—"
+                      }</td>
+                    </tr>
+                  `,
+                    )
+                    .join("")}
+                </tbody>
+              </table>
+            </div>
+
+            ${
+              result.recommended_drills && result.recommended_drills.length > 0
+                ? `
+              <div class="ielts-ai-drills">
+                <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--dark);">🎯 Bài tập Micro-Session đề xuất (30–35 phút):</div>
+                <ul style="margin: 0; padding-left: 1.2rem; color: var(--darkgray);">
+                  ${result.recommended_drills
+                    .map((d: string) => `<li>${d}</li>`)
+                    .join("")}
+                </ul>
+              </div>`
+                : ""
+            }
+
+            <div style="margin-top: 0.75rem; display: flex; justify-content: flex-end;">
+              <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-close-ai" style="font-size: 0.75rem;">
+                Thu gọn kết quả ▲
+              </button>
+            </div>
+          `;
+
+          aiResponseContainer.style.display = "block";
+          aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          const btnClose = aiResponseContainer.querySelector(".ielts-btn-close-ai");
+          btnClose?.addEventListener("click", () => {
+            if (aiResponseContainer) aiResponseContainer.style.display = "none";
+          });
+        }
+
+        btnSubmit.innerHTML = `✅ Đã Gửi Thành Công!`;
+        btnSubmit.classList.add("ielts-btn-success");
+
+        // Gửi thông điệp cho parent React SPA
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage(
+            {
+              type: "IELTS_TEST_SUBMITTED",
+              payload: {
+                skill,
+                filledCount,
+                result,
+              },
+            },
+            "*",
+          );
+        }
+
+        setTimeout(() => {
+          btnSubmit.innerHTML = origText;
+          btnSubmit.disabled = false;
+          btnSubmit.classList.remove("ielts-btn-success");
+        }, 4000);
+      } catch (err: any) {
+        console.error("Lỗi gửi bài cho AI:", err);
+        alert(`Không thể gửi bài làm cho AI: ${err.message || err}`);
+        btnSubmit.innerHTML = origText;
+        btnSubmit.disabled = false;
+      }
+    });
+
     // Copy Shorthand for AI
     btnCopy?.addEventListener("click", () => {
       const lines: string[] = [];

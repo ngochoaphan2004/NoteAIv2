@@ -99,6 +99,16 @@ class CronSchedulerService:
                     rel_file = os.path.relpath(file_path, content_dir)
                     cards_data = markdown_parser.extract_vocab_from_markdown(content, rel_file)
 
+                    # 1. Dọn dẹp thẻ lỗi/obsolete không còn trong file markdown
+                    valid_fronts = {item["front"] for item in cards_data}
+                    all_source_cards = session.exec(
+                        select(Flashcard).where(Flashcard.source_file == rel_file)
+                    ).all()
+                    for existing_card in all_source_cards:
+                        if existing_card.front not in valid_fronts or existing_card.front.startswith("•"):
+                            session.delete(existing_card)
+
+                    # 2. Thêm mới hoặc cập nhật thẻ hợp lệ
                     for item in cards_data:
                         front_word = item["front"]
                         existing = session.exec(select(Flashcard).where(Flashcard.front == front_word)).first()
@@ -123,6 +133,7 @@ class CronSchedulerService:
                             session.add(new_card)
                             total_added += 1
                 session.commit()
+                    session.commit()
 
             logs.append(f"  ✅ Đồng bộ thành công: Thêm mới {total_added} thẻ, cập nhật {total_updated} thẻ từ {len(vocab_files)} file từ vựng.")
         except Exception as e:

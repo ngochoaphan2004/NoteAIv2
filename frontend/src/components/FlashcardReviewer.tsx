@@ -9,6 +9,77 @@ import {
   AlertCircle,
 } from "lucide-react";
 
+const renderFormattedText = (text: string) => {
+  if (!text) return null;
+  const clean = text.replace(/<br\s*\/?>/gi, "\n");
+  const lines = clean.split("\n");
+
+  return lines.map((line, lineIdx) => {
+    const trimmed = line.trim();
+    if (!trimmed) return <div key={lineIdx} className="h-2" />;
+
+    const parts = line.split(/(_[^_]+_|\*\*[^*]+\*\*)/g);
+    const lineContent = parts.map((part, partIdx) => {
+      if (part.startsWith("_") && part.endsWith("_") && part.length > 2) {
+        return (
+          <span key={partIdx} className="font-semibold text-apple-blue dark:text-blue-400">
+            {part.slice(1, -1)}
+          </span>
+        );
+      }
+      if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+        return (
+          <strong key={partIdx} className="font-bold text-apple-textLight dark:text-apple-textDark">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+
+    const isBullet = trimmed.startsWith("•") || trimmed.startsWith("-");
+    const isSectionHeader =
+      trimmed.includes("Ví dụ & Collocations:") ||
+      trimmed.includes("Collocations & Ví Dụ:");
+
+    if (isSectionHeader) {
+      return (
+        <div
+          key={lineIdx}
+          className="font-bold text-xs uppercase tracking-wider text-apple-subtextLight dark:text-apple-subtextDark mt-3.5 mb-1.5 border-b border-gray-100 dark:border-gray-800 pb-1 flex items-center gap-1.5"
+        >
+          <span>📌</span>
+          <span>Collocations & Ngữ Cảnh:</span>
+        </div>
+      );
+    }
+
+    if (lineIdx === 0 && !isBullet) {
+      return (
+        <div
+          key={lineIdx}
+          className="text-base font-bold text-emerald-700 dark:text-emerald-400 mb-2 leading-snug"
+        >
+          {lineContent}
+        </div>
+      );
+    }
+
+    return (
+      <div
+        key={lineIdx}
+        className={
+          isBullet
+            ? "pl-2 py-0.5 text-xs text-gray-700 dark:text-gray-300 leading-relaxed"
+            : "py-0.5 text-xs text-gray-700 dark:text-gray-300 leading-relaxed"
+        }
+      >
+        {lineContent}
+      </div>
+    );
+  });
+};
+
 export const FlashcardReviewer: React.FC = () => {
   const queryClient = useQueryClient();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,13 +87,20 @@ export const FlashcardReviewer: React.FC = () => {
 
   const {
     data: cards = [],
+    data: rawCards = [],
     isLoading,
     error,
     refetch,
   } = useQuery({
     queryKey: ["flashcards", "due"],
     queryFn: () => api.getDueCards(30),
+    queryFn: () => api.getDueCards(50),
   });
+
+  // Lớp bảo vệ bổ sung: Lọc bỏ bất kỳ thẻ nào có front bị lẫn bullet hoặc HTML
+  const cards = rawCards.filter(
+    (c) => c.front && !c.front.startsWith("•") && !c.front.includes("<br>")
+  );
 
   const reviewMutation = useMutation({
     mutationFn: ({ cardId, rating }: { cardId: string; rating: number }) =>
@@ -151,7 +229,7 @@ export const FlashcardReviewer: React.FC = () => {
 
           <div className="text-center py-6">
             <h2 className="text-4xl font-extrabold text-apple-textLight dark:text-apple-textDark tracking-tight mb-2">
-              {currentCard.front}
+              {currentCard.front ? currentCard.front.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/`([^`]+)`/g, "$1").trim() : ""}
             </h2>
             {currentCard.ipa && (
               <p className="text-apple-subtextLight dark:text-apple-subtextDark italic text-base">
@@ -179,8 +257,8 @@ export const FlashcardReviewer: React.FC = () => {
                 </span>
               </div>
             )}
-            <div className="text-sm text-apple-textLight dark:text-apple-textDark leading-relaxed whitespace-pre-line">
-              {currentCard.back}
+            <div className="text-sm text-apple-textLight dark:text-apple-textDark leading-relaxed">
+              {renderFormattedText(currentCard.back)}
             </div>
           </div>
         ) : (

@@ -112,6 +112,16 @@ def sync_flashcards_from_markdown(session: Session = Depends(get_session)):
             rel_file = os.path.relpath(file_path, content_dir)
             cards_data = markdown_parser.extract_vocab_from_markdown(content, rel_file)
 
+            # 1. Dọn dẹp các thẻ lỗi/rác hoặc không còn tồn tại trong file markdown
+            valid_fronts = {item["front"] for item in cards_data}
+            all_source_cards = session.exec(
+                select(Flashcard).where(Flashcard.source_file == rel_file)
+            ).all()
+            for existing_card in all_source_cards:
+                if existing_card.front not in valid_fronts or existing_card.front.startswith("•"):
+                    session.delete(existing_card)
+
+            # 2. Thêm mới hoặc cập nhật các thẻ hợp lệ
             for item in cards_data:
                 front_word = item["front"]
                 # Kiểm tra thẻ đã tồn tại chưa

@@ -49,63 +49,73 @@ class MarkdownParser:
             if all(re.match(r"^:?-+:?$", c) for c in cells):
                 continue
 
-            # Phát hiện hàng tiêu đề bảng
+            # Phát hiện hàng tiêu đề bảng (chỉ phát hiện khi chưa bắt đầu bảng)
             lower_cells = [c.lower() for c in cells]
-            if any("từ vựng" in c or "word" in c for c in lower_cells):
+            if not table_header_found and any("từ vựng" in c or c.strip() in ("word", "vocabulary") for c in lower_cells):
                 table_header_found = True
-                headers = lower_cells
-                continue
+                word_idx, ipa_idx, pos_idx, meaning_idx, synonyms_idx, colloc_idx = -1, -1, -1, -1, -1, -1
 
-            if table_header_found and len(cells) >= 4:
-                # Tìm vị trí các cột
-                word_idx = -1
-                ipa_idx = -1
-                pos_idx = -1
-                meaning_idx = -1
-                synonyms_idx = -1
-                colloc_idx = -1
-
-                for idx, h in enumerate(headers):
-                    if "từ vựng" in h or "word" in h:
+                for idx, h in enumerate(lower_cells):
+                    h_clean = h.strip()
+                    if "từ vựng" in h_clean or h_clean in ("word", "vocabulary"):
                         word_idx = idx
-                    elif "phiên âm" in h or "ipa" in h:
+                    elif "phiên âm" in h_clean or "ipa" in h_clean:
                         ipa_idx = idx
-                    elif "loại từ" in h or "pos" in h or "part" in h:
+                    elif "loại từ" in h_clean or "pos" in h_clean or "part" in h_clean:
                         pos_idx = idx
-                    elif "nghĩa" in h or "meaning" in h:
-                        meaning_idx = idx
-                    elif "đồng nghĩa" in h or "synonym" in h:
+                    elif "đồng nghĩa" in h_clean or "synonym" in h_clean:
                         synonyms_idx = idx
-                    elif "collocation" in h or "ví dụ" in h or "example" in h:
+                    elif "nghĩa" in h_clean or "meaning" in h_clean:
+                        meaning_idx = idx
+                    elif "collocation" in h_clean or "ví dụ" in h_clean or "example" in h_clean:
                         colloc_idx = idx
 
-                # Nếu không map được theo header thì dùng vị trí mặc định 7 cột
+                # Nếu không map được theo header thì dùng vị trí mặc định chuẩn (7 cột có STT hoặc 6 cột không STT)
                 if word_idx == -1:
                     if len(cells) >= 7:
                         word_idx, ipa_idx, pos_idx, meaning_idx, synonyms_idx, colloc_idx = 1, 2, 3, 4, 5, 6
                     elif len(cells) >= 6:
-                        word_idx, ipa_idx, pos_idx, meaning_idx, colloc_idx = 1, 2, 3, 4, 5
+                        word_idx, ipa_idx, pos_idx, meaning_idx, colloc_idx = 0, 1, 2, 3, 4
+                continue
 
+            if table_header_found and len(cells) >= 4:
                 def get_clean(idx: int) -> Optional[str]:
                     if 0 <= idx < len(cells):
-                        val = re.sub(r"\*\*|\*", "", cells[idx]).strip()
+                        val = cells[idx]
+                        val = re.sub(r"\*\*([^*]+)\*\*", r"\1", val)
+                        val = re.sub(r"\*([^*]+)\*", r"\1", val)
+                        val = re.sub(r"`([^`]+)`", r"\1", val)
+                        val = val.strip()
                         return val if val else None
                     return None
 
                 word = get_clean(word_idx)
-                if not word or word.lower() in ("từ vựng", "word", "stt"):
+                if not word or word.lower() in ("từ vựng", "word", "stt", "stt."):
+                if (
+                    not word
+                    or word.lower() in ("từ vựng", "word", "stt", "stt.")
+                    or word.startswith("•")
+                    or word.startswith("-")
+                    or "<br>" in word
+                    or len(word) > 50
+                ):
                     continue
 
                 ipa = get_clean(ipa_idx)
                 pos = get_clean(pos_idx)
+                if pos:
+                    pos = pos.strip("_").strip()
                 meaning = get_clean(meaning_idx) or ""
                 synonyms = get_clean(synonyms_idx)
+                if synonyms:
+                    synonyms = synonyms.strip("_").strip()
                 colloc = get_clean(colloc_idx) or ""
 
                 # Gộp nghĩa và collocations thành mặt sau của flashcard
                 back_content = meaning
                 if colloc:
-                    back_content += f"\n\nVí dụ & Collocations:\n{colloc.replace('<br>', '\n')}"
+                    clean_colloc = colloc.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n").strip()
+                    back_content += f"\n\nVí dụ & Collocations:\n{clean_colloc}"
 
                 cards.append({
                     "front": word,

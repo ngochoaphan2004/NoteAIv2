@@ -28,12 +28,18 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
 - **Quy chuẩn phân cấp:**
   - Macro Node (`index.md`) $\rightarrow$ Hub Tuần (`plans/week-XX/index.md`) $\rightarrow$ Leaf Node (`test-*.md`, `vocab-*.md`).
   - Leaf Node chỉ được trỏ ngược về Hub cha của nó. Không nối tắt về root index.
+- **Quy tắc Chu Kỳ Kế Hoạch Tuần (Weekly Calendar Boundary Rule):**
+  - Kế hoạch tuần **BẮT BUỘC kết thúc vào ngày Chủ Nhật (CN)** của tuần đó, **TUYỆT ĐỐI KHÔNG kéo dài sang tuần sau**.
+  - Nếu bắt đầu giữa tuần (Thứ 4, 14/10), tuần khởi đầu sẽ từ Thứ 4 đến Chủ Nhật (`14/10 – 18/10`). Tuần tiếp theo sẽ bắt đầu từ Thứ 2 đến Chủ Nhật (`19/10 – 25/10`).
 
 ---
 
 ## 4. 🏷️ YAML Frontmatter Schema
 
 - Bắt buộc: `title`, `tags`, khuyến nghị: `aliases`.
+- **Quy tắc Tiêu Đề Ngắn Gọn Theo Ngày Tháng (Concise Plan Execution Date Rule):** Khi tạo các file Markdown theo plan (`plans/week-XX/...`, `test-*.md`, `vocab-*.md`), tiêu đề (`title:`) **BẮT BUỘC chỉ chứa ngày và tháng (`[DD/MM]`), viết ngắn gọn súc tích** (bỏ tiền tố dài, bỏ năm `/YYYY`) để hiển thị trọn vẹn và dễ đọc trên Explorer/Sidebar/Tab:
+  - Định dạng bài test / ngày: `[DD/MM] Tên Ngắn Gọn` (ví dụ: `title: "[14/10] Test 1 Listening"`, `title: "[15/10] Test 1 Reading P3"`, `title: "[16/10] Test 1 Writing"`).
+  - Định dạng Hub tuần / Sổ từ vựng: `[DD/MM - DD/MM] Tên Ngắn Gọn` (kết thúc vào Chủ Nhật, ví dụ: `title: "[14/10 - 18/10] Kế Hoạch Tuần 1"`, `title: "[14/10 - 18/10] Từ Vựng Tuần 1"`).
 - Riêng file từ vựng/ôn tập bắt buộc có `sr-due: "YYYY-MM-DD"`.
 
 ---

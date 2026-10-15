@@ -27,6 +27,25 @@ export const DailySession: React.FC<DailySessionProps> = ({
     `${QUARTZ_BASE_URL}/plans/week-01/`,
   );
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Lắng nghe sự kiện nộp bài thi tương tác từ Quartz iframe
+  React.useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === "IELTS_TEST_SUBMITTED") {
+        const { filledCount, skill } = event.data.payload || {};
+        const skillName = skill === "reading" ? "Reading" : "Listening";
+        setToastMessage(
+          `🤖 AI đã tiếp nhận thành công bài làm ${skillName} (${filledCount} câu đã điền)! Kết quả đã được cập nhật ngay trong trang.`
+        );
+        setTimeout(() => {
+          setToastMessage(null);
+        }, 6000);
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   // Lấy số lượng thẻ cần ôn hôm nay từ FastAPI backend
   const { data: dueCards = [] } = useQuery<FlashcardItem[]>({
@@ -39,7 +58,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   const quickNavLinks = [
     {
-      label: "Tuần 1 (14/10 – 20/10)",
+      label: "Tuần 1 (14/10 – 18/10)",
       path: "/plans/week-01/",
       icon: <Calendar className="w-3.5 h-3.5 text-apple-blue" />,
       badge: "Hiện tại",
@@ -156,6 +175,22 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       </div>
 
+      {/* Thông Báo AI Đã Tiếp Nhận Bài Làm */}
+      {toastMessage && (
+        <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 px-4 py-2.5 rounded-2xl flex items-center justify-between text-xs text-emerald-800 dark:text-emerald-300 font-medium animate-fadeIn flex-shrink-0 shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-base">🚀</span>
+            <span>{toastMessage}</span>
+          </div>
+          <button
+            onClick={() => setToastMessage(null)}
+            className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200 text-[11px] font-bold px-2 py-0.5 rounded-lg"
+          >
+            Đóng
+          </button>
+        </div>
+      )}
+
       {/* Main Content Area: Toàn bộ không gian dành cho Quartz Digital Garden */}
       <div className="flex-1 w-full bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm flex flex-col">
         <iframe
@@ -163,8 +198,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
           src={currentUrl}
           title="Kế Hoạch Học Tập - Quartz Digital Garden"
           className="w-full h-full border-0 flex-1"
-          allow="clipboard-write; clipboard-read"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+          allow="clipboard-write; clipboard-read; fullscreen"
         />
       </div>
     </div>
