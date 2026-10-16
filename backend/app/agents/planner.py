@@ -79,4 +79,10 @@ class PlanningAgent:
             ]
         }
 
+    def generate_full_week_markdown_package(self, week_number: int = 2, force: bool = False) -> Dict[str, Any]:
+        """Tạo trọn gói thư mục tuần mới cùng các bài thi chi tiết và cập nhật Weekly Retrospective"""
+        from app.services.plan_generator import autonomous_plan_generator
+        return autonomous_plan_generator.generate_next_week(target_week_number=week_number, force=force)
+
 planner_agent = PlanningAgent()
+

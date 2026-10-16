@@ -41,4 +41,10 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
+    def __init__(self, **values):
+        super().__init__(**values)
+        if not os.path.isabs(self.CONTENT_DIR):
+            backend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+            self.CONTENT_DIR = os.path.abspath(os.path.join(backend_dir, self.CONTENT_DIR))
+
 settings = Settings()

@@ -202,6 +202,24 @@ class CronSchedulerService:
         except Exception as e:
             logs.append(f"  ⚠️ Cảnh báo Job 4 (Plan Sync): {e}")
 
+        # -------------------------------------------------------------
+        # Job 5: Tự động đánh giá tuần cũ & Lập kế hoạch tuần mới vào Chủ Nhật
+        # -------------------------------------------------------------
+        try:
+            now_dt = datetime.now(VN_TZ)
+            if now_dt.weekday() == 6:
+                logs.append("🤖 [5/5] Tối Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
+                from app.services.plan_generator import autonomous_plan_generator
+                res_week = autonomous_plan_generator.generate_next_week(target_week_number=2, force=False)
+                if res_week.get("status") == "success":
+                    logs.append(f"  ✅ Đã tự động tạo Kế hoạch Tuần {res_week.get('week_number')} ({res_week.get('date_range')}) cùng {len(res_week.get('created_files', []))} file bài làm mới.")
+                else:
+                    logs.append(f"  ℹ️ {res_week.get('message', 'Kế hoạch tuần tiếp theo đã sẵn sàng.')}")
+            else:
+                logs.append("ℹ️ [5/5] Tự động hóa tuần mới sẵn sàng (sẽ kích hoạt vào đêm Chủ Nhật hoặc khi gọi API /plans/generate-next-week).")
+        except Exception as e:
+            logs.append(f"  ⚠️ Cảnh báo Job 5 (Weekly Planner): {e}")
+
         end_time = datetime.now(VN_TZ)
         duration_sec = round((end_time - start_time).total_seconds(), 2)
         logs.append(f"🏁 Hoàn thành phiên Cronjob trong {duration_sec}s. Trạng thái: {'Thành công ✅' if success else 'Có lỗi ❌'}")
