@@ -49,18 +49,27 @@ if [ -f "$VENV_PYTHON" ]; then
     cd "$PROJECT_DIR"
 fi
 
-# 4. Khởi động lại dịch vụ Backend & Nginx
-echo -e "${YELLOW}🚀 [4/4] Kiểm tra và khởi động lại dịch vụ...${NC}"
+# 4. Kiểm tra môi trường Node.js & dependencies của Quartz SSG
+if [ -f "$PROJECT_DIR/package.json" ]; then
+    if [ ! -d "$PROJECT_DIR/node_modules" ]; then
+        echo -e "${YELLOW}📦 [4/5] node_modules chưa tồn tại. Đang cài đặt thư viện Quartz...${NC}"
+        npm install --prefer-offline --no-audit || echo "  ⚠️ npm install warning"
+    else
+        echo -e "${YELLOW}📦 [4/5] Thư viện Quartz node_modules đã sẵn sàng.${NC}"
+    fi
+fi
 
-# Kiểm tra nếu service chưa từng được cài đặt (chưa chạy vps_lowmem.sh thành công)
+# 5. Khởi động lại dịch vụ Backend & Nginx
+echo -e "${YELLOW}🚀 [5/5] Kiểm tra và khởi động lại dịch vụ...${NC}"
+
+# Kiểm tra nếu service chưa từng được cài đặt (chưa chạy setup ban đầu)
 if ! systemctl list-unit-files | grep -q "noteai-backend.service"; then
-    echo -e "${YELLOW}  ⚠️ Phát hiện NoteAI chưa hoàn tất cài đặt ban đầu. Đang tự động chạy setup từ vps_lowmem.sh...${NC}"
-    bash "$PROJECT_DIR/scripts/vps_lowmem.sh"
+    echo -e "${YELLOW}  ⚠️ Phát hiện NoteAI service chưa cài đặt. Vui lòng kiểm tra lại cấu hình systemd.${NC}"
 else
     systemctl restart noteai-backend
     systemctl reload nginx
     echo -e "\n${BLUE}====================================================${NC}"
-    echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT TRONG 2 GIÂY! HỆ THỐNG ĐÃ SẴN SÀNG! ${NC}"
+    echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG! ${NC}"
     echo -e "${BLUE}====================================================${NC}"
 fi
 
