@@ -353,9 +353,10 @@ document.addEventListener("nav", () => {
                 <div style="font-size: 0.82rem; margin-top: 3px;">
                   Độ dài: <strong>${words} từ</strong> &bull; Trạng thái: <strong>Đã ghi nhận bài làm vào hệ thống PKM</strong>
                 </div>
+                ${result.updated_file ? `<div style="margin-top: 4px; font-size: 0.8rem; color: #15803d; font-weight: 600;">📁 Đã đồng bộ vào: <code>${result.updated_file}</code></div>` : ""}
               </div>
             </div>
-            ${result.feedback ? `<div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">${result.feedback}</div>` : ""}
+            ${result.feedback ? `<div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; white-space: pre-line;"><div style="font-weight:700; color:var(--secondary); margin-bottom:0.35rem;">💡 Nhận Xét & Đánh Giá 4 Tiêu Chí Từ AI:</div><div>${result.feedback}</div></div>` : ""}
             ${
               drills.length > 0
                 ? `
@@ -585,6 +586,7 @@ document.addEventListener("nav", () => {
                   <div style="font-size: 0.82rem; margin-top: 3px;">
                     <strong>${result.score_fraction} câu đúng</strong> &bull; Band Score: <strong style="color: #007aff; font-size: 1rem;">${result.band_score}</strong>
                   </div>
+                  ${result.updated_file ? `<div style="margin-top: 4px; font-size: 0.8rem; color: #15803d; font-weight: 600;">📁 Đã cập nhật Bảng Đối Soát trong: <code>${result.updated_file}</code></div>` : ""}
                 </div>
               </div>`
                 : `
@@ -593,10 +595,21 @@ document.addEventListener("nav", () => {
                 <div>
                   <div style="font-weight: 700; font-size: 0.95rem; color: #007aff;">Nguyên Tắc Vàng: Lưu Trữ Trung Thực Bài Làm</div>
                   <div style="font-size: 0.82rem; margin-top: 3px; color: var(--darkgray);">
-                    Hệ thống đã lưu trữ trung thực <strong>${filledCount}/${totalQ} câu trả lời</strong> của bạn. AI <strong>tuyệt đối không tự suy đoán điểm số</strong> khi bạn chưa cung cấp bảng đáp án chính thức.
+                    Hệ thống đã lưu trữ trung thực <strong>${filledCount}/${totalQ} câu trả lời</strong> của bạn vào Bảng Đối Soát Bài Làm. AI <strong>tuyệt đối không tự suy đoán điểm số</strong> khi bạn chưa cung cấp bảng đáp án chính thức.
                   </div>
+                  ${result.updated_file ? `<div style="margin-top: 4px; font-size: 0.8rem; color: #15803d; font-weight: 600;">📁 Đã đồng bộ vào: <code>${result.updated_file}</code></div>` : ""}
                 </div>
               </div>`
+            }
+
+            ${
+              result.feedback
+                ? `
+              <div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; white-space: pre-line;">
+                <div style="font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem;">💡 Nhận Xét & Chẩn Đoán Lỗi Sai Từ AI:</div>
+                <div>${result.feedback}</div>
+              </div>`
+                : ""
             }
 
             <div class="ielts-ai-table-wrap">
@@ -659,6 +672,43 @@ document.addEventListener("nav", () => {
               </button>
             </div>
           `;
+
+          // Live DOM Table Synchronization: Cập nhật trực tiếp vào bảng trên trang ghi chú
+          const tables = document.querySelectorAll<HTMLTableElement>("table");
+          tables.forEach((tbl) => {
+            if (tbl.closest(".ielts-ai-table-wrap")) return;
+            const rows = tbl.querySelectorAll<HTMLTableRowElement>("tbody tr");
+            rows.forEach((row) => {
+              const firstCell = row.cells[0]?.textContent?.replace(/\*/g, "").trim();
+              if (firstCell && /^\d+$/.test(firstCell)) {
+                const qNum = parseInt(firstCell, 10);
+                const qData = questionsList.find((q: any) => q.question_number === qNum);
+                if (qData) {
+                  if (row.cells[1] && qData.user_answer) {
+                    row.cells[1].innerHTML = `<code style="font-weight:700; color:var(--secondary);">${qData.user_answer}</code>`;
+                  }
+                  if (row.cells.length >= 5) {
+                    if (qData.correct_answer && row.cells[2]) {
+                      row.cells[2].textContent = qData.correct_answer;
+                    }
+                    if (row.cells[3]) {
+                      row.cells[3].innerHTML = qData.is_correct === true ? '<span style="color:#34c759;font-weight:700;">✅</span>' : (qData.is_correct === false ? '<span style="color:#ff3b30;font-weight:700;">❌</span>' : '<span style="color:#8e8e93;">⚪</span>');
+                    }
+                    if (row.cells[4] && (qData.trap_type || qData.explanation)) {
+                      row.cells[4].textContent = `${qData.trap_type || ''}: ${qData.explanation || ''}`.replace(/^:\s*/, '');
+                    }
+                  } else if (row.cells.length === 4) {
+                    if (row.cells[2]) {
+                      row.cells[2].innerHTML = qData.is_correct === true ? '✅' : (qData.is_correct === false ? '❌' : '[x]');
+                    }
+                    if (row.cells[3] && (qData.trap_type || qData.explanation)) {
+                      row.cells[3].textContent = `${qData.trap_type || ''}: ${qData.explanation || ''}`.replace(/^:\s*/, '');
+                    }
+                  }
+                }
+              }
+            });
+          });
 
           aiResponseContainer.style.display = "block";
           aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });

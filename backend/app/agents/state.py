@@ -16,6 +16,8 @@ class EvaluationOutput(BaseModel):
     weaknesses: List[str] = Field(default_factory=list, description="Các lỗ hổng kiến thức cần khắc phục")
     questions: List[QuestionResult] = Field(default_factory=list, description="Danh sách chi tiết từng câu hỏi")
     recommended_drills: List[str] = Field(default_factory=list, description="Các bài tập micro-session đề xuất (30-35p)")
+    feedback: Optional[str] = Field(default=None, description="Nhận xét chi tiết và phân tích sâu từ AI")
+    updated_file: Optional[str] = Field(default=None, description="Đường dẫn file Markdown đã được cập nhật bảng đối soát")
 
 class AgentState(BaseModel):
     task_type: str = Field(default="evaluation", description="evaluation | planning | ingestion")

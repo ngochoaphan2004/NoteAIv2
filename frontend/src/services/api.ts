@@ -59,6 +59,8 @@ export interface EvaluationResponse {
   weaknesses: string[];
   questions: QuestionResult[];
   recommended_drills: string[];
+  feedback?: string;
+  updated_file?: string;
 }
 
 export const api = {
@@ -131,13 +133,21 @@ export const api = {
   async evaluateAttempt(
     text: string,
     skill = "listening",
+    sourceFile?: string,
   ): Promise<EvaluationResponse> {
     const res = await fetch(`${API_BASE}/agents/evaluate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ attempt_text: text, skill }),
+      body: JSON.stringify({
+        attempt_text: text,
+        skill,
+        source_file: sourceFile || undefined,
+      }),
     });
-    if (!res.ok) throw new Error("Lỗi khi chấm bài");
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.detail || "Lỗi khi chấm bài");
+    }
     return res.json();
   },
 

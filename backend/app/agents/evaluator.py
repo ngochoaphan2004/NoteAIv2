@@ -1,22 +1,27 @@
+import os
 import logging
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from app.agents.state import AgentState, EvaluationOutput, QuestionResult
 from app.services.markdown_parser import markdown_parser
+from app.services.markdown_updater import markdown_updater
 from app.services.rag_engine import rag_engine
 from app.core.config import settings
 
 logger = logging.getLogger("evaluator_agent")
 
 class EvaluatorAgent:
+    """
+    Evaluator Agent chuyên trách đối soát bài thi và chẩn đoán năng lực IELTS.
+    Tuyệt đối tuân thủ NGUYÊN TẮC VÀNG: Không suy đoán điểm/đáp án nếu người học chưa cung cấp key.
+    Lưu trữ trung thực vào PostgreSQL và cập nhật trực tiếp vào file Markdown (SSOT).
+    """
+
     def evaluate(self, state: AgentState) -> AgentState:
-        """
-        Đánh giá bài làm của người học tuân thủ nghiêm ngặt NGUYÊN TẮC VÀNG:
-        - KHÔNG tự đoán đáp án đúng/sai nếu người học chưa cung cấp bảng key.
-        - Chỉ ghi nhận trung thực đáp án thực tế của người học.
-        """
         raw_text = state.input_text
 
-        # Xử lý bài nộp Writing (Dạng văn bản tự do / đoạn văn / bài luận)
+        # =====================================================================
+        # 1. XỬ LÝ BÀI THI WRITING (Văn bản tự do / Đoạn văn / Bài luận)
+        # =====================================================================
         if state.skill.lower() == "writing":
             words = len(raw_text.strip().split())
             if words == 0:
@@ -24,16 +29,38 @@ class EvaluatorAgent:
                 return state
 
             state.has_official_key = False
+
+            # Tạo nhận xét chẩn đoán bằng LLM (Gemini API qua llm_service)
+            ai_eval = self._evaluate_writing_with_llm(raw_text)
+
             state.evaluation = EvaluationOutput(
                 score_fraction=f"{words} từ",
                 band_score=None,
-                strengths=[f"Đã ghi nhận bài làm Writing ({words} từ) vào hệ thống PKM."],
-                weaknesses=["Bài viết đã được lưu trữ an toàn. Bạn có thể nhờ AI chấm chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA."],
+                strengths=ai_eval.get("strengths", [f"Đã hoàn thành bài viết thực tế với độ dài {words} từ."]),
+                weaknesses=ai_eval.get("weaknesses", ["Cần chú ý trau chuốt từ vựng học thuật và độ chính xác ngữ pháp."]),
                 questions=[],
-                recommended_drills=["Tập trung hoàn thiện 4 tiêu chí: Task Achievement, Coherence & Cohesion, Lexical Resource, GRA."]
+                recommended_drills=ai_eval.get("recommended_drills", [
+                    "Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing.",
+                    "Micro-session 35p: Mở rộng vốn từ học thuật thay cho các động từ lặp lại."
+                ]),
+                feedback=ai_eval.get("feedback")
             )
 
-            # Lưu vào PostgreSQL và tự động đồng bộ kế hoạch tuần
+            # Cập nhật trực tiếp bài viết vào file Markdown (SSOT)
+            target_file = markdown_updater.resolve_note_file(
+                source_file=state.source_file,
+                skill="writing",
+                attempt_text=raw_text
+            )
+            if target_file:
+                markdown_updater.update_writing_note(
+                    file_path=target_file,
+                    raw_text=raw_text,
+                    feedback=ai_eval.get("feedback")
+                )
+                state.evaluation.updated_file = os.path.relpath(target_file, settings.CONTENT_DIR).replace("\\", "/")
+
+            # Lưu vào PostgreSQL và tự động đồng bộ tiến độ kế hoạch tuần
             try:
                 from sqlmodel import Session
                 from app.core.database import engine
@@ -59,6 +86,9 @@ class EvaluatorAgent:
 
             return state
 
+        # =====================================================================
+        # 2. XỬ LÝ BÀI THI LISTENING / READING (Cú pháp Shorthand hoặc Bảng Đáp Án)
+        # =====================================================================
         parsed_items = markdown_parser.parse_test_shorthand(raw_text)
 
         if not parsed_items:
@@ -82,7 +112,7 @@ class EvaluatorAgent:
             exp = item.get("explanation")
 
             if has_any_key and correct_ans is not None:
-                # Đối chiếu khi có key
+                # Đối chiếu khi người học cung cấp key
                 total_graded += 1
                 if user_ans.strip().lower() == correct_ans.strip().lower():
                     is_corr = True
@@ -103,9 +133,10 @@ class EvaluatorAgent:
                 explanation=exp
             ))
 
-        # Tính toán phân số điểm & Band Score (CHỈ KHI CÓ ĐÁP ÁN CHÍNH THỨC)
+        # Khởi tạo nhận xét, điểm mạnh, điểm yếu & drills
         score_fraction: Optional[str] = None
         band_score: Optional[float] = None
+        feedback: Optional[str] = None
         strengths: List[str] = []
         weaknesses: List[str] = []
         drills: List[str] = []
@@ -113,13 +144,26 @@ class EvaluatorAgent:
         if has_any_key and total_graded > 0:
             score_fraction = f"{correct_count}/{len(questions)}"
             band_score = self._estimate_band_score(correct_count, len(questions), state.skill)
-            strengths.append(f"Hoàn thành đối soát {total_graded} câu hỏi trong bài.")
-            if correct_count < len(questions):
-                weaknesses.append("Một số câu mắc bẫy ngữ âm hoặc chuyển ý trong audio.")
-                drills.append("Micro-session 30 phút: Luyện nghe chính tả các cặp số/chữ cái và bẫy -teen/-ty.")
+            
+            # Gọi LLM chẩn đoán chuyên sâu các câu sai
+            diag = self._diagnose_mistakes_with_llm(questions, state.skill)
+            feedback = diag.get("feedback")
+            strengths = diag.get("strengths", [f"Hoàn thành đối soát {total_graded} câu hỏi trong bài."])
+            weaknesses = diag.get("weaknesses", [])
+            drills = diag.get("recommended_drills", [])
         else:
-            strengths.append("Đã ghi nhận đầy đủ danh sách câu trả lời của bạn vào hệ thống.")
-            weaknesses.append("Chưa có bảng đáp án chính thức từ người học để thực hiện chấm điểm.")
+            # Tuân thủ Nguyên Tắc Vàng khi chưa có key chính thức
+            strengths.append(f"Hệ thống đã lưu trữ trung thực {len(questions)} câu trả lời của bạn vào Bảng Đối Soát Bài Làm.")
+            weaknesses.append("Chưa có bảng đáp án chính thức từ người học để thực hiện chấm điểm và bóc tách bẫy.")
+            drills.append("Bước tiếp theo: Cung cấp bảng đáp án chính thức để kích hoạt chế độ chẩn đoán bẫy đề thi.")
+            feedback = (
+                f"🛡️ **Nguyên Tắc Vàng: Lưu Trữ Trung Thực Bài Làm**\n\n"
+                f"Hệ thống đã ghi nhận đầy đủ **{len(questions)} câu trả lời** của bạn "
+                f"vào Bảng Đối Soát Bài Làm trong ghi chú Markdown. Trợ lý AI **tuyệt đối không tự suy đoán điểm số** "
+                f"hay tự phán đoán đúng/sai khi chưa có đáp án chính thức từ bạn.\n\n"
+                f"👉 **Để mở khóa tính năng Chẩn Đoán Lỗi Sai & Nhận Xét Chuyên Sâu:** Hãy cung cấp đáp án chính thức "
+                f"bằng cú pháp tốc ký (ví dụ: `1 sai - đúng / lý do: nghe nhầm danh từ`)."
+            )
 
         state.evaluation = EvaluationOutput(
             score_fraction=score_fraction,
@@ -127,8 +171,23 @@ class EvaluatorAgent:
             strengths=strengths,
             weaknesses=weaknesses,
             questions=questions,
-            recommended_drills=drills
+            recommended_drills=drills,
+            feedback=feedback
         )
+
+        # Cập nhật trực tiếp Bảng Đối Soát Bài Làm trong file Markdown (SSOT)
+        target_file = markdown_updater.resolve_note_file(
+            source_file=state.source_file,
+            skill=state.skill,
+            attempt_text=raw_text
+        )
+        if target_file:
+            markdown_updater.update_test_table(
+                file_path=target_file,
+                questions=[q.model_dump() for q in questions],
+                has_official_key=has_any_key
+            )
+            state.evaluation.updated_file = os.path.relpath(target_file, settings.CONTENT_DIR).replace("\\", "/")
 
         # Lưu trung thực bài làm vào PostgreSQL và tự động đồng bộ kế hoạch tuần
         try:
@@ -170,6 +229,113 @@ class EvaluatorAgent:
             logger.error(f"Lỗi khi lưu bài làm hoặc đồng bộ kế hoạch: {e}", exc_info=True)
 
         return state
+
+    def _evaluate_writing_with_llm(self, raw_text: str) -> Dict[str, Any]:
+        """Gọi LLM phân tích bài viết IELTS theo 4 tiêu chí chuẩn TR/TA, CC, LR, GRA"""
+        from app.services.llm_service import llm_service
+        words = len(raw_text.strip().split())
+        try:
+            system_prompt = (
+                "Bạn là IELTS Senior Examiner và Writing Coach giàu kinh nghiệm. "
+                "Đánh giá bài viết của người học một cách chi tiết, thẳng thắn, mang tính xây dựng cao "
+                "theo 4 tiêu chí chuẩn IELTS Writing:\n"
+                "1. Task Achievement / Task Response (TR/TA)\n"
+                "2. Coherence & Cohesion (CC)\n"
+                "3. Lexical Resource (LR) - chỉ ra các từ sai chính tả, lỗi lặp từ và gợi ý từ vựng/collocations nâng cấp C1/Band 7.5+\n"
+                "4. Grammatical Range & Accuracy (GRA) - chỉ ra lỗi ngữ pháp cụ thể và cách sửa chuẩn từng câu.\n"
+                "Định dạng phản hồi bằng Markdown rõ ràng, chuyên nghiệp."
+            )
+            prompt = (
+                f"Dưới đây là bài viết IELTS của người học ({words} từ):\n\n"
+                f"---\n{raw_text}\n---\n\n"
+                f"Hãy phân tích và đưa ra:\n"
+                f"1. 📊 Đánh giá năng lực theo 4 tiêu chí IELTS (Nhận xét điểm mạnh & điểm yếu cụ thể)\n"
+                f"2. 🛠️ Bảng sửa lỗi ngữ pháp & câu viết chuẩn mẫu (ít nhất 2-3 câu nổi bật nhất)\n"
+                f"3. 🌟 Bản viết mẫu nâng cấp (Model Rewrite) cho 1 đoạn văn tiêu biểu\n"
+                f"4. 🎯 2-3 bài tập Micro-session (30-35 phút) trọng tâm tiếp theo."
+            )
+            feedback = llm_service.generate_text(prompt, system_message=system_prompt)
+            return {
+                "feedback": feedback,
+                "strengths": [
+                    f"Đã hoàn thành bài viết thực tế với độ dài {words} từ.",
+                    "Bài viết đã được lưu trữ an toàn vào hệ thống PKM."
+                ],
+                "weaknesses": [
+                    "Cần chú ý lỗi chia thì, thể bị động và sự hòa hợp chủ vị.",
+                    "Cần mở rộng vốn từ học thuật thay cho các động từ xu hướng lặp lại."
+                ],
+                "recommended_drills": [
+                    "Micro-session 30p: Luyện viết lại các câu có cấu trúc bị động nội động từ.",
+                    "Micro-session 35p: Thực hành Paraphrase các từ vựng chỉ xu hướng và số liệu."
+                ]
+            }
+        except Exception as e:
+            logger.warning(f"Không thể gọi LLM để chấm writing (sử dụng fallback): {e}")
+            return {
+                "feedback": (
+                    f"### 📝 Phản Hồi Bài Viết ({words} từ)\n\n"
+                    f"Bài viết của bạn đã được lưu trữ trung thực vào hệ thống PKM. "
+                    f"Bạn có thể kết nối Gemini API để xem phân tích chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA."
+                ),
+                "strengths": [f"Đã ghi nhận bài làm Writing ({words} từ) vào hệ thống PKM."],
+                "weaknesses": ["Bài viết đã được lưu trữ an toàn. Hãy mở bảng chẩn đoán để xem chi tiết."],
+                "recommended_drills": ["Tập trung hoàn thiện 4 tiêu chí: Task Achievement, Coherence & Cohesion, Lexical Resource, GRA."]
+            }
+
+    def _diagnose_mistakes_with_llm(
+        self,
+        questions: List[QuestionResult],
+        skill: str
+    ) -> Dict[str, Any]:
+        """Gọi LLM chẩn đoán bản chất bẫy đề thi và lỗi sai khi người học cung cấp đáp án chính thức"""
+        from app.services.llm_service import llm_service
+        wrong_questions = [q for q in questions if q.is_correct is False]
+        if not wrong_questions:
+            return {
+                "feedback": "🎉 **Xuất sắc!** Bạn đã làm đúng toàn bộ các câu hỏi trong phần đối soát này.",
+                "strengths": ["Khả năng bắt từ khóa và xử lý câu hỏi chuẩn xác."],
+                "weaknesses": [],
+                "recommended_drills": ["Duy trì tốc độ luyện tập 30-35 phút mỗi ngày."]
+            }
+
+        try:
+            wrong_summary = "\n".join([
+                f"- Câu {q.question_number}: Bạn làm '{q.user_answer}' | Đáp án đúng '{q.correct_answer}'"
+                for q in wrong_questions
+            ])
+            system_prompt = (
+                f"Bạn là IELTS Senior Examiner chuyên về kỹ năng {skill}. "
+                "Nhiệm vụ của bạn là phân tích các câu làm sai của người học, chỉ ra bản chất bẫy "
+                "(như bẫy âm -teen/-ty, singular/plural, paraphrase từ đồng nghĩa, distractor chuyển ý) "
+                "và đưa ra lời khuyên khắc phục súc tích, thực chiến."
+            )
+            prompt = (
+                f"Dưới đây là danh sách các câu làm sai trong bài thi IELTS {skill}:\n"
+                f"{wrong_summary}\n\n"
+                "Hãy đưa ra:\n"
+                "1. Điểm mạnh và điểm yếu tổng quan của người học\n"
+                "2. Phân tích nguyên nhân mắc bẫy của từng câu sai trên\n"
+                "3. 2 bài tập micro-session (30-35 phút) để khắc phục triệt để các bẫy này."
+            )
+            feedback = llm_service.generate_text(prompt, system_message=system_prompt)
+            return {
+                "feedback": feedback,
+                "strengths": [f"Hoàn thành đối soát {len(questions)} câu trong bài thi."],
+                "weaknesses": [f"Mắc bẫy ở {len(wrong_questions)} câu: chủ yếu về ngữ âm/paraphrase/bẫy chuyển ý."],
+                "recommended_drills": [
+                    f"Micro-session 30p: Nghe lại/Đọc lại đoạn văn chứa các câu sai ({', '.join([str(q.question_number) for q in wrong_questions[:5]])}).",
+                    "Micro-session 35p: Ghi chú các cặp từ paraphrase vào sổ từ vựng."
+                ]
+            }
+        except Exception as e:
+            logger.warning(f"Lỗi khi gọi LLM chẩn đoán lỗi sai {skill}: {e}")
+            return {
+                "feedback": None,
+                "strengths": [f"Hoàn thành đối soát {len(questions)} câu hỏi trong bài."],
+                "weaknesses": [f"Có {len(wrong_questions)} câu cần xem lại bẫy đề thi."],
+                "recommended_drills": ["Micro-session 30 phút: Luyện nghe chính tả / bóc tách keyword mapping."]
+            }
 
     @staticmethod
     def _estimate_band_score(correct: int, total: int, skill: str) -> float:
