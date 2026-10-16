@@ -19,14 +19,18 @@ tags:
 
 ---
 
-## 📑 Tài Liệu Đề Thi (Đọc Trực Tiếp Trên Web)
+## 📑 Đề Thi Viết (Hình Ảnh Sách Gốc Trang 31 – 32)
 
 <details open>
-<summary><b>📄 Đề Bài: Cambridge 18 - Test 1 Writing (Test1-write.pdf)</b></summary>
+<summary><b>📄 Đề Bài: Cambridge 18 - Test 1 Writing (Task 1 & Task 2)</b></summary>
 
-> 🔗 **Thao tác:** [↗️ Mở PDF trong tab mới](./assets/Test1-write.pdf) | [⬇️ Tải xuống PDF](./assets/Test1-write.pdf)
+### 🔹 Task 1: Line Graph (Trang 31)
 
-![[assets/Test1-write.pdf]]
+![Writing Task 1 - Trang 31](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080151/note_ai/Cambridge_18_page-0031.jpg)
+
+### 🔹 Task 2: Opinion Essay (Trang 32)
+
+![Writing Task 2 - Trang 32](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080176/note_ai/Cambridge_18_page-0032.jpg)
 
 </details>
 
@@ -44,7 +48,7 @@ tags:
 >
 > **Write at least 150 words.**
 
-![[assets/cam18-test1-writing-task1.jpg]]
+![Writing Task 1 Prompt (Trang 31)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080151/note_ai/Cambridge_18_page-0031.jpg)
 
 ---
 
@@ -244,6 +248,8 @@ tags:
 > _Give reasons for your answer and include any relevant examples from your own knowledge or experience._
 >
 > **Write at least 250 words.**
+
+![Writing Task 2 Prompt (Trang 32)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080176/note_ai/Cambridge_18_page-0032.jpg)
 
 ---
 

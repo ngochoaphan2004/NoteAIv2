@@ -19,24 +19,22 @@ tags:
 
 ---
 
-## 📑 Tài Liệu Đề Thi (Đọc Trực Tiếp Trên Web)
+## 📑 Tài Liệu Đề Thi (Hình Ảnh Sách Gốc Trang 27 – 30)
 
 <details open>
-<summary><b>📄 Đề Bài PDF & Hình Ảnh: Cambridge 18 - Test 1 Reading Passage 3</b></summary>
-
-> 🔗 **Thao tác nhanh:** [↗️ Mở Đề Reading Passage 3 trong tab mới](./assets/Test1-read-p3.pdf) | [⬇️ Tải xuống Đề PDF](./assets/Test1-read-p3.pdf)
+<summary><b>📄 Đề Bài: Cambridge 18 - Test 1 Reading Passage 3</b></summary>
 
 ### 📄 Bài Đọc (Passage Text - Conquering Earth's space junk problem)
 
-![[assets/cam18-test1-reading-p3-p1.jpg]]
+![Reading Passage 3 - Trang 27](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080072/note_ai/Cambridge_18_page-0027.jpg)
 
-![[assets/cam18-test1-reading-p3-p2.jpg]]
+![Reading Passage 3 - Trang 28](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080089/note_ai/Cambridge_18_page-0028.jpg)
 
 ### ❓ Câu Hỏi Đề Thi (Questions 27 – 40)
 
-![[assets/cam18-test1-reading-p3-p3.jpg]]
+![Reading Questions 27-35 - Trang 29](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080117/note_ai/Cambridge_18_page-0029.jpg)
 
-![[assets/cam18-test1-reading-p3-p4.jpg]]
+![Reading Questions 36-40 - Trang 30](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080134/note_ai/Cambridge_18_page-0030.jpg)
 
 </details>
 

@@ -19,16 +19,25 @@ tags:
 
 ## 1. 📚 Kho Sách Gốc & Đề Thi Chuẩn (Official Cambridge)
 
-### 📘 Sách Cambridge IELTS 18 (Full Bản Gốc PDF)
+### 📘 Sách Cambridge IELTS 18 Academic (Bản Gốc Chuẩn)
 
-> **Nội dung:** Trọn bộ 4 bài thi Academic (Listening, Reading, Writing, Speaking), Audio Transcripts, Đáp án chính thức và bài mẫu Writing chấm bởi giám khảo Examiner.  
-> **Dung lượng:** `52.4 MB`  
-> 🔗 **Thao tác:** [↗️ Mở Cambridge 18 trong tab mới](./assets/Cambridge-18.pdf) | [⬇️ Tải xuống Cambridge 18 Full PDF](./assets/Cambridge-18.pdf)
+> **Nội dung:** Trọn bộ 4 bài thi Academic (Listening, Reading, Writing, Speaking), Audio Transcripts, Đáp án chính thức và bài mẫu Writing chấm bởi giám khảo Cambridge.  
+> **Định dạng trực tuyến:** 100% hình ảnh số hóa độ phân giải cao lưu trữ trên Cloudinary CDN, tải nhanh trên mọi thiết bị.
 
-<details>
-<summary><b>📖 Đọc trực tuyến Sách Cambridge IELTS 18 (Full 144 Trang)</b></summary>
+<details open>
+<summary><b>📖 Đọc Trực Tuyến Tổng Quan Sách Cambridge IELTS 18</b></summary>
 
-![[assets/Cambridge-18.pdf]]
+### 🔹 Bìa Sách & Giới Thiệu
+
+![Cambridge IELTS 18 Academic Cover](https://res.cloudinary.com/s4olr6lv/image/upload/v1792078109/note_ai/Cambridge_18_page-0001.jpg)
+
+### 🔹 Resource Bank (Mã QR Tải Audio & Video Speaking)
+
+![Cambridge IELTS 18 Resource Bank](https://res.cloudinary.com/s4olr6lv/image/upload/v1792078235/note_ai/Cambridge_18_page-0002.jpg)
+
+### 🔹 Mục Lục & Cấu Trúc Đề Thi (Contents)
+
+![Cambridge IELTS 18 Contents](https://res.cloudinary.com/s4olr6lv/image/upload/v1792078767/note_ai/Cambridge_18_page-0005.jpg)
 
 </details>
 

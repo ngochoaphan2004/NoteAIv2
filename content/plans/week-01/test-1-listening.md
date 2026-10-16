@@ -12,24 +12,54 @@ tags:
 # 🎧 Bài Làm: Cambridge 18 - Test 1 Listening
 
 > **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]] — Phiên Hôm Nay: Thứ 4 (14/10)  
-> **Tài liệu gốc:** `content/assets/Test1.pdf` & `content/assets/Test1-script.pdf`  
+> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Listening Test 1 — Trang 12–17 & Audioscript Trang 101–105)  
 > **Mục đích:** Bảng làm bài thi sạch sẽ, tích hợp nhập nhanh 40 câu, tính giờ và lưu trữ trung thực.
 
 ---
 
-## 📑 Tài Liệu Đính Kèm (Đọc Trực Tiếp Trên Web)
+## 📑 Đề Thi & Lời Thoại (Hình Ảnh Trực Tiếp Từ Sách Gốc)
 
 <details open>
-<summary><b>📄 1. Đề Bài: Cambridge 18 - Test 1 Listening (Test1.pdf)</b></summary>
+<summary><b>📄 1. Đề Bài: Cambridge 18 - Test 1 Listening (Trang 12 – 17)</b></summary>
 
-![[assets/Test1.pdf]]
+### 🔹 Part 1: Questions 1 – 10 (Travel survey)
+
+![Test 1 Listening - Part 1 Trang 12](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079203/note_ai/Cambridge_18_page-0012.jpg)
+
+![Test 1 Listening - Part 1 Trang 13](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079227/note_ai/Cambridge_18_page-0013.jpg)
+
+### 🔹 Part 2: Questions 11 – 20 (Voluntary work)
+
+![Test 1 Listening - Part 2 Trang 14](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079253/note_ai/Cambridge_18_page-0014.jpg)
+
+### 🔹 Part 3: Questions 21 – 30 (Talk on job in fashion design)
+
+![Test 1 Listening - Part 3 Trang 15](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079390/note_ai/Cambridge_18_page-0015.jpg)
+
+![Test 1 Listening - Part 3 Trang 16](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079829/note_ai/Cambridge_18_page-0016.jpg)
+
+### 🔹 Part 4: Questions 31 – 40 (Elephant communication & behavior)
+
+![Test 1 Listening - Part 4 Trang 17](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079847/note_ai/Cambridge_18_page-0017.jpg)
 
 </details>
 
 <details>
-<summary><b>📜 2. Audio Script: Lời Thoại Test 1 Listening (Test1-script.pdf) - Mở sau khi làm bài</b></summary>
+<summary><b>📜 2. Audio Script: Lời Thoại Test 1 Listening (Trang 101 – 105) - Mở sau khi làm bài</b></summary>
 
-![[assets/Test1-script.pdf]]
+### 📝 Audioscript Part 1 & Part 2
+
+![Audioscript Part 1 Trang 101](https://res.cloudinary.com/s4olr6lv/image/upload/v1792081735/note_ai/Cambridge_18_page-0101.jpg)
+
+![Audioscript Part 2 Trang 102](https://res.cloudinary.com/s4olr6lv/image/upload/v1792081763/note_ai/Cambridge_18_page-0102.jpg)
+
+### 📝 Audioscript Part 3 & Part 4
+
+![Audioscript Part 2-3 Trang 103](https://res.cloudinary.com/s4olr6lv/image/upload/v1792081955/note_ai/Cambridge_18_page-0103.jpg)
+
+![Audioscript Part 3-4 Trang 104](https://res.cloudinary.com/s4olr6lv/image/upload/v1792081984/note_ai/Cambridge_18_page-0104.jpg)
+
+![Audioscript Part 4 Trang 105](https://res.cloudinary.com/s4olr6lv/image/upload/v1792082008/note_ai/Cambridge_18_page-0105.jpg)
 
 </details>
 
