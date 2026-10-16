@@ -2,6 +2,8 @@ import os
 import re
 import glob
 import logging
+import subprocess
+import threading
 from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
 from typing import Dict, Any, List, Optional
@@ -256,6 +258,8 @@ class PlanService:
     ) -> bool:
         logger.info(f"[PLAN SYNC] Ghi nhận bài nộp skill='{skill}', source='{source_file}'. Đồng bộ lại kế hoạch...")
         res = self.sync_all_plans()
+        if res.get("updated_files"):
+            threading.Thread(target=rebuild_quartz, daemon=True).start()
         return len(res.get("updated_files", [])) > 0
 
     def get_today_task_summary(self) -> Dict[str, Any]:
@@ -347,3 +351,42 @@ class PlanService:
         }
 
 plan_service = PlanService()
+
+
+def rebuild_quartz() -> bool:
+    """
+    Tự động biên dịch lại Quartz HTML tĩnh vào thư mục public/.
+    Hoạt động cả trên máy chủ Linux/VPS (nơi cài Node.js) và môi trường cục bộ.
+    """
+    try:
+        content_dir = settings.CONTENT_DIR
+        candidate_roots = [
+            os.path.dirname(os.path.abspath(content_dir)),
+            "/opt/noteai",
+            os.getcwd()
+        ]
+        root_dir = None
+        for cand in candidate_roots:
+            if cand and os.path.exists(os.path.join(cand, "quartz.config.ts")):
+                root_dir = cand
+                break
+
+        if not root_dir:
+            logger.warning("[QUARTZ BUILD] Không tìm thấy thư mục cấu hình quartz.config.ts. Bỏ qua rebuild.")
+            return False
+
+        logger.info(f"[QUARTZ BUILD] Đang tự động biên dịch lại Quartz HTML tĩnh tại {root_dir}...")
+        npx_bin = "npx.cmd" if os.name == "nt" else "npx"
+        res = subprocess.run([npx_bin, "quartz", "build"], cwd=root_dir, capture_output=True, text=True, timeout=90)
+        if res.returncode == 0:
+            logger.info("[QUARTZ BUILD] Biên dịch Quartz thành công 100%! Giao diện web tĩnh đã được làm mới.")
+            return True
+        else:
+            logger.warning(f"[QUARTZ BUILD] Biên dịch thất bại (code {res.returncode}): {res.stderr[:200]}")
+            return False
+    except FileNotFoundError:
+        logger.warning("[QUARTZ BUILD] Không tìm thấy lệnh 'npx'. Bỏ qua build Quartz tĩnh.")
+        return False
+    except Exception as e:
+        logger.warning(f"[QUARTZ BUILD] Ngoại lệ khi chạy npx quartz build: {e}")
+        return False

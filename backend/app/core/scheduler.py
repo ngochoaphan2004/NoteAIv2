@@ -186,11 +186,17 @@ class CronSchedulerService:
         # -------------------------------------------------------------
         try:
             logs.append("🗓️ [4/4] Tự động đồng bộ kế hoạch học tập theo ngày và tiến độ làm bài...")
-            from app.services.plan_service import plan_service
+            from app.services.plan_service import plan_service, rebuild_quartz
             plan_res = plan_service.sync_all_plans()
             updated = plan_res.get("updated_files", [])
             if updated:
                 logs.append(f"  ✅ Đã tự động cập nhật kế hoạch cho {len(updated)} file: {', '.join(updated)}")
+                # Tự động biên dịch lại Quartz HTML tĩnh (Web Preview) ngay trên server
+                rebuilt = rebuild_quartz()
+                if rebuilt:
+                    logs.append("  🌱 [QUARTZ] Đã tự động biên dịch lại toàn bộ giao diện HTML tĩnh thành công!")
+                else:
+                    logs.append("  ⚠️ [QUARTZ] Biên dịch web tĩnh chưa hoàn tất hoặc npx chưa sẵn sàng.")
             else:
                 logs.append(f"  ✅ Kế hoạch học tập ngày {plan_res.get('today')} đã đồng bộ chuẩn mực.")
         except Exception as e:
