@@ -139,49 +139,12 @@ tags:
 
 ### 🔬 4. Phân Tích & Chẩn Đoán Chi Tiết Task 1 (Diagnostic Feedback)
 
-#### 📊 Đánh Giá Năng Lực Theo 4 Tiêu Chí IELTS (Ước Lượng Band 4.5 – 5.0)
-
-| Tiêu Chí Chấm Điểm                     |  Ước Lượng  | Điểm Mạnh Đạt Được                                                                                         | Điểm Yếu Cần Khắc Phục Gấp                                                                                                                                                                                  |
-| :------------------------------------- | :---------: | :--------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Task Achievement (TA)**              | `4.5 - 5.0` | Đạt độ dài (198 từ > 150 từ); nhận diện được xu hướng tăng chung của 4 quốc gia; có đề cập số liệu cụ thể. | **Sai lệch số liệu nghiêm trọng:** Nhầm Malaysia giảm 10% (thực tế Philippines mới giảm); nhầm Malaysia 2040 đạt 60% (thực tế > 80%). Viết 2 lần Overview (đoạn 2 và đoạn 5).                               |
-| **Coherence & Cohesion (CC)**          |    `4.5`    | Đã biết chia 5 đoạn cơ bản (Mở bài, Tổng quan, 2 Thân bài, Kết bài).                                       | Dùng liên từ cơ học, gượng gạo (_In specific, Otherwise, With Thailand was started_); lặp từ _And_ ở đầu câu 3 lần; các câu rời rạc thiếu liên kết logic.                                                   |
-| **Lexical Resource (LR)**              | `4.0 - 4.5` | Có sử dụng một số từ chỉ số liệu (_percentage, significantly, smoothly, highest_).                         | Lặp lại động từ _increase_ 9 lần; sai chính tả nhiều từ cơ bản (_popullation, cites, inscrease, ThaiLan, acchive_); sai collocations (_highest increase, pass over_).                                       |
-| **Grammatical Range & Accuracy (GRA)** |    `4.0`    | Cố gắng viết câu ghép và câu phức với liên từ phụ thuộc.                                                   | **Lỗi hệ thống về thể bị động và thì:** Dùng sai bị động nội động từ (_has been increased, was started_); sai động từ khiếm khuyết (_will be increase_); thì quá khứ chia thiếu đuôi _-ed_ (_pass, start_). |
-
----
-
-#### 🛠️ Bảng Bóc Tách Sửa Lỗi Ngữ Pháp & Cấu Trúc Từng Câu (Sentence-by-Sentence Breakdown)
-
-|   #    | Câu Gốc Của Bạn                                                                                                                                                           | Lỗi Phát Hiện                                                                                                                                                                                                                  | Câu Sửa Chuẩn (Correction)                                                                                                                                                        | Nguyên Lý Ngữ Pháp & Mẹo Khắc Phục                                                                                                                                             |
-| :----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1**  | _The percent of the population in four Asian countries living in cities has been increased for 50 years from 1970 to 2020._                                               | • _has been increased_: Sai bị động. Dân số tự tăng, không bị ai tăng.<br>• _percent_: Nên dùng _percentage_ hoặc _proportion_.                                                                                                | _The percentage of the population living in urban areas across four Asian countries increased over a 50-year period from 1970 to 2020._                                           | **Nguyên tắc vàng:** Các động từ xu hướng như _increase, rise, fall, decline, fluctuate_ là **nội động từ (intransitive)**, tuyệt đối không chia bị động (_was increased_ ❌). |
-| **2**  | _And popullation of the next 20 years will be increase significantly._                                                                                                    | • Bắt đầu câu bằng _And_.<br>• _popullation_: Sai chính tả.<br>• _will be increase_: Sai sau _will be_ phải là V-ing hoặc V3/ed.<br>• _of the next 20 years_: Dùng sai giới từ.                                                | _Furthermore, these figures are projected to rise significantly over the subsequent two decades._                                                                                 | Sau động từ khiếm khuyết _will_, dùng động từ nguyên mẫu: _will increase_ hoặc dùng cấu trúc dự báo học thuật: _is projected to rise_.                                         |
-| **3**  | _Overall, the population of four countries living in cities are increase. Malaysia and Indonesia are the highest increase._                                               | • _are increase_: Sai ngữ pháp nghiêm trọng.<br>• _are the highest increase_: Sai ngữ nghĩa danh từ.                                                                                                                           | _Overall, urban populations in all four nations showed an upward trend, with Malaysia and Indonesia experiencing the most dramatic growth._                                       | Dùng cụm diễn đạt tự nhiên: _experienced the most substantial growth_ thay vì dịch thô từ tiếng Việt "là sự tăng cao nhất".                                                    |
-| **4**  | _In 1990, Malaysia was the highest percentage of population living in cites. But it has been decreased 10% just for 20 years._                                            | • _was the highest percentage_: Nước không phải là phần trăm.<br>• _cites_: Sai chính tả.<br>• _decreased 10%_: Sai thông tin biểu đồ! Malaysia không giảm, Philippines mới giảm.                                              | _In 1990, Malaysia had the highest proportion of city dwellers. In contrast, the figure for the Philippines declined by approximately 5% over the following two decades._         | Cấu trúc chuẩn: _Country X had the highest proportion of..._ hoặc _The proportion of ... was highest in Country X_.                                                            |
-| **5**  | _In specific, Malaysia has 30% population in 1970 and it pass over Philippines in 1990 (45%) and pass over 70% in 2010._                                                  | • _In specific_: Không dùng trong IELTS. Dùng _Specifically_ hoặc _Looking at the details_.<br>• _has, pass_: Sai thì quá khứ.<br>• _pass over_: Sai nghĩa (pass over = bỏ qua). Vượt qua là _surpassed_ hoặc _overtook_.      | _Specifically, 30% of Malaysia's population lived in cities in 1970, before the figure surpassed that of the Philippines in 1990 (at about 45%) and exceeded 70% by 2010._        | Dùng mệnh đề quan hệ rút gọn hoặc liên từ _before + V-ing_ để kết nối 2 hành động liên tiếp thay vì dùng nhiều từ _and_.                                                       |
-| **6**  | _And in spire, it will increase over 60% in 2040._                                                                                                                        | • _in spire_: Sai chính tả/từ vựng.<br>• _over 60%_: Sai số liệu! Malaysia năm 2040 đạt trên 80%.                                                                                                                              | _By 2040, this proportion is projected to climb further to over 80%._                                                                                                             | Dùng cụm giới từ chỉ mốc tương lai: _By [năm], [S] is predicted / projected / expected to [V]_.                                                                                |
-| **7**  | _Otherwise, Indonesia was started just 13% in 1970 and it inscrease smoothly in 2000. It pass ThaiLan and Philippines to acchive over 50% in 2020, and over 60% in 2040._ | • _Otherwise_: Dùng sai từ nối (Otherwise = nếu không thì).<br>• _was started_: Bị động sai.<br>• _inscrease, ThaiLan, acchive_: Lỗi chính tả.<br>• _pass_: Sai thì.                                                           | _Meanwhile, Indonesia started at merely 13% in 1970 and grew steadily before surging past Thailand and the Philippines to reach over 50% in 2020 and an anticipated 60% in 2040._ | Thay liên từ: dùng _Meanwhile_ hoặc _Regarding Indonesia_ khi chuyển sang đối tượng mới.                                                                                       |
-| **8**  | _With Thailand was started 20% in 1970. It has keep the inscrease speed smoothly but it slower than any countries else._                                                  | • _With Thailand was started_: Câu gãy ngữ pháp (Sentence fragment).<br>• _has keep the inscrease speed smoothly_: Sai collocations.<br>• _slower than any countries else_: Sai so sánh hơn (_slower than any other country_). | _Thailand started at nearly 20% in 1970 and maintained steady growth, albeit at a slower pace than the other countries._                                                          | Cấu trúc cao cấp với _albeit_ (mặc dù): _maintained steady growth, albeit at a slower pace_.                                                                                   |
-| **9**  | _For Philippines, it start with highest percentage over 32% in 1970 and it pass 50% in 1990._                                                                             | • _it start, pass_: Thiếu đuôi thì quá khứ _-ed_.<br>• _highest_: Thiếu mạo từ _the_.                                                                                                                                          | _Finally, the Philippines initially had the highest percentage at 32% in 1970 and crossed the 50% mark by 1990._                                                                  | Đa dạng hóa từ vựng: _crossed the 50% threshold / mark_ (vượt qua ngưỡng 50%).                                                                                                 |
-| **10** | _Overrall all of four countries have been increase in 50 years, and its keep increase in the next 20%._                                                                   | • _Overrall_: Sai chính tả và thừa (đã có Overview ở đoạn 2).<br>• _its keep increase_: Sai ngữ pháp.<br>• _next 20%_: Nhầm lẫn giữa 20 năm (_20 years_) và 20%.                                                               | _(Đoạn này nên bỏ hoàn toàn để tránh lặp Overview)._                                                                                                                              | **Quy tắc IELTS Task 1:** Tuyệt đối không viết 2 đoạn Overview. Chỉ viết 1 Overview duy nhất đặt ngay sau Introduction.                                                        |
-
----
-
-#### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 198 từ)
+#### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 0 từ)
 
 > [!NOTE]
-> **Trạng thái:** Đã nộp bài lúc 15:10 | **Độ dài:** 198 từ _(Đạt chỉ tiêu ≥ 150 từ)_  
-> **Nguyên văn bài làm của bạn:**
+> **Trạng thái:** Chưa nộp bài Task 1 | **Mục tiêu:** ≥ 150 từ
 >
-> "The percent of the population in four Asian countries living in cities has been increased for 50 years from 1970 to 2020. And popullation of the next 20 years will be increase significantly.
->
-> Overall, the population of four countries living in cities are increase. Malaysia and Indonesia are the highest increase. In 1990, Malaysia was the highest percentage of population living in cites. But it has been decreased 10% just for 20 years.
->
-> In specific, Malaysia has 30% population in 1970 and it pass over Philippines in 1990 (45%) and pass over 70% in 2010. And in spire, it will increase over 60% in 2040. Otherwise, Indonesia was started just 13% in 1970 and it inscrease smoothly in 2000. It pass ThaiLan and Philippines to acchive over 50% in 2020, and over 60% in 2040.
->
-> With Thailand was started 20% in 1970. It has keep the inscrease speed smoothly but it slower than any countries else. And it pass 50% in 2040. For Philippines, it start with highest percentage over 32% in 1970 and it pass 50% in 1990.
->
-> Overrall all of four countries have been increase in 50 years, and its keep increase in the next 20%."
+> _Hãy viết bài vào Khung Ghi Nhận Bài Viết Task 1 ở trên và nhấn "🚀 Gửi Bài Viết Cho AI" để đối soát và nhận chẩn đoán tại đây._
 
 ---
 
@@ -292,16 +255,16 @@ tags:
   <div class="ielts-stats-bar">
     <div class="ielts-stat-item">
       <span class="ielts-stat-label">Số từ:</span>
-      <span class="ielts-stat-val ielts-word-count">29 từ</span>
-      <span class="ielts-progress-pill ielts-pill-warn">⚠️ Đang phác thảo Mở bài (29/250 từ)</span>
+      <span class="ielts-stat-val ielts-word-count">0 từ</span>
+      <span class="ielts-progress-pill">Mục tiêu: 250 từ</span>
     </div>
     <div class="ielts-save-indicator">
-      <span class="ielts-save-text">🟢 Đã lưu vào bài làm hệ thống</span>
+      <span class="ielts-save-text">🟢 Tự động lưu LocalStorage</span>
     </div>
   </div>
 
   <div class="ielts-editor-wrapper">
-    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài nghị luận Task 2 của bạn tại đây...">In the human history, people have been invest many things by science. Its can improve people's live example vaccin, information technology, ... In my oppinion, I agree with the statement</textarea>
+    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài nghị luận Task 2 của bạn tại đây..."></textarea>
   </div>
 
   <div class="ielts-card-actions">
@@ -325,27 +288,12 @@ tags:
 
 ### 🔬 3. Phân Tích & Chẩn Đoán Chi Tiết Task 2 (Diagnostic Feedback)
 
-#### 📝 Bài Làm Thực Tế Task 2 (Lưu Trữ Nguyên Bản - 29 từ)
+#### 📝 Bài Làm Thực Tế Task 2 (Lưu Trữ Nguyên Bản - 0 từ)
 
 > [!NOTE]
-> **Độ dài hiện tại:** 29 từ | **Mục tiêu:** ≥ 250 từ _(Đang ở giai đoạn Mở bài)_  
-> **Nguyên văn bài làm của bạn:**
+> **Trạng thái:** Chưa nộp bài Task 2 | **Mục tiêu:** ≥ 250 từ
 >
-> "In the human history, people have been invest many things by science. Its can improve people's live example vaccin, information technology, ... In my oppinion, I agree with the statement"
-
----
-
-#### 📌 Nhận Xét Đoạn Phác Thảo Hiện Tại (29 từ)
-
-Đoạn văn 29 từ của bạn hiện đóng vai trò là **Mở bài (Introduction)**. Để đạt điểm trong Task 2, bạn cần phát triển bài viết thành một bài luận hoàn chỉnh gồm **4 đoạn (Introduction, Body 1, Body 2, Conclusion)** với độ dài tối thiểu **250 từ**.
-
-#### 🛠️ Bảng Sửa Lỗi Ngữ Pháp & Chính Tả Trong Đoạn Mở Bài Của Bạn
-
-| Câu Gốc Của Bạn                                                             | Lỗi Ngữ Pháp / Chính Tả                                                                                                                                                                                                            | Câu Chuẩn Học Thuật Band 7.5+                                                                                                                  | Giải Thích Chi Tiết                                                                                                                                  |
-| :-------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| _In the human history, people have been invest many things by science._     | • _the human history_: Thừa mạo từ _the_.<br>• _have been invest_: Sai thì (thừa _been_ nếu chủ động).<br>• _invest many things by science_: Dùng sai từ vựng (_invest_ là đầu tư tài chính; ở đây ý bạn là phát minh/chế tạo).    | _Throughout human history, scientific advancements have yielded numerous groundbreaking innovations._                                          | Dùng cụm chuẩn: _Throughout human history_ (Xuyên suốt lịch sử nhân loại) và danh từ học thuật _scientific advancements_ làm chủ ngữ.                |
-| _Its can improve people's live example vaccin, information technology, ..._ | • _Its_: Sai tính từ sở hữu làm chủ ngữ.<br>• _people's live_: Sai số ít (_live_ thay vì số nhiều _lives_).<br>• _example ... , ..._: Tuyệt đối không dùng dấu ba chấm `...` trong IELTS.<br>• _vaccin_: Sai chính tả (thiếu 'e'). | _These breakthroughs, ranging from vaccines to information technology, have substantially enhanced human well-being._                          | Cấu trúc phân từ liệt kê: _ranging from A to B_ thay cho _example ..._. Thay _improve_ bằng cụm nâng cấp: _substantially enhanced human well-being_. |
-| _In my oppinion, I agree with the statement_                                | • _oppinion_: Sai chính tả (thừa chữ 'p').<br>• Thiếu luận điểm rõ ràng (_Thesis statement_).                                                                                                                                      | _In my opinion, I completely agree with the notion that the foremost objective of scientific endeavor should be the betterment of human life._ | Nâng cấp luận điểm: thay _agree with the statement_ bằng cách diễn đạt lại ý kiến của đề bài để ăn điểm Lexical Resource.                            |
+> _Hãy viết bài vào Khung Ghi Nhận Bài Viết Task 2 ở trên và nhấn "🚀 Gửi Bài Viết Cho AI" để đối soát và nhận chẩn đoán tại đây._
 
 ---
 
@@ -367,9 +315,9 @@ tags:
 
 ## 📌 Không Gian Tự Đánh Giá & Ghi Chú Của Bạn
 
-- **Những từ vựng/cấu trúc mô tả xu hướng đã vận dụng hiệu quả:** Đã sử dụng được các mốc thời gian và so sánh cơ bản (_highest, significantly, smoothly_).
-- **Khó khăn gặp phải khi lựa chọn số liệu nổi bật:** Cần chú ý đọc kỹ ký hiệu đường biểu đồ để tránh nhầm lẫn giữa Malaysia và Philippines.
-- **Quy tắc ngữ pháp cần ghi nhớ:** Không bao giờ chia bị động cho động từ xu hướng (_increased, rose, fell_); sau _will_ dùng động từ nguyên mẫu (_will increase_).
+- **Những từ vựng/cấu trúc mô tả xu hướng đã vận dụng hiệu quả:** _(Ghi chú sau khi hoàn thành bài viết)_
+- **Khó khăn gặp phải khi lựa chọn số liệu nổi bật:** _(Ghi chú sau khi hoàn thành bài viết)_
+- **Quy tắc ngữ pháp cần ghi nhớ:** _(Ghi chú sau khi hoàn thành bài viết)_
 
 ---
 
