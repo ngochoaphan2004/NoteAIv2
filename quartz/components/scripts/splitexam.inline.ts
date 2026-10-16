@@ -4,7 +4,7 @@ let currentZoom = 95;
 
 function getExamDetailsList(): HTMLDetailsElement[] {
   const allDetails = Array.from(
-    document.querySelectorAll<HTMLDetailsElement>("article details, .center details"),
+    document.querySelectorAll<HTMLDetailsElement>("article details, .center details, details"),
   );
   // Filter for details that contain images or have class ielts-exam-prompt
   return allDetails.filter((d) => {
@@ -27,8 +27,15 @@ function setSplitRatio(leftPct: number) {
   document.documentElement.style.setProperty("--split-left-width", `${leftPct}%`);
   document.documentElement.style.setProperty("--split-right-width", `${rightPct}%`);
 
+  const centerEl = document.querySelector<HTMLElement>(".center");
+  if (centerEl && isSplitExamActive) {
+    centerEl.style.width = `${leftPct}%`;
+    centerEl.style.maxWidth = `${leftPct}%`;
+  }
+
   const panel = document.getElementById("split-exam-panel");
   if (panel) {
+    panel.style.width = `${rightPct}%`;
     const ratioBtns = panel.querySelectorAll<HTMLButtonElement>(".split-ratio-group .split-tool-btn");
     ratioBtns.forEach((btn) => {
       const r = parseInt(btn.dataset.ratio || "50", 10);
@@ -55,7 +62,7 @@ function showToast(message: string) {
     font-size: 0.82rem;
     font-weight: 500;
     box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    z-index: 9999;
+    z-index: 99999;
     backdrop-filter: blur(10px);
     transition: opacity 0.25s ease;
   `;
@@ -72,6 +79,15 @@ function exitSplitExamMode() {
   isSplitExamActive = false;
   document.documentElement.setAttribute("split-mode", "off");
 
+  // Restore center column width
+  const centerEl = document.querySelector<HTMLElement>(".center");
+  if (centerEl) {
+    centerEl.style.width = "";
+    centerEl.style.maxWidth = "";
+    centerEl.style.height = "";
+    centerEl.style.overflowY = "";
+  }
+
   // Restore hidden original details
   const allDetails = document.querySelectorAll<HTMLDetailsElement>("details.split-projected");
   allDetails.forEach((d) => d.classList.remove("split-projected"));
@@ -80,9 +96,13 @@ function exitSplitExamMode() {
   const notice = document.querySelector(".split-left-notice");
   if (notice) notice.remove();
 
-  // Clear cloned images in right panel
-  const imagesContent = document.querySelector(".split-images-content");
-  if (imagesContent) imagesContent.innerHTML = "";
+  // Hide right panel
+  const panel = document.getElementById("split-exam-panel");
+  if (panel) {
+    panel.style.display = "none";
+    const imagesContent = panel.querySelector(".split-images-content");
+    if (imagesContent) imagesContent.innerHTML = "";
+  }
 }
 
 function activateSplitExamMode(targetIndex: number = 0) {
@@ -96,19 +116,28 @@ function activateSplitExamMode(targetIndex: number = 0) {
   currentActiveDetailsIndex = Math.min(Math.max(0, targetIndex), detailsList.length - 1);
   document.documentElement.setAttribute("split-mode", "on");
 
+  // Mount directly to document.body for guaranteed top-level fixed placement
   let panel = document.getElementById("split-exam-panel");
-  const quartzBody = document.getElementById("quartz-body");
-  if (!panel && quartzBody) {
+  if (!panel) {
     panel = document.createElement("div");
     panel.id = "split-exam-panel";
-    quartzBody.appendChild(panel);
+    document.body.appendChild(panel);
   }
 
-  if (!panel) return;
+  panel.style.display = "flex";
 
   // Set default ratio & zoom
   setSplitRatio(50);
   updateZoom(currentZoom);
+
+  // Apply explicit dimensions to .center
+  const centerEl = document.querySelector<HTMLElement>(".center");
+  if (centerEl) {
+    centerEl.style.width = "50%";
+    centerEl.style.maxWidth = "50%";
+    centerEl.style.height = "100vh";
+    centerEl.style.overflowY = "auto";
+  }
 
   // Render Panel Structure
   panel.innerHTML = `
@@ -155,7 +184,7 @@ function activateSplitExamMode(targetIndex: number = 0) {
   btnZoomIn?.addEventListener("click", () => updateZoom(currentZoom + 10));
   btnZoomOut?.addEventListener("click", () => updateZoom(currentZoom - 10));
 
-  // Render Tabs
+  // Render Tabs & Images
   const tabsWrap = panel.querySelector<HTMLElement>(".split-tabs-wrap");
   const imagesContent = panel.querySelector<HTMLElement>(".split-images-content");
 
@@ -218,7 +247,6 @@ function activateSplitExamMode(targetIndex: number = 0) {
   renderActiveDetails();
 
   // Add notification pill in left column
-  const centerEl = document.querySelector(".center");
   if (centerEl && !centerEl.querySelector(".split-left-notice")) {
     const notice = document.createElement("div");
     notice.className = "split-left-notice";
@@ -316,5 +344,24 @@ document.addEventListener("nav", () => {
   };
   window.addEventListener("message", onMessage);
   window.addCleanup(() => window.removeEventListener("message", onMessage));
-});
 
+  // 7. Notify parent React SPA on scroll so top bars can auto-hide
+  let lastScrollY = window.scrollY;
+  const onScroll = () => {
+    const curY = window.scrollY;
+    const isScrollingDown = curY > lastScrollY && curY > 30;
+    lastScrollY = curY;
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage(
+        {
+          type: "IFRAME_SCROLL_STATE",
+          isScrollingDown,
+          scrollY: curY,
+        },
+        "*",
+      );
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addCleanup(() => window.removeEventListener("scroll", onScroll));
+});

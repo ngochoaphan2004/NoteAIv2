@@ -46,7 +46,7 @@
   fill: color-mix(in srgb, var(--secondary) 15%, transparent);
 }
 
-/* 2. Global Viewport Lock when in Split Mode */
+/* 2. Global Viewport Layout when in Split Mode */
 :root[split-mode="on"] {
   overflow: hidden !important;
   height: 100vh !important;
@@ -60,7 +60,8 @@
     padding: 0 !important;
   }
 
-  #quartz-root.page {
+  #quartz-root.page,
+  .page {
     overflow: hidden !important;
     height: 100vh !important;
     max-width: 100vw !important;
@@ -69,37 +70,25 @@
     margin: 0 !important;
   }
 
-  #quartz-body {
-    display: flex !important;
-    flex-direction: row !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    gap: 0 !important;
-  }
-
-  /* Temporarily hide Left & Right Sidebars */
+  /* Temporarily hide Left & Right Sidebars and Footers */
   .left.sidebar,
-  .right.sidebar {
+  .right.sidebar,
+  .page-footer,
+  footer {
     display: none !important;
   }
 
   /* Left Column: The Current Open Markdown Note */
   .center {
-    flex: 0 0 var(--split-left-width, 50%) !important;
     width: var(--split-left-width, 50%) !important;
     max-width: var(--split-left-width, 50%) !important;
+    min-width: var(--split-left-width, 50%) !important;
     height: 100vh !important;
     max-height: 100vh !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    padding: 1.25rem 2rem 3rem 2rem !important;
+    padding: 1.25rem 2.5rem 3rem 2.5rem !important;
     margin: 0 !important;
-    border-right: 1.5px solid var(--lightgray) !important;
     box-sizing: border-box !important;
     background: var(--light) !important;
   }
@@ -110,7 +99,7 @@
   }
 }
 
-/* 3. Right Column: Designated Exam Prompt Panel */
+/* 3. Right Column: Dedicated Fixed Split Exam Panel (Always Visible) */
 #split-exam-panel {
   display: none;
 }
@@ -118,15 +107,19 @@
 :root[split-mode="on"] #split-exam-panel {
   display: flex !important;
   flex-direction: column !important;
-  flex: 0 0 var(--split-right-width, 50%) !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   width: var(--split-right-width, 50%) !important;
-  max-width: var(--split-right-width, 50%) !important;
   height: 100vh !important;
   max-height: 100vh !important;
-  overflow: hidden !important;
+  z-index: 9999 !important;
   background-color: color-mix(in srgb, var(--light) 97%, var(--lightgray) 3%) !important;
+  border-left: 2px solid var(--lightgray) !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1) !important;
   box-sizing: border-box !important;
-  position: relative !important;
+  overflow: hidden !important;
 }
 
 /* Top Toolbar for Right Panel */
@@ -359,4 +352,3 @@
   color: var(--secondary);
   font-weight: 500;
 }
-
