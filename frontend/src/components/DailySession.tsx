@@ -38,6 +38,26 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const iframeContainerRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
+  const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const showToolbar = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    setIsToolbarVisible(true);
+  };
+
+  const scheduleHideToolbar = (delayMs: number = 400) => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+    }
+    hideTimerRef.current = setTimeout(() => {
+      setIsToolbarVisible(false);
+      hideTimerRef.current = null;
+    }, delayMs);
+  };
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -66,23 +86,36 @@ export const DailySession: React.FC<DailySessionProps> = ({
         setTimeout(() => {
           setToastMessage(null);
         }, 6000);
-      } else if (event.data?.type === "IFRAME_WHEEL") {
-        const { deltaY, atTop, isScrollingDown, isScrollingUp } = event.data;
-        const parentScrollY = window.scrollY;
-        const maxParentScroll = iframeContainerRef.current
-          ? iframeContainerRef.current.offsetTop - 12
-          : 180;
-
-        if (isScrollingDown && parentScrollY < maxParentScroll) {
-          window.scrollBy({ top: deltaY, behavior: "auto" });
-        } else if (isScrollingUp && atTop && parentScrollY > 0) {
-          window.scrollBy({ top: deltaY, behavior: "auto" });
+      } else if (event.data?.type === "MOUSE_NEAR_TOP") {
+        if (event.data.isNearTop) {
+          showToolbar();
         }
+      } else if (event.data?.type === "IFRAME_WHEEL") {
+        const { isScrollingDown } = event.data;
+        // Khi cuộn chuột xuống, tự động trượt 2 thanh công cụ lên để ẩn đi
+        if (isScrollingDown) {
+          setIsToolbarVisible(false);
+        }
+        // Lưu ý: Đã bỏ hoàn toàn sự kiện cuộn chuột lên để hiển thị lại theo yêu cầu
       }
     };
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, [refetchTodayPlan]);
+
+  // Lắng nghe di chuột sát mép trên ở cửa sổ chính
+  React.useEffect(() => {
+    const onParentMouseMove = (e: MouseEvent) => {
+      if (e.clientY <= 25) {
+        showToolbar();
+      }
+    };
+    window.addEventListener("mousemove", onParentMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onParentMouseMove);
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
+  }, []);
 
   const dueCount = dueCards.length;
 
@@ -139,9 +172,23 @@ export const DailySession: React.FC<DailySessionProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3 pb-6">
-      {/* 2 Thanh bar: Banner AI và Thanh Kế Hoạch (Để dạng khối bình thường, không fixed, khi cuộn tự trôi mất) */}
-      <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 pb-6 relative">
+      {/* Cảm biến rê chuột sát mép trên màn hình để tự động trượt thanh công cụ xuống */}
+      <div
+        onMouseEnter={showToolbar}
+        className="w-full h-3 -mb-3 z-30 relative pointer-events-auto"
+      />
+
+      {/* 2 Thanh bar: Tự động trượt lên ẩn đi khi cuộn xuống, trượt xuống trở lại khi di chuột sát mép trên */}
+      <div
+        onMouseEnter={showToolbar}
+        onMouseLeave={() => scheduleHideToolbar(400)}
+        className={`transition-all duration-300 ease-in-out origin-top flex flex-col gap-3 ${
+          isToolbarVisible
+            ? "max-h-[600px] opacity-100 scale-100 mb-0"
+            : "max-h-0 opacity-0 scale-98 pointer-events-none overflow-hidden -my-1"
+        }`}
+      >
         {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay */}
         {todayPlan && (
           <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">

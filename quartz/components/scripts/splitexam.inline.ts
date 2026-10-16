@@ -388,4 +388,24 @@ document.addEventListener("nav", () => {
   };
   window.addEventListener("wheel", onWheel, { passive: true });
   window.addCleanup(() => window.removeEventListener("wheel", onWheel));
+
+  // 8. Detect mouse near top edge and notify parent window
+  let wasNearTop = false;
+  const onMouseMove = (e: MouseEvent) => {
+    const isNearTop = e.clientY <= 25;
+    if (isNearTop !== wasNearTop) {
+      wasNearTop = isNearTop;
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(
+          {
+            type: "MOUSE_NEAR_TOP",
+            isNearTop,
+          },
+          "*",
+        );
+      }
+    }
+  };
+  window.addEventListener("mousemove", onMouseMove, { passive: true });
+  window.addCleanup(() => window.removeEventListener("mousemove", onMouseMove));
 });
