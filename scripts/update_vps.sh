@@ -63,9 +63,10 @@ fi
 echo -e "${YELLOW}🚀 [5/5] Kiểm tra và khởi động lại dịch vụ...${NC}"
 
 # Kiểm tra nếu service chưa từng được cài đặt (chưa chạy setup ban đầu)
-if ! systemctl list-unit-files | grep -q "noteai-backend.service"; then
+if [ ! -f /etc/systemd/system/noteai-backend.service ]; then
     echo -e "${YELLOW}  ⚠️ Phát hiện NoteAI service chưa cài đặt. Vui lòng kiểm tra lại cấu hình systemd.${NC}"
 else
+    systemctl daemon-reload
     systemctl restart noteai-backend
     systemctl reload nginx
     echo -e "\n${BLUE}====================================================${NC}"
