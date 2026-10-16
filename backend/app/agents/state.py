@@ -24,6 +24,7 @@ class AgentState(BaseModel):
     input_text: str = Field(default="", description="Nội dung đầu vào")
     source_file: Optional[str] = Field(default=None, description="File nguồn")
     skill: str = Field(default="listening", description="listening | reading | writing | speaking")
+    task_id: Optional[str] = Field(default=None, description="Mã task: task-1 | task-2 | practice-task-1...")
     has_official_key: bool = Field(default=False, description="Người học đã cung cấp đáp án chính thức chưa")
     evaluation: Optional[EvaluationOutput] = None
     plan_output: Optional[Dict[str, Any]] = None

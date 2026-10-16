@@ -316,6 +316,7 @@ document.addEventListener("nav", () => {
             attempt_text: text,
             skill: "writing",
             source_file: window.location.pathname,
+            task_id: taskId,
           }),
         });
 

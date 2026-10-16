@@ -30,18 +30,31 @@ class EvaluatorAgent:
 
             state.has_official_key = False
 
+            # Xác định task_num: 1 hoặc 2
+            task_num = 1
+            if state.task_id:
+                tid_lower = str(state.task_id).lower()
+                if "2" in tid_lower:
+                    task_num = 2
+                elif "1" in tid_lower:
+                    task_num = 1
+            else:
+                lower = raw_text.lower()
+                if "task 2" in lower or "opinion" in lower or "agree or disagree" in lower:
+                    task_num = 2
+
             # Tạo nhận xét chẩn đoán bằng LLM (Gemini API qua llm_service)
-            ai_eval = self._evaluate_writing_with_llm(raw_text)
+            ai_eval = self._evaluate_writing_with_llm(raw_text, task_num=task_num)
 
             state.evaluation = EvaluationOutput(
-                score_fraction=f"{words} từ",
+                score_fraction=f"{words} từ (Task {task_num})",
                 band_score=None,
-                strengths=ai_eval.get("strengths", [f"Đã hoàn thành bài viết thực tế với độ dài {words} từ."]),
+                strengths=ai_eval.get("strengths", [f"Đã hoàn thành bài viết Task {task_num} với độ dài {words} từ."]),
                 weaknesses=ai_eval.get("weaknesses", ["Cần chú ý trau chuốt từ vựng học thuật và độ chính xác ngữ pháp."]),
                 questions=[],
                 recommended_drills=ai_eval.get("recommended_drills", [
-                    "Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing.",
-                    "Micro-session 35p: Mở rộng vốn từ học thuật thay cho các động từ lặp lại."
+                    f"Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing Task {task_num}.",
+                    "Micro-session 35p: Mở rộng vốn từ học thuật thay cho các từ lặp lại."
                 ]),
                 feedback=ai_eval.get("feedback")
             )
@@ -56,7 +69,8 @@ class EvaluatorAgent:
                 markdown_updater.update_writing_note(
                     file_path=target_file,
                     raw_text=raw_text,
-                    feedback=ai_eval.get("feedback")
+                    feedback=ai_eval.get("feedback"),
+                    task_id=state.task_id or f"task-{task_num}"
                 )
                 state.evaluation.updated_file = os.path.relpath(target_file, settings.CONTENT_DIR).replace("\\", "/")
 
@@ -69,7 +83,7 @@ class EvaluatorAgent:
 
                 with Session(engine) as session:
                     attempt = TestAttempt(
-                        title=state.source_file or "Bài làm Writing",
+                        title=f"{state.source_file or 'Bài làm Writing'} - Task {task_num}",
                         skill="writing",
                         source_file=state.source_file,
                         score=None,
@@ -230,26 +244,39 @@ class EvaluatorAgent:
 
         return state
 
-    def _evaluate_writing_with_llm(self, raw_text: str) -> Dict[str, Any]:
-        """Gọi LLM phân tích bài viết IELTS theo 4 tiêu chí chuẩn TR/TA, CC, LR, GRA"""
+    def _evaluate_writing_with_llm(self, raw_text: str, task_num: int = 1) -> Dict[str, Any]:
+        """Gọi LLM phân tích bài viết IELTS theo 4 tiêu chí chuẩn TR/TA, CC, LR, GRA (tùy biến theo Task 1 vs Task 2)"""
         from app.services.llm_service import llm_service
         words = len(raw_text.strip().split())
         try:
+            if task_num == 1:
+                task_label = "IELTS Writing Task 1 (Report Báo Cáo Dữ Liệu / Biểu Đồ)"
+                criteria_guide = (
+                    "1. Task Achievement (TA): Đánh giá Overview (tổng quan 2 xu hướng chính), lựa chọn số liệu chính xác, so sánh đối chiếu, tối thiểu 150 từ. Tuyệt đối không đưa ý kiến cá nhân vào báo cáo.\n"
+                    "2. Coherence & Cohesion (CC): Nhóm số liệu logic theo đoạn (Body 1 vs Body 2), dùng liên từ nối mượt mà, tránh dùng máy móc hay lặp 'And'.\n"
+                    "3. Lexical Resource (LR): Từ vựng mô tả xu hướng (surge, plummet, fluctuate, stabilize), tỷ lệ, thứ hạng, chỉ rõ lỗi chính tả và collocations Band 7.5+.\n"
+                    "4. Grammatical Range & Accuracy (GRA): Bị động nội động từ (tuyệt đối không dùng 'was increased'), thì quá khứ/tương lai dự báo, mệnh đề phân từ."
+                )
+            else:
+                task_label = "IELTS Writing Task 2 (Academic Opinion / Discussion Essay)"
+                criteria_guide = (
+                    "1. Task Response (TR): Trả lời đúng trọng tâm đề bài, lập trường nhất quán (clear position / thesis statement), phát triển luận điểm theo cấu trúc PEEL (Point, Explanation, Example, Link), tối thiểu 250 từ.\n"
+                    "2. Coherence & Cohesion (CC): Bố cục chuẩn 4 đoạn (Introduction, 2 Thân bài, Conclusion), câu chủ đề rõ ràng, liên kết ý logic.\n"
+                    "3. Lexical Resource (LR): Từ vựng học thuật theo chủ đề (Academic / Topic-specific vocabulary), collocations Band 7.5+, tránh từ ngữ thông tục.\n"
+                    "4. Grammatical Range & Accuracy (GRA): Đa dạng câu phức, câu ghép, mệnh đề trạng ngữ, câu điều kiện, kiểm soát chính xác thì và dấu câu."
+                )
+
             system_prompt = (
-                "Bạn là IELTS Senior Examiner và Writing Coach giàu kinh nghiệm. "
+                f"Bạn là IELTS Senior Examiner và Writing Coach giàu kinh nghiệm chuyên chấm {task_label}. "
                 "Đánh giá bài viết của người học một cách chi tiết, thẳng thắn, mang tính xây dựng cao "
-                "theo 4 tiêu chí chuẩn IELTS Writing:\n"
-                "1. Task Achievement / Task Response (TR/TA)\n"
-                "2. Coherence & Cohesion (CC)\n"
-                "3. Lexical Resource (LR) - chỉ ra các từ sai chính tả, lỗi lặp từ và gợi ý từ vựng/collocations nâng cấp C1/Band 7.5+\n"
-                "4. Grammatical Range & Accuracy (GRA) - chỉ ra lỗi ngữ pháp cụ thể và cách sửa chuẩn từng câu.\n"
+                f"theo 4 tiêu chí chuẩn IELTS Writing:\n{criteria_guide}\n"
                 "Định dạng phản hồi bằng Markdown rõ ràng, chuyên nghiệp."
             )
             prompt = (
-                f"Dưới đây là bài viết IELTS của người học ({words} từ):\n\n"
+                f"Dưới đây là bài viết {task_label} của người học ({words} từ):\n\n"
                 f"---\n{raw_text}\n---\n\n"
                 f"Hãy phân tích và đưa ra:\n"
-                f"1. 📊 Đánh giá năng lực theo 4 tiêu chí IELTS (Nhận xét điểm mạnh & điểm yếu cụ thể)\n"
+                f"1. 📊 Đánh giá năng lực theo 4 tiêu chí IELTS cho {task_label} (Nhận xét điểm mạnh & điểm yếu cụ thể)\n"
                 f"2. 🛠️ Bảng sửa lỗi ngữ pháp & câu viết chuẩn mẫu (ít nhất 2-3 câu nổi bật nhất)\n"
                 f"3. 🌟 Bản viết mẫu nâng cấp (Model Rewrite) cho 1 đoạn văn tiêu biểu\n"
                 f"4. 🎯 2-3 bài tập Micro-session (30-35 phút) trọng tâm tiếp theo."
@@ -258,29 +285,29 @@ class EvaluatorAgent:
             return {
                 "feedback": feedback,
                 "strengths": [
-                    f"Đã hoàn thành bài viết thực tế với độ dài {words} từ.",
+                    f"Đã hoàn thành bài viết Task {task_num} thực tế với độ dài {words} từ.",
                     "Bài viết đã được lưu trữ an toàn vào hệ thống PKM."
                 ],
                 "weaknesses": [
                     "Cần chú ý lỗi chia thì, thể bị động và sự hòa hợp chủ vị.",
-                    "Cần mở rộng vốn từ học thuật thay cho các động từ xu hướng lặp lại."
+                    "Cần mở rộng vốn từ học thuật thay cho các từ lặp lại."
                 ],
                 "recommended_drills": [
-                    "Micro-session 30p: Luyện viết lại các câu có cấu trúc bị động nội động từ.",
-                    "Micro-session 35p: Thực hành Paraphrase các từ vựng chỉ xu hướng và số liệu."
+                    f"Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing Task {task_num}.",
+                    "Micro-session 35p: Mở rộng vốn từ học thuật và collocations nâng cao."
                 ]
             }
         except Exception as e:
             logger.warning(f"Không thể gọi LLM để chấm writing (sử dụng fallback): {e}")
             return {
                 "feedback": (
-                    f"### 📝 Phản Hồi Bài Viết ({words} từ)\n\n"
-                    f"Bài viết của bạn đã được lưu trữ trung thực vào hệ thống PKM. "
-                    f"Bạn có thể kết nối Gemini API để xem phân tích chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA."
+                    f"### 📝 Phản Hồi Bài Viết Task {task_num} ({words} từ)\n\n"
+                    f"Bài viết Task {task_num} của bạn đã được lưu trữ trung thực vào hệ thống PKM. "
+                    f"Bạn có thể kiểm tra cấu hình Gemini API để xem phân tích chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA."
                 ),
-                "strengths": [f"Đã ghi nhận bài làm Writing ({words} từ) vào hệ thống PKM."],
+                "strengths": [f"Đã ghi nhận bài làm Writing Task {task_num} ({words} từ) vào hệ thống PKM."],
                 "weaknesses": ["Bài viết đã được lưu trữ an toàn. Hãy mở bảng chẩn đoán để xem chi tiết."],
-                "recommended_drills": ["Tập trung hoàn thiện 4 tiêu chí: Task Achievement, Coherence & Cohesion, Lexical Resource, GRA."]
+                "recommended_drills": [f"Tập trung hoàn thiện 4 tiêu chí IELTS Writing Task {task_num}."]
             }
 
     def _diagnose_mistakes_with_llm(

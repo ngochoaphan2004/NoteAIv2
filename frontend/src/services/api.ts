@@ -134,6 +134,7 @@ export const api = {
     text: string,
     skill = "listening",
     sourceFile?: string,
+    taskId?: string,
   ): Promise<EvaluationResponse> {
     const res = await fetch(`${API_BASE}/agents/evaluate`, {
       method: "POST",
@@ -142,6 +143,7 @@ export const api = {
         attempt_text: text,
         skill,
         source_file: sourceFile || undefined,
+        task_id: taskId || undefined,
       }),
     });
     if (!res.ok) {

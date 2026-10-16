@@ -18,13 +18,15 @@ export const TestAttemptEditor: React.FC = () => {
   const [attemptText, setAttemptText] = useState("");
   const [skill, setSkill] = useState("listening");
   const [targetFile, setTargetFile] = useState("auto");
+  const [taskId, setTaskId] = useState("task-1");
 
   const evalMutation = useMutation({
     mutationFn: () =>
       api.evaluateAttempt(
         attemptText,
         skill,
-        targetFile === "auto" ? undefined : targetFile
+        targetFile === "auto" ? undefined : targetFile,
+        skill === "writing" ? taskId : undefined
       ),
   });
 
@@ -78,6 +80,18 @@ export const TestAttemptEditor: React.FC = () => {
               <option value="writing">Writing</option>
               <option value="speaking">Speaking</option>
             </select>
+
+            {skill === "writing" && (
+              <select
+                value={taskId}
+                onChange={(e) => setTaskId(e.target.value)}
+                className="px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-xs font-semibold text-apple-textLight dark:text-apple-textDark"
+                title="Chọn phần thi Writing Task 1 hoặc Task 2"
+              >
+                <option value="task-1">Task 1 (Báo cáo)</option>
+                <option value="task-2">Task 2 (Bài luận)</option>
+              </select>
+            )}
 
             <select
               value={targetFile}

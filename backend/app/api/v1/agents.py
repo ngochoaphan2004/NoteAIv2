@@ -10,6 +10,7 @@ class EvaluateRequest(BaseModel):
     attempt_text: str = Field(..., description="Văn bản bài làm hoặc cú pháp shorthand của người học")
     skill: str = Field(default="listening", description="listening | reading | writing | speaking")
     source_file: Optional[str] = Field(default=None)
+    task_id: Optional[str] = Field(default=None, description="Mã task (task-1, task-2, practice-task-1...)")
 
 class PlanRequest(BaseModel):
     week_number: int = Field(default=2, ge=1, le=52)
@@ -24,7 +25,8 @@ def evaluate_test_attempt(req: EvaluateRequest):
         task_type="evaluation",
         input_text=req.attempt_text,
         skill=req.skill,
-        source_file=req.source_file
+        source_file=req.source_file,
+        task_id=req.task_id
     )
 
     final_state = agent_graph.invoke(initial_state)

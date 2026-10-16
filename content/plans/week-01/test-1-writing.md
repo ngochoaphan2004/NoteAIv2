@@ -167,7 +167,7 @@ tags:
 
 ---
 
-#### 📝 Bài Làm Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - 198 từ)
+#### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 198 từ)
 
 > [!NOTE]
 > **Trạng thái:** Đã nộp bài lúc 15:10 | **Độ dài:** 198 từ _(Đạt chỉ tiêu ≥ 150 từ)_  
@@ -325,7 +325,7 @@ tags:
 
 ### 🔬 3. Phân Tích & Chẩn Đoán Chi Tiết Task 2 (Diagnostic Feedback)
 
-#### 📝 Bản Phác Thảo Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - 29 từ)
+#### 📝 Bài Làm Thực Tế Task 2 (Lưu Trữ Nguyên Bản - 29 từ)
 
 > [!NOTE]
 > **Độ dài hiện tại:** 29 từ | **Mục tiêu:** ≥ 250 từ _(Đang ở giai đoạn Mở bài)_  

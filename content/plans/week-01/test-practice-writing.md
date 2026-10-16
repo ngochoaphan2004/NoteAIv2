@@ -88,6 +88,17 @@ tags:
 
 ---
 
+### 🔬 Phân Tích & Chẩn Đoán Chi Tiết Task 1 (Diagnostic Feedback)
+
+#### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 0 từ)
+
+> [!NOTE]
+> **Trạng thái:** Chưa nộp bài Task 1 | **Mục tiêu:** ≥ 150 từ
+>
+> _Hãy viết bài vào Khung Viết Bài Task 1 ở trên và nhấn "🚀 Gửi Bài Viết Cho AI" để đối soát và nhận chẩn đoán tại đây._
+
+---
+
 ## 📝 Phần 2: IELTS Writing Task 2 (Bài Luận Ý Kiến)
 
 ### 📌 Đề Bài Task 2
@@ -123,8 +134,8 @@ tags:
   <div class="ielts-stats-bar">
     <div class="ielts-stat-item">
       <span class="ielts-stat-label">Số từ:</span>
-      <span class="ielts-stat-val ielts-word-count">0 từ</span>
-      <span class="ielts-progress-pill">Mục tiêu: 250 từ</span>
+      <span class="ielts-stat-val ielts-word-count">4 từ</span>
+      <span class="ielts-progress-pill ielts-pill-warn">⚠️ Đang phác thảo (4/250 từ)</span>
     </div>
     <div class="ielts-save-indicator">
       <span class="ielts-save-text">🟢 Tự động lưu LocalStorage</span>
@@ -132,7 +143,7 @@ tags:
   </div>
 
   <div class="ielts-editor-wrapper">
-    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài luận Task 2 của bạn tại đây..."></textarea>
+    <textarea class="ielts-textarea" placeholder="Bắt đầu viết bài luận Task 2 của bạn tại đây...">This is another test</textarea>
   </div>
 
   <div class="ielts-card-actions">
@@ -154,19 +165,43 @@ tags:
 
 ---
 
-#### 📝 Bài Làm Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - 0 từ)
+### 🔬 Phân Tích & Chẩn Đoán Chi Tiết Task 2 (Diagnostic Feedback)
+
+#### 📝 Bài Làm Thực Tế Task 2 (Lưu Trữ Nguyên Bản - 4 từ)
 
 > [!NOTE]
-> **Trạng thái:** Chưa nộp bài | **Độ dài:** 0 từ  
-> **Nguyên văn bài làm của bạn:**
+> **Trạng thái:** Đã nộp bài và ghi nhận vào hệ thống PKM | **Độ dài:** 4 từ
 >
-> _(Khung bài làm sẽ được AI tự động ghi nhận khi bạn nhấn nút "Gửi Bài Viết Cho AI" ở phía trên)_
+> This is another test
 
 ---
 
-### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Của AI
+#### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task 2 Của AI
 
-_(Nhận xét chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA kèm bảng sửa lỗi và câu nâng cấp sẽ tự động xuất hiện tại đây sau khi bạn nộp bài cho AI)_
+Chào bạn, với tư cách là một IELTS Senior Examiner, tôi xin nhận xét về bài viết phác thảo **4 từ** (`This is another test`) của bạn:
+
+##### 📊 1. Đánh giá năng lực theo 4 tiêu chí IELTS Task 2
+
+- **Task Response (TR): Band 1.0** — Chưa giải quyết yêu cầu đề bài nghị luận về "unpaid community service", thiếu luận điểm và dẫn chứng.
+- **Coherence & Cohesion (CC): Band 1.0** — Chưa có bố cục đoạn văn hoàn chỉnh (Introduction, Body 1, Body 2, Conclusion).
+- **Lexical Resource (LR): Band 1.0** — Từ vựng đơn giản (`this`, `is`, `another`, `test`), thiếu từ vựng học thuật C1 theo chủ đề giáo dục và hoạt động cộng đồng.
+- **Grammatical Range & Accuracy (GRA): Band 2.0** — Câu đúng cấu trúc cơ bản nhưng quá ngắn, cần phát triển thành câu phức và câu ghép học thuật.
+
+##### 🛠️ 2. Bảng nâng cấp câu viết chuẩn mẫu Band 7.5+
+
+| Câu gốc của bạn | Phân tích & Nhược điểm | Câu nâng cấp chuẩn Band 7.5+ | Điểm nâng cấp từ vựng & ngữ pháp |
+| :--- | :--- | :--- | :--- |
+| _This is another test._ | Quá ngắn, thiếu ngữ cảnh và từ vựng học thuật. | _This essay aims to evaluate whether integrating mandatory community service into high school curricula fosters civic responsibility or imposes undue burden on students._ | - Dùng động từ học thuật: _aims to evaluate_<br>- Collocation C1: _mandatory community service, civic responsibility, undue burden_ |
+
+##### 🌟 3. Bản viết mẫu nâng cấp (Model Rewrite)
+
+> **Bản nâng cấp đoạn Mở bài (Introduction - Band 7.5+):**
+> "In contemporary educational discourse, whether voluntary work should be rendered compulsory for secondary school students remains a subject of intense debate. While some argue that mandatory participation instills a profound sense of civic duty, others contend that it places an excessive burden on adolescents already overwhelmed by academic pressures. This essay will examine both perspectives before demonstrating why structured community programs yield indispensable benefits."
+
+##### 🎯 4. Bài tập Micro-session (30-35 phút) tiếp theo
+
+- **Micro-session 1 (15 phút):** Viết câu Thesis Statement khẳng định quan điểm đồng ý hoặc không đồng ý với đề bài Community Service.
+- **Micro-session 2 (20 phút):** Lập dàn ý 2 thân bài theo cấu trúc PEEL (Point, Explanation, Example, Link).
 
 ---
 

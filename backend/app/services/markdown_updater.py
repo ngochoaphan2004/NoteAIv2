@@ -190,10 +190,14 @@ class MarkdownNoteUpdater:
         cls,
         file_path: str,
         raw_text: str,
-        feedback: Optional[str] = None
+        feedback: Optional[str] = None,
+        task_id: Optional[str] = None
     ) -> bool:
         """
-        Cập nhật bài viết Writing của người học và phản hồi AI vào file Markdown.
+        Cập nhật bài viết Writing của người học và phản hồi AI vào file Markdown,
+        bảo toàn cấu trúc phân tách rõ ràng độc lập giữa Task 1 và Task 2:
+        - Task 1: Workspace -> Bài làm thực tế Task 1 -> Chẩn đoán AI Task 1
+        - Task 2: Workspace -> Bài làm thực tế Task 2 -> Chẩn đoán AI Task 2
         """
         if not os.path.isfile(file_path):
             logger.warning(f"[MARKDOWN UPDATER] Không tìm thấy file: {file_path}")
@@ -205,39 +209,121 @@ class MarkdownNoteUpdater:
 
             words = len(raw_text.strip().split())
 
-            # Chuẩn hóa khối trích dẫn bài làm thực tế
+            # 1. Xác định task_num (1 hoặc 2)
+            task_num = 1
+            if task_id:
+                tid_lower = str(task_id).lower()
+                if "2" in tid_lower:
+                    task_num = 2
+                elif "1" in tid_lower:
+                    task_num = 1
+            else:
+                lower_text = raw_text.lower()
+                if "task 2" in lower_text or "opinion" in lower_text or "agree or disagree" in lower_text:
+                    task_num = 2
+
+            # 2. Chuẩn hóa khối bài làm thực tế
             quoted_lines = "\n".join([f"> {line}" if line.strip() else ">" for line in raw_text.strip().splitlines()])
             user_section = (
-                f"#### 📝 Bài Làm Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - {words} từ)\n\n"
+                f"#### 📝 Bài Làm Thực Tế Task {task_num} (Lưu Trữ Nguyên Bản - {words} từ)\n\n"
                 f"> [!NOTE]\n"
                 f"> **Trạng thái:** Đã nộp bài và ghi nhận vào hệ thống PKM | **Độ dài:** {words} từ\n"
                 f">\n"
                 f"{quoted_lines}\n"
             )
 
-            # Thay thế hoặc chèn section bài làm thực tế
-            section_pattern = r"#### 📝 Bài Làm Thực Tế Của Bạn[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)"
-            if re.search(section_pattern, content, flags=re.DOTALL):
-                content = re.sub(section_pattern, user_section.strip(), content, flags=re.DOTALL)
-            else:
-                content += f"\n\n---\n\n{user_section}"
+            # 3. Tìm các section Level 2 (## ...) để khoanh vùng Task 1 vs Task 2
+            h2_matches = list(re.finditer(r"(?m)^##\s+(.+)$", content))
+            target_idx = None
+            if h2_matches:
+                for idx, m in enumerate(h2_matches):
+                    title = m.group(1).lower()
+                    if task_num == 1 and ("task 1" in title or "phần 1" in title or "line graph" in title):
+                        target_idx = idx
+                        break
+                    elif task_num == 2 and ("task 2" in title or "phần 2" in title or "opinion" in title or "essay" in title):
+                        target_idx = idx
+                        break
 
-            # Nếu có phản hồi AI, cập nhật thêm vào phần feedback
-            if feedback:
-                feedback_block = (
-                    f"### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Của AI\n\n"
-                    f"{feedback.strip()}\n"
+            if target_idx is not None:
+                # Đã khoanh vùng chính xác phạm vi của Task!
+                start_pos = h2_matches[target_idx].start()
+                end_pos = h2_matches[target_idx + 1].start() if target_idx + 1 < len(h2_matches) else len(content)
+                sec_text = content[start_pos:end_pos]
+
+                # Pattern tìm mục bài làm thực tế trong section này (Task 1 hoặc Task 2 hoặc Của Bạn)
+                user_pat = re.compile(
+                    rf"#### 📝 (?:Bài Làm Thực Tế (?:Task {task_num}|Của Bạn)|Bản Phác Thảo Thực Tế)[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)",
+                    flags=re.DOTALL
                 )
-                fb_pattern = r"### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Của AI[^\n]*\n.*?(?=\n### |\n## |\n---|\Z)"
-                if re.search(fb_pattern, content, flags=re.DOTALL):
-                    content = re.sub(fb_pattern, feedback_block.strip(), content, flags=re.DOTALL)
+
+                if user_pat.search(sec_text):
+                    sec_text = user_pat.sub(user_section.strip(), sec_text, count=1)
                 else:
-                    content += f"\n\n---\n\n{feedback_block}"
+                    # Kiểm tra xem có `### 🔬 ... Task {task_num}` chưa
+                    diag_pat = re.compile(rf"(### 🔬 [^\n]*Task {task_num}[^\n]*\n)", flags=re.IGNORECASE)
+                    if diag_pat.search(sec_text):
+                        sec_text = diag_pat.sub(r"\1\n" + user_section.strip() + "\n\n", sec_text, count=1)
+                    else:
+                        div_idx = sec_text.rfind("</div>")
+                        if div_idx != -1:
+                            insert_at = div_idx + len("</div>")
+                            sec_text = (
+                                sec_text[:insert_at]
+                                + f"\n\n---\n\n### 🔬 Phân Tích & Chẩn Đoán Chi Tiết Task {task_num} (Diagnostic Feedback)\n\n"
+                                + user_section.strip()
+                                + sec_text[insert_at:]
+                            )
+                        else:
+                            sec_text = sec_text.rstrip() + f"\n\n---\n\n{user_section.strip()}\n\n"
+
+                # Cập nhật feedback AI vào section nếu có
+                if feedback:
+                    fb_pat = re.compile(
+                        rf"#### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task {task_num} Của AI[^\n]*\n.*?(?=\n#### |\n### |\n## |\Z)",
+                        flags=re.DOTALL
+                    )
+                    clean_fb = f"#### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task {task_num} Của AI\n\n{feedback.strip()}\n"
+                    if fb_pat.search(sec_text):
+                        sec_text = fb_pat.sub(clean_fb, sec_text, count=1)
+                    else:
+                        user_match = re.search(
+                            rf"#### 📝 Bài Làm Thực Tế Task {task_num}[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)",
+                            sec_text,
+                            flags=re.DOTALL
+                        )
+                        if user_match:
+                            insert_at = user_match.end()
+                            sec_text = sec_text[:insert_at] + f"\n\n---\n\n{clean_fb}" + sec_text[insert_at:]
+                        else:
+                            sec_text = sec_text.rstrip() + f"\n\n---\n\n{clean_fb}\n\n"
+
+                # Ghép lại content
+                content = content[:start_pos] + sec_text + content[end_pos:]
+
+            else:
+                # Fallback: Không tìm thấy section ## Task 1 hay ## Task 2, cập nhật theo cơ chế generic
+                user_pattern = r"#### 📝 Bài Làm Thực Tế[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)"
+                if re.search(user_pattern, content, flags=re.DOTALL):
+                    content = re.sub(user_pattern, user_section.strip(), content, flags=re.DOTALL)
+                else:
+                    content += f"\n\n---\n\n{user_section}"
+
+                if feedback:
+                    feedback_block = (
+                        f"### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task {task_num} Của AI\n\n"
+                        f"{feedback.strip()}\n"
+                    )
+                    fb_pattern = r"### 🔬 Nhận Xét & Phân Tích Chẩn Đoán[^\n]*\n.*?(?=\n### |\n## |\n---|\Z)"
+                    if re.search(fb_pattern, content, flags=re.DOTALL):
+                        content = re.sub(fb_pattern, feedback_block.strip(), content, flags=re.DOTALL)
+                    else:
+                        content += f"\n\n---\n\n{feedback_block}"
 
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(content)
 
-            logger.info(f"[MARKDOWN UPDATER] Đã cập nhật bài làm Writing ({words} từ) vào {file_path}")
+            logger.info(f"[MARKDOWN UPDATER] Đã cập nhật Task {task_num} ({words} từ) vào {file_path}")
             return True
 
         except Exception as e:
