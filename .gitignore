@@ -85,8 +85,11 @@ docker_noteai_*
 *.swo
 
 
-# PDF files
+# PDF and Archive files
 content/assets/Cambridge-18.pdf
 content\assets\Cambridge-18.pdf
+*.tar.gz
+*.tar
+*.zip
 
 .vps_files/
