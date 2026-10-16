@@ -86,6 +86,7 @@ export const TestAttemptEditor: React.FC = () => {
               title="Chọn file Markdown ghi chú để cập nhật Bảng Đối Soát"
             >
               <option value="auto">🎯 Tự động phát hiện file</option>
+              <option value="plans/week-01/test-practice-writing.md">[16/10] Test Practice Writing</option>
               <option value="plans/week-01/test-1-listening.md">[14/10] Test 1 Listening</option>
               <option value="plans/week-01/test-1-reading-p3.md">[15/10] Reading Passage 3</option>
               <option value="plans/week-01/test-1-writing.md">[16/10] Writing Task 1 & 2</option>

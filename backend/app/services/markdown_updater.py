@@ -144,7 +144,8 @@ class MarkdownNoteUpdater:
                     elif not cells[4]:
                         cells[4] = ""
 
-                    new_line = "| " + " | ".join(cells) + " |"
+                    parts = [f" {c.strip()} " if c.strip() else " " for c in cells]
+                    new_line = "|" + "|".join(parts) + "|"
                     new_lines.append(new_line)
                     updated_count += 1
 
@@ -164,7 +165,8 @@ class MarkdownNoteUpdater:
                     if note:
                         cells[3] = note
 
-                    new_line = "| " + " | ".join(cells) + " |"
+                    parts = [f" {c.strip()} " if c.strip() else " " for c in cells]
+                    new_line = "|" + "|".join(parts) + "|"
                     new_lines.append(new_line)
                     updated_count += 1
                 else:
@@ -243,3 +245,4 @@ class MarkdownNoteUpdater:
             return False
 
 markdown_updater = MarkdownNoteUpdater()
+

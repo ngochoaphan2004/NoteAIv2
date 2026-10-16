@@ -45,7 +45,7 @@ tags:
 
 - 🎧 **Bài làm Listening:** [[plans/week-01/test-1-listening|Test 1 Listening (Cam 18)]]
 - 📖 **Bài làm Reading:** [[plans/week-01/test-1-reading-p3|Test 1 Reading Passage 3 (Cam 18)]]
-- ✍️ **Bài làm Writing:** [[plans/week-01/test-1-writing|Test 1 Writing (Cam 18)]]
+- ✍️ **Bài làm Writing:** [[plans/week-01/test-1-writing|Test 1 Writing (Cam 18)]] &bull; [[plans/week-01/test-practice-writing|Luyện Viết Writing (Practice)]]
 - 📖 **Chuyên đề ngữ pháp:** [[grammar-writing-task1-trends-clauses|Chuyên Đề Ngữ Pháp: Động Từ Xu Hướng, Mệnh Đề Rút Gọn & Cấu Trúc Dự Báo]]
 - 📚 **Sổ từ vựng trong tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1 (Listening, Reading, Writing)]]
 - 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5]]
