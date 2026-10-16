@@ -39,3 +39,4 @@ SplitExamMode.beforeDOMLoaded = splitExamScript;
 SplitExamMode.css = styles;
 
 export default (() => SplitExamMode) satisfies QuartzComponentConstructor;
+

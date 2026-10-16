@@ -304,3 +304,4 @@ document.addEventListener("nav", () => {
   document.addEventListener("splitscreen-open", onCustomOpen);
   window.addCleanup(() => document.removeEventListener("splitscreen-open", onCustomOpen));
 });
+

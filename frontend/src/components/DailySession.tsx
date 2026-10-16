@@ -13,8 +13,6 @@ import {
   Sparkles,
   Zap,
   CheckCheck,
-  Maximize2,
-  Minimize2,
 } from "lucide-react";
 
 const QUARTZ_BASE_URL =
@@ -35,7 +33,6 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [isFocusMode, setIsFocusMode] = useState(false);
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -129,228 +126,159 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   return (
     <div className="flex flex-col gap-3.5 pb-6">
-      {/* Khi bật Chế độ Tập trung / Mở rộng không gian: Hiện thanh công cụ tối giản 1 dòng */}
-      {isFocusMode ? (
-        <div className="flex items-center justify-between gap-3 bg-white/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
-          <div className="flex items-center gap-2 text-xs font-bold text-gray-800 dark:text-gray-200 truncate">
-            <span className="w-2 h-2 rounded-full bg-apple-blue animate-pulse" />
-            <span className="text-apple-blue">{todayPlan?.today}:</span>
-            <span className="truncate">{todayPlan?.skill || "Luyện đề"}</span>
-            {todayPlan?.duration && (
-              <span className="text-[10px] bg-blue-50 dark:bg-blue-950/40 text-apple-blue px-2 py-0.5 rounded-full font-semibold border border-blue-200 dark:border-blue-800">
-                ⏱️ {todayPlan.duration}
-              </span>
-            )}
+      {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay (Không Fixed - Cuộn Tự Nhiên) */}
+      {todayPlan && (
+        <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">
+          <div className="flex items-start gap-3">
+            <span className="p-2 bg-apple-blue text-white rounded-xl shadow-sm mt-0.5 flex-shrink-0">
+              <Zap className="w-4 h-4" />
+            </span>
+            <div className="space-y-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-bold text-apple-blue uppercase tracking-wider">
+                  Nhiệm Vụ {todayPlan.today}:
+                </span>
+                <span className="text-xs font-bold text-gray-900 dark:text-gray-100">
+                  {todayPlan.skill}
+                </span>
+                {todayPlan.duration && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800">
+                    ⏱️ {todayPlan.duration}
+                  </span>
+                )}
+              </div>
+
+              {todayPlan.steps && todayPlan.steps.length > 0 ? (
+                <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-3 gap-y-1 text-[11px] text-gray-600 dark:text-gray-300">
+                  {todayPlan.steps.map((step, idx) => (
+                    <div key={idx} className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-apple-blue flex-shrink-0" />
+                      <span>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                  {todayPlan.focus.replace(/<[^>]+>/g, " ").replace(/[*_`]/g, "")}
+                </p>
+              )}
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setIsFocusMode(false)}
-              title="Hiện lại thanh nhiệm vụ & điều hướng đầy đủ"
-              className="px-2.5 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-apple-blue bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition flex items-center gap-1.5"
-            >
-              <Minimize2 className="w-3.5 h-3.5" />
-              <span>Hiện Thanh Công Cụ</span>
-            </button>
+          <div className="flex items-center gap-2 flex-shrink-0 self-end md:self-auto">
+            {todayPlan.is_done ? (
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-lg border border-emerald-500/20">
+                <CheckCheck className="w-3.5 h-3.5" />
+                Đã hoàn thành hôm nay
+              </span>
+            ) : (
+              todayPlan.link && (
+                <button
+                  onClick={() => {
+                    const targetPath = todayPlan.link.startsWith("/")
+                      ? todayPlan.link
+                      : `/${todayPlan.link}`;
+                    handleNavigate(targetPath.replace(/\/+$/, ""));
+                  }}
+                  className="px-3 py-1 bg-apple-blue hover:bg-apple-blueHover text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1"
+                >
+                  <span>Vào bài học ngay</span>
+                  <ArrowRight className="w-3 h-3" />
+                </button>
+              )
+            )}
 
             <button
-              onClick={handleRefresh}
-              title="Tải lại nội dung trang"
-              className="p-1.5 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition"
+              onClick={handleAutoSync}
+              disabled={isSyncing}
+              title="Kích hoạt AI tự động đối soát tiến độ và ngày tháng"
+              className="px-2.5 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-apple-blue text-xs font-medium rounded-lg border border-gray-200 dark:border-gray-700 transition flex items-center gap-1"
             >
-              <RotateCw className="w-3.5 h-3.5" />
-            </button>
-
-            <a
-              href={currentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Mở tab mới trong trình duyệt"
-              className="p-1.5 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-
-            <button
-              onClick={onNavigateToFlashcards}
-              className="px-3 py-1 bg-gradient-to-r from-apple-blue to-indigo-600 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-              <span>Ôn Thẻ Nhớ</span>
-              {dueCount > 0 && (
-                <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.2 rounded-full font-extrabold">
-                  {dueCount}
-                </span>
-              )}
+              <RotateCw className={`w-3 h-3 ${isSyncing ? "animate-spin text-apple-blue" : ""}`} />
+              <span>{isSyncing ? "Đang đồng bộ..." : "AI Tự Đồng Bộ"}</span>
             </button>
           </div>
         </div>
-      ) : (
-        <>
-          {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay (Không Fixed - Cuộn Tự Nhiên) */}
-          {todayPlan && (
-            <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">
-              <div className="flex items-start gap-3">
-                <span className="p-2 bg-apple-blue text-white rounded-xl shadow-sm mt-0.5 flex-shrink-0">
-                  <Zap className="w-4 h-4" />
-                </span>
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[11px] font-bold text-apple-blue uppercase tracking-wider">
-                      Nhiệm Vụ {todayPlan.today}:
-                    </span>
-                    <span className="text-xs font-bold text-gray-900 dark:text-gray-100">
-                      {todayPlan.skill}
-                    </span>
-                    {todayPlan.duration && (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800">
-                        ⏱️ {todayPlan.duration}
-                      </span>
-                    )}
-                  </div>
-                  
-                  {todayPlan.steps && todayPlan.steps.length > 0 ? (
-                    <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-3 gap-y-1 text-[11px] text-gray-600 dark:text-gray-300">
-                      {todayPlan.steps.map((step, idx) => (
-                        <div key={idx} className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-apple-blue flex-shrink-0" />
-                          <span>{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
-                      {todayPlan.focus.replace(/<[^>]+>/g, " ").replace(/[*_`]/g, "")}
-                    </p>
-                  )}
-                </div>
-              </div>
+      )}
 
-              <div className="flex items-center gap-2 flex-shrink-0 self-end md:self-auto">
-                {todayPlan.is_done ? (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-lg border border-emerald-500/20">
-                    <CheckCheck className="w-3.5 h-3.5" />
-                    Đã hoàn thành hôm nay
-                  </span>
-                ) : (
-                  todayPlan.link && (
-                    <button
-                      onClick={() => {
-                        const targetPath = todayPlan.link.startsWith("/")
-                          ? todayPlan.link
-                          : `/${todayPlan.link}`;
-                        handleNavigate(targetPath.replace(/\/+$/, ""));
-                      }}
-                      className="px-3 py-1 bg-apple-blue hover:bg-apple-blueHover text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1"
-                    >
-                      <span>Vào bài học ngay</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  )
-                )}
+      {/* Action Header: Thanh điều hướng Kế hoạch (Không Fixed - Cuộn Tự Nhiên) */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-white dark:bg-[#1c1c1e] p-3.5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
+        {/* Quick Links Chọn Kế Hoạch Trong Vườn Tri Thức */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+          <span className="text-xs font-bold text-apple-subtextLight dark:text-apple-subtextDark mr-1 flex items-center gap-1">
+            <BookOpen className="w-4 h-4 text-apple-blue" />
+            Kế Hoạch:
+          </span>
 
-                <button
-                  onClick={handleAutoSync}
-                  disabled={isSyncing}
-                  title="Kích hoạt AI tự động đối soát tiến độ và ngày tháng"
-                  className="px-2.5 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-apple-blue text-xs font-medium rounded-lg border border-gray-200 dark:border-gray-700 transition flex items-center gap-1"
-                >
-                  <RotateCw className={`w-3 h-3 ${isSyncing ? "animate-spin text-apple-blue" : ""}`} />
-                  <span>{isSyncing ? "Đang đồng bộ..." : "AI Tự Đồng Bộ"}</span>
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Action Header: Thanh điều hướng Kế hoạch (Không Fixed - Cuộn Tự Nhiên) */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-white dark:bg-[#1c1c1e] p-3.5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
-            {/* Quick Links Chọn Kế Hoạch Trong Vườn Tri Thức */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-              <span className="text-xs font-bold text-apple-subtextLight dark:text-apple-subtextDark mr-1 flex items-center gap-1">
-                <BookOpen className="w-4 h-4 text-apple-blue" />
-                Kế Hoạch:
-              </span>
-
-              {quickNavLinks.map((item) => {
-                const isActive = currentUrl === `${QUARTZ_BASE_URL}${item.path}`;
-                return (
-                  <button
-                    key={item.path}
-                    onClick={() => handleNavigate(item.path)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 whitespace-nowrap ${
+          {quickNavLinks.map((item) => {
+            const isActive = currentUrl === `${QUARTZ_BASE_URL}${item.path}`;
+            return (
+              <button
+                key={item.path}
+                onClick={() => handleNavigate(item.path)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 whitespace-nowrap ${
+                  isActive
+                    ? "bg-apple-blue text-white shadow-sm"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                }`}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span
+                    className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
                       isActive
-                        ? "bg-apple-blue text-white shadow-sm"
-                        : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        ? "bg-white/20 text-white"
+                        : "bg-blue-100 dark:bg-blue-900/50 text-apple-blue"
                     }`}
                   >
-                    {item.icon}
-                    <span>{item.label}</span>
-                    {item.badge && (
-                      <span
-                        className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
-                          isActive
-                            ? "bg-white/20 text-white"
-                            : "bg-blue-100 dark:bg-blue-900/50 text-apple-blue"
-                        }`}
-                      >
-                        {item.badge}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Nút Mở Rộng Không Gian & Flashcard */}
-            <div className="flex items-center gap-2 justify-end flex-shrink-0">
-              <button
-                onClick={() => setIsFocusMode(true)}
-                title="Mở rộng không gian làm bài (Thu gọn 2 thanh công cụ)"
-                className="px-2.5 py-2 text-gray-600 dark:text-gray-300 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700 flex items-center gap-1 text-xs font-medium"
-              >
-                <Maximize2 className="w-3.5 h-3.5 text-apple-blue" />
-                <span className="hidden sm:inline">Mở Rộng Không Gian</span>
-              </button>
-
-              <button
-                onClick={handleRefresh}
-                title="Tải lại nội dung trang"
-                className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-              >
-                <RotateCw className="w-3.5 h-3.5" />
-              </button>
-
-              <a
-                href={currentUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Mở tab mới trong trình duyệt"
-                className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-
-              <button
-                onClick={onNavigateToFlashcards}
-                className="group px-4 py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-2"
-              >
-                <CheckCircle2 className="w-4 h-4 text-white" />
-                <span>Đã xong bài? Ôn Thẻ Nhớ</span>
-                {dueCount > 0 ? (
-                  <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.5 rounded-full font-extrabold shadow-sm">
-                    {dueCount}
-                  </span>
-                ) : (
-                  <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.5 rounded-full">
-                    0
+                    {item.badge}
                   </span>
                 )}
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </button>
-            </div>
-          </div>
-        </>
-      )}
+            );
+          })}
+        </div>
+
+        {/* Nút Tải lại, Mở Tab mới và Flashcard */}
+        <div className="flex items-center gap-2 justify-end flex-shrink-0">
+          <button
+            onClick={handleRefresh}
+            title="Tải lại nội dung trang"
+            className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+          >
+            <RotateCw className="w-3.5 h-3.5" />
+          </button>
+
+          <a
+            href={currentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Mở tab mới trong trình duyệt"
+            className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+
+          <button
+            onClick={onNavigateToFlashcards}
+            className="group px-4 py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-2"
+          >
+            <CheckCircle2 className="w-4 h-4 text-white" />
+            <span>Đã xong bài? Ôn Thẻ Nhớ</span>
+            {dueCount > 0 ? (
+              <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.5 rounded-full font-extrabold shadow-sm">
+                {dueCount}
+              </span>
+            ) : (
+              <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.5 rounded-full">
+                0
+              </span>
+            )}
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </div>
+      </div>
 
       {/* Thông Báo AI Đã Tiếp Nhận Bài Làm Hoặc Đồng Bộ Kế Hoạch */}
       {toastMessage && (
@@ -365,12 +293,8 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       )}
 
-      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học Tương Tác: Tối Đa Hóa Chiều Cao */}
-      <div
-        className={`w-full bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm relative transition-all duration-300 ${
-          isFocusMode ? "h-[calc(100vh-7.5rem)]" : "h-[85vh] min-h-[680px]"
-        }`}
-      >
+      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học: Chiều Cao Toàn Màn Hình Khi Cuộn Xuống */}
+      <div className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
         <iframe
           ref={iframeRef}
           src={currentUrl}
