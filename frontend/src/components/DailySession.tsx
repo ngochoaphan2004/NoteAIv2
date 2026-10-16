@@ -174,7 +174,12 @@ export const DailySession: React.FC<DailySessionProps> = ({
             ) : (
               todayPlan.link && (
                 <button
-                  onClick={() => handleNavigate(`/${todayPlan.link}/`)}
+                  onClick={() => {
+                    const targetPath = todayPlan.link.startsWith("/")
+                      ? todayPlan.link
+                      : `/${todayPlan.link}`;
+                    handleNavigate(targetPath.replace(/\/+$/, ""));
+                  }}
                   className="px-3 py-1 bg-apple-blue hover:bg-apple-blueHover text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1"
                 >
                   <span>Vào bài học ngay</span>
