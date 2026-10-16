@@ -48,7 +48,7 @@ tags:
 >
 > **Write at least 150 words.**
 
-![Writing Task 1 Prompt (Trang 31)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080151/note_ai/Cambridge_18_page-0031.jpg)
+<!-- ![Writing Task 1 Prompt (Trang 31)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080151/note_ai/Cambridge_18_page-0031.jpg) -->
 
 ---
 
@@ -119,7 +119,10 @@ tags:
   </div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy">
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Bài Viết Cho AI
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy">
       📋 Sao Chép Cho AI
     </button>
     <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-download">
@@ -129,6 +132,7 @@ tags:
       🗑️ Xóa & Làm Lại
     </button>
   </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---
@@ -249,7 +253,7 @@ tags:
 >
 > **Write at least 250 words.**
 
-![Writing Task 2 Prompt (Trang 32)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080176/note_ai/Cambridge_18_page-0032.jpg)
+<!-- ![Writing Task 2 Prompt (Trang 32)](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080176/note_ai/Cambridge_18_page-0032.jpg) -->
 
 ---
 
@@ -301,7 +305,10 @@ tags:
   </div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-copy">
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Bài Viết Cho AI
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy">
       📋 Sao Chép Cho AI
     </button>
     <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-download">
@@ -311,6 +318,7 @@ tags:
       🗑️ Xóa & Làm Lại
     </button>
   </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---

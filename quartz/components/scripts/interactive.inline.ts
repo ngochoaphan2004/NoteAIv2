@@ -255,6 +255,97 @@ document.addEventListener("nav", () => {
         }
       }
     });
+
+    // -----------------------------------------------------------------------
+    // AI Submission Directly for Writing
+    // -----------------------------------------------------------------------
+    const cardActions = card.querySelector<HTMLElement>(".ielts-card-actions");
+    let btnSubmit = card.querySelector<HTMLButtonElement>(".ielts-btn-submit-ai");
+    if (!btnSubmit && cardActions) {
+      btnSubmit = document.createElement("button");
+      btnSubmit.type = "button";
+      btnSubmit.className = "ielts-btn ielts-btn-primary ielts-btn-submit-ai";
+      btnSubmit.innerHTML = `🚀 Gửi Bài Viết Cho AI`;
+      cardActions.insertBefore(btnSubmit, cardActions.firstChild);
+    }
+
+    let aiResponseContainer = card.querySelector<HTMLElement>(".ielts-ai-response");
+    if (!aiResponseContainer) {
+      aiResponseContainer = document.createElement("div");
+      aiResponseContainer.className = "ielts-ai-response";
+      aiResponseContainer.style.display = "none";
+      card.appendChild(aiResponseContainer);
+    }
+
+    btnSubmit?.addEventListener("click", async () => {
+      const text = textarea.value.trim();
+      if (!text) {
+        alert("Khung bài làm đang trống! Hãy viết bài trước khi gửi cho AI.");
+        return;
+      }
+
+      const origHtml = btnSubmit!.innerHTML;
+      btnSubmit!.disabled = true;
+      btnSubmit!.innerHTML = `⏳ Đang gửi cho AI đọc bài...`;
+
+      try {
+        const response = await fetch("http://localhost:8000/api/v1/agents/evaluate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            attempt_text: text,
+            skill: "writing",
+            source_file: window.location.pathname,
+          }),
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.detail || `Lỗi HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        // Inform parent SPA window if present
+        if (window.parent && window.parent !== window) {
+          const words = (text.match(/\b[\w'-]+\b/g) || []).length;
+          window.parent.postMessage(
+            {
+              type: "IELTS_TEST_SUBMITTED",
+              payload: {
+                skill: "writing",
+                filledCount: words,
+              },
+            },
+            "*",
+          );
+        }
+
+        // Render AI Result Box inside note
+        if (aiResponseContainer) {
+          const words = (text.match(/\b[\w'-]+\b/g) || []).length;
+          aiResponseContainer.innerHTML = `
+            <div class="ielts-ai-banner ielts-ai-banner-success">
+              <span style="font-size: 1.5rem;">🎉</span>
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">AI Đã Tiếp Nhận Bài Viết Thành Công</div>
+                <div style="font-size: 0.82rem; margin-top: 3px;">
+                  Độ dài: <strong>${words} từ</strong> &bull; Trạng thái: <strong>Đã ghi nhận bài làm vào hệ thống PKM</strong>
+                </div>
+              </div>
+            </div>
+            ${result.feedback ? `<div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">${result.feedback}</div>` : ""}
+          `;
+          aiResponseContainer.style.display = "block";
+          aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      } catch (err: any) {
+        alert(`Không thể kết nối tới AI Evaluator: ${err.message || err}`);
+      } finally {
+        btnSubmit!.disabled = false;
+        btnSubmit!.innerHTML = origHtml;
+      }
+    });
   });
 
   // =========================================================================
