@@ -24,6 +24,7 @@ import Comments from "./Comments";
 import Flex from "./Flex";
 import ConditionalRender from "./ConditionalRender";
 import Interactive from "./Interactive";
+import SplitExamMode from "./SplitExamMode";
 
 export {
   ArticleTitle,
@@ -32,6 +33,7 @@ export {
   FolderContent,
   Darkmode,
   ReaderMode,
+  SplitExamMode,
   Head,
   PageTitle,
   ContentMeta,

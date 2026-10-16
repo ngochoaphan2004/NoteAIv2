@@ -741,3 +741,67 @@ iframe.pdf {
     background-color: var(--darkgray);
   }
 }
+
+/* --------------------------------------------------------------------------
+   13. Exam Prompt Images inside <details>
+   - Zero vertical gap/padding between consecutive book pages
+   - Compact max-width for comfortable reading
+   -------------------------------------------------------------------------- */
+
+details {
+  background-color: color-mix(in srgb, var(--light) 95%, var(--lightgray) 5%);
+  border: 1px solid color-mix(in srgb, var(--gray) 35%, transparent);
+  border-radius: var(--apple-radius-lg, 12px);
+  padding: 0.75rem 1rem;
+  margin: 1.25rem 0;
+  box-shadow: var(--apple-shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.04));
+  transition: all 0.2s var(--apple-ease);
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--dark);
+    padding: 0.35rem 0.2rem;
+    user-select: none;
+    outline: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+
+  /* Strip all vertical margin, padding and baseline spacing between consecutive image paragraphs */
+  p:has(img),
+  p.ielts-exam-img-p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+    text-align: center;
+  }
+
+  img {
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: 80% !important;
+    max-height: 85vh !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+
+    @media all and ($mobile) {
+      max-width: 100% !important;
+    }
+  }
+
+  h3, h4 {
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    color: var(--dark);
+  }
+}
+

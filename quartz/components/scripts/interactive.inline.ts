@@ -46,6 +46,21 @@ document.addEventListener("nav", () => {
     );
     const btnClear = card.querySelector<HTMLButtonElement>(".ielts-btn-clear");
 
+    const cardHeader = card.querySelector<HTMLElement>(".ielts-card-header");
+    if (cardHeader && !cardHeader.querySelector(".ielts-btn-split-trigger")) {
+      const splitBtn = document.createElement("button");
+      splitBtn.type = "button";
+      splitBtn.className = "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
+      splitBtn.style.fontSize = "0.76rem";
+      splitBtn.style.padding = "0.22rem 0.55rem";
+      splitBtn.innerHTML = `🖥️ Chế độ thi 2 cột`;
+      splitBtn.title = "Mở đề bài ở cột bên phải và bài làm ở cột bên trái";
+      splitBtn.addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("splitscreen-open", { detail: { index: 0 } }));
+      });
+      cardHeader.appendChild(splitBtn);
+    }
+
     if (!textarea) return;
 
     // Load saved text
@@ -266,6 +281,21 @@ document.addEventListener("nav", () => {
     const btnClear = card.querySelector<HTMLButtonElement>(
       ".ielts-btn-clear-sheet",
     );
+
+    const cardHeader = card.querySelector<HTMLElement>(".ielts-card-header");
+    if (cardHeader && !cardHeader.querySelector(".ielts-btn-split-trigger")) {
+      const splitBtn = document.createElement("button");
+      splitBtn.type = "button";
+      splitBtn.className = "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
+      splitBtn.style.fontSize = "0.76rem";
+      splitBtn.style.padding = "0.22rem 0.55rem";
+      splitBtn.innerHTML = `🖥️ Chế độ thi 2 cột`;
+      splitBtn.title = "Mở đề bài ở cột bên phải và bảng điền đáp án ở cột bên trái";
+      splitBtn.addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("splitscreen-open", { detail: { index: 0 } }));
+      });
+      cardHeader.appendChild(splitBtn);
+    }
 
     if (!gridContainer) return;
 
