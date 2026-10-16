@@ -35,9 +35,9 @@ export const DailySession: React.FC<DailySessionProps> = ({
     `${QUARTZ_BASE_URL}/plans/week-01/`,
   );
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const iframeContainerRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -66,29 +66,23 @@ export const DailySession: React.FC<DailySessionProps> = ({
         setTimeout(() => {
           setToastMessage(null);
         }, 6000);
-      } else if (event.data?.type === "IFRAME_SCROLL_STATE") {
-        setIsScrolledDown(Boolean(event.data.isScrollingDown));
+      } else if (event.data?.type === "IFRAME_WHEEL") {
+        const { deltaY, atTop, isScrollingDown, isScrollingUp } = event.data;
+        const parentScrollY = window.scrollY;
+        const maxParentScroll = iframeContainerRef.current
+          ? iframeContainerRef.current.offsetTop - 12
+          : 180;
+
+        if (isScrollingDown && parentScrollY < maxParentScroll) {
+          window.scrollBy({ top: deltaY, behavior: "auto" });
+        } else if (isScrollingUp && atTop && parentScrollY > 0) {
+          window.scrollBy({ top: deltaY, behavior: "auto" });
+        }
       }
     };
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, [refetchTodayPlan]);
-
-  // Lắng nghe cuộn cửa sổ chính (window scroll)
-  React.useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const curY = window.scrollY;
-      if (curY > 50 && curY > lastY) {
-        setIsScrolledDown(true);
-      } else if (curY < lastY || curY <= 15) {
-        setIsScrolledDown(false);
-      }
-      lastY = curY;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const dueCount = dueCards.length;
 
@@ -109,6 +103,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const handleToggleSplitMode = () => {
     if (iframeRef.current?.contentWindow) {
       iframeRef.current.contentWindow.postMessage({ type: "TOGGLE_SPLIT_MODE" }, "*");
+      iframeContainerRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -145,24 +140,8 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   return (
     <div className="flex flex-col gap-3 pb-6">
-      {/* Nút Phục Hồi Thanh Công Cụ Nhỏ Gọn Khi Đang Cuộn Bài */}
-      {isScrolledDown && (
-        <button
-          onClick={() => setIsScrolledDown(false)}
-          className="fixed top-2.5 left-1/2 -translate-x-1/2 z-40 bg-white/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-3.5 py-1 rounded-full border border-gray-200 dark:border-gray-700 shadow-md text-[11px] font-semibold text-gray-700 dark:text-gray-300 hover:text-apple-blue transition flex items-center gap-1.5"
-        >
-          <span>▲ Hiện Lại Thanh Kế Hoạch</span>
-        </button>
-      )}
-
-      {/* 2 Thanh bar: Tự động trượt lên và biến mất khi cuộn bài để tối đa không gian */}
-      <div
-        className={`flex flex-col gap-3 transition-all duration-300 ease-in-out origin-top ${
-          isScrolledDown
-            ? "max-h-0 opacity-0 overflow-hidden pointer-events-none -my-2 scale-98"
-            : "max-h-[600px] opacity-100 overflow-visible scale-100"
-        }`}
-      >
+      {/* 2 Thanh bar: Banner AI và Thanh Kế Hoạch (Để dạng khối bình thường, không fixed, khi cuộn tự trôi mất) */}
+      <div className="flex flex-col gap-3">
         {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay */}
         {todayPlan && (
           <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">
@@ -340,8 +319,11 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       )}
 
-      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học: Chiều Cao Toàn Màn Hình Khi Cuộn Xuống */}
-      <div className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học */}
+      <div
+        ref={iframeContainerRef}
+        className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
+      >
         <iframe
           ref={iframeRef}
           src={currentUrl}

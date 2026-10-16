@@ -31,6 +31,7 @@ function setSplitRatio(leftPct: number) {
   if (centerEl && isSplitExamActive) {
     centerEl.style.width = `${leftPct}%`;
     centerEl.style.maxWidth = `${leftPct}%`;
+    centerEl.style.minWidth = `${leftPct}%`;
   }
 
   const panel = document.getElementById("split-exam-panel");
@@ -79,13 +80,24 @@ function exitSplitExamMode() {
   isSplitExamActive = false;
   document.documentElement.setAttribute("split-mode", "off");
 
-  // Restore center column width
+  // Restore center column width and positioning
   const centerEl = document.querySelector<HTMLElement>(".center");
   if (centerEl) {
+    centerEl.style.position = "";
+    centerEl.style.top = "";
+    centerEl.style.left = "";
+    centerEl.style.bottom = "";
     centerEl.style.width = "";
     centerEl.style.maxWidth = "";
+    centerEl.style.minWidth = "";
     centerEl.style.height = "";
+    centerEl.style.maxHeight = "";
     centerEl.style.overflowY = "";
+    centerEl.style.overflowX = "";
+    centerEl.style.zIndex = "";
+    centerEl.style.padding = "";
+    centerEl.style.margin = "";
+    centerEl.style.background = "";
   }
 
   // Restore hidden original details
@@ -133,10 +145,16 @@ function activateSplitExamMode(targetIndex: number = 0) {
   // Apply explicit dimensions to .center
   const centerEl = document.querySelector<HTMLElement>(".center");
   if (centerEl) {
+    centerEl.style.position = "fixed";
+    centerEl.style.top = "0";
+    centerEl.style.left = "0";
+    centerEl.style.bottom = "0";
     centerEl.style.width = "50%";
     centerEl.style.maxWidth = "50%";
+    centerEl.style.minWidth = "50%";
     centerEl.style.height = "100vh";
     centerEl.style.overflowY = "auto";
+    centerEl.style.zIndex = "100";
   }
 
   // Render Panel Structure
@@ -345,23 +363,29 @@ document.addEventListener("nav", () => {
   window.addEventListener("message", onMessage);
   window.addCleanup(() => window.removeEventListener("message", onMessage));
 
-  // 7. Notify parent React SPA on scroll so top bars can auto-hide
-  let lastScrollY = window.scrollY;
-  const onScroll = () => {
-    const curY = window.scrollY;
-    const isScrollingDown = curY > lastScrollY && curY > 30;
-    lastScrollY = curY;
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage(
-        {
-          type: "IFRAME_SCROLL_STATE",
-          isScrollingDown,
-          scrollY: curY,
-        },
-        "*",
-      );
+  // 7. Forward wheel events to parent window for natural scroll chaining
+  const onWheel = (e: WheelEvent) => {
+    if (!window.parent || window.parent === window) return;
+
+    let atTop = false;
+    if (isSplitExamActive) {
+      const centerEl = document.querySelector<HTMLElement>(".center");
+      atTop = !centerEl || centerEl.scrollTop <= 0;
+    } else {
+      atTop = window.scrollY <= 0;
     }
+
+    window.parent.postMessage(
+      {
+        type: "IFRAME_WHEEL",
+        deltaY: e.deltaY,
+        atTop,
+        isScrollingDown: e.deltaY > 0,
+        isScrollingUp: e.deltaY < 0,
+      },
+      "*",
+    );
   };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addCleanup(() => window.removeEventListener("scroll", onScroll));
+  window.addEventListener("wheel", onWheel, { passive: true });
+  window.addCleanup(() => window.removeEventListener("wheel", onWheel));
 });
