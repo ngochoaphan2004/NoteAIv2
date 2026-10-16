@@ -303,5 +303,18 @@ document.addEventListener("nav", () => {
 
   document.addEventListener("splitscreen-open", onCustomOpen);
   window.addCleanup(() => document.removeEventListener("splitscreen-open", onCustomOpen));
+
+  // 6. Listen for postMessage from parent React SPA
+  const onMessage = (e: MessageEvent) => {
+    if (e.data?.type === "TOGGLE_SPLIT_MODE") {
+      if (isSplitExamActive) {
+        exitSplitExamMode();
+      } else {
+        activateSplitExamMode(0);
+      }
+    }
+  };
+  window.addEventListener("message", onMessage);
+  window.addCleanup(() => window.removeEventListener("message", onMessage));
 });
 

@@ -13,6 +13,10 @@ import {
   Sparkles,
   Zap,
   CheckCheck,
+  Columns,
+  Headphones,
+  FileText,
+  Edit3,
 } from "lucide-react";
 
 const QUARTZ_BASE_URL =
@@ -71,10 +75,27 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   const quickNavLinks = [
     {
-      label: "Tuần 1 (14/10 – 18/10)",
+      label: "Kế Hoạch Tuần 1",
       path: "/plans/week-01/",
       icon: <Calendar className="w-3.5 h-3.5 text-apple-blue" />,
-      badge: "Hiện tại",
+    },
+    {
+      label: "🎧 Test 1 Listening",
+      path: "/plans/week-01/test-1-listening",
+      icon: <Headphones className="w-3.5 h-3.5 text-indigo-500" />,
+      badge: "40 câu",
+    },
+    {
+      label: "📖 Test 1 Reading P3",
+      path: "/plans/week-01/test-1-reading-p3",
+      icon: <FileText className="w-3.5 h-3.5 text-emerald-500" />,
+      badge: "Passage 3",
+    },
+    {
+      label: "✍️ Test 1 Writing",
+      path: "/plans/week-01/test-1-writing",
+      icon: <Edit3 className="w-3.5 h-3.5 text-purple-500" />,
+      badge: "Task 1 & 2",
     },
     {
       label: "Tất cả kế hoạch",
@@ -86,12 +107,13 @@ export const DailySession: React.FC<DailySessionProps> = ({
       path: "/roadmap-5.0-to-7.5",
       icon: <Sparkles className="w-3.5 h-3.5 text-purple-500" />,
     },
-    {
-      label: "Trang chủ Vườn",
-      path: "/",
-      icon: <Home className="w-3.5 h-3.5" />,
-    },
   ];
+
+  const handleToggleSplitMode = () => {
+    if (iframeRef.current?.contentWindow) {
+      iframeRef.current.contentWindow.postMessage({ type: "TOGGLE_SPLIT_MODE" }, "*");
+    }
+  };
 
   const handleNavigate = (path: string) => {
     const fullUrl = `${QUARTZ_BASE_URL}${path}`;
@@ -259,6 +281,16 @@ export const DailySession: React.FC<DailySessionProps> = ({
           >
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
+
+          {/* Nút Kích Hoạt Nhanh Chế Độ Thi 2 Cột */}
+          <button
+            onClick={handleToggleSplitMode}
+            title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
+            className="px-3 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5"
+          >
+            <Columns className="w-3.5 h-3.5 text-apple-blue" />
+            <span>🖥️ Chế Độ Thi 2 Cột</span>
+          </button>
 
           <button
             onClick={onNavigateToFlashcards}

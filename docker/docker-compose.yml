@@ -70,6 +70,10 @@ services:
       # Mount thư mục backend & frontend code để cập nhật nóng (Hot-Reload)
       - ../backend:/app/backend
       - ../frontend/src:/app/frontend/src
+      # Mount quartz code & layouts để Quartz tự cập nhật khi sửa component
+      - ../quartz:/app/quartz
+      - ../quartz.layout.ts:/app/quartz.layout.ts
+      - ../quartz.config.ts:/app/quartz.config.ts
       # Persistent Logging: Lưu trữ bền vững toàn bộ log trên máy host/VPS (Tránh mất log khi container restart)
       - ../logs:/app/logs
     depends_on:
