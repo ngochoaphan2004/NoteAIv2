@@ -15,6 +15,50 @@ class EvaluatorAgent:
         - Chỉ ghi nhận trung thực đáp án thực tế của người học.
         """
         raw_text = state.input_text
+
+        # Xử lý bài nộp Writing (Dạng văn bản tự do / đoạn văn / bài luận)
+        if state.skill.lower() == "writing":
+            words = len(raw_text.strip().split())
+            if words == 0:
+                state.error = "Nội dung bài viết đang trống."
+                return state
+
+            state.has_official_key = False
+            state.evaluation = EvaluationOutput(
+                score_fraction=f"{words} từ",
+                band_score=None,
+                strengths=[f"Đã ghi nhận bài làm Writing ({words} từ) vào hệ thống PKM."],
+                weaknesses=["Bài viết đã được lưu trữ an toàn. Bạn có thể nhờ AI chấm chi tiết theo 4 tiêu chí TR/TA, CC, LR, GRA."],
+                questions=[],
+                recommended_drills=["Tập trung hoàn thiện 4 tiêu chí: Task Achievement, Coherence & Cohesion, Lexical Resource, GRA."]
+            )
+
+            # Lưu vào PostgreSQL và tự động đồng bộ kế hoạch tuần
+            try:
+                from sqlmodel import Session
+                from app.core.database import engine
+                from app.models.test_attempt import TestAttempt
+                from app.services.plan_service import plan_service
+
+                with Session(engine) as session:
+                    attempt = TestAttempt(
+                        title=state.source_file or "Bài làm Writing",
+                        skill="writing",
+                        source_file=state.source_file,
+                        score=None,
+                        total_questions=0,
+                        band_score=None,
+                        raw_attempt_text=raw_text
+                    )
+                    session.add(attempt)
+                    session.commit()
+
+                plan_service.mark_task_attempt(skill="writing", source_file=state.source_file)
+            except Exception as e:
+                logger.error(f"Lỗi khi lưu bài làm writing hoặc đồng bộ kế hoạch: {e}", exc_info=True)
+
+            return state
+
         parsed_items = markdown_parser.parse_test_shorthand(raw_text)
 
         if not parsed_items:

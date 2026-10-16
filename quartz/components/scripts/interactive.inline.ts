@@ -5,6 +5,26 @@ function getPageSlug(): string {
   return slug || "root";
 }
 
+async function callApi(path: string, options: RequestInit): Promise<Response> {
+  const protocol = window.location.protocol === "https:" ? "https:" : "http:";
+  const hostname = window.location.hostname || "localhost";
+  const primaryUrl = `${protocol}//${hostname}:8000${path}`;
+
+  try {
+    return await fetch(primaryUrl, options);
+  } catch (err) {
+    // Fallback: If hostname is localhost or 127.0.0.1, try the alternate loopback address
+    if (hostname === "localhost") {
+      const fallbackUrl = `${protocol}//127.0.0.1:8000${path}`;
+      return await fetch(fallbackUrl, options);
+    } else if (hostname === "127.0.0.1") {
+      const fallbackUrl = `${protocol}//localhost:8000${path}`;
+      return await fetch(fallbackUrl, options);
+    }
+    throw err;
+  }
+}
+
 document.addEventListener("nav", () => {
   const slug = getPageSlug();
   const activeTimers: number[] = [];
@@ -289,7 +309,7 @@ document.addEventListener("nav", () => {
       btnSubmit!.innerHTML = `⏳ Đang gửi cho AI đọc bài...`;
 
       try {
-        const response = await fetch("http://localhost:8000/api/v1/agents/evaluate", {
+        const response = await callApi("/api/v1/agents/evaluate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -324,6 +344,7 @@ document.addEventListener("nav", () => {
         // Render AI Result Box inside note
         if (aiResponseContainer) {
           const words = (text.match(/\b[\w'-]+\b/g) || []).length;
+          const drills = result.recommended_drills || [];
           aiResponseContainer.innerHTML = `
             <div class="ielts-ai-banner ielts-ai-banner-success">
               <span style="font-size: 1.5rem;">🎉</span>
@@ -335,12 +356,39 @@ document.addEventListener("nav", () => {
               </div>
             </div>
             ${result.feedback ? `<div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">${result.feedback}</div>` : ""}
+            ${
+              drills.length > 0
+                ? `
+              <div class="ielts-ai-drills" style="margin-top: 0.75rem;">
+                <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--dark);">🎯 Hướng dẫn & Đề xuất Micro-session:</div>
+                <ul style="margin: 0; padding-left: 1.2rem; color: var(--darkgray);">
+                  ${drills.map((d: string) => `<li>${d}</li>`).join("")}
+                </ul>
+              </div>`
+                : ""
+            }
+            <div style="margin-top: 0.75rem; display: flex; justify-content: flex-end;">
+              <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-close-ai" style="font-size: 0.75rem;">
+                Thu gọn kết quả ▲
+              </button>
+            </div>
           `;
           aiResponseContainer.style.display = "block";
           aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          const btnClose = aiResponseContainer.querySelector(".ielts-btn-close-ai");
+          btnClose?.addEventListener("click", () => {
+            if (aiResponseContainer) aiResponseContainer.style.display = "none";
+          });
         }
       } catch (err: any) {
-        alert(`Không thể kết nối tới AI Evaluator: ${err.message || err}`);
+        console.error("Lỗi AI Evaluator (Writing):", err);
+        const msg = err.message || String(err);
+        if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+          alert(`Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend tại cổng 8000. Vui lòng kiểm tra Docker hoặc dịch vụ FastAPI.`);
+        } else {
+          alert(`Không thể kết nối tới AI Evaluator: ${msg}`);
+        }
       } finally {
         btnSubmit!.disabled = false;
         btnSubmit!.innerHTML = origHtml;
@@ -504,7 +552,7 @@ document.addEventListener("nav", () => {
       const skill = badgeText.includes("reading") ? "reading" : "listening";
 
       try {
-        const response = await fetch("http://localhost:8000/api/v1/agents/evaluate", {
+        const response = await callApi("/api/v1/agents/evaluate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -646,7 +694,12 @@ document.addEventListener("nav", () => {
         }, 4000);
       } catch (err: any) {
         console.error("Lỗi gửi bài cho AI:", err);
-        alert(`Không thể gửi bài làm cho AI: ${err.message || err}`);
+        const msg = err.message || String(err);
+        if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+          alert(`Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend tại cổng 8000. Vui lòng kiểm tra Docker hoặc dịch vụ FastAPI.`);
+        } else {
+          alert(`Không thể gửi bài làm cho AI: ${msg}`);
+        }
         btnSubmit.innerHTML = origText;
         btnSubmit.disabled = false;
       }
