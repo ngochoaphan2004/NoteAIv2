@@ -37,11 +37,18 @@ class MarkdownChangeHandler(FileSystemEventHandler):
         self.last_triggered[file_path] = now
         logger.info(f"File event detected on Markdown note: {os.path.basename(file_path)}")
 
-        # Kích hoạt RAG re-index ngầm
+        # 1. Kích hoạt RAG re-index ngầm
         try:
             Thread(target=rag_engine.index_markdown_file, args=(file_path,), daemon=True).start()
         except Exception as e:
             logger.error(f"Failed to auto-index file {file_path}: {e}")
+
+        # 2. Tự động biên dịch lại Quartz HTML để cập nhật ngay lập tức các thay đổi
+        try:
+            from app.services.plan_service import rebuild_quartz
+            Thread(target=rebuild_quartz, daemon=True).start()
+        except Exception as e:
+            logger.error(f"Failed to trigger auto quartz rebuild: {e}")
 
 class WatchdogDaemon:
     def __init__(self):

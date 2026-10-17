@@ -46,7 +46,9 @@ class AutonomousPlanGenerator:
     def __init__(self):
         self.content_dir = settings.CONTENT_DIR
         self.book_assets_file = os.path.join(self.content_dir, "assets", "book_pages_web_ready.json")
+        self.audio_assets_file = os.path.join(self.content_dir, "assets", "audio_metadata.json")
         self._book_cache: Optional[Dict[str, Any]] = None
+        self._audio_cache: Optional[Dict[str, Any]] = None
 
     def _get_book_assets(self) -> Dict[str, Any]:
         if self._book_cache is None:
@@ -56,6 +58,24 @@ class AutonomousPlanGenerator:
             else:
                 self._book_cache = {"structured_tree": [], "pages": []}
         return self._book_cache
+
+    def _get_audio_assets(self) -> Dict[str, Any]:
+        if self._audio_cache is None:
+            if os.path.exists(self.audio_assets_file):
+                try:
+                    with open(self.audio_assets_file, "r", encoding="utf-8") as f:
+                        self._audio_cache = json.load(f)
+                except Exception as e:
+                    logger.warning(f"Lỗi khi đọc file audio_metadata.json: {e}")
+                    self._audio_cache = {"tests": {}}
+            else:
+                self._audio_cache = {"tests": {}}
+        return self._audio_cache
+
+    def get_test_audio_data(self, test_number: int) -> Dict[str, Any]:
+        """Trích xuất metadata các file audio tương ứng cho Test N từ audio_metadata.json"""
+        audio_db = self._get_audio_assets()
+        return audio_db.get("tests", {}).get(str(test_number), {})
 
     def get_cambridge_test_data(self, test_number: int) -> Dict[str, Any]:
         """Trích xuất toàn bộ metadata và URL ảnh các trang cho Test N từ sách Cambridge 18"""
@@ -482,6 +502,25 @@ tags:
         rows_p3 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(21, 31)])
         rows_p4 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(31, 41)])
 
+        audio_test_meta = self.get_test_audio_data(test_num)
+        audio_parts = audio_test_meta.get("parts", {})
+
+        def render_part_audio(p_num: int):
+            p_data = audio_parts.get(str(p_num))
+            if not p_data:
+                return ""
+            f_rel = f"../../{p_data['relative_path']}"
+            return f"""<div class="ielts-audio-player-box" style="margin: 0.8rem 0 1rem 0; padding: 0.6rem 0.9rem; background: rgba(0, 113, 227, 0.05); border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; color: #0071e3;">🎧 Audio {p_data.get('title', f'Part {p_num}')}</span>
+    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">{p_data.get('size_mb', '')} MB</span>
+  </div>
+  <audio controls preload="none" style="width: 100%; height: 36px; border-radius: 6px;">
+    <source src="{f_rel}" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát file âm thanh.
+  </audio>
+</div>"""
+
         content = f"""---
 title: "[{day_str}] Test {test_num} Listening"
 aliases:
@@ -508,17 +547,25 @@ tags:
 
 ### 🔹 Part 1: Questions 1 – 10
 
+{render_part_audio(1)}
+
 {render_imgs(part1_imgs) if part1_imgs else "_(Đang cập nhật hình ảnh)_"}
 
 ### 🔹 Part 2: Questions 11 – 20
+
+{render_part_audio(2)}
 
 {render_imgs(part2_imgs) if part2_imgs else "_(Đang cập nhật hình ảnh)_"}
 
 ### 🔹 Part 3: Questions 21 – 30
 
+{render_part_audio(3)}
+
 {render_imgs(part3_imgs) if part3_imgs else "_(Đang cập nhật hình ảnh)_"}
 
 ### 🔹 Part 4: Questions 31 – 40
+
+{render_part_audio(4)}
 
 {render_imgs(part4_imgs) if part4_imgs else "_(Đang cập nhật hình ảnh)_"}
 

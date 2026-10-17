@@ -24,21 +24,65 @@ tags:
 
 ### 🔹 Part 1: Questions 1 – 10 (Travel survey)
 
+<div class="ielts-audio-player-box" style="margin: 0.8rem 0 1rem 0; padding: 0.6rem 0.9rem; background: rgba(0, 113, 227, 0.05); border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; color: #0071e3;">🎧 Audio Part 1: Transport Survey</span>
+    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">6.58 MB</span>
+  </div>
+  <audio controls preload="none" style="width: 100%; height: 36px; border-radius: 6px;">
+    <source src="../../assets/audio/cam18-test1-part1.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát file âm thanh.
+  </audio>
+</div>
+
 ![Test 1 Listening - Part 1 Trang 12](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079203/note_ai/Cambridge_18_page-0012.jpg)
 
 ![Test 1 Listening - Part 1 Trang 13](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079227/note_ai/Cambridge_18_page-0013.jpg)
 
 ### 🔹 Part 2: Questions 11 – 20 (Voluntary work)
 
+<div class="ielts-audio-player-box" style="margin: 0.8rem 0 1rem 0; padding: 0.6rem 0.9rem; background: rgba(0, 113, 227, 0.05); border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; color: #0071e3;">🎧 Audio Part 2: Voluntary Work Opportunities</span>
+    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">6.07 MB</span>
+  </div>
+  <audio controls preload="none" style="width: 100%; height: 36px; border-radius: 6px;">
+    <source src="../../assets/audio/cam18-test1-part2.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát file âm thanh.
+  </audio>
+</div>
+
 ![Test 1 Listening - Part 2 Trang 14](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079253/note_ai/Cambridge_18_page-0014.jpg)
 
 ### 🔹 Part 3: Questions 21 – 30 (Talk on job in fashion design)
+
+<div class="ielts-audio-player-box" style="margin: 0.8rem 0 1rem 0; padding: 0.6rem 0.9rem; background: rgba(0, 113, 227, 0.05); border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; color: #0071e3;">🎧 Audio Part 3: Talk on Careers in Fashion Design</span>
+    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">6.12 MB</span>
+  </div>
+  <audio controls preload="none" style="width: 100%; height: 36px; border-radius: 6px;">
+    <source src="../../assets/audio/cam18-test1-part3.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát file âm thanh.
+  </audio>
+</div>
 
 ![Test 1 Listening - Part 3 Trang 15](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079390/note_ai/Cambridge_18_page-0015.jpg)
 
 ![Test 1 Listening - Part 3 Trang 16](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079829/note_ai/Cambridge_18_page-0016.jpg)
 
 ### 🔹 Part 4: Questions 31 – 40 (Elephant communication & behavior)
+
+<div class="ielts-audio-player-box" style="margin: 0.8rem 0 1rem 0; padding: 0.6rem 0.9rem; background: rgba(0, 113, 227, 0.05); border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; color: #0071e3;">🎧 Audio Part 4: Elephant Communication & Behavior</span>
+    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">8.05 MB</span>
+  </div>
+  <audio controls preload="none" style="width: 100%; height: 36px; border-radius: 6px;">
+    <source src="../../assets/audio/cam18-test1-part4.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát file âm thanh.
+  </audio>
+</div>
 
 ![Test 1 Listening - Part 4 Trang 17](https://res.cloudinary.com/s4olr6lv/image/upload/v1792079847/note_ai/Cambridge_18_page-0017.jpg)
 

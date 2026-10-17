@@ -1,0 +1,230 @@
+{
+  "series": "Cambridge IELTS 18 Academic",
+  "description": "Kho lưu trữ Audio nội bộ phục vụ luyện thi IELTS Listening cho NoteAI.v2",
+  "total_tests": 4,
+  "total_parts": 16,
+  "base_url_relative": "assets/audio",
+  "tests": {
+    "1": {
+      "test_number": 1,
+      "title": "Cambridge 18 - Test 1 Listening",
+      "total_questions": 40,
+      "parts": {
+        "1": {
+          "part_number": 1,
+          "title": "Part 1: Transport Survey",
+          "topic": "Transport Survey",
+          "questions": "1 – 10",
+          "filename": "cam18-test1-part1.mp3",
+          "relative_path": "assets/audio/cam18-test1-part1.mp3",
+          "static_url": "/static/audio/cam18-test1-part1.mp3",
+          "size_bytes": 6900820,
+          "size_mb": 6.58,
+          "mime_type": "audio/mpeg"
+        },
+        "2": {
+          "part_number": 2,
+          "title": "Part 2: Voluntary Work Opportunities",
+          "topic": "Voluntary Work Opportunities",
+          "questions": "11 – 20",
+          "filename": "cam18-test1-part2.mp3",
+          "relative_path": "assets/audio/cam18-test1-part2.mp3",
+          "static_url": "/static/audio/cam18-test1-part2.mp3",
+          "size_bytes": 6369593,
+          "size_mb": 6.07,
+          "mime_type": "audio/mpeg"
+        },
+        "3": {
+          "part_number": 3,
+          "title": "Part 3: Talk on Careers in Fashion Design",
+          "topic": "Talk on Careers in Fashion Design",
+          "questions": "21 – 30",
+          "filename": "cam18-test1-part3.mp3",
+          "relative_path": "assets/audio/cam18-test1-part3.mp3",
+          "static_url": "/static/audio/cam18-test1-part3.mp3",
+          "size_bytes": 6414733,
+          "size_mb": 6.12,
+          "mime_type": "audio/mpeg"
+        },
+        "4": {
+          "part_number": 4,
+          "title": "Part 4: Elephant Communication & Behavior",
+          "topic": "Elephant Communication & Behavior",
+          "questions": "31 – 40",
+          "filename": "cam18-test1-part4.mp3",
+          "relative_path": "assets/audio/cam18-test1-part4.mp3",
+          "static_url": "/static/audio/cam18-test1-part4.mp3",
+          "size_bytes": 8441835,
+          "size_mb": 8.05,
+          "mime_type": "audio/mpeg"
+        }
+      }
+    },
+    "2": {
+      "test_number": 2,
+      "title": "Cambridge 18 - Test 2 Listening",
+      "total_questions": 40,
+      "parts": {
+        "3": {
+          "part_number": 3,
+          "title": "Part 3: Student Presentation on Cities and Climate Change",
+          "topic": "Student Presentation on Cities and Climate Change",
+          "questions": "21 – 30",
+          "filename": "cam18-test2-part3.mp3",
+          "relative_path": "assets/audio/cam18-test2-part3.mp3",
+          "static_url": "/static/audio/cam18-test2-part3.mp3",
+          "size_bytes": 6848575,
+          "size_mb": 6.53,
+          "mime_type": "audio/mpeg"
+        },
+        "4": {
+          "part_number": 4,
+          "title": "Part 4: History of Tree Species in Scotland",
+          "topic": "History of Tree Species in Scotland",
+          "questions": "31 – 40",
+          "filename": "cam18-test2-part4.mp3",
+          "relative_path": "assets/audio/cam18-test2-part4.mp3",
+          "static_url": "/static/audio/cam18-test2-part4.mp3",
+          "size_bytes": 6815556,
+          "size_mb": 6.5,
+          "mime_type": "audio/mpeg"
+        },
+        "1": {
+          "part_number": 1,
+          "title": "Part 1: Joining a Running Club",
+          "topic": "Joining a Running Club",
+          "questions": "1 – 10",
+          "filename": "cam18-test2-part1.mp3",
+          "relative_path": "assets/audio/cam18-test2-part1.mp3",
+          "static_url": "/static/audio/cam18-test2-part1.mp3",
+          "size_bytes": 7501009,
+          "size_mb": 7.15,
+          "mime_type": "audio/mpeg"
+        },
+        "2": {
+          "part_number": 2,
+          "title": "Part 2: Regional Park Guide & Activities",
+          "topic": "Regional Park Guide & Activities",
+          "questions": "11 – 20",
+          "filename": "cam18-test2-part2.mp3",
+          "relative_path": "assets/audio/cam18-test2-part2.mp3",
+          "static_url": "/static/audio/cam18-test2-part2.mp3",
+          "size_bytes": 6995696,
+          "size_mb": 6.67,
+          "mime_type": "audio/mpeg"
+        }
+      }
+    },
+    "3": {
+      "test_number": 3,
+      "title": "Cambridge 18 - Test 3 Listening",
+      "total_questions": 40,
+      "parts": {
+        "1": {
+          "part_number": 1,
+          "title": "Part 1: Customer Service & Bicycle Rental Inquiry",
+          "topic": "Customer Service & Bicycle Rental Inquiry",
+          "questions": "1 – 10",
+          "filename": "cam18-test3-part1.mp3",
+          "relative_path": "assets/audio/cam18-test3-part1.mp3",
+          "static_url": "/static/audio/cam18-test3-part1.mp3",
+          "size_bytes": 7529430,
+          "size_mb": 7.18,
+          "mime_type": "audio/mpeg"
+        },
+        "2": {
+          "part_number": 2,
+          "title": "Part 2: Community Art Project & Local Museum",
+          "topic": "Community Art Project & Local Museum",
+          "questions": "11 – 20",
+          "filename": "cam18-test3-part2.mp3",
+          "relative_path": "assets/audio/cam18-test3-part2.mp3",
+          "static_url": "/static/audio/cam18-test3-part2.mp3",
+          "size_bytes": 7478857,
+          "size_mb": 7.13,
+          "mime_type": "audio/mpeg"
+        },
+        "3": {
+          "part_number": 3,
+          "title": "Part 3: Discussion on Wind Power Generation Study",
+          "topic": "Discussion on Wind Power Generation Study",
+          "questions": "21 – 30",
+          "filename": "cam18-test3-part3.mp3",
+          "relative_path": "assets/audio/cam18-test3-part3.mp3",
+          "static_url": "/static/audio/cam18-test3-part3.mp3",
+          "size_bytes": 5684140,
+          "size_mb": 5.42,
+          "mime_type": "audio/mpeg"
+        },
+        "4": {
+          "part_number": 4,
+          "title": "Part 4: The Evolution of Language & Gestures",
+          "topic": "The Evolution of Language & Gestures",
+          "questions": "31 – 40",
+          "filename": "cam18-test3-part4.mp3",
+          "relative_path": "assets/audio/cam18-test3-part4.mp3",
+          "static_url": "/static/audio/cam18-test3-part4.mp3",
+          "size_bytes": 7355559,
+          "size_mb": 7.01,
+          "mime_type": "audio/mpeg"
+        }
+      }
+    },
+    "4": {
+      "test_number": 4,
+      "title": "Cambridge 18 - Test 4 Listening",
+      "total_questions": 40,
+      "parts": {
+        "1": {
+          "part_number": 1,
+          "title": "Part 1: Rental Property Inquiry & Agreement",
+          "topic": "Rental Property Inquiry & Agreement",
+          "questions": "1 – 10",
+          "filename": "cam18-test4-part1.mp3",
+          "relative_path": "assets/audio/cam18-test4-part1.mp3",
+          "static_url": "/static/audio/cam18-test4-part1.mp3",
+          "size_bytes": 7086393,
+          "size_mb": 6.76,
+          "mime_type": "audio/mpeg"
+        },
+        "2": {
+          "part_number": 2,
+          "title": "Part 2: Zoo Tour & Wildlife Conservation",
+          "topic": "Zoo Tour & Wildlife Conservation",
+          "questions": "11 – 20",
+          "filename": "cam18-test4-part2.mp3",
+          "relative_path": "assets/audio/cam18-test4-part2.mp3",
+          "static_url": "/static/audio/cam18-test4-part2.mp3",
+          "size_bytes": 6978142,
+          "size_mb": 6.65,
+          "mime_type": "audio/mpeg"
+        },
+        "3": {
+          "part_number": 3,
+          "title": "Part 3: University Seminar on Robotics and Healthcare",
+          "topic": "University Seminar on Robotics and Healthcare",
+          "questions": "21 – 30",
+          "filename": "cam18-test4-part3.mp3",
+          "relative_path": "assets/audio/cam18-test4-part3.mp3",
+          "static_url": "/static/audio/cam18-test4-part3.mp3",
+          "size_bytes": 6689750,
+          "size_mb": 6.38,
+          "mime_type": "audio/mpeg"
+        },
+        "4": {
+          "part_number": 4,
+          "title": "Part 4: Ancient Mesoamerican Agricultural Systems",
+          "topic": "Ancient Mesoamerican Agricultural Systems",
+          "questions": "31 – 40",
+          "filename": "cam18-test4-part4.mp3",
+          "relative_path": "assets/audio/cam18-test4-part4.mp3",
+          "static_url": "/static/audio/cam18-test4-part4.mp3",
+          "size_bytes": 7959092,
+          "size_mb": 7.59,
+          "mime_type": "audio/mpeg"
+        }
+      }
+    }
+  },
+  "total_size_mb": 107.81
+}

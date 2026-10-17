@@ -6,6 +6,7 @@ import { TestAttemptEditor } from "./components/TestAttemptEditor";
 import { RAGSearch } from "./components/RAGSearch";
 import DailySession from "./components/DailySession";
 import { ConfigSettings } from "./components/ConfigSettings";
+import { Logo } from "./components/Logo";
 import {
   CalendarDays,
   BookOpen,
@@ -70,18 +71,12 @@ export const AppContent: React.FC = () => {
       <header className="backdrop-blur-md bg-white/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800 transition">
         <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
           {/* Brand */}
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <span className="w-7 h-7 rounded-xl bg-apple-blue flex items-center justify-center text-white font-black text-xs shadow-sm">
-              N2
-            </span>
-            <div className="hidden sm:block">
-              <h1 className="text-sm font-extrabold tracking-tight leading-none">
-                NoteAI.v2
-              </h1>
-              <p className="text-[9px] text-apple-subtextLight dark:text-apple-subtextDark uppercase tracking-wider font-semibold">
-                Local Autonomous PKM
-              </p>
-            </div>
+          <div
+            className="flex items-center gap-2.5 flex-shrink-0 cursor-pointer"
+            onClick={() => setActiveTab("session")}
+            title="Về Phiên Học Hôm Nay"
+          >
+            <Logo size={34} showText={true} />
           </div>
 
           {/* Tab Navigation */}

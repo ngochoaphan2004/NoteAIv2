@@ -77,8 +77,6 @@ class PlanService:
                         clean_sf = att.source_file.strip("/").replace("\\", "/")
                         completed_skills_and_files.add(clean_sf)
                         completed_skills_and_files.add(os.path.basename(clean_sf).replace(".md", ""))
-                    if att.skill:
-                        completed_skills_and_files.add(att.skill.lower())
         except Exception as db_err:
             logger.warning(f"Không thể truy vấn CSDL PostgreSQL cho lịch sử bài thi: {db_err}")
 
@@ -97,6 +95,66 @@ class PlanService:
             "updated_files": updated_files
         }
 
+    def _is_task_completed(
+        self,
+        week_dir: str,
+        file_key: str,
+        col_skill: str,
+        completed_set: set
+    ) -> bool:
+        """
+        Xác định một nhiệm vụ đã hoàn thành hay chưa bằng cả CSDL (PostgreSQL)
+        và tệp Markdown thực tế trên đĩa (SSOT - Single Source of Truth).
+        """
+        if file_key and file_key in completed_set:
+            return True
+
+        if file_key:
+            md_path = os.path.join(week_dir, f"{file_key}.md")
+            if not os.path.exists(md_path):
+                md_path = os.path.join(settings.CONTENT_DIR, f"{file_key}.md")
+
+            if os.path.exists(md_path):
+                try:
+                    with open(md_path, "r", encoding="utf-8") as f:
+                        text = f.read()
+
+                    # 1. Writing Task
+                    if "writing" in file_key:
+                        m_words = re.search(r"Lưu Trữ Nguyên Bản\s*-\s*(\d+)\s*từ", text)
+                        if m_words and int(m_words.group(1)) > 0:
+                            return True
+                        m_txt = re.search(r"<textarea[^>]*>([\s\S]*?)</textarea>", text)
+                        if m_txt and len(m_txt.group(1).strip()) > 30:
+                            return True
+                        if "Bài Làm Thực Tế" in text:
+                            body_after = text.split("Bài Làm Thực Tế")[-1]
+                            if "Chưa nộp bài" not in body_after and len(body_after.strip()) > 50:
+                                return True
+                        return False
+
+                    # 2. Listening & Reading Test
+                    if "test" in file_key and ("listening" in file_key or "reading" in file_key):
+                        for line in text.splitlines():
+                            if re.match(r"^\|\s*\*\*\d+\*\*\s*\|", line):
+                                cols = [c.strip() for c in line.split("|")]
+                                if len(cols) >= 3:
+                                    ans = cols[2].replace("`", "").strip()
+                                    if ans and ans != "[ ]" and ans != "_(chờ điền)_" and not ans.startswith("..."):
+                                        return True
+                        return False
+
+                    # 3. Flashcards & Vocab
+                    if "vocab" in file_key:
+                        if "✅ Đã ôn tập" in text or "Đã hoàn thành" in text:
+                            return True
+                        return False
+
+                except Exception as e:
+                    logger.warning(f"Lỗi kiểm tra trạng thái file {md_path}: {e}")
+
+        return False
+
     def _sync_single_week_file(
         self,
         file_path: str,
@@ -107,6 +165,7 @@ class PlanService:
             content = f.read()
 
         original_content = content
+        week_dir = os.path.dirname(file_path)
 
         range_match = re.search(r"(\d{1,2})/(\d{1,2})\s*[-–]\s*(\d{1,2})/(\d{1,2})", content)
         if not range_match:
@@ -118,12 +177,16 @@ class PlanService:
         end_date = date(year, end_m, end_d)
 
         is_current_week = (start_date <= today <= end_date)
+        is_past_week = (today > end_date)
+        is_future_week = (today < start_date)
 
         lines = content.splitlines()
         new_lines = []
         in_schedule_table = False
         today_task_info = None
+        first_upcoming_task = None
         day_index = 1
+        first_day_name = "Thứ 2"
 
         for line in lines:
             if "## 🗓️ 1. Bảng Tổng Quan Lịch Trình Tuần" in line:
@@ -137,10 +200,9 @@ class PlanService:
                 continue
 
             if in_schedule_table and line.startswith("|") and not line.startswith("| :---"):
-                # Dùng regex (?<!\\)\| để KHÔNG cắt nhầm ký tự escaped \| trong bảng
                 raw_parts = re.split(r"(?<!\\)\|", line)
                 parts = [p.strip() for p in raw_parts]
-                
+
                 # Bảng có 4 cột chính: [ "", Cột 1, Cột 2, Cột 3, Cột 4, "" ]
                 if len(parts) >= 6 and any(d in parts[1] for d in ["Thứ", "Chủ Nhật"]):
                     col_day = parts[1]
@@ -153,19 +215,18 @@ class PlanService:
                         row_d, row_m = map(int, date_match.groups())
                         row_date = date(year, row_m, row_d)
 
-                        # Tìm link trong col_focus (ví dụ: [[plans/week-01/test-1-listening\|...]])
+                        # Trích xuất link / file_key từ col_focus
                         link_match = re.search(r"\[\[([^\\|\]]+)", col_focus)
                         file_key = ""
                         if link_match:
                             file_key = os.path.basename(link_match.group(1)).replace(".md", "")
 
-                        is_done = (
-                            (file_key and file_key in completed_set) or
-                            ("listening" in col_skill.lower() and "listening" in completed_set) or
-                            ("reading" in col_skill.lower() and "reading" in completed_set)
-                        )
+                        # Kiểm tra tiến độ hoàn thành từ DB và Markdown SSOT
+                        is_done = self._is_task_completed(week_dir, file_key, col_skill, completed_set)
 
                         clean_day_name = col_day.split("<br>")[0].replace("**", "").replace("(Hôm nay)", "").strip()
+                        if day_index == 1:
+                            first_day_name = clean_day_name
 
                         if row_date < today:
                             new_col_day = f"**{clean_day_name}**<br>_({row_d:02d}/{row_m:02d}/{year})_"
@@ -187,6 +248,17 @@ class PlanService:
                             new_col_day = f"**{clean_day_name}**<br>_({row_d:02d}/{row_m:02d}/{year})_"
                             new_col_status = "[ ] Sắp tới"
 
+                            if first_upcoming_task is None:
+                                first_upcoming_task = {
+                                    "day_name": clean_day_name,
+                                    "date_str": f"{row_d:02d}/{row_m:02d}/{year}",
+                                    "skill": col_skill,
+                                    "focus": col_focus,
+                                    "is_done": is_done,
+                                    "file_key": file_key,
+                                    "day_index": day_index
+                                }
+
                         parts[1] = new_col_day
                         parts[4] = new_col_status
                         line = "| " + " | ".join(parts[1:5]) + " |"
@@ -196,22 +268,38 @@ class PlanService:
 
         content = "\n".join(new_lines)
 
-        # 2. Cập nhật Dòng trạng thái tuần (line 18)
-        if today_task_info and is_current_week:
-            status_line_regex = r">\s*\*\*Trạng thái tuần:\*\*.*"
+        # 2. Cập nhật Dòng trạng thái tuần
+        status_line_regex = r">\s*\*\*Trạng thái tuần:\*\*.*"
+        if is_current_week and today_task_info:
             new_status_line = (
                 f"> **Trạng thái tuần:** Đang diễn ra — Ngày {today_task_info['day_index']} "
                 f"(Hôm nay: {today_task_info['day_name']}, {today_task_info['date_str']})"
             )
             content = re.sub(status_line_regex, new_status_line, content)
+        elif is_past_week:
+            new_status_line = f"> **Trạng thái tuần:** Đã kết thúc trọn vẹn ({start_d:02d}/{start_m:02d} – {end_d:02d}/{end_m:02d}/{year})"
+            content = re.sub(status_line_regex, new_status_line, content)
+        elif is_future_week:
+            new_status_line = f"> **Trạng thái tuần:** Sắp diễn ra — Khởi động vào {first_day_name} ({start_d:02d}/{start_m:02d}/{year})"
+            content = re.sub(status_line_regex, new_status_line, content)
 
-            # 3. Cập nhật Mục 2: "Chi Tiết Nhiệm Vụ Hôm Nay"
-            section2_regex = r"(## 📝 2\. Chi Tiết Nhiệm Vụ Hôm Nay:)[^\n]*\n([\s\S]*?)(?=\n## 🔗 3\.|\Z)"
-            
-            # Format skill title
-            skill_text = re.sub(r"<[^>]+>", " — ", today_task_info["skill"]).replace("**", "").replace("`", "").strip()
-            focus_clean = today_task_info["focus"]
-            checked_box = "[x]" if today_task_info["is_done"] else "[ ]"
+        # 3. Cập nhật Mục 2: "Chi Tiết Nhiệm Vụ Hôm Nay / Mở Màn"
+        section2_regex = r"## 📝 2\.[^\n]*\n([\s\S]*?)(?=\n## 🔗 3\.|\Z)"
+
+        target_task = None
+        header_title = None
+
+        if is_current_week and today_task_info:
+            target_task = today_task_info
+            header_title = f"## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: {target_task['day_name']} ({target_task['date_str']})"
+        elif is_future_week and first_upcoming_task:
+            target_task = first_upcoming_task
+            header_title = f"## 📝 2. Nhiệm Vụ Mở Màn Sắp Tới: {target_task['day_name']} ({target_task['date_str']})"
+
+        if target_task and header_title and re.search(section2_regex, content):
+            skill_text = re.sub(r"<[^>]+>", " — ", target_task["skill"]).replace("**", "").replace("`", "").strip()
+            focus_clean = target_task["focus"]
+            checked_box = "[x]" if target_task["is_done"] else "[ ]"
 
             # Trích xuất link chi tiết từ focus
             link_display = ""
@@ -230,18 +318,20 @@ class PlanService:
                 clean_b = b.split("👉")[0].strip().lstrip("•").strip()
                 if clean_b:
                     clean_bullets.append(f"- {checked_box} {clean_b}")
-            bullet_md = "\n".join(clean_bullets)
 
-            task_section_content = f"""
-### 🎯 {skill_text}
+            body_lines = ["", f"### 🎯 {skill_text}", ""]
+            if clean_bullets:
+                body_lines.extend(clean_bullets)
+            if link_display:
+                body_lines.append(f"- {checked_box} **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _\"🚀 Gửi Câu Trả Lời Cho AI\"_.")
+                body_lines.append(f"- 🔗 **Mở bài làm chi tiết:** 👉 {link_display}")
+            else:
+                body_lines.append(f"- {checked_box} **Thực hành & Tự đánh giá:** Hoàn thành bài luyện tập theo thời lượng quy định và ghi chú lại khó khăn.")
+            body_lines.append("- 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.")
+            body_lines.append("")
 
-{bullet_md}
-- {checked_box} **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Gửi Câu Trả Lời Cho AI"_.
-{f"- 🔗 **Mở bài làm chi tiết:** 👉 {link_display}" if link_display else ""}
-- 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
-"""
-            replacement_header = f"## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: {today_task_info['day_name']} ({today_task_info['date_str']})\n"
-            content = re.sub(section2_regex, replacement_header + task_section_content, content)
+            full_section_2 = f"{header_title}\n" + "\n".join(body_lines)
+            content = re.sub(section2_regex, full_section_2, content)
 
         content = content.rstrip("\n") + "\n"
         if content != original_content:
@@ -286,12 +376,20 @@ class PlanService:
             end_date = date(year, end_m, end_d)
 
             if start_date <= today <= end_date:
+                week_name = os.path.basename(os.path.dirname(week_file))
                 # Tìm dòng của hôm nay trong bảng
                 lines = content.splitlines()
                 for line in lines:
-                    if line.startswith("|") and today.strftime("%d/%m") in line:
+                    if line.startswith("|") and not line.startswith("| :---"):
                         parts = [p.strip() for p in re.split(r"(?<!\\)\|", line)]
-                        if len(parts) >= 6:
+                        if len(parts) >= 6 and any(d in parts[1] for d in ["Thứ", "Chủ Nhật"]):
+                            date_match = re.search(r"(\d{1,2})/(\d{1,2})", parts[1])
+                            if not date_match:
+                                continue
+                            row_d, row_m = map(int, date_match.groups())
+                            if date(year, row_m, row_d) != today:
+                                continue
+
                             raw_skill = parts[2]
                             duration_match = re.search(r"`([^`]+)`", raw_skill)
                             if not duration_match:
@@ -307,7 +405,7 @@ class PlanService:
                             is_done = "Đã" in status or "✅" in status
 
                             link_match = re.search(r"\[\[([^\\|\]]+)", raw_focus)
-                            link_path = link_match.group(1) if link_match else ""
+                            link_path = link_match.group(1) if link_match else f"plans/{week_name}/"
 
                             # Xử lý steps sạch sẽ
                             raw_steps = [s.strip() for s in raw_focus.split("<br>") if s.strip()]
@@ -328,7 +426,7 @@ class PlanService:
 
                             return {
                                 "today": today_info["formatted_full"],
-                                "week": os.path.basename(os.path.dirname(week_file)),
+                                "week": week_name,
                                 "skill": clean_skill,
                                 "duration": duration,
                                 "focus": clean_focus,
@@ -353,10 +451,11 @@ class PlanService:
 plan_service = PlanService()
 
 
-def rebuild_quartz() -> bool:
+def rebuild_quartz(detailed: bool = False) -> Any:
     """
-    Tự động biên dịch lại Quartz HTML tĩnh vào thư mục public/.
-    Hoạt động cả trên máy chủ Linux/VPS (nơi cài Node.js) và môi trường cục bộ.
+    Tự động biên dịch lại Quartz HTML tĩnh vào thư mục public/ sử dụng 'npm run quartz -- build'.
+    Hỗ trợ fallback sang 'node ./quartz/bootstrap-cli.mjs build' và 'npx quartz build'.
+    Hoạt động cả trên Windows, Linux và VPS.
     """
     try:
         content_dir = settings.CONTENT_DIR
@@ -373,20 +472,39 @@ def rebuild_quartz() -> bool:
 
         if not root_dir:
             logger.warning("[QUARTZ BUILD] Không tìm thấy thư mục cấu hình quartz.config.ts. Bỏ qua rebuild.")
-            return False
+            return {"success": False, "error": "quartz.config.ts not found"} if detailed else False
 
-        logger.info(f"[QUARTZ BUILD] Đang tự động biên dịch lại Quartz HTML tĩnh tại {root_dir}...")
-        npx_bin = "npx.cmd" if os.name == "nt" else "npx"
-        res = subprocess.run([npx_bin, "quartz", "build"], cwd=root_dir, capture_output=True, text=True, timeout=90)
-        if res.returncode == 0:
-            logger.info("[QUARTZ BUILD] Biên dịch Quartz thành công 100%! Giao diện web tĩnh đã được làm mới.")
-            return True
-        else:
-            logger.warning(f"[QUARTZ BUILD] Biên dịch thất bại (code {res.returncode}): {res.stderr[:200]}")
-            return False
-    except FileNotFoundError:
-        logger.warning("[QUARTZ BUILD] Không tìm thấy lệnh 'npx'. Bỏ qua build Quartz tĩnh.")
-        return False
-    except Exception as e:
-        logger.warning(f"[QUARTZ BUILD] Ngoại lệ khi chạy npx quartz build: {e}")
-        return False
+        is_windows = (os.name == "nt")
+        npm_bin = "npm.cmd" if is_windows else "npm"
+        npx_bin = "npx.cmd" if is_windows else "npx"
+
+        commands_to_try = [
+            ([npm_bin, "run", "quartz", "--", "build"], "npm run quartz -- build"),
+            (["node", "./quartz/bootstrap-cli.mjs", "build"], "node ./quartz/bootstrap-cli.mjs build"),
+            ([npx_bin, "quartz", "build"], "npx quartz build")
+        ]
+
+        last_error = ""
+        for cmd, cmd_str in commands_to_try:
+            try:
+                logger.info(f"[QUARTZ BUILD] Đang thực thi lệnh '{cmd_str}' tại {root_dir}...")
+                res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True, timeout=120)
+                if res.returncode == 0:
+                    logger.info(f"[QUARTZ BUILD] Thành công 100% qua lệnh '{cmd_str}'! Toàn bộ file Markdown đã được biên dịch vào public/.")
+                    return {"success": True, "command": cmd_str, "output": res.stdout[-300:]} if detailed else True
+                else:
+                    last_error = res.stderr or res.stdout
+                    logger.warning(f"[QUARTZ BUILD] Lệnh '{cmd_str}' thoát với mã {res.returncode}: {last_error[:200]}")
+            except FileNotFoundError as fnf:
+                last_error = str(fnf)
+                logger.warning(f"[QUARTZ BUILD] Không tìm thấy file chạy cho '{cmd_str}': {fnf}")
+            except Exception as e:
+                last_error = str(e)
+                logger.warning(f"[QUARTZ BUILD] Ngoại lệ khi thực thi '{cmd_str}': {e}")
+
+        logger.error(f"[QUARTZ BUILD] Toàn bộ các phương thức biên dịch đều thất bại. Lỗi cuối: {last_error}")
+        return {"success": False, "error": last_error} if detailed else False
+    except Exception as general_err:
+        logger.error(f"[QUARTZ BUILD] Ngoại lệ tổng quát trong rebuild_quartz: {general_err}")
+        return {"success": False, "error": str(general_err)} if detailed else False
+

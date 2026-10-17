@@ -85,9 +85,11 @@ docker_noteai_*
 *.swo
 
 
-# PDF and Archive files
+# PDF, Audio and Archive files
 content/assets/Cambridge-18.pdf
 content\assets\Cambridge-18.pdf
+content/assets/audio/
+content\assets\audio\
 *.tar.gz
 *.tar
 *.zip

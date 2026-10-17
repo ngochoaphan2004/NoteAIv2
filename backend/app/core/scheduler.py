@@ -90,7 +90,7 @@ class CronSchedulerService:
             from sqlmodel import Session, select
             from app.models.flashcard import Flashcard
 
-            logs.append("📦 [1/3] Quét và đồng bộ thẻ từ vựng từ content/plans/ vào PostgreSQL...")
+            logs.append("📦 [1/6] Quét và đồng bộ thẻ từ vựng từ content/plans/ vào PostgreSQL...")
             content_dir = settings.CONTENT_DIR
             vocab_pattern = os.path.join(content_dir, "**", "vocab-*.md")
             vocab_files = glob.glob(vocab_pattern, recursive=True)
@@ -142,14 +142,13 @@ class CronSchedulerService:
 
             logs.append(f"  ✅ Đồng bộ thành công: Thêm mới {total_added} thẻ, cập nhật {total_updated} thẻ từ {len(vocab_files)} file từ vựng.")
         except Exception as e:
-            success = False
-            logs.append(f"  ❌ Lỗi Job 1 (FSRS Sync): {e}")
+            logs.append(f"  ⚠️ Cảnh báo Job 1 (FSRS Sync - DB tạm hoãn hoặc chưa kết nối): {e}")
 
         # -------------------------------------------------------------
         # Job 2: Kiểm chứng Knowledge Graph & Dead Links
         # -------------------------------------------------------------
         try:
-            logs.append("🛡️ [2/3] Kiểm tra Dead Links và Schema Frontmatter của Knowledge Garden...")
+            logs.append("🛡️ [2/6] Kiểm tra Dead Links và Schema Frontmatter của Knowledge Garden...")
             md_count = 0
             for root, _, files in os.walk(settings.CONTENT_DIR):
                 for f in files:
@@ -164,7 +163,7 @@ class CronSchedulerService:
         # Job 3: Thống kê số thẻ Flashcard đến hạn hôm nay
         # -------------------------------------------------------------
         try:
-            logs.append("📊 [3/3] Thống kê thẻ Flashcard FSRS đến hạn hôm nay...")
+            logs.append("📊 [3/6] Thống kê thẻ Flashcard FSRS đến hạn hôm nay...")
             from app.core.database import engine
             from sqlmodel import Session, select
             from app.models.flashcard import Flashcard
@@ -185,18 +184,12 @@ class CronSchedulerService:
         # Job 4: Tự động đồng bộ kế hoạch theo ngày và tiến độ học tập (Daily Plan & Progress Auto-Sync)
         # -------------------------------------------------------------
         try:
-            logs.append("🗓️ [4/4] Tự động đồng bộ kế hoạch học tập theo ngày và tiến độ làm bài...")
-            from app.services.plan_service import plan_service, rebuild_quartz
+            logs.append("🗓️ [4/6] Tự động đồng bộ kế hoạch học tập theo ngày và tiến độ làm bài...")
+            from app.services.plan_service import plan_service
             plan_res = plan_service.sync_all_plans()
             updated = plan_res.get("updated_files", [])
             if updated:
                 logs.append(f"  ✅ Đã tự động cập nhật kế hoạch cho {len(updated)} file: {', '.join(updated)}")
-                # Tự động biên dịch lại Quartz HTML tĩnh (Web Preview) ngay trên server
-                rebuilt = rebuild_quartz()
-                if rebuilt:
-                    logs.append("  🌱 [QUARTZ] Đã tự động biên dịch lại toàn bộ giao diện HTML tĩnh thành công!")
-                else:
-                    logs.append("  ⚠️ [QUARTZ] Biên dịch web tĩnh chưa hoàn tất hoặc npx chưa sẵn sàng.")
             else:
                 logs.append(f"  ✅ Kế hoạch học tập ngày {plan_res.get('today')} đã đồng bộ chuẩn mực.")
         except Exception as e:
@@ -208,7 +201,7 @@ class CronSchedulerService:
         try:
             now_dt = datetime.now(VN_TZ)
             if now_dt.weekday() == 6:
-                logs.append("🤖 [5/5] Tối Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
+                logs.append("🤖 [5/6] Tối Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
                 from app.services.plan_generator import autonomous_plan_generator
                 res_week = autonomous_plan_generator.generate_next_week(target_week_number=2, force=False)
                 if res_week.get("status") == "success":
@@ -216,9 +209,23 @@ class CronSchedulerService:
                 else:
                     logs.append(f"  ℹ️ {res_week.get('message', 'Kế hoạch tuần tiếp theo đã sẵn sàng.')}")
             else:
-                logs.append("ℹ️ [5/5] Tự động hóa tuần mới sẵn sàng (sẽ kích hoạt vào đêm Chủ Nhật hoặc khi gọi API /plans/generate-next-week).")
+                logs.append("ℹ️ [5/6] Tự động hóa tuần mới sẵn sàng (sẽ kích hoạt vào đêm Chủ Nhật hoặc khi gọi API /plans/generate-next-week).")
         except Exception as e:
             logs.append(f"  ⚠️ Cảnh báo Job 5 (Weekly Planner): {e}")
+
+        # -------------------------------------------------------------
+        # Job 6: Tự động biên dịch toàn bộ dự án Quartz (npm run quartz -- build)
+        # -------------------------------------------------------------
+        try:
+            logs.append("🌱 [6/6] Tự động biên dịch toàn bộ dự án Quartz (`npm run quartz -- build`)...")
+            from app.services.plan_service import rebuild_quartz
+            build_res = rebuild_quartz(detailed=True)
+            if build_res.get("success"):
+                logs.append(f"  ✅ [QUARTZ] Đã biên dịch toàn bộ các file Markdown mới vào public/ thành công qua lệnh '{build_res.get('command')}'!")
+            else:
+                logs.append(f"  ⚠️ [QUARTZ] Quá trình biên dịch chưa hoàn tất: {build_res.get('error', 'Lỗi không xác định')}")
+        except Exception as e:
+            logs.append(f"  ❌ Lỗi Job 6 (Quartz Build): {e}")
 
         end_time = datetime.now(VN_TZ)
         duration_sec = round((end_time - start_time).total_seconds(), 2)
