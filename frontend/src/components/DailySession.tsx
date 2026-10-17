@@ -150,7 +150,13 @@ export const DailySession: React.FC<DailySessionProps> = ({
 
   const handleRefresh = () => {
     if (iframeRef.current) {
-      iframeRef.current.src = currentUrl;
+      try {
+        const u = new URL(iframeRef.current.src || currentUrl);
+        u.searchParams.set("_t", Date.now().toString());
+        iframeRef.current.src = u.toString();
+      } catch {
+        iframeRef.current.src = currentUrl;
+      }
     }
   };
 

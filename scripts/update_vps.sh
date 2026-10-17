@@ -58,6 +58,11 @@ if [ -f "$PROJECT_DIR/package.json" ]; then
         echo -e "${YELLOW}📦 [4/5] Thư viện Quartz node_modules đã sẵn sàng.${NC}"
     fi
 fi
+if [ -d "$PROJECT_DIR/content/assets/audio" ]; then
+    echo -e "${YELLOW}🎧 Liên kết audio tĩnh vào public/assets/audio...${NC}"
+    mkdir -p "$PROJECT_DIR/public/assets"
+    ln -sfn "$PROJECT_DIR/content/assets/audio" "$PROJECT_DIR/public/assets/audio"
+fi
 
 # 5. Khởi động lại dịch vụ Backend & Nginx
 echo -e "${YELLOW}🚀 [5/5] Kiểm tra và khởi động lại dịch vụ...${NC}"
@@ -66,9 +71,12 @@ echo -e "${YELLOW}🚀 [5/5] Kiểm tra và khởi động lại dịch vụ...$
 if [ ! -f /etc/systemd/system/noteai-backend.service ]; then
     echo -e "${YELLOW}  ⚠️ Phát hiện NoteAI service chưa cài đặt. Vui lòng kiểm tra lại cấu hình systemd.${NC}"
 else
+    if [ -f "$PROJECT_DIR/scripts/noteai_nginx.conf" ]; then
+        cp "$PROJECT_DIR/scripts/noteai_nginx.conf" /etc/nginx/sites-available/noteai
+    fi
     systemctl daemon-reload
     systemctl restart noteai-backend
-    systemctl reload nginx
+    nginx -t && systemctl reload nginx
     echo -e "\n${BLUE}====================================================${NC}"
     echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG! ${NC}"
     echo -e "${BLUE}====================================================${NC}"
