@@ -451,12 +451,20 @@ class PlanService:
 plan_service = PlanService()
 
 
+_quartz_build_lock = threading.Lock()
+
+
 def rebuild_quartz(detailed: bool = False) -> Any:
     """
     Tự động biên dịch lại Quartz HTML tĩnh vào thư mục public/ sử dụng 'npm run quartz -- build'.
     Hỗ trợ fallback sang 'node ./quartz/bootstrap-cli.mjs build' và 'npx quartz build'.
-    Hoạt động cả trên Windows, Linux và VPS.
+    Sử dụng non-blocking lock để tránh chạy chồng chéo nhiều tiến trình build cùng lúc.
     """
+    acquired = _quartz_build_lock.acquire(blocking=False)
+    if not acquired:
+        logger.info("[QUARTZ BUILD] Tiến trình biên dịch Quartz khác đang chạy. Bỏ qua yêu cầu trùng lặp.")
+        return {"success": True, "message": "Build already in progress"} if detailed else True
+
     try:
         content_dir = settings.CONTENT_DIR
         candidate_roots = [
@@ -491,6 +499,16 @@ def rebuild_quartz(detailed: bool = False) -> Any:
                 res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True, timeout=120)
                 if res.returncode == 0:
                     logger.info(f"[QUARTZ BUILD] Thành công 100% qua lệnh '{cmd_str}'! Toàn bộ file Markdown đã được biên dịch vào public/.")
+                    # Đảm bảo symlink audio được duy trì sau khi build làm sạch public
+                    audio_src = os.path.join(content_dir, "assets", "audio")
+                    audio_dst = os.path.join(root_dir, "public", "assets", "audio")
+                    if os.path.exists(audio_src) and not os.path.exists(audio_dst):
+                        try:
+                            os.makedirs(os.path.dirname(audio_dst), exist_ok=True)
+                            if not is_windows:
+                                os.symlink(audio_src, audio_dst)
+                        except Exception as e:
+                            logger.warning(f"[QUARTZ BUILD] Không thể tạo symlink audio: {e}")
                     return {"success": True, "command": cmd_str, "output": res.stdout[-300:]} if detailed else True
                 else:
                     last_error = res.stderr or res.stdout
@@ -507,4 +525,6 @@ def rebuild_quartz(detailed: bool = False) -> Any:
     except Exception as general_err:
         logger.error(f"[QUARTZ BUILD] Ngoại lệ tổng quát trong rebuild_quartz: {general_err}")
         return {"success": False, "error": str(general_err)} if detailed else False
+    finally:
+        _quartz_build_lock.release()
 
