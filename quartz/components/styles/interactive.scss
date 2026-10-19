@@ -388,15 +388,3 @@
   font-size: 0.82rem;
 }
 
-/* ==========================================================================
-   Seamless Embed: Hide iframe internal scrollbar
-   ========================================================================== */
-html.in-iframe,
-body.in-iframe {
-  overflow-y: hidden !important;
-  overflow-x: hidden !important;
-  height: auto !important;
-  min-height: auto !important;
-}
-
-

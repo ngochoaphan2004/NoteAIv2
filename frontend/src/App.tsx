@@ -103,8 +103,8 @@ export const AppContent: React.FC = () => {
 
       {/* Main Container */}
       <main
-        className={`flex-1 w-full mx-auto px-4 ${
-          activeTab === "session" ? "max-w-screen-2xl py-4" : "max-w-6xl py-8"
+        className={`flex-1 w-full mx-auto px-4 py-4 ${
+          activeTab === "session" ? "max-w-screen-2xl" : "max-w-6xl py-8"
         }`}
       >
         {activeTab === "session" && (

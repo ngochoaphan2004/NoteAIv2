@@ -981,42 +981,4 @@ document.addEventListener("nav", () => {
       }
     });
   });
-
-  // =========================================================================
-  // 3. SEAMLESS IFRAME RESIZE: Synchronize Quartz content height to parent SPA
-  // =========================================================================
-  if (window.parent && window.parent !== window) {
-    document.documentElement.classList.add("in-iframe");
-    document.body.classList.add("in-iframe");
-
-    function sendHeight() {
-      const pageEl = document.querySelector<HTMLElement>(".page") || document.body;
-      const height = Math.max(
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight,
-        pageEl ? pageEl.scrollHeight : 0,
-        pageEl ? pageEl.offsetHeight : 0
-      );
-      window.parent.postMessage({ type: "QUARTZ_HEIGHT", height }, "*");
-    }
-
-    sendHeight();
-    setTimeout(sendHeight, 150);
-    setTimeout(sendHeight, 500);
-    setTimeout(sendHeight, 1500);
-
-    window.addEventListener("resize", sendHeight);
-
-    try {
-      const ro = new ResizeObserver(() => sendHeight());
-      ro.observe(document.body);
-      const article = document.querySelector("article");
-      if (article) ro.observe(article);
-    } catch (e) {}
-
-    window.parent.postMessage(
-      { type: "QUARTZ_NAVIGATED", path: window.location.pathname },
-      "*"
-    );
-  }
 });

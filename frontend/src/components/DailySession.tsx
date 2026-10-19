@@ -38,8 +38,6 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const iframeContainerRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [iframeHeight, setIframeHeight] = useState<number>(1400);
-  const [isSplitMode, setIsSplitMode] = useState<boolean>(false);
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -55,7 +53,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
     staleTime: 1000 * 60, // 1 phút
   });
 
-  // Lắng nghe sự kiện từ Quartz iframe (Nộp bài thi, Chiều cao nội dung, Chế độ 2 cột)
+  // Lắng nghe sự kiện từ Quartz iframe (Nộp bài thi)
   React.useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === "IELTS_TEST_SUBMITTED") {
@@ -68,12 +66,6 @@ export const DailySession: React.FC<DailySessionProps> = ({
         setTimeout(() => {
           setToastMessage(null);
         }, 6000);
-      } else if (event.data?.type === "QUARTZ_HEIGHT" && typeof event.data.height === "number") {
-        setIframeHeight(Math.max(event.data.height + 40, 800));
-      } else if (event.data?.type === "QUARTZ_SPLIT_MODE") {
-        setIsSplitMode(!!event.data.active);
-      } else if (event.data?.type === "QUARTZ_NAVIGATED") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
     window.addEventListener("message", handleMessage);
@@ -151,7 +143,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3 pb-8 relative">
+    <div className="flex flex-col gap-3 pb-6 relative">
       {/* 2 Thanh bar: Tĩnh, hiển thị tự nhiên ở đầu trang không che lấp, không auto-hide */}
       <div className="flex flex-col gap-3">
         {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay */}
@@ -331,25 +323,15 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       )}
 
-      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học - Chiều cao tự động đồng bộ theo nội dung, 1 SCROLLBAR CHUNG */}
+      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học */}
       <div
         ref={iframeContainerRef}
-        className={`w-full bg-white dark:bg-[#1c1c1e] transition-all duration-150 ${
-          isSplitMode
-            ? "fixed inset-0 z-50 w-screen h-screen rounded-none border-none"
-            : "rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden"
-        }`}
-        style={{ minHeight: isSplitMode ? "100vh" : "800px" }}
+        className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
       >
         <iframe
           ref={iframeRef}
           src={currentUrl}
-          scrolling={isSplitMode ? "yes" : "no"}
-          className="w-full border-none block"
-          style={{
-            height: isSplitMode ? "100vh" : `${iframeHeight}px`,
-            overflow: isSplitMode ? "auto" : "hidden",
-          }}
+          className="w-full h-full border-none"
           title="Digital Garden Study Plan"
         />
       </div>
