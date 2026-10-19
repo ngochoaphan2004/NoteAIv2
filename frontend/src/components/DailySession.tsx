@@ -17,6 +17,8 @@ import {
   Headphones,
   FileText,
   Edit3,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
 
 const QUARTZ_BASE_URL =
@@ -38,6 +40,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const iframeContainerRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isBannerCollapsed, setIsBannerCollapsed] = useState(false);
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -143,11 +146,11 @@ export const DailySession: React.FC<DailySessionProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3 pb-6 relative">
-      {/* 2 Thanh bar: Tĩnh, hiển thị tự nhiên ở đầu trang không che lấp, không auto-hide */}
-      <div className="flex flex-col gap-3">
+    <div className="flex-1 flex flex-col gap-2 min-h-0 overflow-hidden relative pb-1">
+      {/* 2 Thanh bar: Tĩnh, hiển thị gọn gàng ở đầu trang */}
+      <div className="flex flex-col gap-2 flex-shrink-0">
         {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay */}
-        {todayPlan && (
+        {todayPlan && !isBannerCollapsed && (
           <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">
             <div className="flex items-start gap-3">
               <span className="p-2 bg-apple-blue text-white rounded-xl shadow-sm mt-0.5 flex-shrink-0">
@@ -280,6 +283,27 @@ export const DailySession: React.FC<DailySessionProps> = ({
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
 
+            {/* Nút Thu Gọn / Mở Rộng Banner */}
+            {todayPlan && (
+              <button
+                onClick={() => setIsBannerCollapsed(!isBannerCollapsed)}
+                title={isBannerCollapsed ? "Hiện chi tiết nhiệm vụ hôm nay" : "Thu gọn banner để tối đa hóa không gian bài thi"}
+                className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700 flex items-center gap-1 text-xs"
+              >
+                {isBannerCollapsed ? (
+                  <>
+                    <ChevronDown className="w-3.5 h-3.5 text-apple-blue" />
+                    <span className="hidden sm:inline font-medium text-apple-blue">Hiện Banner</span>
+                  </>
+                ) : (
+                  <>
+                    <ChevronUp className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline font-medium">Thu Gọn</span>
+                  </>
+                )}
+              </button>
+            )}
+
             {/* Nút Kích Hoạt Nhanh Chế Độ Thi 2 Cột */}
             <button
               onClick={handleToggleSplitMode}
@@ -323,15 +347,15 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       )}
 
-      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học */}
+      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học - Khớp 100% không gian còn lại, DUY NHẤT 1 scrollbar */}
       <div
         ref={iframeContainerRef}
-        className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
+        className="flex-1 w-full min-h-0 bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
       >
         <iframe
           ref={iframeRef}
           src={currentUrl}
-          className="w-full h-full border-none"
+          className="w-full h-full border-none block"
           title="Digital Garden Study Plan"
         />
       </div>
