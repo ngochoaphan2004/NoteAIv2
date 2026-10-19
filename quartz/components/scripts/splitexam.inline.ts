@@ -115,6 +115,10 @@ function exitSplitExamMode() {
     const imagesContent = panel.querySelector(".split-images-content");
     if (imagesContent) imagesContent.innerHTML = "";
   }
+
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: "QUARTZ_SPLIT_MODE", active: false }, "*");
+  }
 }
 
 function activateSplitExamMode(targetIndex: number = 0) {
@@ -127,6 +131,10 @@ function activateSplitExamMode(targetIndex: number = 0) {
   isSplitExamActive = true;
   currentActiveDetailsIndex = Math.min(Math.max(0, targetIndex), detailsList.length - 1);
   document.documentElement.setAttribute("split-mode", "on");
+
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: "QUARTZ_SPLIT_MODE", active: true }, "*");
+  }
 
   // Mount directly to document.body for guaranteed top-level fixed placement
   let panel = document.getElementById("split-exam-panel");

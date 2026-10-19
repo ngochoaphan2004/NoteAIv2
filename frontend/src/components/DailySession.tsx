@@ -17,8 +17,6 @@ import {
   Headphones,
   FileText,
   Edit3,
-  ChevronUp,
-  ChevronDown,
 } from "lucide-react";
 
 const QUARTZ_BASE_URL =
@@ -40,7 +38,8 @@ export const DailySession: React.FC<DailySessionProps> = ({
   const iframeContainerRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [isBannerCollapsed, setIsBannerCollapsed] = useState(false);
+  const [iframeHeight, setIframeHeight] = useState<number>(1400);
+  const [isSplitMode, setIsSplitMode] = useState<boolean>(false);
 
   // Lấy thông tin nhiệm vụ ngày hôm nay từ AI Plan Service
   const { data: todayPlan, refetch: refetchTodayPlan } = useQuery({
@@ -56,7 +55,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
     staleTime: 1000 * 60, // 1 phút
   });
 
-  // Lắng nghe sự kiện từ Quartz iframe (Nộp bài thi)
+  // Lắng nghe sự kiện từ Quartz iframe (Nộp bài thi, Chiều cao nội dung, Chế độ 2 cột)
   React.useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === "IELTS_TEST_SUBMITTED") {
@@ -69,6 +68,12 @@ export const DailySession: React.FC<DailySessionProps> = ({
         setTimeout(() => {
           setToastMessage(null);
         }, 6000);
+      } else if (event.data?.type === "QUARTZ_HEIGHT" && typeof event.data.height === "number") {
+        setIframeHeight(Math.max(event.data.height + 40, 800));
+      } else if (event.data?.type === "QUARTZ_SPLIT_MODE") {
+        setIsSplitMode(!!event.data.active);
+      } else if (event.data?.type === "QUARTZ_NAVIGATED") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
     window.addEventListener("message", handleMessage);
@@ -146,11 +151,11 @@ export const DailySession: React.FC<DailySessionProps> = ({
   };
 
   return (
-    <div className="flex-1 flex flex-col gap-2 min-h-0 overflow-hidden relative pb-1">
-      {/* 2 Thanh bar: Tĩnh, hiển thị gọn gàng ở đầu trang */}
-      <div className="flex flex-col gap-2 flex-shrink-0">
+    <div className="flex flex-col gap-3 pb-8 relative">
+      {/* 2 Thanh bar: Tĩnh, hiển thị tự nhiên ở đầu trang không che lấp, không auto-hide */}
+      <div className="flex flex-col gap-3">
         {/* Banner AI Tự Động Định Hướng Nhiệm Vụ Hôm Nay */}
-        {todayPlan && !isBannerCollapsed && (
+        {todayPlan && (
           <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm transition">
             <div className="flex items-start gap-3">
               <span className="p-2 bg-apple-blue text-white rounded-xl shadow-sm mt-0.5 flex-shrink-0">
@@ -283,27 +288,6 @@ export const DailySession: React.FC<DailySessionProps> = ({
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
 
-            {/* Nút Thu Gọn / Mở Rộng Banner */}
-            {todayPlan && (
-              <button
-                onClick={() => setIsBannerCollapsed(!isBannerCollapsed)}
-                title={isBannerCollapsed ? "Hiện chi tiết nhiệm vụ hôm nay" : "Thu gọn banner để tối đa hóa không gian bài thi"}
-                className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700 flex items-center gap-1 text-xs"
-              >
-                {isBannerCollapsed ? (
-                  <>
-                    <ChevronDown className="w-3.5 h-3.5 text-apple-blue" />
-                    <span className="hidden sm:inline font-medium text-apple-blue">Hiện Banner</span>
-                  </>
-                ) : (
-                  <>
-                    <ChevronUp className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline font-medium">Thu Gọn</span>
-                  </>
-                )}
-              </button>
-            )}
-
             {/* Nút Kích Hoạt Nhanh Chế Độ Thi 2 Cột */}
             <button
               onClick={handleToggleSplitMode}
@@ -347,15 +331,25 @@ export const DailySession: React.FC<DailySessionProps> = ({
         </div>
       )}
 
-      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học - Khớp 100% không gian còn lại, DUY NHẤT 1 scrollbar */}
+      {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học - Chiều cao tự động đồng bộ theo nội dung, 1 SCROLLBAR CHUNG */}
       <div
         ref={iframeContainerRef}
-        className="flex-1 w-full min-h-0 bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
+        className={`w-full bg-white dark:bg-[#1c1c1e] transition-all duration-150 ${
+          isSplitMode
+            ? "fixed inset-0 z-50 w-screen h-screen rounded-none border-none"
+            : "rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden"
+        }`}
+        style={{ minHeight: isSplitMode ? "100vh" : "800px" }}
       >
         <iframe
           ref={iframeRef}
           src={currentUrl}
-          className="w-full h-full border-none block"
+          scrolling={isSplitMode ? "yes" : "no"}
+          className="w-full border-none block"
+          style={{
+            height: isSplitMode ? "100vh" : `${iframeHeight}px`,
+            overflow: isSplitMode ? "auto" : "hidden",
+          }}
           title="Digital Garden Study Plan"
         />
       </div>

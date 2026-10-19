@@ -64,13 +64,9 @@ export const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("session");
 
   return (
-    <div
-      className={`flex flex-col bg-[#f5f5f7] dark:bg-[#1c1c1e] text-[#1d1d1f] dark:text-[#f5f5f7] ${
-        activeTab === "session" ? "h-screen overflow-hidden" : "min-h-screen"
-      }`}
-    >
+    <div className="min-h-screen flex flex-col bg-[#f5f5f7] dark:bg-[#1c1c1e] text-[#1d1d1f] dark:text-[#f5f5f7]">
       {/* Navigation Header */}
-      <header className="backdrop-blur-md bg-white/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800 transition flex-shrink-0">
+      <header className="backdrop-blur-md bg-white/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800 transition">
         <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
           {/* Brand */}
           <div
@@ -108,9 +104,7 @@ export const AppContent: React.FC = () => {
       {/* Main Container */}
       <main
         className={`flex-1 w-full mx-auto px-4 ${
-          activeTab === "session"
-            ? "max-w-screen-2xl py-2 flex flex-col min-h-0 overflow-hidden"
-            : "max-w-6xl py-8"
+          activeTab === "session" ? "max-w-screen-2xl py-4" : "max-w-6xl py-8"
         }`}
       >
         {activeTab === "session" && (
