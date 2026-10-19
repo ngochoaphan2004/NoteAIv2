@@ -440,21 +440,111 @@ document.addEventListener("nav", () => {
     const sheetId = card.dataset.sheetId || "sheet-1";
     const startQ = parseInt(card.dataset.startQ || "1", 10);
     const endQ = parseInt(card.dataset.endQ || "40", 10);
+    const initialMinutes = parseInt(card.dataset.timer || "30", 10);
     const storageKey = `ielts_sheet_${slug}_${sheetId}`;
+    const timeKey = `ielts_time_${slug}_${sheetId}`;
 
     const gridContainer = card.querySelector<HTMLElement>(
-      ".ielts-grid-answers",
+      ".ielts-grid-answers, .ielts-grid-container",
     );
-    const progressEl = card.querySelector<HTMLElement>(".ielts-sheet-progress");
+    const progressEl = card.querySelector<HTMLElement>(
+      ".ielts-sheet-progress, .ielts-progress-count, .ielts-progress-text",
+    );
     const saveIndicatorEl = card.querySelector<HTMLElement>(
-      ".ielts-sheet-save-text",
+      ".ielts-sheet-save-text, .ielts-status-indicator, .ielts-save-text",
+    );
+    const timerDisplayEl = card.querySelector<HTMLElement>(
+      ".ielts-timer-display",
+    );
+    const btnStart = card.querySelector<HTMLButtonElement>(
+      ".ielts-btn-start, .ielts-btn-timer.ielts-btn-start",
+    );
+    const btnPause = card.querySelector<HTMLButtonElement>(
+      ".ielts-btn-pause, .ielts-btn-timer.ielts-btn-pause",
+    );
+    const btnReset = card.querySelector<HTMLButtonElement>(
+      ".ielts-btn-reset, .ielts-btn-timer.ielts-btn-reset",
     );
     const btnCopy = card.querySelector<HTMLButtonElement>(
-      ".ielts-btn-copy-shorthand",
+      ".ielts-btn-copy-shorthand, .ielts-btn-copy",
     );
     const btnClear = card.querySelector<HTMLButtonElement>(
-      ".ielts-btn-clear-sheet",
+      ".ielts-btn-clear-sheet, .ielts-btn-clear",
     );
+
+    // Timer logic for answer sheet
+    let totalSeconds = initialMinutes * 60;
+    let remainingSeconds = totalSeconds;
+    let timerInterval: number | undefined;
+    let isRunning = false;
+
+    try {
+      const savedTimer = sessionStorage.getItem(timeKey);
+      if (savedTimer && !isNaN(parseInt(savedTimer, 10))) {
+        remainingSeconds = parseInt(savedTimer, 10);
+      }
+    } catch (e) {}
+
+    function formatTime(sec: number): string {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+
+    function updateTimerDisplay() {
+      if (timerDisplayEl) {
+        timerDisplayEl.textContent = formatTime(remainingSeconds);
+      }
+    }
+
+    updateTimerDisplay();
+
+    function startTimer() {
+      if (isRunning) return;
+      isRunning = true;
+      if (btnStart) btnStart.style.display = "none";
+      if (btnPause) btnPause.style.display = "inline-flex";
+
+      timerInterval = window.setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds--;
+          updateTimerDisplay();
+          sessionStorage.setItem(timeKey, String(remainingSeconds));
+        } else {
+          clearInterval(timerInterval);
+          isRunning = false;
+          if (btnStart) btnStart.style.display = "inline-flex";
+          if (btnPause) btnPause.style.display = "none";
+          if (timerDisplayEl) {
+            timerDisplayEl.textContent = "00:00 (Hết giờ!)";
+            timerDisplayEl.classList.add("ielts-timer-alert");
+          }
+        }
+      }, 1000);
+      activeTimers.push(timerInterval);
+    }
+
+    function pauseTimer() {
+      if (!isRunning) return;
+      isRunning = false;
+      clearInterval(timerInterval);
+      if (btnStart) btnStart.style.display = "inline-flex";
+      if (btnPause) btnPause.style.display = "none";
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      remainingSeconds = totalSeconds;
+      updateTimerDisplay();
+      sessionStorage.removeItem(timeKey);
+      if (timerDisplayEl) {
+        timerDisplayEl.classList.remove("ielts-timer-alert");
+      }
+    }
+
+    btnStart?.addEventListener("click", startTimer);
+    btnPause?.addEventListener("click", pauseTimer);
+    btnReset?.addEventListener("click", resetTimer);
 
     const cardHeader = card.querySelector<HTMLElement>(".ielts-card-header");
     if (cardHeader && !cardHeader.querySelector(".ielts-btn-split-trigger")) {

@@ -45,33 +45,46 @@ tags:
 
 > 💡 **Tính năng tương tác:** Nhập nhanh câu 27 – 40 vào các ô bên dưới (nhấn Enter hoặc Tab để nhảy câu tiếp theo). Đồng hồ đếm ngược 20 phút hỗ trợ bám sát thời gian thi.
 
-<div class="ielts-sheet-card" data-sheet-id="r1-p3" data-start-q="27" data-end-q="40" data-timer="20">
+<div class="ielts-sheet-card" data-sheet-id="cam18-test1-reading-p3" data-start-q="27" data-end-q="40" data-timer="20">
   <div class="ielts-card-header">
     <div class="ielts-header-title">
       <span class="ielts-badge">Reading Passage 3</span>
-      <span class="ielts-status-indicator ielts-save-text">⚪ Sẵn sàng làm bài</span>
+      <span class="ielts-target-pill">Cambridge 18 — Test 1 (14 Câu)</span>
     </div>
-    <div class="ielts-timer-pill">
-      ⏱️ <span class="ielts-timer-display">20:00</span>
+    <div class="ielts-timer-widget">
+      <span class="ielts-timer-display">20:00</span>
+      <div class="ielts-timer-controls">
+        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
+        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
+        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
+      </div>
     </div>
   </div>
+
+  <div class="ielts-stats-bar">
+    <div class="ielts-stat-item">
+      <span class="ielts-stat-label">Tiến độ:</span>
+      <span class="ielts-stat-val ielts-sheet-progress">0 / 14 câu đã điền</span>
+    </div>
+    <div class="ielts-save-indicator">
+      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
+    </div>
+  </div>
+
+  <div class="ielts-grid-answers"></div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-start">▶ Bắt Đầu Tính Giờ</button>
-    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-pause" style="display:none;">⏸ Tạm Dừng</button>
-    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-reset">↺ Đặt Lại</button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-copy">📋 Copy Shorthand</button>
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
+      🚀 Gửi Câu Trả Lời Cho AI
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
+      📋 Sao Chép Shorthand
+    </button>
+    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
+      🗑️ Xóa Bài Làm
+    </button>
   </div>
-
-  <div class="ielts-progress-bar-wrap" style="margin: 0.75rem 0 0.5rem 0;">
-    <div class="ielts-progress-text" style="font-size: 0.75rem; font-weight: 600; color: var(--darkgray); margin-bottom: 0.25rem;">
-      Tiến độ: <span class="ielts-progress-count">0 / 14 câu đã điền</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.4rem; margin-top: 0.5rem;">
-    <!-- Các ô input được tự động sinh bằng script tương tác -->
-  </div>
+  <div class="ielts-ai-response" style="display:none;"></div>
 </div>
 
 ---
