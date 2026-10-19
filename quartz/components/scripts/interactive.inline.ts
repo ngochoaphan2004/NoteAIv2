@@ -8,21 +8,41 @@ function getPageSlug(): string {
 async function callApi(path: string, options: RequestInit): Promise<Response> {
   const protocol = window.location.protocol === "https:" ? "https:" : "http:";
   const hostname = window.location.hostname || "localhost";
-  const primaryUrl = `${protocol}//${hostname}:8000${path}`;
+  const port = window.location.port;
 
-  try {
-    return await fetch(primaryUrl, options);
-  } catch (err) {
-    // Fallback: If hostname is localhost or 127.0.0.1, try the alternate loopback address
-    if (hostname === "localhost") {
-      const fallbackUrl = `${protocol}//127.0.0.1:8000${path}`;
-      return await fetch(fallbackUrl, options);
-    } else if (hostname === "127.0.0.1") {
-      const fallbackUrl = `${protocol}//localhost:8000${path}`;
-      return await fetch(fallbackUrl, options);
-    }
-    throw err;
+  // Xây dựng danh sách URL ứng viên theo thứ tự ưu tiên thông minh:
+  const candidates: string[] = [];
+
+  // 1. Relative path trực tiếp (chuẩn nhất cho production qua Nginx reverse proxy tại port 80 & 8088)
+  candidates.push(path);
+
+  // 2. Cổng web chuẩn (port 80 / 443) trên cùng hostname (khi Quartz nằm trong iframe có port khác)
+  if (port && port !== "80" && port !== "443" && port !== "8000") {
+    candidates.push(`${protocol}//${hostname}${path}`);
   }
+
+  // 3. Cổng 8000 trực tiếp (dành cho môi trường local dev độc lập không qua Nginx)
+  candidates.push(`${protocol}//${hostname}:8000${path}`);
+
+  // 4. Fallback loopback cho localhost / 127.0.0.1
+  if (hostname === "localhost") {
+    candidates.push(`${protocol}//127.0.0.1:8000${path}`);
+  } else if (hostname === "127.0.0.1") {
+    candidates.push(`${protocol}//localhost:8000${path}`);
+  }
+
+  let lastError: any = null;
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, options);
+      return res;
+    } catch (err) {
+      lastError = err;
+      continue;
+    }
+  }
+
+  throw lastError || new Error("Không thể kết nối đến máy chủ backend.");
 }
 
 document.addEventListener("nav", () => {
@@ -70,13 +90,16 @@ document.addEventListener("nav", () => {
     if (cardHeader && !cardHeader.querySelector(".ielts-btn-split-trigger")) {
       const splitBtn = document.createElement("button");
       splitBtn.type = "button";
-      splitBtn.className = "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
+      splitBtn.className =
+        "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
       splitBtn.style.fontSize = "0.76rem";
       splitBtn.style.padding = "0.22rem 0.55rem";
       splitBtn.innerHTML = `🖥️ Chế độ thi 2 cột`;
       splitBtn.title = "Mở đề bài ở cột bên phải và bài làm ở cột bên trái";
       splitBtn.addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("splitscreen-open", { detail: { index: 0 } }));
+        (document as any).dispatchEvent(
+          new CustomEvent("splitscreen-open", { detail: { index: 0 } }),
+        );
       });
       cardHeader.appendChild(splitBtn);
     }
@@ -280,7 +303,9 @@ document.addEventListener("nav", () => {
     // AI Submission Directly for Writing
     // -----------------------------------------------------------------------
     const cardActions = card.querySelector<HTMLElement>(".ielts-card-actions");
-    let btnSubmit = card.querySelector<HTMLButtonElement>(".ielts-btn-submit-ai");
+    let btnSubmit = card.querySelector<HTMLButtonElement>(
+      ".ielts-btn-submit-ai",
+    );
     if (!btnSubmit && cardActions) {
       btnSubmit = document.createElement("button");
       btnSubmit.type = "button";
@@ -289,7 +314,8 @@ document.addEventListener("nav", () => {
       cardActions.insertBefore(btnSubmit, cardActions.firstChild);
     }
 
-    let aiResponseContainer = card.querySelector<HTMLElement>(".ielts-ai-response");
+    let aiResponseContainer =
+      card.querySelector<HTMLElement>(".ielts-ai-response");
     if (!aiResponseContainer) {
       aiResponseContainer = document.createElement("div");
       aiResponseContainer.className = "ielts-ai-response";
@@ -376,9 +402,14 @@ document.addEventListener("nav", () => {
             </div>
           `;
           aiResponseContainer.style.display = "block";
-          aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          aiResponseContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
 
-          const btnClose = aiResponseContainer.querySelector(".ielts-btn-close-ai");
+          const btnClose = aiResponseContainer.querySelector(
+            ".ielts-btn-close-ai",
+          );
           btnClose?.addEventListener("click", () => {
             if (aiResponseContainer) aiResponseContainer.style.display = "none";
           });
@@ -387,7 +418,9 @@ document.addEventListener("nav", () => {
         console.error("Lỗi AI Evaluator (Writing):", err);
         const msg = err.message || String(err);
         if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
-          alert(`Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend tại cổng 8000. Vui lòng kiểm tra Docker hoặc dịch vụ FastAPI.`);
+          alert(
+            `Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend. Vui lòng kiểm tra dịch vụ FastAPI hoặc kết nối mạng.`,
+          );
         } else {
           alert(`Không thể kết nối tới AI Evaluator: ${msg}`);
         }
@@ -427,13 +460,17 @@ document.addEventListener("nav", () => {
     if (cardHeader && !cardHeader.querySelector(".ielts-btn-split-trigger")) {
       const splitBtn = document.createElement("button");
       splitBtn.type = "button";
-      splitBtn.className = "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
+      splitBtn.className =
+        "ielts-btn ielts-btn-outline ielts-btn-split-trigger";
       splitBtn.style.fontSize = "0.76rem";
       splitBtn.style.padding = "0.22rem 0.55rem";
       splitBtn.innerHTML = `🖥️ Chế độ thi 2 cột`;
-      splitBtn.title = "Mở đề bài ở cột bên phải và bảng điền đáp án ở cột bên trái";
+      splitBtn.title =
+        "Mở đề bài ở cột bên phải và bảng điền đáp án ở cột bên trái";
       splitBtn.addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("splitscreen-open", { detail: { index: 0 } }));
+        (document as any).dispatchEvent(
+          new CustomEvent("splitscreen-open", { detail: { index: 0 } }),
+        );
       });
       cardHeader.appendChild(splitBtn);
     }
@@ -512,7 +549,9 @@ document.addEventListener("nav", () => {
     // AI Submission Directly from Note (No tab-switching required)
     // -----------------------------------------------------------------------
     const cardActions = card.querySelector<HTMLElement>(".ielts-card-actions");
-    let btnSubmit = card.querySelector<HTMLButtonElement>(".ielts-btn-submit-ai");
+    let btnSubmit = card.querySelector<HTMLButtonElement>(
+      ".ielts-btn-submit-ai",
+    );
     if (!btnSubmit && cardActions) {
       btnSubmit = document.createElement("button");
       btnSubmit.type = "button";
@@ -521,7 +560,8 @@ document.addEventListener("nav", () => {
       cardActions.insertBefore(btnSubmit, cardActions.firstChild);
     }
 
-    let aiResponseContainer = card.querySelector<HTMLElement>(".ielts-ai-response");
+    let aiResponseContainer =
+      card.querySelector<HTMLElement>(".ielts-ai-response");
     if (!aiResponseContainer) {
       aiResponseContainer = document.createElement("div");
       aiResponseContainer.className = "ielts-ai-response";
@@ -542,7 +582,9 @@ document.addEventListener("nav", () => {
       }
 
       if (filledCount === 0) {
-        alert("Bảng đáp án đang trống! Hãy điền câu trả lời trước khi gửi cho AI.");
+        alert(
+          "Bảng đáp án đang trống! Hãy điền câu trả lời trước khi gửi cho AI.",
+        );
         return;
       }
 
@@ -550,7 +592,8 @@ document.addEventListener("nav", () => {
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = `⏳ Đang gửi cho AI đọc...`;
 
-      const badgeText = card.querySelector(".ielts-badge")?.textContent?.toLowerCase() || "";
+      const badgeText =
+        card.querySelector(".ielts-badge")?.textContent?.toLowerCase() || "";
       const skill = badgeText.includes("reading") ? "reading" : "listening";
 
       try {
@@ -680,10 +723,14 @@ document.addEventListener("nav", () => {
             if (tbl.closest(".ielts-ai-table-wrap")) return;
             const rows = tbl.querySelectorAll<HTMLTableRowElement>("tbody tr");
             rows.forEach((row) => {
-              const firstCell = row.cells[0]?.textContent?.replace(/\*/g, "").trim();
+              const firstCell = row.cells[0]?.textContent
+                ?.replace(/\*/g, "")
+                .trim();
               if (firstCell && /^\d+$/.test(firstCell)) {
                 const qNum = parseInt(firstCell, 10);
-                const qData = questionsList.find((q: any) => q.question_number === qNum);
+                const qData = questionsList.find(
+                  (q: any) => q.question_number === qNum,
+                );
                 if (qData) {
                   if (row.cells[1] && qData.user_answer) {
                     row.cells[1].innerHTML = `<code style="font-weight:700; color:var(--secondary);">${qData.user_answer}</code>`;
@@ -693,17 +740,41 @@ document.addEventListener("nav", () => {
                       row.cells[2].textContent = qData.correct_answer;
                     }
                     if (row.cells[3]) {
-                      row.cells[3].innerHTML = qData.is_correct === true ? '<span style="color:#34c759;font-weight:700;">✅</span>' : (qData.is_correct === false ? '<span style="color:#ff3b30;font-weight:700;">❌</span>' : '<span style="color:#8e8e93;">⚪</span>');
+                      row.cells[3].innerHTML =
+                        qData.is_correct === true
+                          ? '<span style="color:#34c759;font-weight:700;">✅</span>'
+                          : qData.is_correct === false
+                            ? '<span style="color:#ff3b30;font-weight:700;">❌</span>'
+                            : '<span style="color:#8e8e93;">⚪</span>';
                     }
-                    if (row.cells[4] && (qData.trap_type || qData.explanation)) {
-                      row.cells[4].textContent = `${qData.trap_type || ''}: ${qData.explanation || ''}`.replace(/^:\s*/, '');
+                    if (
+                      row.cells[4] &&
+                      (qData.trap_type || qData.explanation)
+                    ) {
+                      row.cells[4].textContent =
+                        `${qData.trap_type || ""}: ${qData.explanation || ""}`.replace(
+                          /^:\s*/,
+                          "",
+                        );
                     }
                   } else if (row.cells.length === 4) {
                     if (row.cells[2]) {
-                      row.cells[2].innerHTML = qData.is_correct === true ? '✅' : (qData.is_correct === false ? '❌' : '[x]');
+                      row.cells[2].innerHTML =
+                        qData.is_correct === true
+                          ? "✅"
+                          : qData.is_correct === false
+                            ? "❌"
+                            : "[x]";
                     }
-                    if (row.cells[3] && (qData.trap_type || qData.explanation)) {
-                      row.cells[3].textContent = `${qData.trap_type || ''}: ${qData.explanation || ''}`.replace(/^:\s*/, '');
+                    if (
+                      row.cells[3] &&
+                      (qData.trap_type || qData.explanation)
+                    ) {
+                      row.cells[3].textContent =
+                        `${qData.trap_type || ""}: ${qData.explanation || ""}`.replace(
+                          /^:\s*/,
+                          "",
+                        );
                     }
                   }
                 }
@@ -712,9 +783,14 @@ document.addEventListener("nav", () => {
           });
 
           aiResponseContainer.style.display = "block";
-          aiResponseContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          aiResponseContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
 
-          const btnClose = aiResponseContainer.querySelector(".ielts-btn-close-ai");
+          const btnClose = aiResponseContainer.querySelector(
+            ".ielts-btn-close-ai",
+          );
           btnClose?.addEventListener("click", () => {
             if (aiResponseContainer) aiResponseContainer.style.display = "none";
           });
@@ -747,7 +823,9 @@ document.addEventListener("nav", () => {
         console.error("Lỗi gửi bài cho AI:", err);
         const msg = err.message || String(err);
         if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
-          alert(`Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend tại cổng 8000. Vui lòng kiểm tra Docker hoặc dịch vụ FastAPI.`);
+          alert(
+            `Không thể kết nối tới AI Evaluator: Không thể kết nối tới máy chủ backend. Vui lòng kiểm tra dịch vụ FastAPI hoặc kết nối mạng.`,
+          );
         } else {
           alert(`Không thể gửi bài làm cho AI: ${msg}`);
         }

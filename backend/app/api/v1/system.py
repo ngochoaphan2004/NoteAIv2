@@ -167,7 +167,7 @@ def get_system_config():
         "environment": settings.ENVIRONMENT,
         "watchdog_enabled": settings.WATCHDOG_ENABLED,
         "cron_timezone": "Asia/Ho_Chi_Minh",
-        "cron_schedule": "00:00 ICT (UTC+7) - Nửa đêm giờ Việt Nam hàng ngày",
+        "cron_schedule": "23:59 ICT (UTC+7) - 23h59 đêm giờ Việt Nam hàng ngày",
         "ports": {
             "database_postgres": 5433,
             "qdrant_rest": 6333,

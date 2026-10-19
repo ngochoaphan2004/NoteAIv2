@@ -26,7 +26,7 @@ class CronSchedulerService:
         self.last_run_time: Optional[datetime] = None
         self.last_run_status: str = "Chưa chạy"
         self.last_run_logs: List[str] = []
-        self.scheduled_time_str = "00:00 ICT (Asia/Ho_Chi_Minh - UTC+7) - Mỗi ngày lúc nửa đêm giờ Việt Nam"
+        self.scheduled_time_str = "23:59 ICT (Asia/Ho_Chi_Minh - UTC+7) - Mỗi ngày lúc 23h59 đêm giờ Việt Nam"
 
     async def start(self):
         """Khởi động vòng lặp kiểm tra lịch chạy định kỳ"""
@@ -54,12 +54,12 @@ class CronSchedulerService:
         logger.info("[CRON] Đã dừng Internal Cron Scheduler.")
 
     async def _cron_loop(self):
-        """Vòng lặp kiểm tra giờ hàng ngày (chạy vào 00:00 giờ Việt Nam mỗi đêm)"""
+        """Vòng lặp kiểm tra giờ hàng ngày (chạy vào 23:59 giờ Việt Nam mỗi đêm)"""
         while self.is_running:
             try:
                 now = datetime.now(VN_TZ)
-                # Kiểm tra nếu là 00:00 giờ Việt Nam (trong khoảng 60s đầu ngày)
-                if now.hour == 0 and now.minute == 0:
+                # Kích hoạt vào 23:59 mỗi đêm giờ Việt Nam (trong khoảng 60s cuối ngày)
+                if now.hour == 23 and now.minute == 59:
                     logger.info(f"[CRON] Kích hoạt Cronjob định kỳ lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
                     await self.execute_jobs()
                     # Chờ 65s để không bị kích hoạt lặp lại trong cùng 1 phút
@@ -200,8 +200,12 @@ class CronSchedulerService:
         # -------------------------------------------------------------
         try:
             now_dt = datetime.now(VN_TZ)
-            if now_dt.weekday() == 6:
-                logs.append("🤖 [5/6] Tối Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
+            # Chỉ sinh kế hoạch tuần mới vào đêm Chủ Nhật (sau 21h) hoặc rạng sáng Thứ 2 (00h)
+            # để đảm bảo người học có trọn vẹn cả ngày Chủ Nhật hoàn thành các bài học của Tuần 1
+            is_sunday_night = (now_dt.weekday() == 6 and now_dt.hour >= 21)
+            is_monday_start = (now_dt.weekday() == 0 and now_dt.hour == 0)
+            if is_sunday_night or is_monday_start:
+                logs.append("🤖 [5/6] Đêm Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
                 from app.services.plan_generator import autonomous_plan_generator
                 res_week = autonomous_plan_generator.generate_next_week(target_week_number=2, force=False)
                 if res_week.get("status") == "success":
@@ -209,7 +213,7 @@ class CronSchedulerService:
                 else:
                     logs.append(f"  ℹ️ {res_week.get('message', 'Kế hoạch tuần tiếp theo đã sẵn sàng.')}")
             else:
-                logs.append("ℹ️ [5/6] Tự động hóa tuần mới sẵn sàng (sẽ kích hoạt vào đêm Chủ Nhật hoặc khi gọi API /plans/generate-next-week).")
+                logs.append("ℹ️ [5/6] Tự động hóa tuần mới sẵn sàng (sẽ kích hoạt vào đêm Chủ Nhật sau 21h hoặc khi gọi API /plans/generate-next-week).")
         except Exception as e:
             logs.append(f"  ⚠️ Cảnh báo Job 5 (Weekly Planner): {e}")
 

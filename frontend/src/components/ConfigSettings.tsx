@@ -530,7 +530,7 @@ export const ConfigSettings: React.FC = () => {
                 Thời Gian Kích Hoạt
               </span>
               <div className="font-bold font-mono">
-                00:00:00 Nửa Đêm
+                23:59:00 Đêm (UTC+7)
               </div>
             </div>
 

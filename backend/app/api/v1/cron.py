@@ -11,7 +11,7 @@ def get_cronjob_status():
 @router.post("/trigger")
 async def trigger_cronjob_now():
     """
-    Kích hoạt thực thi Cronjob ngay lập tức (Dùng để test khả năng của Cronjob mà không cần đợi đến 00:00).
+    Kích hoạt thực thi Cronjob ngay lập tức (Dùng để test khả năng của Cronjob mà không cần đợi đến 23:59).
     Thực hiện 6 tác vụ tự trị trọn gói:
     1. Quét và đồng bộ toàn bộ từ vựng Markdown sang PostgreSQL (FSRS v4)
     2. Kiểm tra tính toàn vẹn của Knowledge Garden & Dead Links
