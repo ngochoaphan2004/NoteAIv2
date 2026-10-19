@@ -11,10 +11,8 @@ import {
   CalendarDays,
   BookOpen,
   CheckSquare,
-  Search,
   Bot,
   BarChart3,
-  Cpu,
   Settings,
 } from "lucide-react";
 
@@ -120,35 +118,6 @@ export const AppContent: React.FC = () => {
         {activeTab === "stats" && <StatsDashboard />}
         {activeTab === "config" && <ConfigSettings />}
       </main>
-
-      {/* Hardware & Network Status Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-apple-cardDark py-3 text-[11px] text-apple-subtextLight dark:text-apple-subtextDark">
-        <div className="max-w-screen-2xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-apple-green animate-pulse" />
-              PostgreSQL 16 :5433
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-apple-green animate-pulse" />
-              Qdrant :6333
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-apple-blue animate-pulse" />
-              FastAPI :8000
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-              Quartz :8088
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-[11px] font-mono">
-            <Cpu className="w-3.5 h-3.5 text-apple-blue" />
-            FastEmbed (CPU ONNX AVX2) | GPU VRAM Safe
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

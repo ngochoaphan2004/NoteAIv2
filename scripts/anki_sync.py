@@ -195,19 +195,60 @@ def parse_vocab_file(file_path):
             tags.append(t.lower())
 
     vocab_list = []
-    # Find table rows
-    # | STT | Từ Vựng | Phiên Âm (IPA) | Loại Từ | Nghĩa Tiếng Việt | Từ Đồng Nghĩa | Collocations & Ví Dụ Trong Đề Thi |
-    table_lines = re.findall(r"^\|\s*\*\*?\d+\*\*?\s*\|(.+)\|", content, re.MULTILINE)
-    for line in table_lines:
-        parts = [p.strip() for p in line.split("|")]
-        if len(parts) >= 6:
-            word = clean_md(parts[0])
-            ipa = clean_md(parts[1])
-            pos = clean_md(parts[2])
-            meaning = clean_md(parts[3])
-            synonyms = clean_md(parts[4])
-            colloc = parts[5].replace("<br>", "<br/>").strip()
-            
+    lines = content.splitlines()
+    table_header_found = False
+    col_map = {}
+
+    for line in lines:
+        line_str = line.strip()
+        if not line_str.startswith("|") or not line_str.endswith("|"):
+            table_header_found = False
+            continue
+
+        cells = [c.strip() for c in line_str.strip("|").split("|")]
+        if all(re.match(r"^:?-+:?$", c) for c in cells):
+            continue
+
+        lower_cells = [c.lower() for c in cells]
+        if not table_header_found and any("từ vựng" in c or c.strip() in ("word", "vocabulary", "front") for c in lower_cells):
+            table_header_found = True
+            col_map = {"word": -1, "ipa": -1, "pos": -1, "meaning": -1, "synonyms": -1, "example": -1}
+            for idx, h in enumerate(lower_cells):
+                if "từ vựng" in h or h in ("word", "vocabulary", "front"):
+                    col_map["word"] = idx
+                elif "phiên âm" in h or "ipa" in h:
+                    col_map["ipa"] = idx
+                elif "loại từ" in h or "từ loại" in h or "pos" in h:
+                    col_map["pos"] = idx
+                elif "nghĩa" in h or "meaning" in h or "back" in h:
+                    col_map["meaning"] = idx
+                elif "đồng nghĩa" in h or "synonym" in h:
+                    col_map["synonyms"] = idx
+                elif "ví dụ" in h or "example" in h or "collocation" in h:
+                    col_map["example"] = idx
+            continue
+
+        if table_header_found and len(cells) >= 4:
+            def get_cell(key, default=""):
+                idx = col_map.get(key, -1)
+                if 0 <= idx < len(cells):
+                    return clean_md(cells[idx])
+                return default
+
+            word = get_cell("word")
+            if not word or word.lower() in ("từ vựng", "word", "stt", "front"):
+                continue
+
+            ipa = get_cell("ipa")
+            pos = get_cell("pos")
+            meaning = get_cell("meaning")
+            synonyms = get_cell("synonyms")
+            example = get_cell("example")
+
+            colloc = example
+            if synonyms and synonyms not in colloc:
+                colloc = f"{colloc} | {synonyms}" if colloc else synonyms
+
             vocab_list.append({
                 "word": word,
                 "ipa": ipa,
@@ -218,23 +259,46 @@ def parse_vocab_file(file_path):
                 "context": title,
                 "tags": list(set(tags))
             })
-        elif len(parts) >= 5:
-            word = clean_md(parts[0])
-            ipa = clean_md(parts[1])
-            pos = clean_md(parts[2])
-            meaning = clean_md(parts[3])
-            colloc = parts[4].replace("<br>", "<br/>").strip()
-            
-            vocab_list.append({
-                "word": word,
-                "ipa": ipa,
-                "pos": pos,
-                "meaning": meaning,
-                "synonyms": "",
-                "collocations": colloc,
-                "context": title,
-                "tags": list(set(tags))
-            })
+
+    if not vocab_list:
+        table_lines = re.findall(r"^\|\s*\*\*?\d+\*\*?\s*\|(.+)\|", content, re.MULTILINE)
+        for line in table_lines:
+            parts = [p.strip() for p in line.split("|")]
+            if len(parts) >= 6:
+                word = clean_md(parts[0])
+                ipa = clean_md(parts[1])
+                pos = clean_md(parts[2])
+                meaning = clean_md(parts[3])
+                synonyms = clean_md(parts[4])
+                colloc = parts[5].replace("<br>", "<br/>").strip()
+                
+                vocab_list.append({
+                    "word": word,
+                    "ipa": ipa,
+                    "pos": pos,
+                    "meaning": meaning,
+                    "synonyms": synonyms,
+                    "collocations": colloc,
+                    "context": title,
+                    "tags": list(set(tags))
+                })
+            elif len(parts) >= 5:
+                word = clean_md(parts[0])
+                ipa = clean_md(parts[1])
+                pos = clean_md(parts[2])
+                meaning = clean_md(parts[3])
+                colloc = parts[4].replace("<br>", "<br/>").strip()
+                
+                vocab_list.append({
+                    "word": word,
+                    "ipa": ipa,
+                    "pos": pos,
+                    "meaning": meaning,
+                    "synonyms": "",
+                    "collocations": colloc,
+                    "context": title,
+                    "tags": list(set(tags))
+                })
     return vocab_list
 
 def find_all_vocab():

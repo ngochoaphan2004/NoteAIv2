@@ -1,5 +1,5 @@
 ---
-title: "[17/10] Test 1 Speaking"
+title: "[24/10] Test 1 Speaking Part 2"
 aliases:
   - test-1-speaking
   - speaking-week-01
@@ -12,9 +12,10 @@ tags:
 
 # 🗣️ Bài Luyện Tập: Cambridge 18 - Test 1 Speaking Part 2
 
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1]] — Phiên Hôm Nay: Thứ 7 (17/10/2026)  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Speaking Test 1 - Part 2)  
-> **Thời lượng phiên (Micro-session):** 30 phút (10p lập dàn ý + 20p luyện nói độc thoại & kiểm soát độ trôi chảy)
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (19/10 – 25/10/2026)]] — Phiên Thứ 7: Speaking Part 2 Routine  
+> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Speaking Test 1 - Part 2, Trang 33)  
+> **Thời lượng phiên (Micro-session):** 30 phút (10p lập dàn ý + 20p luyện nói độc thoại & kiểm soát độ trôi chảy)  
+> **Lưu ý:** Phần thi Speaking Part 2 được giữ nguyên trọn vẹn trong 1 phiên độc lập theo đúng thời lượng chuẩn.
 
 ---
 
@@ -37,6 +38,13 @@ tags:
   </div>
 </div>
 
+<details>
+<summary><b>📄 Xem Trang Sách Gốc (Trang 33)</b></summary>
+
+![Speaking Test 1 Trang 33](https://res.cloudinary.com/s4olr6lv/image/upload/v1792080193/note_ai/Cambridge_18_page-0033.jpg)
+
+</details>
+
 ---
 
 ## 🧭 1. Khung Dàn Ý 1 Phút (1-Minute WH-Outline Scaffolding)
@@ -58,58 +66,29 @@ tags:
 <div class="ielts-speaking-workspace">
   <div class="ielts-card-header">
     <div class="ielts-header-title">
-      <span class="ielts-badge">Practice Routine</span>
-      <span class="ielts-target-pill">Chuẩn 2 Phút Độc Thoại</span>
+      <span class="ielts-badge">Speaking Part 2</span>
+      <span class="ielts-target-pill">Thời gian nói: 2 phút</span>
     </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">02:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ nói">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại">🔄</button>
-      </div>
+    <div class="ielts-timer-pill">
+      ⏱️ <span class="ielts-timer-display">02:00</span>
     </div>
-  </div>
-
-  <div class="ielts-editor-wrapper">
-    <textarea class="ielts-textarea" placeholder="Nhập bản gõ lời thoại (Transcript) bài nói hoặc ghi chú các lỗi ngập ngừng khi tự nghe lại file ghi âm..."></textarea>
   </div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Lời Thoại Cho AI Chẩn Đoán
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear">
-      🗑️ Xóa & Thu Lại
-    </button>
+    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-start">▶ Bắt Đầu 2 Phút Nói</button>
+    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-pause" style="display:none;">⏸ Tạm Dừng</button>
+    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-reset">↺ Đặt Lại</button>
+  </div>
+
+  <div class="ielts-editor-wrapper" style="margin-top: 0.75rem;">
+    <textarea class="ielts-textarea" placeholder="Ghi lại các từ khóa dàn ý 1 phút hoặc ghi chép tự đánh giá sau khi nói..." style="min-height: 120px;"></textarea>
   </div>
 </div>
-
----
-
-## 🔬 3. Không Gian Tự Đánh Giá & Chẩn Đoán (Diagnostic Feedback)
-
-### 📝 Bản Ghi Nhận Bài Nói Thực Tế (Lưu Trữ Nguyên Bản)
-
-> [!NOTE]
-> **Trạng thái:** Chưa nộp bài Speaking | **Mục tiêu:** Nói liên tục 1 phút 45 giây – 2 phút không dừng lại.
->
-> _Hãy bật đồng hồ 2 phút, thu âm bài nói của bạn và dán lời thoại vào khung phía trên để đối soát 4 tiêu chí Fluency, Lexical Resource, Grammar và Pronunciation._
-
----
-
-### ⚖️ 4 Tiêu Chí Đánh Giá IELTS Speaking Chuyên Sâu
-
-| Tiêu chí | Mục tiêu kiểm soát trong buổi luyện hôm nay |
-| :--- | :--- |
-| **Fluency & Coherence (FC)** | Không để khoảng lặng trống (unnatural pauses) > 3 giây; đếm số lần nói "uhm, ah". |
-| **Lexical Resource (LR)** | Dùng từ vựng giải quyết vấn đề: _tackle the obstacle, troubleshoot, iron out, resolve_. |
-| **Grammar Range & Accuracy (GRA)** | Giữ vững thì quá khứ đơn (`Past Simple`) khi kể lại sự việc; tránh nhảy thì lộn xộn. |
-| **Pronunciation (PR)** | Phát âm rõ âm đuôi quá khứ `/t/`, `/d/`, `/ɪd/` (_managed, happened, solved_). |
 
 ---
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
 - 📅 **Kế hoạch cha:** [[plans/week-01/|Kế Hoạch Tuần 1]]
+- 🔄 **Bài tiếp theo:** [[plans/week-01/review-week-01|Phiên Ôn Tập & Tổng Kết Tuần 1]]
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]

@@ -1,7 +1,8 @@
 ---
-title: "[15/10] Test 1 Reading P3"
+title: "[22/10] Test 1 Reading P3"
 aliases:
   - test-cam18-test1-reading-p3
+  - test-1-reading-p3
 tags:
   - reading
   - test-attempt
@@ -13,13 +14,13 @@ tags:
 # 📖 Bài Làm: Cambridge 18 - Test 1 Reading (Passage 3)
 
 > **Chủ đề bài đọc:** _Conquering Earth's space junk problem_ (Giải quyết vấn nạn rác thải không gian của Trái Đất)  
-> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]] — Phiên Thứ 5 (Reading Keyword Mapping)  
-> **Tài liệu gốc:** `D:\Ielts\Cambridge 18 - The IELTS Workshop\Test1-read-p3.pdf`  
-> **Mục tiêu phiên:** 20 phút làm bài (14 câu) + 25 phút mổ xẻ cấu trúc bài đọc, lập bảng Keyword Mapping và trích xuất từ vựng cốt lõi.
+> **Tuần thực hiện:** [[plans/week-01/|Kế Hoạch Tuần 1 (19/10 – 25/10/2026)]] — Phiên Thứ 5: Reading Keyword Mapping & Passage 3  
+> **Thời lượng:** 35 phút (20 phút làm bài 14 câu + 15 phút phân tích bẫy Yes/No/Not Given và lập bảng Keyword Mapping)  
+> **Mục đích:** Xử lý đoạn văn khó nhất trong bài thi Reading với độ tập trung tối đa, không bị cạn kiệt năng lượng.
 
 ---
 
-## 📑 Tài Liệu Đề Thi (Hình Ảnh Sách Gốc Trang 27 – 30)
+## 📑 Đề Thi (Hình Ảnh Sách Gốc Trang 27 – 30)
 
 <details open>
 <summary><b>📄 Đề Bài: Cambridge 18 - Test 1 Reading Passage 3</b></summary>
@@ -42,107 +43,62 @@ tags:
 
 ## 📋 Bảng Ghi Nhận Bài Làm Của Bạn (Questions 27 – 40)
 
-> 💡 **Tính năng tương tác:** Bảng nhập nhanh câu 27 – 40 (nhấn Enter/Tab để sang câu tiếp theo), đồng hồ đếm ngược 20 phút, tự động lưu vào LocalStorage và nút 1-click sao chép Shorthand cho AI đối soát.
+> 💡 **Tính năng tương tác:** Nhập nhanh câu 27 – 40 vào các ô bên dưới (nhấn Enter hoặc Tab để nhảy câu tiếp theo). Đồng hồ đếm ngược 20 phút hỗ trợ bám sát thời gian thi.
 
-<div class="ielts-sheet-card" data-sheet-id="reading-p3" data-start-q="27" data-end-q="40" data-timer="20">
+<div class="ielts-sheet-card" data-sheet-id="r1-p3" data-start-q="27" data-end-q="40" data-timer="20">
   <div class="ielts-card-header">
     <div class="ielts-header-title">
-      <span class="ielts-badge">Reading P3</span>
-      <span class="ielts-target-pill">Bảng Nhập Đáp Án Tương Tác (Câu 27 – 40)</span>
+      <span class="ielts-badge">Reading Passage 3</span>
+      <span class="ielts-status-indicator ielts-save-text">⚪ Sẵn sàng làm bài</span>
     </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">20:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
+    <div class="ielts-timer-pill">
+      ⏱️ <span class="ielts-timer-display">20:00</span>
     </div>
   </div>
-
-  <div class="ielts-stats-bar">
-    <div class="ielts-stat-item">
-      <span class="ielts-stat-label">Tiến độ:</span>
-      <span class="ielts-stat-val ielts-sheet-progress">0 / 14 câu đã điền</span>
-    </div>
-    <div class="ielts-save-indicator">
-      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-answers"></div>
 
   <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
-      🔄 Làm Lại Đề Này
-    </button>
+    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-start">▶ Bắt Đầu Tính Giờ</button>
+    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-pause" style="display:none;">⏸ Tạm Dừng</button>
+    <button type="button" class="ielts-btn ielts-btn-outline ielts-btn-reset">↺ Đặt Lại</button>
+    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-copy">📋 Copy Shorthand</button>
   </div>
-  <div class="ielts-ai-response" style="display:none;"></div>
+
+  <div class="ielts-progress-bar-wrap" style="margin: 0.75rem 0 0.5rem 0;">
+    <div class="ielts-progress-text" style="font-size: 0.75rem; font-weight: 600; color: var(--darkgray); margin-bottom: 0.25rem;">
+      Tiến độ: <span class="ielts-progress-count">0 / 14 câu đã điền</span>
+    </div>
+  </div>
+
+  <div class="ielts-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.4rem; margin-top: 0.5rem;">
+    <!-- Các ô input được tự động sinh bằng script tương tác -->
+  </div>
 </div>
 
 ---
 
-### 🔹 Questions 27 – 31: Matching Information (Đoạn văn chứa thông tin)
+## 📊 Bảng Đối Soát Chi Tiết & Phân Tích Lỗi Sai (Questions 27 – 40)
 
-|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :----: | :-------------- | :--------------: | :------------------------------------------------ |
-| **27** | _(chờ điền)_    |       [ ]        |                                                   |
-| **28** | _(chờ điền)_    |       [ ]        |                                                   |
-| **29** | _(chờ điền)_    |       [ ]        |                                                   |
-| **30** | _(chờ điền)_    |       [ ]        |                                                   |
-| **31** | _(chờ điền)_    |       [ ]        |                                                   |
-
----
-
-### 🔹 Questions 32 – 35: Summary Completion (Điền từ tóm tắt)
-
-|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :----: | :-------------- | :--------------: | :------------------------------------------------ |
-| **32** | _(chờ điền)_    |       [ ]        |                                                   |
-| **33** | _(chờ điền)_    |       [ ]        |                                                   |
-| **34** | _(chờ điền)_    |       [ ]        |                                                   |
-| **35** | _(chờ điền)_    |       [ ]        |                                                   |
-
----
-
-### 🔹 Questions 36 – 40: Matching Features (Nối thông tin / Quan điểm)
-
-|  STT   | Bài Làm Của Bạn | Kết Quả Tự Check | Từ Khóa & Vị Trí Trong Đoạn Văn (Keyword Mapping) |
-| :----: | :-------------- | :--------------: | :------------------------------------------------ |
-| **36** | _(chờ điền)_    |       [ ]        |                                                   |
-| **37** | _(chờ điền)_    |       [ ]        |                                                   |
-| **38** | _(chờ điền)_    |       [ ]        |                                                   |
-| **39** | _(chờ điền)_    |       [ ]        |                                                   |
-| **40** | _(chờ điền)_    |       [ ]        |                                                   |
-
----
-
-## 🧭 Bảng Bóc Tách Keyword Mapping (Kỹ Thuật Khớp Từ Khóa)
-
-_(Sau khi làm xong bài, ghi lại các cặp từ đồng nghĩa/paraphrase giữa câu hỏi và bài đọc)_
-
-| Câu hỏi (Question Prompt) | Bài đọc (Passage Evidence)       | Bản chất Paraphrase / Bẫy nhận diện  |
-| :------------------------ | :------------------------------- | :----------------------------------- |
-| _Ví dụ:_ space debris     | space junk / derelict satellites | Sử dụng danh từ đồng nghĩa trực tiếp |
-| ...                       | ...                              | ...                                  |
-
----
-
-## 📌 Không Gian Tự Đánh Giá & Ghi Chú Của Bạn
-
-- **Thời gian làm bài thực tế:** `... phút` _(Mục tiêu: ≤ 20 phút)_
-- **Số câu hoàn thành:** `... / 14 câu`
-- **Các đoạn văn/câu hỏi tốn nhiều thời gian nhất:**
-- **Bài học kinh nghiệm về quản lý thời gian:**
+| STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
+| :---: | :--- | :--- | :---: | :--- |
+| **27** | `[ ]` | | ⚪ | |
+| **28** | `[ ]` | | ⚪ | |
+| **29** | `[ ]` | | ⚪ | |
+| **30** | `[ ]` | | ⚪ | |
+| **31** | `[ ]` | | ⚪ | |
+| **32** | `[ ]` | | ⚪ | |
+| **33** | `[ ]` | | ⚪ | |
+| **34** | `[ ]` | | ⚪ | |
+| **35** | `[ ]` | | ⚪ | |
+| **36** | `[ ]` | | ⚪ | |
+| **37** | `[ ]` | | ⚪ | |
+| **38** | `[ ]` | | ⚪ | |
+| **39** | `[ ]` | | ⚪ | |
+| **40** | `[ ]` | | ⚪ | |
 
 ---
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
-- 📅 **Kế hoạch mẹ:** [[plans/week-01/|Kế Hoạch Tuần 1 (14/10 – 18/10/2026)]]
+- 📅 **Kế hoạch cha:** [[plans/week-01/|Kế Hoạch Tuần 1]]
+- 📖 **Phần trước:** [[plans/week-01/test-1-reading-p1-p2|Test 1 Reading Passage 1 & 2]]
+- 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]
