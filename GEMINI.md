@@ -61,3 +61,14 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
   ```
 
 - 4 chặng: YAML & Dead Link $\rightarrow$ Markdownlint $\rightarrow$ FSRS/Anki Sync $\rightarrow$ Quartz Build.
+
+---
+
+## 7. 📐 Quy Chuẩn Template Bắt Buộc Toàn Dự Án (Mandatory Project Templates)
+
+- **Nguyên tắc cốt lõi:** Cả **Trợ lý AI (Antigravity)** và **AI Cronjob / Autonomous Planning Agent** BẮT BUỘC tuân thủ 100% hệ thống 7 mẫu chuẩn tại thư mục `templates/` (`template-weekly-plan.md`, `template-listening-session.md`, `template-reading-session.md`, `template-writing-session.md`, `template-speaking-session.md`, `template-vocab-week.md`, `template-review-week.md`).
+- **Ràng buộc tương tác bất biến:**
+  - Listening & Reading BẮT BUỘC chứa container `.ielts-sheet-card` cùng `<div class="ielts-grid-answers"></div>` để JavaScript sinh các ô nhập đáp án.
+  - Sổ từ vựng tuần BẮT BUỘC có `sr-due: "YYYY-MM-DD"` và bảng từ vựng đúng định dạng để FSRS đồng bộ.
+  - Mọi bài con (Leaf Node) BẮT BUỘC chỉ liên kết ngược về Hub tuần cha `[[plans/week-XX/|...]]`.
+

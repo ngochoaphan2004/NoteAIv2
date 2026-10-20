@@ -29,7 +29,9 @@ class Settings(BaseSettings):
         return models if models else ["gemini-1.5-flash"]
 
     # App directories & behavior
+    PROJECT_ROOT: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
     CONTENT_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "content"))
+    TEMPLATE_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "templates"))
     ENVIRONMENT: str = "development"
     PORT: int = 8000
     HOST: str = "0.0.0.0"

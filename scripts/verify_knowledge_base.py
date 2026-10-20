@@ -158,6 +158,11 @@ def validate_frontmatter_schema(full_path, rel_path, auto_fix=False):
                 except ValueError:
                     errors.append(f"Trường 'sr-due' ({sr_due}) không đúng định dạng chuẩn 'YYYY-MM-DD'.")
 
+        # Check template compliance for interactive test notes
+        if "plans/week-" in rel_path and ("listening" in tags or "reading" in tags):
+            if '<div class="ielts-grid-answers"></div>' not in content:
+                errors.append("File bài thi Listening/Reading BẮT BUỘC chứa '<div class=\"ielts-grid-answers\"></div>' theo đúng Template chuẩn!")
+
     if is_modified and auto_fix:
         # Re-serialize frontmatter cleanly
         new_fm_str = yaml.dump(fm, allow_unicode=True, sort_keys=False, default_flow_style=False)

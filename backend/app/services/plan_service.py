@@ -377,6 +377,16 @@ class PlanService:
 
             if start_date <= today <= end_date:
                 week_name = os.path.basename(os.path.dirname(week_file))
+
+                # Cơ chế Tự Phục Hồi (Self-Healing):
+                # Nếu file kế hoạch tuần chưa được chuyển trạng thái sang ngày hôm nay, tự động sync ngay lập tức
+                today_tag = f"Hôm nay: {today_info['formatted_full']}"
+                if today_tag not in content:
+                    logger.info(f"[PLAN SELF-HEAL] Phát hiện kế hoạch chưa đồng bộ ngày {today_info['formatted_full']}. Tự động đồng bộ ngay...")
+                    self.sync_all_plans()
+                    with open(week_file, "r", encoding="utf-8") as f:
+                        content = f.read()
+
                 # Tìm dòng của hôm nay trong bảng
                 lines = content.splitlines()
                 for line in lines:

@@ -139,3 +139,22 @@ Pipeline kiểm chứng thực thi 4 chặng nghiêm ngặt:
 
 - Commit với thông điệp chuẩn Conventional Commits: `docs: add note <tên>`, `feat: ...`, `fix: ...`.
 - Đẩy mã nguồn lên kho lưu trữ từ xa: `git push origin main`.
+
+---
+
+## 10. 📐 Quy Chuẩn Template Bắt Buộc Toàn Dự Án (Mandatory Project Templates)
+
+- **Nguyên tắc cốt lõi:** Cả **Trợ lý AI (Antigravity)** và **AI Cronjob / Autonomous Planning Agent** BẮT BUỘC tuân thủ 100% hệ thống mẫu chuẩn tại thư mục `templates/` khi khởi tạo hoặc cập nhật bất kỳ ghi chú Markdown nào trong `content/`.
+- **7 Mẫu Template Chuẩn:**
+  1. `templates/template-weekly-plan.md` $\rightarrow$ Hub tuần (`content/plans/week-XX/index.md`)
+  2. `templates/template-listening-session.md` $\rightarrow$ Phiên Listening (`test-X-listening-p*.md`)
+  3. `templates/template-reading-session.md` $\rightarrow$ Phiên Reading (`test-X-reading-p*.md`)
+  4. `templates/template-writing-session.md` $\rightarrow$ Phiên Writing (`test-X-writing.md`)
+  5. `templates/template-speaking-session.md` $\rightarrow$ Phiên Speaking (`test-X-speaking.md`)
+  6. `templates/template-vocab-week.md` $\rightarrow$ Sổ từ vựng tuần (`vocab-week-XX.md`)
+  7. `templates/template-review-week.md` $\rightarrow$ Phiên Review tổng kết tuần (`review-week-XX.md`)
+- **Ràng buộc tương tác bất biến (Inviolable Interactive Constraints):**
+  - Mọi bài làm Listening và Reading **BẮT BUỘC chứa thẻ container `.ielts-sheet-card` cùng `<div class="ielts-grid-answers"></div>`** để engine JavaScript tự động render bảng điền đáp án, bộ đếm giờ và thanh trạng thái lưu LocalStorage.
+  - Sổ từ vựng tuần **BẮT BUỘC có trường `sr-due: "YYYY-MM-DD"`** và bảng từ vựng Markdown đúng chuẩn (`| Từ Vựng (Front) | Từ Loại | Phiên Âm (IPA) | Ý Nghĩa Tiếng Việt (Back) | ...`) để FSRS v4 tự động đồng bộ vào PostgreSQL và `IELTS_Master_Deck.apkg`.
+  - Mọi bài con (Leaf Node) **BẮT BUỘC chỉ liên kết ngược về Hub tuần cha `[[plans/week-XX/|...]]`**, không nối tắt về root index.
+

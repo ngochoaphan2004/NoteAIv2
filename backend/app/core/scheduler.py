@@ -2,7 +2,7 @@ import os
 import glob
 import asyncio
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
 from typing import Dict, Any, List, Optional
 from app.core.config import settings
@@ -26,7 +26,7 @@ class CronSchedulerService:
         self.last_run_time: Optional[datetime] = None
         self.last_run_status: str = "Chưa chạy"
         self.last_run_logs: List[str] = []
-        self.scheduled_time_str = "23:59 ICT (Asia/Ho_Chi_Minh - UTC+7) - Mỗi ngày lúc 23h59 đêm giờ Việt Nam"
+        self.scheduled_time_str = "00:00 ICT (Chuyển giao ngày mới) & 23:59 ICT (Tổng kết & Đồng bộ FSRS)"
 
     async def start(self):
         """Khởi động vòng lặp kiểm tra lịch chạy định kỳ"""
@@ -54,19 +54,37 @@ class CronSchedulerService:
         logger.info("[CRON] Đã dừng Internal Cron Scheduler.")
 
     async def _cron_loop(self):
-        """Vòng lặp kiểm tra giờ hàng ngày (chạy vào 23:59 giờ Việt Nam mỗi đêm)"""
+        """
+        Vòng lặp định kỳ thông minh 2 nhịp:
+        1. 00:00 (Nửa đêm): Chuyển giao kế hoạch sang ngày mới, chuyển trạng thái 🎯 Hôm nay.
+        2. 23:59 (Đêm): Chốt ngày, đồng bộ thẻ Flashcard FSRS, Anki Master Deck & Dead Links.
+        """
+        last_midnight_date: Optional[date] = None
+        last_wrapup_date: Optional[date] = None
+
         while self.is_running:
             try:
                 now = datetime.now(VN_TZ)
-                # Kích hoạt vào 23:59 mỗi đêm giờ Việt Nam (trong khoảng 60s cuối ngày)
-                if now.hour == 23 and now.minute == 59:
-                    logger.info(f"[CRON] Kích hoạt Cronjob định kỳ lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
+                today_d = now.date()
+
+                # 1. Kích hoạt chuyển giao ngày mới vào 00:00 (hoặc trong 2 phút đầu ngày)
+                if now.hour == 0 and now.minute <= 2 and last_midnight_date != today_d:
+                    logger.info(f"[CRON] 🌙 Kích hoạt Chuyển Giao Ngày Mới lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
+                    last_midnight_date = today_d
                     await self.execute_jobs()
-                    # Chờ 65s để không bị kích hoạt lặp lại trong cùng 1 phút
-                    await asyncio.sleep(65)
-                else:
-                    # Kiểm tra mỗi 30 giây
-                    await asyncio.sleep(30)
+                    await asyncio.sleep(60)
+                    continue
+
+                # 2. Kích hoạt tổng kết ngày và FSRS vào 23:59 mỗi đêm
+                if now.hour == 23 and now.minute == 59 and last_wrapup_date != today_d:
+                    logger.info(f"[CRON] ⏰ Kích hoạt Tổng Kết Ngày & Đồng Bộ lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
+                    last_wrapup_date = today_d
+                    await self.execute_jobs()
+                    await asyncio.sleep(60)
+                    continue
+
+                # Kiểm tra mỗi 20 giây
+                await asyncio.sleep(20)
             except asyncio.CancelledError:
                 break
             except Exception as e:

@@ -13,6 +13,7 @@ from app.models.test_attempt import TestAttempt, QuestionAnalysis
 from app.models.flashcard import Flashcard
 from app.services.llm_service import llm_service
 from app.services.plan_service import rebuild_quartz
+from app.services.template_service import template_service
 
 VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
 logger = logging.getLogger("plan_generator")
@@ -460,62 +461,46 @@ class AutonomousPlanGenerator:
         d6 = start_date + timedelta(days=5)
         d7 = end_date
 
-        content = f"""---
-title: "[{start_str} - {end_str}] Kế Hoạch Tuần {week_num}"
-aliases:
-  - plans/week-{week_num:02d}
-tags:
-  - study-planner
-  - week-{week_num:02d}
-  - cambridge18
----
+        week_padded = f"{week_num:02d}"
+        context = {
+            "START_DD_MM": start_str,
+            "END_DD_MM": end_str,
+            "WEEK_NUM": str(week_num),
+            "WEEK_PADDED": week_padded,
+            "SOURCE_TAG": "cambridge18",
+            "START_DATE": f"{start_str}/{year}",
+            "END_DATE": f"{end_str}/{year}",
+            "THEME_TITLE": "Thích Ứng & Chia Nhỏ Bài Học",
+            "SUNDAY_DATE": end_str,
+            "WEEK_STATUS": "Mới khởi tạo — Sẵn sàng học tập",
+            "TEST_NUM": str(week_num),
+            "DATE_MON": d1.strftime('%d/%m/%Y'),
+            "DATE_TUE": d2.strftime('%d/%m/%Y'),
+            "DATE_WED": d3.strftime('%d/%m/%Y'),
+            "DATE_THU": d4.strftime('%d/%m/%Y'),
+            "DATE_FRI": d5.strftime('%d/%m/%Y'),
+            "DATE_SAT": d6.strftime('%d/%m/%Y'),
+            "DATE_SUN": d7.strftime('%d/%m/%Y'),
+            "STATUS_MON": "[ ] Sẵn sàng",
+            "STATUS_TUE": "[ ] Sắp tới",
+            "STATUS_WED": "[ ] Sắp tới",
+            "STATUS_THU": "[ ] Sắp tới",
+            "STATUS_FRI": "[ ] Sắp tới",
+            "STATUS_SAT": "[ ] Sắp tới",
+            "STATUS_SUN": "[ ] Sắp tới",
+            "TODAY_FULL_NAME": f"Thứ 2 ({d1.strftime('%d/%m/%Y')})",
+            "TODAY_SKILL": "Listening Part 1 & 2",
+            "TODAY_DURATION": "35 phút",
+            "TODAY_FOCUS": f"• **15p (Part 1):** Nghe và làm 10 câu đầu Cambridge 18 Test {week_num}. Bắt bẫy số và ngày tháng.<br>• **15p (Part 2):** Nghe và làm câu 11 – 20. Đánh dấu từ khóa trước khi nghe.",
+            "TODAY_TARGET_FILE": f"test-{week_num}-listening-p1-p2",
+            "TODAY_TARGET_NAME": f"Test {week_num} Listening P1-P2"
+        }
 
-# 📅 Kế Hoạch Tuần {week_num}: {start_str} – {end_str}/{year} (Thích Ứng & Chia Nhỏ Bài Học)
+        content = template_service.render("weekly_plan", context)
+        val = template_service.validate_markdown(content, "weekly_plan")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template weekly_plan: {val['errors']}")
 
-> **Khung thời gian:** Thứ 2 ({d1.strftime('%d/%m/%Y')}) đến hết Chủ Nhật ({d7.strftime('%d/%m/%Y')})  
-> **Nguyên tắc cốt lõi:** Cố định mỗi phiên ở mức **30 – 35 phút (Micro-sessions)** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
-> **Quy tắc chu kỳ tuần:** Lịch trình tuần kết thúc trọn vẹn vào ngày **Chủ Nhật ({end_str})**, không kéo dài sang tuần sau.  
-> **Trạng thái tuần:** Mới khởi tạo — Sẵn sàng học tập
-
----
-
-## 🗓️ 1. Bảng Tổng Quan Lịch Trình Tuần {week_num} ({start_str} – {end_str})
-
-| Ngày & Thứ | Kỹ Năng & Thời Lượng | Phương Pháp Thực Thi Trọng Tâm (Execution Focus) | Trạng Thái |
-| :--- | :--- | :--- | :---: |
-| **Thứ 2**<br>_({d1.strftime('%d/%m/%Y')})_ | **Listening Part 1 & 2**<br>`35 phút` | • **15p:** Part 1 (10 câu). Rèn bắt bẫy số và họ tên.<br>• **15p:** Part 2 (10 câu). Đọc trước đề đón đầu.<br>• **5p:** Gửi câu trả lời cho AI lưu trữ trung thực. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-listening-p1-p2\\|Làm bài Test {week_num} Listening P1-P2]]** | [ ] Sẵn sàng |
-| **Thứ 3**<br>_({d2.strftime('%d/%m/%Y')})_ | **Listening Part 3 & 4**<br>`35 phút` | • **15p:** Part 3 (10 câu trắc nghiệm nhiều người nói).<br>• **15p:** Part 4 (10 câu độc thoại học thuật).<br>• **5p:** Đối chiếu bảng lỗi sai bẫy âm. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-listening-p3-p4\\|Làm bài Test {week_num} Listening P3-P4]]** | [ ] Sắp tới |
-| **Thứ 4**<br>_({d3.strftime('%d/%m/%Y')})_ | **Reading Passage 1 & 2**<br>`35 phút` | • **20p:** Xử lý Passage 1 & 2 (26 câu).<br>• **15p:** Rèn kỹ năng Keyword Mapping và quét vị trí thông tin nhanh. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-reading-p1-p2\\|Làm bài Reading Passage 1 & 2]]** | [ ] Sắp tới |
-| **Thứ 5**<br>_({d4.strftime('%d/%m/%Y')})_ | **Reading Passage 3**<br>`35 phút` | • **20p:** Xử lý chuyên sâu Passage 3 (14 câu).<br>• **15p:** Phân tích bẫy Yes/No/Not Given và bẫy suy diễn thông tin. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-reading-p3\\|Làm bài Reading Passage 3]]** | [ ] Sắp tới |
-| **Thứ 6**<br>_({d5.strftime('%d/%m/%Y')})_ | **Writing Task 1**<br>`35 phút` | • **15p:** Phân tích biểu đồ và lập dàn ý Task 1.<br>• **20p:** Viết báo cáo Task 1 trên Split-Screen, chuẩn hóa ngữ pháp mô tả xu hướng. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-writing\\|Viết bài Writing Task 1]]** | [ ] Sắp tới |
-| **Thứ 7**<br>_({d6.strftime('%d/%m/%Y')})_ | **Speaking Part 2 Routine**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions.<br>• **20p:** Thu âm 2 phút liên tục, kiểm soát độ trôi chảy và đếm lỗi ngập ngừng. 👉 **[[plans/week-{week_num:02d}/test-{week_num}-speaking\\|Luyện Speaking Part 2]]** | [ ] Sắp tới |
-| **Chủ Nhật**<br>_({d7.strftime('%d/%m/%Y')})_ | **Core Review & FSRS Flashcards**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần và tạo tuần tiếp theo. 👉 **[[plans/week-{week_num:02d}/review-week-{week_num:02d}\\|Mở Bài Review Tuần {week_num}]]** | [ ] Sắp tới |
-
----
-
-## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 2 ({d1.strftime('%d/%m/%Y')})
-
-### 🎯 Listening Part 1 & 2 — 35 phút
-
-- [ ] **15p (Part 1):** Nghe và làm 10 câu đầu Cambridge 18 Test {week_num}. Bắt bẫy số và ngày tháng.
-- [ ] **15p (Part 2):** Nghe và làm câu 11 – 20. Đánh dấu từ khóa trước khi nghe.
-- [ ] **5p (Nộp bài):** Điền đáp án vào Bảng Ghi Nhận và nhấn nút "🚀 Gửi Câu Trả Lời Cho AI".
-- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-{week_num:02d}/test-{week_num}-listening-p1-p2|Làm bài Test {week_num} Listening P1-P2]]
-- 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
-
-## 🔗 3. Mạng Lưới Kiến Thức Liên Quan
-
-- 🎧 **Bài làm Listening P1-P2:** [[plans/week-{week_num:02d}/test-{week_num}-listening-p1-p2|Test {week_num} Listening P1-P2 (Cam 18)]]
-- 🎧 **Bài làm Listening P3-P4:** [[plans/week-{week_num:02d}/test-{week_num}-listening-p3-p4|Test {week_num} Listening P3-P4 (Cam 18)]]
-- 📖 **Bài làm Reading P1-P2:** [[plans/week-{week_num:02d}/test-{week_num}-reading-p1-p2|Test {week_num} Reading P1-P2 (Cam 18)]]
-- 📖 **Bài làm Reading P3:** [[plans/week-{week_num:02d}/test-{week_num}-reading-p3|Test {week_num} Reading P3 (Cam 18)]]
-- ✍️ **Bài làm Writing Task 1:** [[plans/week-{week_num:02d}/test-{week_num}-writing|Test {week_num} Writing Task 1 (Cam 18)]]
-- 🗣️ **Bài luyện Speaking Part 2:** [[plans/week-{week_num:02d}/test-{week_num}-speaking|Test {week_num} Speaking Part 2 (Cam 18)]]
-- 🔄 **Bài Review Tuần:** [[plans/week-{week_num:02d}/review-week-{week_num:02d}|Phiên Ôn Tập Trọng Tâm Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-- 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5]]
-- 🌐 **Tài nguyên học tập:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ Luyện Thi IELTS]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -528,6 +513,7 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         l_pages = test_assets.get("listening_pages", [])
         part1_imgs = [p for p in l_pages if "Part 1" in p.get("title", "") or "Part 1" in p.get("phase_name", "")]
@@ -535,9 +521,6 @@ tags:
 
         def render_imgs(imgs):
             return "\n\n".join([f"![{img['title']} Trang {img['page_number']}]({img['url']})" for img in imgs if img.get("url")])
-
-        rows_p1 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(1, 11)])
-        rows_p2 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(11, 21)])
 
         audio_test_meta = self.get_test_audio_data(test_num)
         audio_parts = audio_test_meta.get("parts", {})
@@ -558,117 +541,70 @@ tags:
   </audio>
 </div>"""
 
-        content = f"""---
-title: "[{day_str}] Test {test_num} Listening P1-P2"
-aliases:
-  - test-cam18-test{test_num}-listening-p1-p2
-  - test-{test_num}-listening-p1-p2
-tags:
-  - listening
-  - test-attempt
-  - cambridge18
-  - part-1
-  - part-2
-  - week-{week_num:02d}
----
-
-# 🎧 Bài Làm: Cambridge 18 - Test {test_num} Listening (Part 1 & Part 2)
-
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Hôm Nay: Thứ 2 ({day_date.strftime('%d/%m/%Y')})  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Listening Test {test_num})  
-> **Thời lượng:** 35 phút (18 phút làm bài nghe + 17 phút phân tích bẫy số, từ khóa và rút kinh nghiệm)  
-> **Mục đích:** Chia nhỏ bài nghe giúp tập trung tối đa, không bị quá tải nhận thức; rèn kỹ năng nghe chính xác danh từ, số và ngày tháng.
-
----
-
-## 📑 Đề Thi & File Nghe (Part 1 & Part 2)
-
-<details open>
-<summary><b>📄 Đề Bài & Audio: Cambridge 18 - Test {test_num} Listening Part 1 & Part 2</b></summary>
-
-### 🔹 Part 1: Questions 1 – 10
+        audio_and_image_blocks = f"""### 🔹 Part 1: Questions 1 – 10
 
 {render_part_audio(1)}
 
 {render_imgs(part1_imgs) if part1_imgs else "_(Đang cập nhật hình ảnh đề bài Part 1)_"}
 
+---
+
 ### 🔹 Part 2: Questions 11 – 20
 
 {render_part_audio(2)}
 
-{render_imgs(part2_imgs) if part2_imgs else "_(Đang cập nhật hình ảnh đề bài Part 2)_"}
+{render_imgs(part2_imgs) if part2_imgs else "_(Đang cập nhật hình ảnh đề bài Part 2)_"}"""
 
-</details>
+        rows_p1 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(1, 11)])
+        rows_p2 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(11, 21)])
 
----
-
-## 📋 Bảng Ghi Nhận Bài Làm Của Bạn (Questions 1 – 20)
-
-<div class="ielts-sheet-card" data-sheet-id="cam18-test{test_num}-listening-p1-p2" data-start-q="1" data-end-q="20" data-timer="18">
-  <div class="ielts-card-header">
-    <div class="ielts-header-title">
-      <span class="ielts-badge">Listening Part 1 & 2</span>
-      <span class="ielts-target-pill">Cambridge 18 — Test {test_num} (20 Câu)</span>
-    </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">18:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ielts-stats-bar">
-    <div class="ielts-stat-item">
-      <span class="ielts-stat-label">Tiến độ:</span>
-      <span class="ielts-stat-val ielts-sheet-progress">0 / 20 câu đã điền</span>
-    </div>
-    <div class="ielts-save-indicator">
-      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-answers"></div>
-
-  <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
-      🗑️ Xóa Bài Làm
-    </button>
-  </div>
-  <div class="ielts-ai-response" style="display:none;"></div>
-</div>
-
----
-
-## 📊 Bảng Đối Soát Bài Làm
-
-### 🔹 Part 1 (Questions 1 – 10)
+        verification_tables = f"""### 🔹 Part 1 (Questions 1 – 10)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
 {rows_p1}
 
+---
+
 ### 🔹 Part 2 (Questions 11 – 20)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-{rows_p2}
+{rows_p2}"""
 
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "PART_LABEL_SHORT": "P1-P2",
+            "SOURCE_SLUG": "cam18",
+            "PART_SLUG": "p1-p2",
+            "SOURCE_TAG": "cambridge18",
+            "PART_TAG_1": "part-1",
+            "PART_TAG_2": "part-2",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "PART_LABEL_FULL": "Part 1 & Part 2",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": day_str,
+            "END_DD_MM": (day_date + timedelta(days=6)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 2 ({day_date.strftime('%d/%m/%Y')})",
+            "TEST_TIMER": "18",
+            "REVIEW_TIMER": "17",
+            "AUDIO_AND_IMAGE_BLOCKS": audio_and_image_blocks,
+            "SHEET_ID": f"cam18-test{test_num}-listening-p1-p2",
+            "START_Q": "1",
+            "END_Q": "20",
+            "TOTAL_QUESTIONS": "20",
+            "VERIFICATION_TABLES": verification_tables,
+            "NEXT_PART_FILE": f"test-{test_num}-listening-p3-p4",
+            "NEXT_PART_TITLE": f"Test {test_num} Listening P3-P4"
+        }
 
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
+        content = template_service.render("listening_session", context)
+        val = template_service.validate_markdown(content, "listening_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template listening_p1_p2: {val['errors']}")
 
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -681,6 +617,7 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         l_pages = test_assets.get("listening_pages", [])
         part3_imgs = [p for p in l_pages if "Part 3" in p.get("title", "") or "Part 3" in p.get("phase_name", "")]
@@ -688,9 +625,6 @@ tags:
 
         def render_imgs(imgs):
             return "\n\n".join([f"![{img['title']} Trang {img['page_number']}]({img['url']})" for img in imgs if img.get("url")])
-
-        rows_p3 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(21, 31)])
-        rows_p4 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(31, 41)])
 
         audio_test_meta = self.get_test_audio_data(test_num)
         audio_parts = audio_test_meta.get("parts", {})
@@ -711,117 +645,70 @@ tags:
   </audio>
 </div>"""
 
-        content = f"""---
-title: "[{day_str}] Test {test_num} Listening P3-P4"
-aliases:
-  - test-cam18-test{test_num}-listening-p3-p4
-  - test-{test_num}-listening-p3-p4
-tags:
-  - listening
-  - test-attempt
-  - cambridge18
-  - part-3
-  - part-4
-  - week-{week_num:02d}
----
-
-# 🎧 Bài Làm: Cambridge 18 - Test {test_num} Listening (Part 3 & Part 4)
-
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Hôm Nay: Thứ 3 ({day_date.strftime('%d/%m/%Y')})  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Listening Test {test_num})  
-> **Thời lượng:** 35 phút (18 phút làm bài nghe + 17 phút phân tích bẫy distractors và đối thoại học thuật)  
-> **Mục đích:** Rèn phản xạ nghe nhiều người nói (Part 3) và độc thoại học thuật tốc độ cao (Part 4).
-
----
-
-## 📑 Đề Thi & File Nghe (Part 3 & Part 4)
-
-<details open>
-<summary><b>📄 Đề Bài & Audio: Cambridge 18 - Test {test_num} Listening Part 3 & Part 4</b></summary>
-
-### 🔹 Part 3: Questions 21 – 30
+        audio_and_image_blocks = f"""### 🔹 Part 3: Questions 21 – 30
 
 {render_part_audio(3)}
 
 {render_imgs(part3_imgs) if part3_imgs else "_(Đang cập nhật hình ảnh đề bài Part 3)_"}
 
+---
+
 ### 🔹 Part 4: Questions 31 – 40
 
 {render_part_audio(4)}
 
-{render_imgs(part4_imgs) if part4_imgs else "_(Đang cập nhật hình ảnh đề bài Part 4)_"}
+{render_imgs(part4_imgs) if part4_imgs else "_(Đang cập nhật hình ảnh đề bài Part 4)_"}"""
 
-</details>
+        rows_p3 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(21, 31)])
+        rows_p4 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(31, 41)])
 
----
-
-## 📋 Bảng Ghi Nhận Bài Làm Của Bạn (Questions 21 – 40)
-
-<div class="ielts-sheet-card" data-sheet-id="cam18-test{test_num}-listening-p3-p4" data-start-q="21" data-end-q="40" data-timer="18">
-  <div class="ielts-card-header">
-    <div class="ielts-header-title">
-      <span class="ielts-badge">Listening Part 3 & 4</span>
-      <span class="ielts-target-pill">Cambridge 18 — Test {test_num} (20 Câu)</span>
-    </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">18:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ielts-stats-bar">
-    <div class="ielts-stat-item">
-      <span class="ielts-stat-label">Tiến độ:</span>
-      <span class="ielts-stat-val ielts-sheet-progress">0 / 20 câu đã điền</span>
-    </div>
-    <div class="ielts-save-indicator">
-      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-answers"></div>
-
-  <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
-      🗑️ Xóa Bài Làm
-    </button>
-  </div>
-  <div class="ielts-ai-response" style="display:none;"></div>
-</div>
-
----
-
-## 📊 Bảng Đối Soát Bài Làm
-
-### 🔹 Part 3 (Questions 21 – 30)
+        verification_tables = f"""### 🔹 Part 3 (Questions 21 – 30)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
 {rows_p3}
 
+---
+
 ### 🔹 Part 4 (Questions 31 – 40)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-{rows_p4}
+{rows_p4}"""
 
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "PART_LABEL_SHORT": "P3-P4",
+            "SOURCE_SLUG": "cam18",
+            "PART_SLUG": "p3-p4",
+            "SOURCE_TAG": "cambridge18",
+            "PART_TAG_1": "part-3",
+            "PART_TAG_2": "part-4",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "PART_LABEL_FULL": "Part 3 & Part 4",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": (day_date - timedelta(days=1)).strftime("%d/%m"),
+            "END_DD_MM": (day_date + timedelta(days=5)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 3 ({day_date.strftime('%d/%m/%Y')})",
+            "TEST_TIMER": "18",
+            "REVIEW_TIMER": "17",
+            "AUDIO_AND_IMAGE_BLOCKS": audio_and_image_blocks,
+            "SHEET_ID": f"cam18-test{test_num}-listening-p3-p4",
+            "START_Q": "21",
+            "END_Q": "40",
+            "TOTAL_QUESTIONS": "20",
+            "VERIFICATION_TABLES": verification_tables,
+            "NEXT_PART_FILE": f"test-{test_num}-reading-p1-p2",
+            "NEXT_PART_TITLE": f"Test {test_num} Reading P1-P2"
+        }
 
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
+        content = template_service.render("listening_session", context)
+        val = template_service.validate_markdown(content, "listening_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template listening_p3_p4: {val['errors']}")
 
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -834,6 +721,7 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         r_pages = test_assets.get("reading_pages", [])
         p1_imgs = [p for p in r_pages if "Passage 1" in p.get("title", "") or "Passage 1" in p.get("phase_name", "")]
@@ -842,116 +730,66 @@ tags:
         def render_imgs(imgs):
             return "\n\n".join([f"![{img['title']} Trang {img['page_number']}]({img['url']})" for img in imgs if img.get("url")])
 
-        rows_p1 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(1, 14)])
-        rows_p2 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(14, 27)])
-
-        content = f"""---
-title: "[{day_str}] Test {test_num} Reading P1-P2"
-aliases:
-  - test-cam18-test{test_num}-reading-p1-p2
-  - test-{test_num}-reading-p1-p2
-tags:
-  - reading
-  - test-attempt
-  - cambridge18
-  - passage-1
-  - passage-2
-  - week-{week_num:02d}
----
-
-# 📖 Bài Làm: Cambridge 18 - Test {test_num} Reading (Passage 1 & Passage 2)
-
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Hôm Nay: Thứ 4 ({day_date.strftime('%d/%m/%Y')})  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Reading Test {test_num} Passage 1 & 2)  
-> **Thời lượng:** 35 phút (25 phút làm 26 câu + 10 phút lập bảng Keyword Mapping và trích xuất từ vựng)  
-> **Mục đích:** Rèn kỹ năng quét từ khóa (Scanning), định vị thông tin nhanh (Skimming) và xử lý câu hỏi True/False/Not Given, Matching Information.
-
----
-
-## 📑 Đề Thi Reading Passage 1 & 2 (Hình Ảnh Sách Gốc)
-
-<details open>
-<summary><b>📄 Đề Bài Reading Passage 1 & 2 (Questions 1 – 26)</b></summary>
-
-### 🔹 Passage 1: Questions 1 – 13
+        prompt_image_blocks = f"""### 🔹 Passage 1: Questions 1 – 13
 
 {render_imgs(p1_imgs) if p1_imgs else "_(Đang cập nhật hình ảnh đề bài Passage 1)_"}
 
+---
+
 ### 🔹 Passage 2: Questions 14 – 26
 
-{render_imgs(p2_imgs) if p2_imgs else "_(Đang cập nhật hình ảnh đề bài Passage 2)_"}
+{render_imgs(p2_imgs) if p2_imgs else "_(Đang cập nhật hình ảnh đề bài Passage 2)_"}"""
 
-</details>
+        rows_p1 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(1, 14)])
+        rows_p2 = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(14, 27)])
 
----
-
-## 📋 Bảng Ghi Nhận Bài Làm Của Bạn (Questions 1 – 26)
-
-<div class="ielts-sheet-card" data-sheet-id="cam18-test{test_num}-reading-p1-p2" data-start-q="1" data-end-q="26" data-timer="25">
-  <div class="ielts-card-header">
-    <div class="ielts-header-title">
-      <span class="ielts-badge">Reading Passage 1 & 2</span>
-      <span class="ielts-target-pill">Cambridge 18 — Test {test_num} (26 Câu)</span>
-    </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">25:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ielts-stats-bar">
-    <div class="ielts-stat-item">
-      <span class="ielts-stat-label">Tiến độ:</span>
-      <span class="ielts-stat-val ielts-sheet-progress">0 / 26 câu đã điền</span>
-    </div>
-    <div class="ielts-save-indicator">
-      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-answers"></div>
-
-  <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
-      🗑️ Xóa Bài Làm
-    </button>
-  </div>
-  <div class="ielts-ai-response" style="display:none;"></div>
-</div>
-
----
-
-## 📊 Bảng Đối Soát Bài Làm
-
-### 🔹 Passage 1 (Questions 1 – 13)
+        verification_tables = f"""### 🔹 Passage 1 (Questions 1 – 13)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
 {rows_p1}
 
+---
+
 ### 🔹 Passage 2 (Questions 14 – 26)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-{rows_p2}
+{rows_p2}"""
 
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "PART_LABEL_SHORT": "P1-P2",
+            "SOURCE_SLUG": "cam18",
+            "PART_SLUG": "p1-p2",
+            "SOURCE_TAG": "cambridge18",
+            "PASSAGE_TAG_1": "passage-1",
+            "PASSAGE_TAG_2": "passage-2",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "PASSAGE_LABEL_FULL": "Passage 1 & Passage 2",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": (day_date - timedelta(days=2)).strftime("%d/%m"),
+            "END_DD_MM": (day_date + timedelta(days=4)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 4 ({day_date.strftime('%d/%m/%Y')})",
+            "READ_TIMER": "25",
+            "REVIEW_TIMER": "10",
+            "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
+            "SHEET_ID": f"cam18-test{test_num}-reading-p1-p2",
+            "START_Q": "1",
+            "END_Q": "26",
+            "TOTAL_QUESTIONS": "26",
+            "VERIFICATION_TABLES": verification_tables,
+            "NEXT_PART_FILE": f"test-{test_num}-reading-p3",
+            "NEXT_PART_TITLE": f"Test {test_num} Reading P3"
+        }
 
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
+        content = template_service.render("reading_session", context)
+        val = template_service.validate_markdown(content, "reading_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template reading_p1_p2: {val['errors']}")
 
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -964,6 +802,7 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         r_pages = test_assets.get("reading_pages", [])
         p3_imgs = [p for p in r_pages if "Passage 3" in p.get("title", "") or "Passage 3" in p.get("phase_name", "")]
@@ -971,99 +810,49 @@ tags:
         def render_imgs(imgs):
             return "\n\n".join([f"![{img['title']} Trang {img['page_number']}]({img['url']})" for img in imgs if img.get("url")])
 
+        prompt_image_blocks = render_imgs(p3_imgs) if p3_imgs else "_(Đang cập nhật hình ảnh đề bài Passage 3)_"
+
         rows_reading = "\n".join([f"| **{i}** | `[ ]` | | ⚪ | |" for i in range(27, 41)])
 
-        content = f"""---
-title: "[{day_str}] Test {test_num} Reading P3"
-aliases:
-  - test-cam18-test{test_num}-reading-p3
-  - test-{test_num}-reading-p3
-tags:
-  - reading
-  - test-attempt
-  - cambridge18
-  - passage-3
-  - week-{week_num:02d}
----
-
-# 📖 Bài Làm: Cambridge 18 - Test {test_num} Reading Passage 3
-
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Hôm Nay: Thứ 5 ({day_date.strftime('%d/%m/%Y')})  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Reading Test {test_num} Passage 3)  
-> **Thời lượng:** 35 phút (20 phút làm 14 câu chuyên sâu + 15 phút bóc tách bẫy Yes/No/Not Given)
-
----
-
-## 📑 Đề Thi Reading Passage 3 (Hình Ảnh Trực Tiếp Từ Sách Gốc)
-
-<details open>
-<summary><b>📄 Đề Bài Reading Passage 3 (Questions 27 – 40)</b></summary>
-
-{render_imgs(p3_imgs) if p3_imgs else "_(Đang cập nhật hình ảnh đề bài Passage 3)_"}
-
-</details>
-
----
-
-## 📋 Bảng Ghi Nhận Bài Làm Tương Tác (Questions 27 – 40)
-
-<div class="ielts-sheet-card" data-sheet-id="cam18-test{test_num}-reading-p3" data-start-q="27" data-end-q="40" data-timer="20">
-  <div class="ielts-card-header">
-    <div class="ielts-header-title">
-      <span class="ielts-badge">Reading Passage 3</span>
-      <span class="ielts-target-pill">Cambridge 18 — Test {test_num} (14 Câu)</span>
-    </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">20:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ielts-stats-bar">
-    <div class="ielts-stat-item">
-      <span class="ielts-stat-label">Tiến độ:</span>
-      <span class="ielts-stat-val ielts-sheet-progress">0 / 14 câu đã điền</span>
-    </div>
-    <div class="ielts-save-indicator">
-      <span class="ielts-sheet-save-text">🟢 Tự động lưu LocalStorage</span>
-    </div>
-  </div>
-
-  <div class="ielts-grid-answers"></div>
-
-  <div class="ielts-card-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
-      📋 Sao Chép Shorthand
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-ghost ielts-btn-clear-sheet">
-      🗑️ Xóa Bài Làm
-    </button>
-  </div>
-  <div class="ielts-ai-response" style="display:none;"></div>
-</div>
-
----
-
-## 📊 Bảng Đối Soát Bài Làm (Questions 27 – 40)
+        verification_tables = f"""### 🔹 Passage 3 (Questions 27 – 40)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-{rows_reading}
+{rows_reading}"""
 
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "PART_LABEL_SHORT": "P3",
+            "SOURCE_SLUG": "cam18",
+            "PART_SLUG": "p3",
+            "SOURCE_TAG": "cambridge18",
+            "PASSAGE_TAG_1": "passage-3",
+            "PASSAGE_TAG_2": "academic",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "PASSAGE_LABEL_FULL": "Passage 3",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": (day_date - timedelta(days=3)).strftime("%d/%m"),
+            "END_DD_MM": (day_date + timedelta(days=3)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 5 ({day_date.strftime('%d/%m/%Y')})",
+            "READ_TIMER": "20",
+            "REVIEW_TIMER": "15",
+            "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
+            "SHEET_ID": f"cam18-test{test_num}-reading-p3",
+            "START_Q": "27",
+            "END_Q": "40",
+            "TOTAL_QUESTIONS": "14",
+            "VERIFICATION_TABLES": verification_tables,
+            "NEXT_PART_FILE": f"test-{test_num}-writing",
+            "NEXT_PART_TITLE": f"Test {test_num} Writing Task 1"
+        }
 
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
+        content = template_service.render("reading_session", context)
+        val = template_service.validate_markdown(content, "reading_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template reading_p3: {val['errors']}")
 
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -1076,101 +865,56 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         s_pages = test_assets.get("speaking_pages", [])
         s_img = s_pages[0].get("url") if s_pages else ""
         s_page_num = s_pages[0].get("page_number", "") if s_pages else ""
         s_topic = s_pages[0].get("topic", "Examiner interview & Practical skills") if s_pages else "Practical skills"
 
-        content = f"""---
-title: "[{day_str}] Test {test_num} Speaking Part 2"
-aliases:
-  - test-{test_num}-speaking
-  - speaking-week-{week_num:02d}
-tags:
-  - speaking
-  - test-attempt
-  - cambridge18
-  - week-{week_num:02d}
----
-
-# 🗣️ Bài Luyện Tập: Cambridge 18 - Test {test_num} Speaking Part 2
-
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Thứ 7 ({day_date.strftime('%d/%m/%Y')}): Speaking Part 2 Routine  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Speaking Test {test_num} - Part 2)  
-> **Thời lượng phiên (Micro-session):** 30 phút (10p lập dàn ý + 20p luyện nói độc thoại & kiểm soát độ trôi chảy)  
-> **Lưu ý:** Phần thi Speaking Part 2 được giữ nguyên trọn vẹn trong 1 phiên độc lập theo đúng thời lượng chuẩn.
-
----
-
-## 📑 Đề Thi Speaking Part 2 (Cue Card)
-
-<div class="ielts-cuecard-card">
-  <div class="ielts-cuecard-header">
-    <span class="ielts-badge">Speaking Part 2</span>
-    <span class="ielts-target-pill">Cambridge 18 — Test {test_num}</span>
-  </div>
-  <div class="ielts-cuecard-body">
-    <p><b>Topic: {s_topic}</b></p>
+        cue_card_content = f"""    <p><b>Topic: {s_topic}</b></p>
     <p>You should say:</p>
     <ul>
       <li>What the challenge / situation was</li>
       <li>When and where it happened</li>
       <li>What you did to solve it</li>
     </ul>
-    <p>and explain how you felt after solving this challenge.</p>
-  </div>
-</div>
+    <p>and explain how you felt after solving this challenge.</p>"""
 
-<details open>
-<summary><b>📄 Xem Trang Sách Gốc (Trang {s_page_num})</b></summary>
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "PART_LABEL_SHORT": "Part 2",
+            "SOURCE_SLUG": "cam18",
+            "PART_NUM": "2",
+            "SOURCE_TAG": "cambridge18",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "PART_LABEL_FULL": "Part 2",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": (day_date - timedelta(days=5)).strftime("%d/%m"),
+            "END_DD_MM": (day_date + timedelta(days=1)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 7 ({day_date.strftime('%d/%m/%Y')})",
+            "PAGE_STR": f"Trang {s_page_num}" if s_page_num else "",
+            "TOTAL_TIMER": "30",
+            "PREPARE_TIMER": "10",
+            "SPEAK_TIMER": "2",
+            "SPEAK_TIMER_DISPLAY": "02:00",
+            "CUE_CARD_CONTENT": cue_card_content,
+            "PROMPT_IMAGE_BLOCKS": f"![Speaking Test {test_num} Trang {s_page_num}]({s_img})" if s_img else "_(Hình ảnh đề thi Speaking đang cập nhật)_",
+            "OUTLINE_WHAT": "_Ví dụ: Project deadline, unexpected situation, university / workplace_",
+            "OUTLINE_WHEN": "_Ví dụ: Last semester / about two years ago_",
+            "OUTLINE_HOW": "_Ví dụ: Formulated plan, consulted supervisor, prioritized tasks_",
+            "OUTLINE_WHY": "_Ví dụ: Resolved successfully, immense relief, learned valuable lesson_",
+            "NEXT_PART_FILE": f"review-week-{week_padded}",
+            "NEXT_PART_TITLE": f"Phiên Ôn Tập & Tổng Kết Tuần {week_num}"
+        }
 
-{f"![Speaking Test {test_num} Trang {s_page_num}]({s_img})" if s_img else "_(Hình ảnh đề thi Speaking đang cập nhật)_"}
+        content = template_service.render("speaking_session", context)
+        val = template_service.validate_markdown(content, "speaking_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template speaking_session: {val['errors']}")
 
-</details>
-
----
-
-## 🧭 1. Khung Dàn Ý 1 Phút (1-Minute WH-Outline Scaffolding)
-
-> [!TIP]
-> **Chiến thuật 1 phút chuẩn bị:** Không viết cả câu văn. Chỉ viết từ khóa (keywords) theo thứ tự dòng thời gian quá khứ:
-
-| Mục tiêu câu hỏi (Prompts) | Câu hỏi gợi mở (WH-Questions) | Từ khóa ghi chú nhanh (Keywords) |
-| :--- | :--- | :--- |
-| **What & Where** | Thử thách gì? Ở đâu? | _Ví dụ: Project deadline, unexpected situation, university / workplace_ |
-| **When** | Xảy ra vào thời gian nào? | _Ví dụ: Last semester / about two years ago_ |
-| **Actions taken** | Đã thực hiện giải pháp gì? | _Ví dụ: Formulated plan, consulted supervisor, prioritized tasks_ |
-| **Outcome & Feeling** | Kết quả và cảm xúc thế nào? | _Ví dụ: Resolved successfully, immense relief, learned valuable lesson_ |
-
----
-
-## 🎙️ 2. Phòng Thu Âm & Bấm Giờ Tự Động (2 Phút Độc Thoại)
-
-<div class="ielts-sheet-card" data-sheet-id="cam18-test{test_num}-speaking-p2" data-timer="2">
-  <div class="ielts-card-header">
-    <div class="ielts-header-title">
-      <span class="ielts-badge">Speaking Practice</span>
-      <span class="ielts-target-pill">Chuẩn bị: 1:00 | Độc thoại: 2:00</span>
-    </div>
-    <div class="ielts-timer-widget">
-      <span class="ielts-timer-display">02:00</span>
-      <div class="ielts-timer-controls">
-        <button type="button" class="ielts-btn-timer ielts-btn-start" title="Bắt đầu tính giờ">▶️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-pause" title="Tạm dừng" style="display:none;">⏸️</button>
-        <button type="button" class="ielts-btn-timer ielts-btn-reset" title="Đặt lại đồng hồ">🔄</button>
-      </div>
-    </div>
-  </div>
-</div>
-
----
-
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -1182,67 +926,23 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
-        content = f"""---
-title: "[{day_str}] Review Tuần {week_num}"
-aliases:
-  - review-week-{week_num:02d}
-  - study-review-week-{week_num:02d}
-tags:
-  - review
-  - week-{week_num:02d}
-  - cambridge18
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "WEEK_NUM": str(week_num),
+            "WEEK_PADDED": week_padded,
+            "SOURCE_TAG": "cambridge18",
+            "SOURCE_NAME": f"Cambridge 18 - Test {test_num}",
+            "START_DD_MM": (day_date - timedelta(days=6)).strftime("%d/%m"),
+            "END_DD_MM": day_str
+        }
 
-# 🔄 Phiên Ôn Tập & Tổng Kết Trọng Tâm Tuần {week_num} (Cambridge 18 - Test {test_num})
+        content = template_service.render("review_week", context)
+        val = template_service.validate_markdown(content, "review_week")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template review_week: {val['errors']}")
 
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|📅 Kế Hoạch Tuần {week_num}]] — Phiên Chủ Nhật: Review & Spaced Repetition  
-> **Thời lượng:** 35 phút (15 phút ôn tập bẫy âm & chiến thuật + 20 phút ôn tập toàn bộ thẻ Flashcard FSRS)  
-> **Mục tiêu:** Củng cố lỗ hổng kiến thức tuần {week_num}, chuẩn bị kích hoạt tuần tiếp theo với tải trọng nhận thức cân bằng.
-
----
-
-## 🎯 1. Phân Tích Bẫy Âm & Chiến Thuật Nghe Trọng Tâm
-
-### 🔹 Bẫy Số Đuôi `-teen` và `-ty`
-
-- **Hiện tượng:** Âm đuôi `-teen` nhận trọng âm mạnh `/tiːn/` và nguyên âm kéo dài; âm đuôi `-ty` không nhận trọng âm `/ti/` với âm ngắn và âm lướt.
-- **Quy tắc thực hành:** Nếu người nói nhấn mạnh vào âm tiết thứ hai thì đó là `-teen`; nếu nhấn mạnh âm tiết đầu và lướt nhanh âm cuối thì đó là `-ty`.
-
-### 🔹 Bẫy Đổi Ý (Self-Correction & Distractor Signals)
-
-- **Dấu hiệu nhận biết:** `actually...`, `sorry, I meant...`, `in fact...`, `instead of...`.
-- **Chiến thuật:** Không vội vàng điền ngay phương án đầu tiên nghe được; luôn đợi người nói hoàn tất câu để xem có bước "lật kèo" hay không.
-
-### 🔹 Bẫy Số Nhiều / Số Ít (Final 's')
-
-- **Hiện tượng:** Thiếu âm cuối `-s` là lỗi sai mất điểm phổ biến nhất trong IELTS Listening Section 1 & 4.
-- **Quy tắc:** Dựa vào mạo từ (`a/an`, `every`, `each`) và động từ đi kèm để dự đoán trước chỗ trống là danh từ đếm được số ít hay số nhiều trước khi nghe.
-
----
-
-## 📖 2. Bẫy Tư Duy Trong Reading (Passage 1 – 3)
-
-### 🔹 Phân Biệt FALSE vs NOT GIVEN
-
-- **FALSE:** Thông tin trong bài mâu thuẫn trực tiếp hoặc đối lập hoàn toàn với mệnh đề câu hỏi.
-- **NOT GIVEN:** Mệnh đề nghe có vẻ hợp lý theo kiến thức thực tế bên ngoài, nhưng trong bài văn **hoàn toàn không xác nhận hay phủ định**.
-- **Nguyên tắc vàng:** Tuyệt đối không dùng suy đoán logic cá nhân để khẳng định thông tin không có trong văn bản.
-
----
-
-## 🧠 3. Ôn Tập Flashcard FSRS v4 & Đồng Bộ Dữ Liệu
-
-- [ ] Mở ứng dụng React SPA và hoàn thành 100% thẻ ôn tập đến hạn (`Due`) của Tuần {week_num}.
-- [ ] Đánh giá độ khó trung thực theo 4 mức FSRS: `Again (1)`, `Hard (2)`, `Good (3)`, `Easy (4)`.
-- [ ] Xuất file Anki Master Deck (`IELTS_Master_Deck.apkg`) để đồng bộ với điện thoại nếu cần học offline.
-
----
-
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|📅 Kế Hoạch Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -1255,128 +955,44 @@ tags:
     ):
         day_str = day_date.strftime("%d/%m")
         week_num = test_num
+        week_padded = f"{week_num:02d}"
 
         w_pages = test_assets.get("writing_pages", [])
         t1_img = next((p["url"] for p in w_pages if "task_1" in p.get("title", "").lower() or p.get("page_number") == 54), "")
-        t2_img = next((p["url"] for p in w_pages if "task_2" in p.get("title", "").lower() or p.get("page_number") == 55), "")
+        
+        prompt_image_blocks = f"![Writing Task 1 Trang 54]({t1_img})" if t1_img else "_(Hình ảnh Task 1 đang cập nhật)_"
+        outline_steps = """1. **Phân tích biểu đồ (3 phút):** Xác định dạng bài (Biểu đồ cột có xu hướng theo thời gian hay so sánh tĩnh), thì động từ và đơn vị đo lường.
+2. **Viết Introduction & Overview (5 phút):** Paraphrase đề bài trong 1 câu; chỉ ra 2 đặc điểm nổi bật nhất (xu hướng tăng giảm mạnh nhất hoặc nhóm cao nhất).
+3. **Phát triển 2 đoạn Thân bài (12 phút):** Gom nhóm số liệu theo năm hoặc theo hạng mục; sử dụng cấu trúc so sánh tương phản linh hoạt (`While...`, `In contrast...`)."""
 
-        content = f"""---
-title: "[{day_str}] Test {test_num} Writing"
-aliases:
-  - test-cam18-test{test_num}-writing
-tags:
-  - writing
-  - test-attempt
-  - cambridge18
-  - week-{week_num:02d}
----
+        context = {
+            "DATE_DD_MM": day_str,
+            "TEST_NUM": str(test_num),
+            "TASK_NUM": "1",
+            "SOURCE_SLUG": "cam18",
+            "SOURCE_TAG": "cambridge18",
+            "WEEK_PADDED": week_padded,
+            "SOURCE_NAME": "Cambridge 18",
+            "WEEK_NUM": str(week_num),
+            "START_DD_MM": (day_date - timedelta(days=4)).strftime("%d/%m"),
+            "END_DD_MM": (day_date + timedelta(days=2)).strftime("%d/%m"),
+            "DAY_NAME": f"Thứ 6 ({day_date.strftime('%d/%m/%Y')})",
+            "PAGE_STR": "Trang 54",
+            "PREPARE_TIMER": "15",
+            "WRITE_TIMER": "20",
+            "TARGET_WORDS": "150",
+            "TASK_TOPIC": "Bar Chart (Thu Nhập Hộ Gia Đình)",
+            "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
+            "OUTLINE_STEPS": outline_steps,
+            "NEXT_PART_FILE": f"test-{test_num}-speaking",
+            "NEXT_PART_TITLE": f"Test {test_num} Speaking Part 2"
+        }
 
-# ✍️ Bài Làm: Cambridge 18 - Test {test_num} Writing
+        content = template_service.render("writing_session", context)
+        val = template_service.validate_markdown(content, "writing_session")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template writing_session: {val['errors']}")
 
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]] — Phiên Hôm Nay: Thứ 6 ({day_date.strftime('%d/%m/%Y')})  
-> **Tài liệu gốc:** Cambridge IELTS 18 Academic (Writing Test {test_num})  
-> **Cấu trúc bài thi:** Task 1 (Báo cáo biểu đồ cột, ≥ 150 từ, 20 phút) & Task 2 (Nghị luận xã hội, ≥ 250 từ, 40 phút)
-
----
-
-## 📑 Đề Thi Viết (Hình Ảnh Sách Gốc)
-
-<details open>
-<summary><b>📄 Đề Bài: Cambridge 18 - Test {test_num} Writing</b></summary>
-
-### 🔹 Task 1: Bar Chart (Trang 54)
-
-{f"![Writing Task 1 Trang 54]({t1_img})" if t1_img else "_(Hình ảnh Task 1 đang cập nhật)_"}
-
-### 🔹 Task 2: Opinion Essay (Trang 55)
-
-{f"![Writing Task 2 Trang 55]({t2_img})" if t2_img else "_(Hình ảnh Task 2 đang cập nhật)_"}
-
-</details>
-
----
-
-## 📊 Task 1: Báo Cáo Biểu Đồ Thu Nhập Hộ Gia Đình (Bar Chart)
-
-### 📝 1. Khung Ghi Nhận Bài Viết Của Bạn (Task 1 Workspace)
-
-<div class="ielts-writing-workspace" data-task-id="cam18-test{test_num}-w-task1" data-min-words="150" data-target-words="180">
-  <div class="ielts-writing-header">
-    <div class="ielts-writing-meta">
-      <span class="ielts-badge">Writing Task 1</span>
-      <span class="ielts-target-pill">Mục tiêu: 150 – 180 từ (20 phút)</span>
-    </div>
-    <div class="ielts-word-counter">
-      <span class="ielts-word-count-num">0</span>
-      <span class="ielts-word-count-label">từ</span>
-    </div>
-  </div>
-  <textarea class="ielts-writing-textarea" placeholder="Gõ trực tiếp bài báo cáo Task 1 của bạn vào đây (Tự động lưu LocalStorage)..." rows="12"></textarea>
-  <div class="ielts-writing-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-writing" data-task-type="task_1">
-      🚀 Gửi Bài Task 1 Cho AI Chấm
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-writing">
-      📋 Sao Chép
-    </button>
-  </div>
-</div>
-
-### 🔬 2. Phân Tích & Chẩn Đoán Chi Tiết Task 1 (Diagnostic Feedback)
-
-#### 📝 Bài Làm Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - 0 từ)
-
-> _(Chưa có bài nộp. Hãy gõ bài làm vào khung phía trên và nhấn **"🚀 Gửi Bài Task 1 Cho AI Chấm"** để AI lưu trữ và chẩn đoán)._
-
-#### ⚖️ Bảng Điểm 4 Tiêu Chí IELTS Chuyên Sâu
-
-> _(Đang chờ nộp bài — Nhấn "🚀 Gửi Bài Task 1 Cho AI Chấm" để nhận bảng điểm 4 tiêu chí TR, CC, LR, GRA)._
-
----
-
-## 💡 Task 2: Nghị Luận Xã Hội (Opinion Essay)
-
-### 📝 1. Khung Ghi Nhận Bài Viết Của Bạn (Task 2 Workspace)
-
-<div class="ielts-writing-workspace" data-task-id="cam18-test{test_num}-w-task2" data-min-words="250" data-target-words="280">
-  <div class="ielts-writing-header">
-    <div class="ielts-writing-meta">
-      <span class="ielts-badge">Writing Task 2</span>
-      <span class="ielts-target-pill">Mục tiêu: 250 – 280 từ (40 phút)</span>
-    </div>
-    <div class="ielts-word-counter">
-      <span class="ielts-word-count-num">0</span>
-      <span class="ielts-word-count-label">từ</span>
-    </div>
-  </div>
-  <textarea class="ielts-writing-textarea" placeholder="Gõ trực tiếp bài luận Task 2 của bạn vào đây (Tự động lưu LocalStorage)..." rows="16"></textarea>
-  <div class="ielts-writing-actions">
-    <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-writing" data-task-type="task_2">
-      🚀 Gửi Bài Task 2 Cho AI Chấm
-    </button>
-    <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-writing">
-      📋 Sao Chép
-    </button>
-  </div>
-</div>
-
-### 🔬 2. Phân Tích & Chẩn Đoán Chi Tiết Task 2 (Diagnostic Feedback)
-
-#### 📝 Bài Làm Thực Tế Của Bạn (Lưu Trữ Nguyên Bản - 0 từ)
-
-> _(Chưa có bài nộp. Hãy gõ bài làm vào khung phía trên và nhấn **"🚀 Gửi Bài Task 2 Cho AI Chấm"** để AI lưu trữ và chẩn đoán)._
-
-#### ⚖️ Bảng Điểm 4 Tiêu Chí IELTS Chuyên Sâu
-
-> _(Đang chờ nộp bài — Nhấn "🚀 Gửi Bài Task 2 Cho AI Chấm" để nhận bảng điểm 4 tiêu chí TR, CC, LR, GRA)._
-
----
-
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 📚 **Sổ từ vựng tuần:** [[plans/week-{week_num:02d}/vocab-week-{week_num:02d}|Sổ Từ Vựng Trọng Tâm Tuần {week_num}]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 
@@ -1423,41 +1039,25 @@ tags:
 
         table_body = "\n".join(table_rows)
 
-        content = f"""---
-title: "[{start_str} - {end_str}] Từ Vựng Tuần {week_num}"
-aliases:
-  - vocab-week-{week_num:02d}
-tags:
-  - vocab
-  - week-{week_num:02d}
-  - fsrs
-  - cambridge18
-sr-due: "{sr_due_str}"
----
+        context = {
+            "START_DD_MM": start_str,
+            "END_DD_MM": end_str,
+            "WEEK_NUM": str(week_num),
+            "WEEK_PADDED": f"{week_num:02d}",
+            "SOURCE_SLUG": "cam18",
+            "SOURCE_TAG": "cambridge18",
+            "SR_DUE_DATE": sr_due_str,
+            "SOURCE_NAME": f"Cambridge 18 - Test {test_num}",
+            "SOURCE_COVERAGE": "Test 2: Listening P1–P4, Reading P1–P3, Writing Task 1",
+            "TOTAL_WORDS": str(len(vocab_items)),
+            "VOCAB_ROWS": table_body
+        }
 
-# 📚 Sổ Từ Vựng Trọng Tâm Tuần {week_num} (Cambridge 18 - Test {test_num})
+        content = template_service.render("vocab_week", context)
+        val = template_service.validate_markdown(content, "vocab_week")
+        if not val["valid"]:
+            logger.error(f"[PLAN GEN] Lỗi validation template vocab_week: {val['errors']}")
 
-> **Tuần thực hiện:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num} ({start_str} – {end_str}/{start_date.year})]]  
-> **Nguồn gốc:** Cambridge IELTS 18 Test {test_num} (Listening Parts 1–4, Reading Passages 1–3, Writing Tasks 1–2)  
-> **Thuật toán ghi nhớ:** Tự động đồng bộ vào hệ thống Spaced Repetition FSRS v4 & Anki (`IELTS_Master_Deck.apkg`)
-
----
-
-## 🗂️ Danh Mục Từ Vựng Học Thuật Cốt Lõi (20 Từ Mục Tiêu)
-
-| Từ Vựng (Front) | Từ Loại | Phiên Âm (IPA) | Ý Nghĩa Tiếng Việt (Back) | Ví Dụ Ngữ Cảnh Trong Đề Thi | Collocations & Synonyms |
-| :--- | :---: | :---: | :--- | :--- | :--- |
-{table_body}
-
----
-
-## 🔗 Mạng Lưới Kiến Thức Liên Quan
-
-- 📅 **Kế hoạch cha:** [[plans/week-{week_num:02d}/|Kế Hoạch Tuần {week_num}]]
-- 🎧 **Bài làm Listening:** [[plans/week-{week_num:02d}/test-{week_num}-listening|Test {week_num} Listening]]
-- 📖 **Bài làm Reading:** [[plans/week-{week_num:02d}/test-{week_num}-reading-p3|Test {week_num} Reading P3]]
-- ✍️ **Bài làm Writing:** [[plans/week-{week_num:02d}/test-{week_num}-writing|Test {week_num} Writing]]
-"""
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content.strip() + "\n")
 

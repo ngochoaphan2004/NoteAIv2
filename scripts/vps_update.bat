@@ -33,7 +33,7 @@ if %errorlevel% neq 0 (
 )
 
 echo [3/5] Compressing update package (excluding heavy audio & build caches)...
-tar -czf noteai_update.tar.gz --exclude=__pycache__ --exclude=.pytest_cache --exclude=node_modules --exclude=.quartz-cache --exclude=.git --exclude=content/assets/audio --exclude=public/assets/audio backend content frontend/dist public scripts quartz quartz.config.ts quartz.layout.ts package.json package-lock.json tsconfig.json
+tar -czf noteai_update.tar.gz --exclude=__pycache__ --exclude=.pytest_cache --exclude=node_modules --exclude=.quartz-cache --exclude=.git --exclude=content/assets/audio --exclude=public/assets/audio backend content templates frontend/dist public scripts quartz quartz.config.ts quartz.layout.ts package.json package-lock.json tsconfig.json
 
 echo [4/5] Cleaning old compiled folders (frontend/dist & public) on VPS before upload...
 ssh -o StrictHostKeyChecking=no %VPS_USER%@%VPS_IP% "rm -rf %REMOTE_DIR%/frontend/dist %REMOTE_DIR%/public"
