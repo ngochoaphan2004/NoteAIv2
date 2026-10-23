@@ -1,0 +1,1271 @@
+{
+  "test": 4,
+  "title": "Cambridge IELTS 18 - Test 4",
+  "listening": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Role: 1 ______",
+      "answer": "receptionist",
+      "explanation": "Đáp án cần điền là một danh từ chỉ vị trí công việc. Trong bài nghe, Greg xác nhận đây là vị trí 'receptionist'.",
+      "evidence": "GREG: So this is a position for a receptionist - I believe you've done that sort of work before?",
+      "keywords": [
+        "Role",
+        "position",
+        "receptionist"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "Location: Fordham 2 ______ Centre",
+      "answer": "Medical",
+      "explanation": "Đáp án cần điền là tính từ hoặc danh từ bổ nghĩa cho 'Centre' chỉ địa điểm làm việc ở Fordham. Trong bài nghe nhắc đến 'Medical centre'.",
+      "evidence": "GREG: Right. Well, this job's in Fordham, so not too far away for you, and it's at the Medical centre there.",
+      "keywords": [
+        "Location",
+        "Fordham",
+        "Medical centre"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "3 ______ Road, Fordham",
+      "answer": "Chastons",
+      "explanation": "Đáp án cần điền là một tên riêng chỉ tên đường. Tên riêng này ít phổ biến nên đã được đánh vần từng chữ cái C-H-A-S-T-O-N-S.",
+      "evidence": "GREG: It's quite near the station, on Chastons Road. JULIE: Sorry? GREG: Chastons Road - that's C-H-A-S-T-O-N-S.",
+      "keywords": [
+        "Road",
+        "Fordham",
+        "Chastons"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "Work involves: making 4 ______ and reorganising them",
+      "answer": "appointments",
+      "explanation": "Đáp án cần điền là một danh từ số nhiều chỉ công việc cần làm, vì phía sau có đại từ 'them'. Cụm 'making appointments' tương ứng với 'making 4 ______', và 'rescheduling them' tương ứng với 'reorganising them'.",
+      "evidence": "GREG: Yes, and you'd also be involved in making appointments, whether face to face or on the phone. And rescheduling them if necessary.",
+      "keywords": [
+        "making",
+        "appointments",
+        "reorganising",
+        "rescheduling"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "maintaining the internal 5 ______",
+      "answer": "database",
+      "explanation": "Đáp án cần điền là một danh từ chỉ một hệ thống dữ liệu nội bộ cần duy trì. Cụm 'keeping the centre's database up-to-date' đồng nghĩa với 'maintaining the internal database'.",
+      "evidence": "GREG: And another of your duties would be keeping the centre's database up-to-date.",
+      "keywords": [
+        "maintaining",
+        "internal",
+        "database",
+        "keeping up-to-date"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Requirements: 6 ______ (essential)",
+      "answer": "experience",
+      "explanation": "Đáp án cần điền là danh từ chỉ yêu cầu quan trọng cho công việc. Từ 'essential' trong câu hỏi tương ứng với cụm 'do require' trong bài nghe.",
+      "evidence": "GREG: Now when the details came in, I immediately thought of you because one thing they do require is someone with experience...",
+      "keywords": [
+        "Requirements",
+        "essential",
+        "require",
+        "experience"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "a calm and 7 ______ manner",
+      "answer": "confident",
+      "explanation": "Đáp án cần điền là tính từ chỉ thái độ làm việc đi kèm với 'calm'. Trong bài nghe có đoạn 'stay calm, and at the same time be confident'.",
+      "evidence": "GREG: ...so they want someone who can cope with that and stay calm, and at the same time be confident when interacting with the public.",
+      "keywords": [
+        "calm",
+        "manner",
+        "confident"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Other information: a 8 ______ job - further opportunities may be available",
+      "answer": "temporary",
+      "explanation": "Đáp án cần điền là một tính từ chỉ tính chất của công việc. Bài nghe có bẫy 'isn't a permanent job', sau đó chốt đáp án đúng là 'temporary'.",
+      "evidence": "GREG: ...I should tell you that this isn't a permanent job, it's temporary, so the contract would be just to the end of September. But they do say that there could be further opportunities after that.",
+      "keywords": [
+        "job",
+        "further opportunities",
+        "temporary",
+        "permanent"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Gap-fill",
+      "question_text": "hours: 7.45 a.m. to 9 ______ p.m. Monday to Friday",
+      "answer": "1.15",
+      "explanation": "Đáp án cần điền là con số chỉ thời gian kết thúc ca làm việc. Người nói phát âm là 'One fifteen', tuy nhiên theo giới hạn từ của đề bài (ONE WORD AND/OR A NUMBER) nên phải điền dạng số '1.15'.",
+      "evidence": "JULIE: What time would I finish? GREG: One fifteen.",
+      "keywords": [
+        "hours",
+        "finish",
+        "1.15",
+        "One fifteen"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Gap-fill",
+      "question_text": "10 ______ is available onsite",
+      "answer": "parking",
+      "explanation": "Đáp án cần điền là danh từ chỉ dịch vụ/tiện ích có sẵn tại chỗ làm. Từ 'onsite' tương ứng với cụm 'at the centre' trong bài nghe.",
+      "evidence": "JULIE: ...is there parking available for staff at the centre? GREG: Yes, there is.",
+      "keywords": [
+        "available",
+        "onsite",
+        "parking",
+        "centre"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Multiple choice",
+      "question_text": "The museum building was originally",
+      "answer": "B",
+      "explanation": "Người hướng dẫn nói rằng cả nhóm đang ở cổng dẫn vào một toà nhà được xây thành nhà riêng cho một doanh nhân địa phương (home of a local businessman) vào năm 1880. Đây là năm đầu tiên được nhắc đến và toà nhà này sau cùng được xây thành bảo tàng mà mọi người đang thăm quan. Phân tích bẫy: Đáp án A (a factory) sai vì nhà máy làm bánh quy là của vị doanh nhân này chứ không phải chức năng ban đầu của toà nhà bảo tàng; Đáp án C (a hall of residence) sai vì toà nhà từng làm ký túc xá sinh viên vào năm 1911, không phải năm đầu tiên toà nhà được xây.",
+      "evidence": "So, where we’re standing at the moment is the entrance to a large building that was constructed in 1880 as the home of a local businessman. Alfred Palmer, of the Palmer biscuit factory. It was later sold and became a hall of residence for students in 1911, and a museum in 1951. In 2005, a modern extension was built to accommodate the museum’s collections.",
+      "keywords": [
+        "museum building",
+        "originally",
+        "constructed in 1880",
+        "home of a local businessman"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 12,
+      "question_type": "Multiple choice",
+      "question_text": "The university uses part of the museum building as",
+      "answer": "A",
+      "explanation": "Trường đại học sử dụng phần chính của toà nhà để sinh viên vào học (students going into the building for lessons). Vậy chính là trường dùng một phần của toà nhà để làm phòng học (teaching rooms). Phân tích bẫy: Đáp án B (a research library) sai vì phần chính từng có một thư viện (used to be the library) nhưng giờ không còn nữa và audio không nhắc đến mục đích nghiên cứu; Đáp án C (administration offices) là Not Given vì 'our offices' trong audio là văn phòng của bảo tàng chứ không phải văn phòng hành chính của trường đại học.",
+      "evidence": "The museum’s owned by the university, and apart from two rooms that are our offices, the university uses the main part of the building. You may see students going into the building for lessons, but it’s not open to museum visitors, I’m afraid. It’s a shame because the interior architectural features are outstanding, especially the room that used to be the library.",
+      "keywords": [
+        "university uses",
+        "part of the museum building",
+        "main part of the building",
+        "students going into the building for lessons",
+        "teaching rooms"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 13,
+      "question_type": "Multiple choice",
+      "question_text": "What does the guide say about the entrance fee?",
+      "answer": "A",
+      "explanation": "Bảo tàng không thu phí vào cửa (keep entry to the museum free) nhưng có đặt một hòm quyên góp ở cửa (donation box) để mọi người tuỳ ý đóng góp (feel free to give whatever amount you consider appropriate). Phân tích bẫy: Đáp án B (Only children and students receive a discount) sai vì các hoạt động cho trẻ em và học sinh là hoàn toàn miễn phí (for which there's no charge) chứ không phải chỉ giảm giá; Đáp án C (The museum charges extra for special exhibitions) sai vì bảo tàng miễn phí vào cửa toàn bộ bao gồm cả các phòng triển lãm đặc biệt (rooms for special exhibitions).",
+      "evidence": "Luckily, we’ve managed to keep entry to the museum free. This includes access to all the galleries, outdoor areas and the rooms for special exhibitions. We run activities for children and students, such as the museum club, for which there’s no charge. We do have a donation box just over there so feel free to give whatever amount you consider appropriate.",
+      "keywords": [
+        "entrance fee",
+        "keep entry free",
+        "donation box",
+        "feel free to give whatever amount",
+        "decide whether or not they wish to pay"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "What are visitors advised to leave in the cloakroom?",
+      "answer": "C",
+      "explanation": "Người hướng dẫn khuyên mọi người không nên mang ba lô nặng theo mình (more comfortable not carrying around heavy rucksacks) mà hãy gửi lại phòng để đồ (cloakroom). Phân tích bẫy: Đáp án A (cameras) sai vì người hướng dẫn khuyên nên mang theo máy ảnh (keep your cameras with you) do được phép chụp ảnh; Đáp án B (coats) sai vì người hướng dẫn khuyên nên mặc giữ áo khoác (keep your coats and jackets on) vì thời tiết khá lạnh.",
+      "evidence": "You might be more comfortable not carrying around heavy rucksacks, though keep your coats and jackets on as it’s quite cold in the museum garden today. Unlike other museums, photography is allowed here, so you might like to keep your cameras with you.",
+      "keywords": [
+        "advised to leave",
+        "cloakroom",
+        "not carrying around",
+        "heavy rucksacks",
+        "bags"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Matching",
+      "question_text": "Four Seasons",
+      "answer": "F",
+      "explanation": "Ở khu Four Seasons, người tham quan được xem phim hoạt hình được tạo nên (designed) bởi một nhóm sinh viên học về phim ảnh (a group of young people on a film studies course). Do đó đáp án đúng là F (It features something created by students).",
+      "evidence": "Just inside, and outside the main gallery, we have an area called Four Seasons. Here you can watch a four-minute animation of a woodland scene. It was designed especially for the museum by a group of young people on a film studies course, and it’s beautiful.",
+      "keywords": [
+        "Four Seasons",
+        "animation",
+        "designed",
+        "group of young people on a film studies course",
+        "created by students"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Matching",
+      "question_text": "Farmhouse Kitchen",
+      "answer": "G",
+      "explanation": "Người hướng dẫn thông báo rằng vào sáng hôm nay, khu Farmhouse Kitchen sẽ có một chuyên gia làm phô mai (a specialist cheesemaker) đến để làm mẫu món này (giving demonstrations of how it's produced). Do đó đáp án đúng là G (An expert is here today).",
+      "evidence": "Leaving Town and Country, you enter Farmhouse Kitchen, which is ... well, self-explanatory. Here we have the oldest collection of equipment for making butter and cheese in the country. And this morning, a specialist cheesemaker will be giving demonstrations of how it’s produced.",
+      "keywords": [
+        "Farmhouse Kitchen",
+        "this morning",
+        "specialist cheesemaker",
+        "giving demonstrations",
+        "An expert is here today"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching",
+      "question_text": "A Year on the Farm",
+      "answer": "E",
+      "explanation": "Ở phòng A Year on the Farm, khách tham quan có thể làm bài kiểm tra trí nhớ (memory test) bằng cách trả lời các câu hỏi về những thông tin đã tham quan trong bảo tàng (answer questions about things you've seen in the museum). Do đó đáp án đúng là E (There is a quiz for visitors).",
+      "evidence": "To the left is a room called A Year on the Farm. There’s lots of seating here as sometimes we use the room for school visits, so it’s a good place to stop for a rest. If you’re feeling competitive, you can take our memory test in which you answer questions about things you’ve seen in the museum.",
+      "keywords": [
+        "A Year on the Farm",
+        "memory test",
+        "answer questions about things you've seen",
+        "quiz for visitors"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching",
+      "question_text": "Wagon Walk: Khu Wagon Walk có những xe kéo đã cũ và xập xệ nên bố mẹ cần giữ không cho con cái trèo lên xe.",
+      "answer": "A",
+      "explanation": "Audio đề cập rằng các cỗ xe (carts) rất cũ và dễ vỡ (old and fragile), do đó yêu cầu người lớn phải giữ trẻ em ở gần và đảm bảo chúng không trèo lên xe (ask you to keep your children close to you and ensure they don't climb on the carts), tương ứng với đáp án A (Parents must supervise their children).",
+      "evidence": "The carts are old and fragile, so we ask you to keep your children close to you and ensure they don't climb on the carts.",
+      "keywords": [
+        "Wagon Walk",
+        "old and fragile",
+        "children",
+        "climb"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Matching",
+      "question_text": "Bees are Magic: Khu Bees are Magic đang được sửa chữa nên khách không vào tham quan được.",
+      "answer": "C",
+      "explanation": "Speaker thông báo khu vực 'Bees are Magic' hiện đang được tái phát triển/sửa chữa (we're redeveloping this area) nên khách không thể vào tham quan lúc này (you can't visit that at the moment), khớp với đáp án C (It is closed today).",
+      "evidence": "In the far corner of the garden is Bees are Magic, but we’re redeveloping this area so you can’t visit that at the moment.",
+      "keywords": [
+        "Bees are Magic",
+        "redeveloping",
+        "can't visit"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "The Pond: Khu The Pond có vịt con mới chỉ vài tuổi cùng với ếch con.",
+      "answer": "B",
+      "explanation": "Speaker giới thiệu tại khu 'The Pond' có những chú vịt con mới chỉ vài ngày tuổi và những chú ếch nhỏ (There are baby ducks that are only a few days old, as well as tiny frogs), điều này có những sinh vật mới/sinh vật nhỏ thú vị để xem, tương ứng với đáp án B (There are new things to see).",
+      "evidence": "Finally, there’s The Pond, which contains all kinds of interesting wildlife. There are baby ducks that are only a few days old, as well as tiny frogs.",
+      "keywords": [
+        "The Pond",
+        "baby ducks",
+        "tiny frogs",
+        "wildlife"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO educational skills were shown in the video of children doing origami? (Skill 1)",
+      "answer": "B (following instructions)",
+      "explanation": "Có thể thấy những kỹ năng mang tính giáo dục mà trẻ em đang phát triển qua gấp giấy origami, chúng lắng nghe rất kỹ lưỡng để chắc chắn rằng chúng theo đúng hướng dẫn (làm tất cả các bước theo đúng thứ tự).",
+      "evidence": "LIA: On the video you could see them really listening hard to make sure they did all the steps in the right order to make the bird.",
+      "keywords": [
+        "educational skills",
+        "origami",
+        "listening hard",
+        "did all the steps in the right order",
+        "following instructions"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 22,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO educational skills were shown in the video of children doing origami? (Skill 2)",
+      "answer": "D (learning through play)",
+      "explanation": "Một kỹ năng nữa rất nổi bật đó là trẻ em được vui vẻ trong khi được dạy thứ gì đó mới.",
+      "evidence": "LIA: One thing that really stood out for me was that the children were all having fun while being taught something new.",
+      "keywords": [
+        "educational skills",
+        "origami",
+        "having fun while being taught",
+        "learning through play"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 23,
+      "question_type": "Matching",
+      "question_text": "Children - Sid",
+      "answer": "D (seemed to find the activity calming)",
+      "explanation": "Sid có tính thích gây rối trước khi gấp giấy origami. Nhưng khi tham gia hoạt động, cậu Sid đã ổn định và bắt đầu tập trung. Vì vậy, hoạt động xếp giấy giúp Sid bình tĩnh.",
+      "evidence": "SEB: He was interesting because before they started doing the origami, he was being quite disruptive. LIA: Yes. He really benefited from having to use his hands - it helped him to settle down and start concentrating.",
+      "keywords": [
+        "Sid",
+        "disruptive",
+        "settle down",
+        "concentrating",
+        "calming"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 24,
+      "question_type": "Matching",
+      "question_text": "Children - Jack",
+      "answer": "A (demonstrated independence)",
+      "explanation": "Jack có vẻ muốn làm việc một mình. Cậu Jack thử nhiều thứ khác nhau thay vì hỏi giáo viên giúp. Vì vậy, Jack đã thể hiện sự độc lập của mình trong hoạt động gấp giấy.",
+      "evidence": "SEB: Yes, I noticed that too. What about Jack? I noticed he seemed to want to work things out for himself. LIA: Mmm. You could see him trying out different things rather than asking the teacher for help.",
+      "keywords": [
+        "Jack",
+        "work things out for himself",
+        "trying out different things",
+        "asking the teacher for help",
+        "independence"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 25,
+      "question_type": "Matching",
+      "question_text": "Children - Naomi",
+      "answer": "C (developed a competitive attitude)",
+      "explanation": "Naomi muốn con chuột của cô ấy là đẹp nhất và mong muốn đó đã thúc đẩy cô ấy chăm chỉ hơn. Vì vậy, qua hoạt động, Naomi đã phát triển tính cạnh tranh.",
+      "evidence": "SEB: She seemed to be losing interest at one point but then she decided she wanted her mouse to be the best and that motivated her to try harder.",
+      "keywords": [
+        "Naomi",
+        "losing interest",
+        "mouse to be the best",
+        "motivated her to try harder",
+        "competitive attitude"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 26,
+      "question_type": "Matching",
+      "question_text": "Children - Anya",
+      "answer": "G (seemed to find the activity easy)",
+      "explanation": "Anya đã tạo ra con chim hoàn hảo mà không cần nhiều sự nỗ lực. Vì vậy, Anya đang có vẻ thấy là hoạt động này dễ.",
+      "evidence": "LIA: Anya was such a star. She listened so carefully and then produced the perfect bird with very little effort.",
+      "keywords": [
+        "Anya",
+        "star",
+        "perfect bird",
+        "very little effort",
+        "activity easy"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 27,
+      "question_type": "Matching",
+      "question_text": "Children - Zara",
+      "answer": "F (seemed confused)",
+      "explanation": "Zara không chắc về những gì cô ấy cần làm. Vì vậy, với hoạt động này, Zara đang thấy hoang mang.",
+      "evidence": "LIA: Maybe. I think it was the first time Zara had come across origami. SEB: She looked as if she didn't really get what was going on. LIA: She seemed unsure about what she was supposed to do, but in the end hers didn't turn out too badly.",
+      "keywords": [
+        "Zara",
+        "didn't really get what was going on",
+        "unsure about what she was supposed to do",
+        "confused"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Multiple choice",
+      "question_text": "Before starting an origami activity in class, the students think it is important for the teacher to",
+      "answer": "A (make models that demonstrate the different stages)",
+      "explanation": "Trước khi hoạt động gấp giấy origami trên lớp bắt đầu, cả hai sinh viên đều đề nghị rằng giáo viên cần chuẩn bị kỹ, như chuẩn bị những phần mẫu trình bày cho từng bước khác nhau. Đáp án B và C không được nhắc đến (NOT GIVEN).",
+      "evidence": "LIA: I think one reason why the origami activity worked so well in this class was that the teacher was well prepared. SEB: Right. I think it would have taken me ages to prepare examples, showing each of the steps involved in making the bird. But that was a really good idea.",
+      "keywords": [
+        "origami activity",
+        "teacher",
+        "well prepared",
+        "prepare examples",
+        "showing each of the steps",
+        "make models",
+        "demonstrate"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Multiple choice",
+      "question_text": "The students agree that some teachers might be unwilling to use origami in class because",
+      "answer": "B (they may not have the necessary skills)",
+      "explanation": "Hai bạn sinh viên đều đồng ý rằng một số giáo viên không sẵn sàng sử dụng gấp giấy origami trong lớp vì họ không có đủ kỹ năng cần thiết (=clumsy/not good with hands). Đáp án A và C không được nhắc đến (NOT GIVEN).",
+      "evidence": "SEB: Oh, I don't know. It's no different to any other craft activity. I bet it's because so many teachers are clumsy like me. LIA: That's true - too much effort required if you're not good with your hands.",
+      "keywords": [
+        "unwilling to use origami",
+        "teachers are clumsy",
+        "not good with your hands",
+        "necessary skills"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Multiple choice",
+      "question_text": "Why do the students decide to use origami in their maths teaching practice?",
+      "answer": "C (to introduce a new concept)",
+      "explanation": "Hai bạn sinh viên quyết định sử dụng origami trong phần luyện tập giảng dạy môn toán vì họ thấy rằng sử dụng origami là một cách tốt để giới thiệu phần phân số (presenting fractions = introduce a new concept), phần kiến thức sẽ được dạy trên lớp sắp tới.",
+      "evidence": "SEB: Well, anyway, I think we should try it out in our maths teaching practice with Year 3... but I think it would also work really well for presenting fractions, which is coming up soon. LIA: Good idea - that's something most of the kids in that class might struggle with.",
+      "keywords": [
+        "maths teaching practice",
+        "presenting fractions",
+        "coming up soon",
+        "introduce a new concept"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Gap-fill",
+      "question_text": "We know more about its overall 31 ____ than about its author.",
+      "answer": "plot",
+      "explanation": "Đáp án cần điền có thể là một danh từ (do có tính từ overall phía trước bổ nghĩa). Câu hỏi diễn đạt lại: Chúng ta biết nhiều về _____ của nó hơn là tác giả của nó.",
+      "evidence": "So, some of us, I’m sure, have a pretty general idea of the plot, but we know much less about the author.",
+      "keywords": [
+        "overall",
+        "author",
+        "plot"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "He spoke publicly about social issues, such as 32 ____ and education.",
+      "answer": "poverty",
+      "explanation": "Đáp án cần điền có thể là một danh từ (dựa vào cấu trúc song song 'such as... and education'). Ông ta nói công khai về các vấn đề xã hội, chẳng hạn như _____ và giáo dục.",
+      "evidence": "However, as well as being a literary genius, he also gave many speeches about issues like the level of poverty in his society. He felt very strongly about this and about other areas where change was needed, like education.",
+      "keywords": [
+        "spoke publicly",
+        "social issues",
+        "education"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "Victor Hugo had to live elsewhere in 33 ____.",
+      "answer": "Europe",
+      "explanation": "Đáp án cần điền có thể là một danh từ chỉ địa điểm. Victor Hugo đã phải sống ở nơi khác ở _____.",
+      "evidence": "So Victor Hugo was forced to reside in other parts of Europe.",
+      "keywords": [
+        "Victor Hugo",
+        "live elsewhere",
+        "Europe"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "He used his income from the sale of some 34 ____ he had written to buy a house on Guernsey.",
+      "answer": "poetry",
+      "explanation": "Đáp án cần điền có thể là một danh từ (do có lượng từ some ở phía trước bổ nghĩa). Ông ấy đã sử dụng thu nhập của mình từ việc bán một số _____ mà ông ta đã viết để mua một ngôi nhà ở Guernsey.",
+      "evidence": "This was a property that he bought using the money he’d made in France from the publication of a collection of his poetry.",
+      "keywords": [
+        "income",
+        "sale",
+        "house on Guernsey",
+        "written"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "The ground floor contains portraits, 35 ____ and tapestries that he valued.",
+      "answer": "drawings",
+      "explanation": "Đáp án cần điền có thể là một danh từ (liệt kê cùng với 'portraits' và 'tapestries'). Tầng trệt chứa chân dung, _____ và những bức thảm mà ông ấy trân trọng.",
+      "evidence": "He lived in the house with his family ... and portraits of its members still hang in rooms on the ground floor, along with drawings that he did during his travels.",
+      "keywords": [
+        "ground floor",
+        "portraits",
+        "tapestries",
+        "valued"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "He bought cheap 36 _____ made of wood and turned this into beautiful wall carvings.",
+      "answer": "furniture",
+      "explanation": "Đáp án cần điền là một danh từ (do nó có thể được bổ nghĩa bởi tính từ cheap ở trước). Ông ấy đã mua đồ gỗ rẻ làm bằng gỗ và biến nó thành những tác phẩm chạm khắc trên tường tuyệt đẹp.",
+      "evidence": "The walls are covered in dark wood panelling that Victor Hugo created himself using wooden furniture that he bought in the market. The items were relatively inexpensive, and he used them to create intricate carvings.",
+      "keywords": [
+        "bought",
+        "cheap",
+        "made of wood",
+        "wall carvings"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 37,
+      "question_type": "Gap-fill",
+      "question_text": "The first floor consists of furnished areas with wallpaper and 37 _____ that have a Chinese design.",
+      "answer": "lamps",
+      "explanation": "Đáp án cần điền là một danh từ (dựa vào cấu trúc song song). Tầng đầu tiên bao gồm các khu vực được trang bị với giấy dán tường và đèn có thiết kế Trung Hoa.",
+      "evidence": "On the next level of the house there are two impressive lounges, where he entertained his guests. One lounge has entirely red furnishings, such as sofas and wall coverings, and the other blue. There's a strong Chinese influence in these areas in things like the wallpaper pattern and the lamps - which he would have made himself by copying original versions.",
+      "keywords": [
+        "first floor",
+        "wallpaper",
+        "Chinese design"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 38,
+      "question_type": "Gap-fill",
+      "question_text": "He wrote in a room at the top of the house that had a view of the 38 _____.",
+      "answer": "harbour / harbor",
+      "explanation": "Đáp án cần điền là một danh từ chỉ địa điểm, chỉ cảnh quan có thể quan sát được từ căn phòng. Ông ấy đã viết trong một căn phòng ở trên cùng của ngôi nhà có tầm nhìn ra cảng.",
+      "evidence": "And then, at the very top of the house, there's a room called the Lookout - called that because it looks out over the harbour.",
+      "keywords": [
+        "wrote",
+        "top of the house",
+        "view"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 39,
+      "question_type": "Gap-fill",
+      "question_text": "He entertained other writers as well as poor 39 _____ in his house.",
+      "answer": "children",
+      "explanation": "Đáp án cần điền là một danh từ chỉ người (dựa vào cấu trúc song song với other writers). Ông ấy tiếp đãi những nhà văn khác cũng như những đứa trẻ nghèo trong nhà mình.",
+      "evidence": "While living in his house on Guernsey, he entertained many other famous writers, but he also invited a large group of local children from the deprived areas of the island to dinner once a week.",
+      "keywords": [
+        "entertained",
+        "other writers",
+        "poor"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 40,
+      "question_type": "Gap-fill",
+      "question_text": "Victor Hugo's 40 _____ gave ownership of the house to the city of Paris in 1927.",
+      "answer": "relatives",
+      "explanation": "Đáp án cần điền là một danh từ, theo sau sở hữu cách ‘s. Vì đứng sau là động từ gave, khả năng ở đây là một danh từ chỉ người, có thể là gia đình/bạn bè của Hugo. Người thân của Victor Hugo đã trao quyền sở hữu ngôi nhà cho thành phố Paris vào năm 1927.",
+      "evidence": "In 1927, the house was owned by his relatives, and they decided to donate it to the city of Paris.",
+      "keywords": [
+        "gave ownership",
+        "city of Paris",
+        "1927"
+      ],
+      "skill": "listening",
+      "part": 4
+    }
+  ],
+  "reading": [
+    {
+      "question_number": 1,
+      "question_type": "Matching Phrases",
+      "question_text": "mention of several challenges to be overcome before a green roof can be installed",
+      "answer": "D",
+      "explanation": "Đoạn D chứa thông tin về một số thách thức cần vượt qua trước khi có thể lắp đặt mái nhà xanh. Cụ thể, nó đề cập đến việc học các kỹ năng mới, như là trang trí cảnh quan (landscaping). Ngoài ra, cũng phải cân nhắc đến các yếu tố khác như: lắp đặt đường thoát nước (installing drainage paths), đáp ứng các yêu cầu về sức khỏe và an toàn (meeting health and safety requirements), phạm vi quy hoạch (planning restrictions), hay sự gián đoạn các hoạt động thông thường của tòa nhà trong quá trình lắp đặt mái nhà xanh (disruption from regular activities in and around the buildings during installation).",
+      "evidence": "For green roofs to become the norm for new developments, there needs to be support from public authorities and private investors. Those responsible for maintaining buildings may have to acquire new skills, such as landscaping, and in some cases, volunteers may be needed to help out. Other considerations include installing drainage paths, meeting health and safety requirements and perhaps allowing access for the public, as well as planning restrictions and disruption from regular activities in and around the buildings during installation.",
+      "keywords": [
+        "several challenges",
+        "to be overcome",
+        "green roof",
+        "installed"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Matching Phrases",
+      "question_text": "reference to a city where green roofs have been promoted for many years",
+      "answer": "C",
+      "explanation": "Đoạn C đề cập đến Toronto, Canada, là một thành phố có chính sách về “mái nhà xanh” (green roofs) từ những năm 1990 khuyến khích phát triển các trang trại đô thị trên mái nhà. Điều này cho thấy mái nhà xanh đã được khuyến khích ở thành phố này trong nhiều năm. Chú ý: Bên cạnh Toronto thì đề bài còn bẫy chúng ta ở một thành phố khác là San Francisco (USA). Tuy nhiên, thành phố này chỉ gần đây (recently) mới có chính sách yêu cầu các tòa nhà mới phải có “mái nhà xanh”, chứ không phải đã khuyến khích trong nhiều năm.",
+      "evidence": "Again, city leaders and authorities have helped push the movement forward - only recently, San Francisco, USA, created a policy requiring new buildings to have green roofs. Toronto, Canada, has policies dating from the 1990s, encouraging the development of urban farms on rooftops.",
+      "keywords": [
+        "city",
+        "green roofs",
+        "promoted",
+        "for many years"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Matching Phrases",
+      "question_text": "a belief that existing green roofs should be used as a model for new ones",
+      "answer": "E",
+      "explanation": "Đoạn E có đề cập rằng cần sử dụng những câu chuyện thành công của những mái nhà xanh hiện có để nghiên cứu (be studied) cũng như nhân bản (be replicated) cho những mái nhà khác.",
+      "evidence": "The success stories need to be studied and replicated elsewhere, to make green, blue, brown and food-producing roofs the norm in cities around the world.",
+      "keywords": [
+        "existing green roofs",
+        "should be used as a model",
+        "new ones"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Matching Phrases",
+      "question_text": "examples of how green roofs can work in combination with other green urban initiatives",
+      "answer": "B",
+      "explanation": "Đoạn B đề cập đến các ví dụ về cách mái nhà xanh có thể kết hợp với các sáng kiến đô thị xanh khác như 'bức tường sống' (living walls) và hệ thống thoát nước trên mặt đất (drainage system on the ground), chẳng hạn như cây xanh đường phố.",
+      "evidence": "Ongoing research is showcasing how green roofs in cities can integrate with ‘living walls’: environmentally friendly walls which are partially or completely covered with greenery... Research also indicates that green roofs can be integrated with drainage systems on the ground, such as street trees...",
+      "keywords": [
+        "green roofs",
+        "work in combination with",
+        "other green urban initiatives"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Matching Phrases",
+      "question_text": "the need to make a persuasive argument for the financial benefits of green roofs",
+      "answer": "D",
+      "explanation": "Đoạn D nói rằng các lập luận kinh tế là quan trọng nhất để thuyết phục các nhà đầu tư và nhà phát triển rằng việc lắp đặt mái nhà xanh là đáng giá. Nó đề cập đến khái niệm 'vốn tự nhiên' (natural capital) và cách đo lường giá trị kinh tế của tự nhiên (measuring the economic value of nature) như là việc đo lường số tiền tiết kiệm được bằng việc thiết lập các giải pháp tự nhiên, để có thể đưa ra lập luận thuyết phục về lợi ích tài chính của mái nhà xanh.",
+      "evidence": "To convince investors and developers that installing green roofs is worthwhile, economic arguments are still the most important. The term ‘natural capital’ has been developed to explain the economic value of nature; for example, measuring the money saved by installing natural solutions to protect against flood damage, adapt to climate change or help people lead healthier and happier lives.",
+      "keywords": [
+        "need",
+        "persuasive argument",
+        "financial benefits",
+        "green roofs"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "City rooftops covered with greenery have many advantages. These include lessening the likelihood that floods will occur, reducing how much money is spent on _______ and creating environments that are suitable for wildlife.",
+      "answer": "energy",
+      "explanation": "Từ cần điền có thể là một danh từ (dựa vào cấu trúc: be spent on something). Đoạn A đề cập rằng ngày càng có nhiều công ty tư nhân và chính quyền thành phố đầu tư vào mái nhà xanh, do những lợi ích đa dạng của chúng. Trong số những lợi ích đó là tiết kiệm chi phí năng lượng (saving on energy costs), giảm thiểu nguy cơ lũ lụt, tạo môi trường sống cho động vật hoang dã đô thị, giải quyết ô nhiễm không khí và thậm chí trồng trọt được lương thực.",
+      "evidence": "More and more private companies and city authorities are investing in green roofs, drawn to their wide-ranging benefits. Among the benefits are saving on energy costs, mitigating the risk of floods, making habitats for urban wildlife, tackling air pollution and even growing food.",
+      "keywords": [
+        "reducing",
+        "money is spent on",
+        "creating environments",
+        "suitable for wildlife"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "In many cases, they can also be used for producing _______",
+      "answer": "food",
+      "explanation": "Từ cần điền có thể là một danh từ (dựa vào cấu trúc: produce something). Với câu hỏi này, có thể hiểu rằng 'they' đang được sử dụng để thay thế cho cụm danh từ green roof. Trong bài, 'growing food' đồng nghĩa với cụm 'producing food'.",
+      "evidence": "Among the benefits are saving on energy costs, mitigating the risk of floods, making habitats for urban wildlife, tackling air pollution and even growing food.",
+      "keywords": [
+        "they",
+        "can also be used for",
+        "producing"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "There are also social benefits of green roofs. For example, the medical profession recommends _______ as an activity to help people cope with mental health issues",
+      "answer": "gardening",
+      "explanation": "Từ cần điền có thể là một danh từ (dựa vào cấu trúc: recommend something). Đoạn B đề cập đến việc có bằng chứng chứng minh giá trị xã hội của mái nhà xanh. Các bác sĩ (medical profession / doctors) ngày càng tăng cường việc khuyên bảo (prescribing / recommends) những bệnh nhân đang đối phó với chứng lo âu và trầm cảm (mental health issues) nên dành thời gian làm vườn ngoài trời (gardening).",
+      "evidence": "There is also evidence to demonstrate the social value of green roofs. Doctors are increasingly prescribing time spent gardening outdoors for patients dealing with anxiety and depression.",
+      "keywords": [
+        "social benefits",
+        "green roofs",
+        "medical profession",
+        "recommends",
+        "mental health issues"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Gap-fill",
+      "question_text": "Studies have also shown that the availability of green spaces can prevent physical problems such as ______",
+      "answer": "obesity",
+      "explanation": "Câu hỏi yêu cầu tìm một danh từ chỉ vấn đề thể chất mà không gian xanh có thể ngăn chặn. Trong đoạn B, tác giả nêu nghiên cứu cho thấy tiếp cận không gian xanh giúp ích cho người mắc chứng mất trí nhớ (dementia) và giúp mọi người tránh béo phì (obesity). Vì câu hỏi chỉ định là 'physical problems' (vấn đề thể chất), nên 'obesity' là đáp án đúng, còn 'dementia' là đáp án bẫy vì là vấn đề thần kinh.",
+      "evidence": "And research has found that access to even the most basic green spaces can provide a better quality of life for dementia sufferers and help people avoid obesity.",
+      "keywords": [
+        "availability of green spaces",
+        "prevent",
+        "physical problems"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO advantages of using newer buildings for green roofs are mentioned in Paragraph C of the passage?",
+      "answer": "C, D",
+      "explanation": "Câu hỏi yêu cầu chọn 2 ưu điểm của tòa nhà mới. Đoạn C giải thích tòa nhà mới có khả năng chứa nước tốt hơn (greater water-storage capacity - đáp án C) và có mái nhà chắc chắn hơn, cho phép trồng nhiều loại thực vật hơn do lớp đất có thể dày hơn (ability to cultivate more plant types - đáp án D).",
+      "evidence": "Being able to keep enough water at roof height and distribute it right across the rooftop is crucial to maintaining the plants on any green roof - especially on ‘edible roofs’ where fruit and vegetables are farmed. And it’s much easier to do this in newer buildings, which can typically hold greater weight, than to retro-fit old ones. Having a stronger roof also makes it easier to grow a greater variety of plants, since the soil can be deeper.",
+      "keywords": [
+        "newer buildings",
+        "advantages",
+        "Paragraph C"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO advantages of using newer buildings for green roofs are mentioned in Paragraph C of the passage?",
+      "answer": "C, D",
+      "explanation": "Xem giải thích cho câu 10 (câu hỏi yêu cầu chọn 2 đáp án cho cùng một câu hỏi 10-11).",
+      "evidence": "Being able to keep enough water at roof height and distribute it right across the rooftop is crucial to maintaining the plants on any green roof - especially on ‘edible roofs’ where fruit and vegetables are farmed. And it’s much easier to do this in newer buildings, which can typically hold greater weight, than to retro-fit old ones. Having a stronger roof also makes it easier to grow a greater variety of plants, since the soil can be deeper.",
+      "keywords": [
+        "newer buildings",
+        "advantages",
+        "Paragraph C"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 12,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO aims of new variations on the concept of green roofs are mentioned in Paragraph E of the passage?",
+      "answer": "A, D",
+      "explanation": "Đoạn E nhắc đến các biến thể mới của mái nhà xanh như kết hợp với tấm pin mặt trời để tạo ra năng lượng (generate power from a sustainable source - đáp án D) và các 'mái nhà nâu' (brown roofs) để tối ưu hóa đa dạng sinh học, cung cấp môi trường sống cho nhiều loài (provide habitats for a wide range of species - đáp án A).",
+      "evidence": "There are also combinations of green roofs with solar panels, and ‘brown roofs’ which are wilder in nature and maximise biodiversity.",
+      "keywords": [
+        "new variations",
+        "concept of green roofs",
+        "Paragraph E"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 13,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO aims of new variations on the concept of green roofs are mentioned in Paragraph E of the passage?",
+      "answer": "A, D",
+      "explanation": "Xem giải thích cho câu 12 (câu hỏi yêu cầu chọn 2 đáp án cho cùng một câu hỏi 12-13).",
+      "evidence": "There are also combinations of green roofs with solar panels, and ‘brown roofs’ which are wilder in nature and maximise biodiversity.",
+      "keywords": [
+        "new variations",
+        "concept of green roofs",
+        "Paragraph E"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "What can we learn from the first paragraph?",
+      "answer": "B",
+      "explanation": "Đoạn văn nói về thời gian quan niệm về bản chất của trí thông minh bắt đầu thay đổi. Nhiều người từng cho rằng trí tuệ là bẩm sinh, cho đến thế kỷ 20, quan điểm này đã được đẩy lùi, thay thế bởi quan niệm trí tuệ không cố định, không được xác định bởi các yếu tố bẩm sinh.",
+      "evidence": "Over the past century, a powerful idea has taken root in the educational landscape. The concept of intelligence as something innate has been supplanted by the idea that intelligence is not fixed [...] Then, in the early 20th century, progressive thinkers revolted against the notion that inherent ability is destiny.",
+      "keywords": [
+        "first paragraph",
+        "learn",
+        "nature of intelligence",
+        "shift"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Multiple choice",
+      "question_text": "The second paragraph describes how schools encourage students to...",
+      "answer": "C",
+      "explanation": "Trong đoạn văn có đề cập những áp phích với những câu nói truyền động lực, bài diễn thuyết ở nhiều trường học. Mục tiêu của họ là thuyết phục học sinh không xem thất bại là một chỉ số đánh giá, mà thay vào đó là một cơ hội để cải thiện khả năng của bản thân. Đây chính là sự tự tin vào tiềm năng - confidence in their potential.",
+      "evidence": "In many schools today you will see hallways covered in motivational posters and hear speeches on the mindset of great sporting heroes who simply believed their way to the top. A major focus of the growth mindset in schools is coaxing students away from seeing failure as an indication, and towards seeing it as a chance to improve that ability.",
+      "keywords": [
+        "second paragraph",
+        "schools",
+        "encourage",
+        "students"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Multiple choice",
+      "question_text": "In the third paragraph, the writer suggests that students with a fixed mindset...",
+      "answer": "D",
+      "explanation": "Những học sinh với fixed mindset - tư duy cố định thì sợ thoát khỏi giới hạn bản thân và chỉ chọn những nhiệm vụ tương đối dễ dàng để không rủi ro thất bại.",
+      "evidence": "Meanwhile, the former took on only those tasks that would not risk their sense of worth. This group had inferred that success or failure is due to innate ability, and this 'fixed mindset' had led them to fear of failure and lack of effort.",
+      "keywords": [
+        "third paragraph",
+        "students with a fixed mindset"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching Features / Multiple choice",
+      "question_text": "The methodology behind the growth mindset studies was not strict enough.",
+      "answer": "C (Andrew Gelman)",
+      "explanation": "Câu hỏi đề cập đến phương pháp luận đằng sau các nghiên cứu về tư duy cầu tiến (growth mindset studies) là chưa đủ chặt chẽ/nghiêm ngặt. Dẫn chứng ở Đoạn 5 chỉ ra nhà thống kê học Andrew Gelman cho rằng các thiết kế nghiên cứu có đủ độ tự do (degrees of freedom) để hỗ trợ bất kỳ lý thuyết nào họ muốn, ám chỉ phương pháp luận có vấn đề.",
+      "evidence": "The statistician Andrew Gelman claims that 'their research designs have enough degrees of freedom that they could take their data to support just about any theory at all.'",
+      "keywords": [
+        "methodology",
+        "growth mindset studies",
+        "not strict enough"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching Features / Multiple choice",
+      "question_text": "The idea of the growth mindset has been incorrectly interpreted.",
+      "answer": "B (Carol Dweck)",
+      "explanation": "Câu hỏi nói về việc ý tưởng về tư duy cầu tiến đã bị hiểu sai và áp dụng sai. Dẫn chứng ở Đoạn 6 cho thấy Carol Dweck (đại từ 'she') tranh luận rằng công trình của bà đã bị hiểu lầm và áp dụng sai theo nhiều cách (been misunderstood and misapplied in a range of ways).",
+      "evidence": "Much of this criticism is not lost on Dweck [...] In fact, she argues that her work has been misunderstood and misapplied in a range of ways.",
+      "keywords": [
+        "idea of the growth mindset",
+        "incorrectly interpreted"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "True-False-Not Given / Yes-No-Not Given / Gap-fill",
+      "question_text": "Intellectual ability is an unchangeable feature of each individual.",
+      "answer": "Đoạn 1",
+      "explanation": "Câu hỏi đề cập đến việc năng lực trí tuệ là một đặc điểm không thể thay đổi của mỗi cá nhân (đây là định nghĩa cốt lõi của 'fixed mindset' mà bài viết hoặc các nghiên cứu thường bàn luận ở đoạn đầu). Trực quan từ ảnh cho thấy đáp án tương ứng gắn với Đoạn 1.",
+      "evidence": "Đoạn 1",
+      "keywords": [
+        "Intellectual ability",
+        "unchangeable feature"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "The growth mindset should be promoted without students being aware of it.",
+      "answer": "E",
+      "explanation": "Đoạn 7 nhắc đến David Yeager và Gregory Walton, họ cho rằng các chiến lược can thiệp nên được thực hiện một cách tinh tế để học sinh không nhận ra, từ đó đem lại hiệu quả cao nhất (if adolescents perceive that they are in need of help, this could undo its intended effects).",
+      "evidence": "Growth mindset supporters David Yeager and Gregory Walton claim that interventions should be delivered in a subtle way to maximise their effectiveness.",
+      "keywords": [
+        "growth mindset",
+        "without students being aware",
+        "subtle way",
+        "interventions"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Matching",
+      "question_text": "The growth mindset is not simply about boosting students' morale.",
+      "answer": "B",
+      "explanation": "Đoạn 6 đề cập đến Carol Dweck (ký hiệu B), bà bày tỏ lo ngại rằng các lý thuyết của mình bị hiểu nhầm ở các trường học khi xem 'growth mindset' chỉ đơn thuần là công cụ nâng cao lòng tự tôn hoặc cổ vũ học sinh (is a tool for learning and improvement. It's not just a vehicle for making children feel good).",
+      "evidence": "She has also expressed concern that her theories are being misappropriated in schools by being conflated with the self-esteem movement: 'For me the growth mindset is a tool for learning and improvement. It's not just a vehicle for making children feel good.'",
+      "keywords": [
+        "growth mindset",
+        "not simply",
+        "boosting students' morale",
+        "feel good"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 22,
+      "question_type": "Matching",
+      "question_text": "Research shows that the growth mindset has no effect on academic achievement.",
+      "answer": "D",
+      "explanation": "Đoạn 5 nhắc đến Timothy Bates (ký hiệu D), nghiên cứu của ông cho thấy những đứa trẻ có tư duy cầu tiến cũng không đạt được điểm số hay thành tựu học thuật cao hơn (is finding that the results are repeatedly null).",
+      "evidence": "Professor of Psychology Timothy Bates, who has been trying to replicate Dweck’s work, is finding that the results are repeatedly null.",
+      "keywords": [
+        "Research",
+        "growth mindset",
+        "no effect",
+        "academic achievement"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 23,
+      "question_type": "TRUE/FALSE/NOT GIVEN",
+      "question_text": "Dweck has handled criticisms of her work in an admirable way.",
+      "answer": "TRUE",
+      "explanation": "Đoạn 6 nêu rõ Dweck đối mặt với những lời chỉ trích bằng cách phản hồi lại chúng và thích ứng hành vi của mình cho phù hợp (responding to it and adapting her work accordingly). Điều này đồng nghĩa với việc cô ấy đã xử lý các lời chỉ trích một cách đáng khen ngợi.",
+      "evidence": "Much of this criticism is not lost on Dweck, and she deserves great credit for responding to it and adapting her work accordingly.",
+      "keywords": [
+        "Dweck",
+        "handled criticisms",
+        "admirable way",
+        "responding to it"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 24,
+      "question_type": "TRUE/FALSE/NOT GIVEN",
+      "question_text": "Students' self-perception is a more effective driver of self-confidence than actual achievement.",
+      "answer": "NO",
+      "explanation": "Đoạn 8 chỉ ra rằng mối tương quan giữa sự tự nhận thức và thành tích thực tế là có thật, nhưng bằng chứng cho thấy mối quan hệ ngược lại mới mạnh hơn (achievement on self-perception is stronger than the other way round - thành tích tác động đến sự tự nhận thức mạnh mẽ hơn là chiều ngược lại). Do đó, câu hỏi phát biểu ngược lại là sai.",
+      "evidence": "There is a strong correlation between self-perception and achievement, but there is evidence to suggest that the actual effect of achievement on self-perception is stronger than the other way round.",
+      "keywords": [
+        "self-perception",
+        "more effective driver",
+        "actual achievement"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 25,
+      "question_type": "TRUE/FALSE/NOT GIVEN",
+      "question_text": "Recent evidence about growth mindset interventions has attracted unfair coverage in the media.",
+      "answer": "NOT GIVEN",
+      "explanation": "Đoạn 9 chỉ nói rằng các biện pháp can thiệp tư duy cầu tiến có thể không phải là thần dược trong phòng thí nghiệm khi áp dụng vào lớp học, nhưng bài đọc hoàn toàn không đề cập hay bàn luận về việc các phương tiện truyền thông đưa tin có 'unfair' (bất công/sai lệch) hay không.",
+      "evidence": "Recent evidence would suggest that growth mindset interventions are not the elixir of learning that its proponents claim it to be.",
+      "keywords": [
+        "Recent evidence",
+        "growth mindset interventions",
+        "unfair coverage",
+        "media"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 26,
+      "question_type": "TRUE/FALSE/NOT GIVEN",
+      "question_text": "Deliberate attempts to encourage students to strive for high achievement may have a negative effect.",
+      "answer": "YES",
+      "explanation": "Đoạn 8 và 9 đề cập đến việc nỗ lực truyền cảm hứng/khát vọng cho học sinh (direct interventions) đôi khi phản tác dụng và không đem lại kết quả tốt như mong đợi, dẫn đến ảnh hưởng tiêu cực (Paradoxically, however, that aspiration is not well served by direct interventions that try to instil it).",
+      "evidence": "Paradoxically, however, that aspiration is not well served by direct interventions that try to instil it.",
+      "keywords": [
+        "Deliberate attempts",
+        "encourage students",
+        "high achievement",
+        "negative effect"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 27,
+      "question_type": "True-False-Not Given",
+      "question_text": "Wegener's ideas about continental drift were widely disputed while he was alive.",
+      "answer": "TRUE",
+      "explanation": "Các thông tin hoàn toàn khớp với nội dung bài đọc khi Đoạn 1 nêu rõ thuyết trôi lục địa là tâm điểm của sự tranh cãi quốc tế trong suốt cuộc đời ông.",
+      "evidence": "This is a book about the life and scientific work of Alfred Wegener, whose reputation today rests with his theory of continental displacements, better known as 'continental drift' [...] was the focus of an international controversy in his lifetime and for some years after his death.",
+      "keywords": [
+        "Wegener's ideas",
+        "continental drift",
+        "widely disputed",
+        "while he was alive"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "True-False-Not Given",
+      "question_text": "The idea that the continents remained fixed in place was defended in a number of respected scientific publications.",
+      "answer": "NOT GIVEN",
+      "explanation": "Thông tin 'was defended in a number of respected scientific publications' không hề được nhắc đến trong đoạn 2 của bài đọc.",
+      "evidence": "Wegener's basic idea was that many mysteries about the Earth's history could be solved if one supposed that the continents moved laterally, rather than supposing that they remained fixed in place.",
+      "keywords": [
+        "continents remained fixed",
+        "defended",
+        "respected scientific publications"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "True-False-Not Given",
+      "question_text": "Wegener relied on a limited range of scientific fields to support his theory of continental drift.",
+      "answer": "FALSE",
+      "explanation": "Phát biểu rằng Wegener dựa vào một số ít lĩnh vực khoa học mâu thuẫn với thông tin trong bài đọc. Trong bài đọc, ông dùng chứng cứ từ hàng loạt các lĩnh vực khoa học để chứng minh thuyết của ông khả dĩ.",
+      "evidence": "Wegener showed in great detail how such continental movements were plausible and how they worked, using evidence from a large number of sciences including geology, geophysics, paleontology, and climatology [...]",
+      "keywords": [
+        "Wegener relied on",
+        "limited range",
+        "scientific fields",
+        "continental drift"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "True-False-Not Given",
+      "question_text": "The similarities between Wegener's theory of continental drift and modern-day plate tectonics are enormous.",
+      "answer": "FALSE",
+      "explanation": "Phát biểu cho rằng sự tương đồng giữa 'plate tectonics' và học thuyết của Wegener là rất lớn. Tuy nhiên, thông tin trong đoạn văn chỉ ra rằng chúng khác biệt nhau ở rất nhiều khía cạnh.",
+      "evidence": "Plate tectonics is in many respects quite different from Wegener's proposal [...]",
+      "keywords": [
+        "similarities",
+        "Wegener's theory",
+        "modern-day plate tectonics",
+        "enormous"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Summary Completion",
+      "question_text": "One of the remarkable things about Wegener from a _____ is that although he proposed a theory of continental drift, he was not a geologist.",
+      "answer": "biographer's perspective",
+      "answer_letter": "I",
+      "explanation": "Từ cần điền là một cụm danh từ, số ít (do sau mạo từ a), chỉ một góc nhìn của ai đó cho rằng việc Wegener đề xuất học thuyết liên quan đến địa chất trong khi ông không chuyên lĩnh vực này. Nội dung tương ứng ở đoạn 3, và điều thú vị này được nêu ra bởi 'When I started writing' và đối với góc nhìn 'for me' của người viết, tương ứng với biographer's perspective.",
+      "evidence": "When I started writing about Wegener's life and work, one of the most intriguing things about him for me was that, although he came up with a theory on continental drift, he was not a geologist.",
+      "keywords": [
+        "remarkable things",
+        "Wegener",
+        "theory of continental drift",
+        "not a geologist"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 32,
+      "question_type": "Summary Completion",
+      "question_text": "His _____ were limited to atmospheric physics.",
+      "answer": "professional interests",
+      "answer_letter": "F",
+      "explanation": "Từ cần điền là một danh từ, số nhiều (do sau his và trước were), chỉ một điều gì đó về Wegener giới hạn trong lĩnh vực vật lí quyển. Nội dung trong đoạn 3 chỉ ra rằng ông ta theo đuổi (pursued a career) một công việc trong lĩnh vực vật lí khí quyển, đồng nghĩa với việc lĩnh vực quan tâm trong sự nghiệp của ông là về vật lý khí quyển.",
+      "evidence": "He trained as an astronomer and pursued a career in atmospheric physics.",
+      "keywords": [
+        "limited",
+        "atmospheric physics"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 33,
+      "question_type": "Summary Completion",
+      "question_text": "However, at the time he proposed his theory of continental drift in 1912, he was already a person of _____.",
+      "answer": "modest fame",
+      "answer_letter": "A",
+      "explanation": "Từ cần điền là một danh từ (do sau of), chỉ một đặc điểm nào đó của Wegener trong thời điểm ông đề xuất học thuyết. Thông tin trong đoạn 3 nói rằng thời điểm khi ông ta đề xuất học thuyết, ông ta không phải là không được biết đến (unknown), tương ứng với modest fame (có danh tiếng tương đối).",
+      "evidence": "When he proposed the theory of continental displacements in 1912, he was a lecturer in physics and astronomy at the University of Marburg, in southern Germany. However, he was not an 'unknown'.",
+      "keywords": [
+        "proposed",
+        "theory of continental drift",
+        "1912",
+        "person of"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "Six years previously, there had been his _____ of 52 hours in a hot-air balloon.",
+      "answer": "C",
+      "explanation": "Từ cần điền là một danh từ (đứng sau his), liên quan đến 52 tiếng trong một khinh khí cầu mà ông thực hiện 6 năm trước khi đưa ra học thuyết. Dựa vào Đoạn 3, thông tin '1906' tương ứng với 'six years previously', tại thời điểm này ông thiết lập kỉ lục (set a world record) cho việc ở trên không trung một khinh khí cầu 52 giờ. Do đó, đáp án tương ứng trong bảng lựa chọn là 'record-breaking achievement', tương ứng với chữ C.",
+      "evidence": "In 1906 he had set a world record (with his brother Kurt) for time aloft in a hot-air balloon: 52 hours.",
+      "keywords": [
+        "Six years previously",
+        "52 hours",
+        "hot-air balloon"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "followed by his well-publicised but _____ of Greenland's coast",
+      "answer": "H",
+      "explanation": "Từ cần điền là một danh từ, đứng sau 'but' và được bổ nghĩa bởi tính từ mô tả 'well-publicised'. Trong Đoạn 3, chuyến đi được nhắc đến nhiều bởi công chúng là chuyến thám hiểm hiểm và được mô tả là cực kỳ nguy hiểm (extremely dangerous expedition). Vì vậy, đáp án phù hợp nhất trong danh sách là 'hazardous exploration', tương ứng với chữ H.",
+      "evidence": "Between 1906 and 1908 he had taken part in a highly publicized and extremely dangerous expedition to the coast of northeast Greenland.",
+      "keywords": [
+        "well-publicised",
+        "Greenland's coast"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "With the publication of his textbook on thermodynamics, he had also come to the attention of a _____ of German scientists.",
+      "answer": "A",
+      "explanation": "Từ cần điền là một danh từ (đứng sau 'a'), chỉ một nhóm các nhà khoa học Đức. Đoạn 3 cho biết ông ta trở nên nổi tiếng (make a name for himself) trong một nhóm nhỏ (a small circle) các nhà khí tượng học và vật lý khí quyển ở Đức.",
+      "evidence": "He had also made a name for himself amongst a small circle of meteorologists and atmospheric physicists in Germany as the author of a textbook, Thermodynamics of the Atmosphere (1911) ...",
+      "keywords": [
+        "thermodynamics",
+        "attention",
+        "German scientists"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 37,
+      "question_type": "Multiple choice",
+      "question_text": "What is Mott T Greene doing in the fifth paragraph?",
+      "answer": "B",
+      "explanation": "Đoạn 5 giải thích rằng mặc dù Wegener thường bỏ ngang một số nghiên cứu, nhưng việc đọc hết toàn bộ cuộc đời của Wegener sẽ mang lại ý nghĩa trọn vẹn hơn là chỉ đọc những phần lẻ tẻ. Do đó, đáp án B (explaining why it is desirable to read the whole book) là chính xác.",
+      "evidence": "My own feeling, however, is that the parts do not make as much sense on their own as do all of his activities taken together. In this respect I urge readers to try to experience Wegener's life as he lived it...",
+      "keywords": [
+        "Mott T Greene",
+        "fifth paragraph",
+        "desirable",
+        "read the whole book"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 38,
+      "question_type": "Multiple choice",
+      "question_text": "What is said about Wegener in the sixth paragraph?",
+      "answer": "A",
+      "explanation": "Đoạn 6 nêu rõ Wegener 'did not seek to find influence or advance his ideas through professional contacts and politics', điều này đồng nghĩa với việc ông không phải là một người quá tham vọng (was not particularly ambitious).",
+      "evidence": "He was not active (with a few exceptions) in scientific societies, and did not seek to find influence or advance his ideas through professional contacts and politics...",
+      "keywords": [
+        "Wegener",
+        "sixth paragraph",
+        "ambitious",
+        "scientific societies"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 39,
+      "question_type": "Multiple choice",
+      "question_text": "What does Greene say about some other famous scientists?",
+      "answer": "D",
+      "explanation": "Đoạn 7 đề cập đến các nhà khoa học nổi tiếng như Newton, Darwin, Einstein và Michael Faraday để lại nhiều sổ tay và nhật ký, giúp cho việc viết tiểu sử về họ trở nên dễ dàng và chính xác hơn so với Wegener. Do đó, đáp án D (They are easier subjects to write about than Wegener) là đúng.",
+      "evidence": "The more such material a scientist leaves behind, the better chance a biographer has of forming an accurate picture of how a scientist's ideas took shape and evolved.",
+      "keywords": [
+        "Greene",
+        "famous scientists",
+        "easier subjects",
+        "write about"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 40,
+      "question_type": "Multiple choice",
+      "question_text": "What is Greene's main point in the final paragraph?",
+      "answer": "C",
+      "explanation": "Đoạn 8 (đoạn cuối) nêu quan điểm rằng 'most of us... are not in any real sense the authors of our own lives... most of the time our lives 'happen to us'', nghĩa là con người có ít sự kiểm soát đối với các khía cạnh của cuộc sống. Do đó, đáp án C (People have little control over many aspects of their lives) là chính xác.",
+      "evidence": "I am firmly of the opinion that most of us, Wegener included, are not in any real sense the authors of our own lives. We plan, think, and act, often with apparent freedom, but most of the time our lives 'happen to us'...",
+      "keywords": [
+        "Greene's main point",
+        "final paragraph",
+        "little control",
+        "aspects of their lives"
+      ],
+      "skill": "reading",
+      "part": 3
+    }
+  ],
+  "extracted_at": "2026-10-22 22:17:02"
+}

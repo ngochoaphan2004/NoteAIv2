@@ -1,0 +1,1311 @@
+{
+  "test": 2,
+  "title": "Cambridge IELTS 18 - Test 2",
+  "listening": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Benefits: (1) _____ provided for all staff",
+      "answer": "training",
+      "explanation": "Từ cần điền là một danh từ, vì đằng sau là mệnh đề quan hệ bị động rút gọn chỉ một trong những lợi ích khi làm việc tại nhà hàng Milo.",
+      "evidence": "WOMAN: Yes. They've got a very good reputation for looking after staff. For example, all employees get training - even temporary staff.",
+      "keywords": [
+        "Benefits",
+        "provided for",
+        "all staff",
+        "all employees",
+        "get training"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "(2) _____ during weekdays at all Milo's Restaurants",
+      "answer": "discount",
+      "explanation": "Đáp án cần điền là một danh từ hoặc một V-ing chỉ lợi ích khi làm việc tại nhà hàng Milo. Bẫy nằm ở chỗ người nam hỏi 'Even at weekends?', người nữ trả lời 'No', khẳng định ưu đãi giảm giá (discount) chỉ áp dụng trong tuần (weekdays).",
+      "evidence": "WOMAN: [...] So I guess not ... But another benefit of working for a big company like this is that you can get a discount at any of their restaurants.\nMAN: Even at weekends?\nWOMAN: No, but you'll be working then anyway.",
+      "keywords": [
+        "during weekdays",
+        "at all Milo's Restaurants",
+        "discount",
+        "weekends"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "(3) _____ provided after midnight.",
+      "answer": "taxi",
+      "explanation": "Tương tự như từ (1), đáp án cần điền là một danh từ chỉ một trong những lợi ích khi làm việc tại nhà hàng Milo. Xe taxi sẽ được công ty chi trả nếu làm ca muộn xong sau nửa đêm.",
+      "evidence": "WOMAN: Yes. That's right. But if you have to do a late shift and finish work after midnight, the company will pay for you to get a taxi home.",
+      "keywords": [
+        "provided",
+        "after midnight",
+        "finish work",
+        "pay for",
+        "taxi"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "must care about maintaining a high standard of (4) _____",
+      "answer": "service",
+      "explanation": "Đáp án cần điền là một danh từ, vì đi sau là giới từ of. Nhân viên ở nhà hàng này phải quan tâm về việc duy trì tiêu chuẩn cao của dịch vụ (service).",
+      "evidence": "MAN: Yeah. I've got no problem with that. It sounds good, actually. The last place I worked for was quite demanding too. We had to make sure we gave a really high level of service.\nWOMAN: That's good to hear because that will be equally important at Milo's. I know they want people who have an eye for detail.",
+      "keywords": [
+        "must care about maintaining",
+        "a high standard of",
+        "make sure",
+        "high level of",
+        "service"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "must have a qualification in (5) _____",
+      "answer": "English",
+      "explanation": "Đáp án cần điền là một danh từ chỉ ngành học/lĩnh vực mà nhân viên cần có chứng chỉ. Theo đó, họ phải có một chứng chỉ về tiếng Anh (English).",
+      "evidence": "WOMAN: Perfect. So the only other thing that's required is good communication skills, so you'll need to have a certificate in English.",
+      "keywords": [
+        "must have",
+        "a qualification in",
+        "required",
+        "a certificate in",
+        "English"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Location: (6) _____ Street",
+      "answer": "Wivenhoe",
+      "explanation": "Đáp án cần điền là một danh từ riêng chỉ tên đường. Trong băng, người nói đánh vần từng chữ cái W-I-V-E-N-H-O-E.",
+      "evidence": "WOMAN: OK. Let's have a look at the current job vacancies at Milo's. The first one is in Wivenhoe Street.\nMAN: Sorry, where?\nWOMAN: Wivenhoe. W-I-V-E-N-H-O-E. It's quite central, just off Cork Street.",
+      "keywords": [
+        "Location",
+        "Street",
+        "Wivenhoe Street"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "Responsibilities include: Making sure (7) _____ is clean",
+      "answer": "equipment",
+      "explanation": "Đáp án cần điền là một danh từ làm chủ ngữ cho mệnh đề, đằng sau là động từ 'is'. Trách nhiệm của nhân viên là cần đảm bảo chắc chắn rằng các thiết bị (equipment) sạch sẽ.",
+      "evidence": "WOMAN: So you're probably familiar with the kind of responsibilities involved. Obviously checking that all the portions are correct, etc., and then things like checking all the procedures for cleaning the equipment are being followed.",
+      "keywords": [
+        "Responsibilities include",
+        "Making sure",
+        "is clean",
+        "procedures for cleaning",
+        "equipment"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Pay and conditions: Starting salary (8) £_____ per hour",
+      "answer": "9.75",
+      "explanation": "Đáp án cần điền là một con số. Lương khởi điểm tại nhà hàng này là £9.75 mỗi giờ. (Lưu ý chỉ viết số 9.75, không viết kí tự £ vì đã có sẵn trong đề). Bẫy nằm ở con số £11.25 – đây là mức lương sau 3 tháng làm việc, không phải lương khởi điểm.",
+      "evidence": "WOMAN: Well, to begin with, you'd be getting £9.75 but that goes up to £11.25 after three months.",
+      "keywords": [
+        "Pay and conditions",
+        "Starting salary",
+        "per hour",
+        "to begin with",
+        "getting £9.75",
+        "goes up to £11.25"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Gap-fill",
+      "question_text": "Maintaining stock and organising (9) _____",
+      "answer": "deliveries",
+      "explanation": "Đáp án cần điền là một danh từ. Trách nhiệm của nhân viên là duy trì hàng trong kho và sắp xếp các đơn giao hàng (deliveries).",
+      "evidence": "WOMAN: Right, well obviously this role would involve supporting the sous chef and other senior staff. And you'd be responsible for making sure there's enough stock each week - and sorting out all the deliveries.",
+      "keywords": [
+        "Maintaining stock",
+        "organising",
+        "enough stock",
+        "sorting out",
+        "deliveries"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Gap-fill",
+      "question_text": "No work on a (10) _____ once a month",
+      "answer": "Sunday",
+      "explanation": "Đáp án cần điền là một danh từ chỉ thời gian, vì đứng sau giới từ 'on'. Nhân viên ở đây được nghỉ một ngày Chủ nhật (Sunday) mỗi tháng (every four weeks). Bẫy nằm ở thông tin 'closed on Mondays' - đây là lịch đóng cửa cố định hàng tuần của nhà hàng, không phải ngày nghỉ 1 lần/tháng của nhân viên.",
+      "evidence": "WOMAN: The usual, I think. There's a lot of evening and weekend work, but they're closed on Mondays. But you do get one Sunday off every four weeks. So would you like me to send off your ...",
+      "keywords": [
+        "No work",
+        "on a",
+        "once a month",
+        "closed on Mondays",
+        "one Sunday off",
+        "every four weeks"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Multiple choice",
+      "question_text": "What are the TWO main reasons why this site has been chosen for the housing development? (Reason 1)",
+      "answer": "B",
+      "explanation": "Địa điểm được chọn nhờ việc đi lại tiện lợi đến các cơ sở vật chất tại địa phương (bệnh viện cách 15km và trường cấp 2 gần hơn thế).",
+      "evidence": "We were more interested in the fact that there’s an excellent hospital just 15 kilometres away, and a large secondary school even closer than that.",
+      "keywords": [
+        "easy access",
+        "local facilities",
+        "hospital",
+        "secondary school"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 12,
+      "question_type": "Multiple choice",
+      "question_text": "What are the TWO main reasons why this site has been chosen for the housing development? (Reason 2)",
+      "answer": "E",
+      "explanation": "Địa điểm này rất tiện cho những người công nhân do trung tâm công nghiệp mới ở Nunston làm gia tăng nhu cầu nhà ở, giúp người lao động giảm quãng đường di chuyển đi làm.",
+      "evidence": "But because of the new industrial centre in Nunston, there’s a lot of demand for housing for employees in the region, as many employees are having to commute long distances at present.",
+      "keywords": [
+        "convenient",
+        "workers",
+        "demand for housing",
+        "employees",
+        "commute"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 13,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO aspects of the planned housing development have people given positive feedback about? (Aspect 1)",
+      "answer": "B",
+      "explanation": "Mọi người phản hồi tích cực về tác động môi trường khi dự án kết hợp hài hòa với các đặc điểm tự nhiên của cảnh quan, cũng như có điều khoản bảo vệ cây cối và động vật hoang dã.",
+      "evidence": "[...] it generally made a good impression and blended in well with the natural features of the landscape, with provision made for protecting trees and wildlife on the site",
+      "keywords": [
+        "impact on the environment",
+        "blended in well",
+        "natural features",
+        "protecting trees and wildlife"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO aspects of the planned housing development have people given positive feedback about? (Aspect 2)",
+      "answer": "C",
+      "explanation": "Mọi người phản hồi tích cực về khả năng thúc đẩy mối quan hệ tốt đẹp giữa các cư dân khi thiết kế và cơ sở vật chất giúp mọi người ở mọi lứa tuổi có thể chung sống hạnh phúc.",
+      "evidence": "Overall feedback has been that the design and facilities of the development make it seem a place where people of all ages can live together happily.",
+      "keywords": [
+        "encouragement",
+        "good relations",
+        "residents",
+        "people of all ages",
+        "live together happily"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Matching",
+      "question_text": "School",
+      "answer": "G",
+      "explanation": "Trường học nằm trên một con đường đi từ Lối vào phía Nam (South Entrance). Cụ thể, nó nằm ở góc rẽ thứ hai bên trái.",
+      "evidence": "If you look at the South Entrance at the bottom of the map, there’s a road from there that goes right up through the development. The school will be on that road, at the corner of the second turning to the left",
+      "keywords": [
+        "School",
+        "South Entrance",
+        "second turning to the left"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Matching",
+      "question_text": "Sports centre",
+      "answer": "C",
+      "explanation": "Trung tâm thể thao nằm ở phía Tây của khu vực phát triển, ngay bên dưới con đường rẽ nhánh từ Đường London (London Road).",
+      "evidence": "A large sports centre is planned with facilities for indoor and outdoor activities. This will be on the western side of the development, just below the road that branches off from London Road.",
+      "keywords": [
+        "Sports centre",
+        "western side",
+        "below the road",
+        "branches off from London Road"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching",
+      "question_text": "Clinic",
+      "answer": "D",
+      "explanation": "Phòng khám nằm ở phía dưới của cái hồ (Lake), phía bên phải của một dãy nhà.",
+      "evidence": "There’ll be a clinic where residents can go if they have any health problems. Can you seethe lake towards the top of the map? The clinic will be just below this, to the right of a street of houses.",
+      "keywords": [
+        "Clinic",
+        "below the lake",
+        "right of a street of houses"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching",
+      "question_text": "Community centre",
+      "answer": "B",
+      "explanation": "Trung tâm cộng đồng nằm ở phía Đông Bắc của khu vực phát triển, nằm ngay sát vách với dãy nhà dành riêng cho người cao tuổi (Housing for the elderly).",
+      "evidence": "There’ll also be a community centre for people of all ages. On the northeast side of the development, there’ll be a row of specially designed houses specifically for residents over 65 and the community centre will be adjoining this.",
+      "keywords": [
+        "Community centre",
+        "northeast side",
+        "residents over 65",
+        "adjoining"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Matching",
+      "question_text": "Supermarket",
+      "answer": "H",
+      "explanation": "Siêu thị nằm ở giữa 2 lối vào khu vực nhà ở mới, và nằm về phía Nam so với ba cái cây lớn gần Đường London.",
+      "evidence": "There’ll be a supermarket between the two entrances to the development. We’re planning to leave the three large trees near London Road, and it’ll be just to the south of these.",
+      "keywords": [
+        "Supermarket",
+        "between the two entrances",
+        "three large trees",
+        "south of these"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "Playground",
+      "answer": "A",
+      "explanation": "Sân chơi nằm ở vị trí khúc cua của con đường đi từ Lối vào phía Nam rẽ sang trái ở phía trên, và có tầm nhìn đẹp hướng ra hồ.",
+      "evidence": "If you look at the road that goes up from the South Entrance, you’ll see it curves round to the left at the top, and the playground will be in that curve, with nice views of the lake.",
+      "keywords": [
+        "Playground",
+        "South Entrance",
+        "curves round to the left",
+        "views of the lake"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Multiple choice",
+      "question_text": "Why do the students think the Laki eruption of 1783 is so important?",
+      "answer": "C",
+      "explanation": "Michelle nhận thấy điều quan trọng hơn (more significant) là vụ phun trào núi lửa Laki tác động trực tiếp và gián tiếp tới các sự kiện chính trị cũng như có hậu quả xã hội và kinh tế lớn (massive social and economic consequences). Adam cũng đồng tình đây là trọng tâm chính cho bài thuyết trình.",
+      "evidence": "MICHELLE: That’s right. But what I found more significant was how it impacted directly and indirectly on political events, as well as having massive social and economic consequences.\nADAM: I know. That should be the main focus of our presentation.",
+      "keywords": [
+        "students",
+        "Laki eruption",
+        "1783",
+        "so important",
+        "profound effect",
+        "society",
+        "political events",
+        "social and economic consequences"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 22,
+      "question_type": "Multiple choice",
+      "question_text": "What surprised Adam about observations made at the time?",
+      "answer": "A",
+      "explanation": "Adam ngạc nhiên vì thời điểm đó đã có rất nhiều trạm thời tiết được thành lập để ghi lại sự thay đổi của thời tiết theo giờ (\"was surprised there were so many weather stations established by that time\").",
+      "evidence": "ADAM: Yeah. I was surprised there were so many weather stations established by that time - so. you know, you can see how the weather changed, often by the hour.",
+      "keywords": [
+        "surprised",
+        "Adam",
+        "observations",
+        "at the time",
+        "number of places",
+        "weather stations"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 23,
+      "question_type": "Multiple choice",
+      "question_text": "According to Michelle, what did the contemporary sources say about the Laki haze?",
+      "answer": "B",
+      "explanation": "Báo cáo ở thời kỳ đó đổ lỗi cho hiện tượng sương mù Laki đã làm gia tăng các vấn đề sức khỏe như đau đầu, vấn đề hô hấp và các cơn hen suyễn (\"blamed the haze for an increase in headaches, respiratory issues and asthma attacks\").",
+      "evidence": "MICHELLE: Reports from the period blamed the haze for an increase in headaches, respiratory issues and asthma attacks [...]",
+      "keywords": [
+        "Michelle",
+        "contemporary sources",
+        "Laki haze",
+        "associated with",
+        "health issues",
+        "headaches",
+        "respiratory issues",
+        "asthma attacks"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 24,
+      "question_type": "Multiple choice",
+      "question_text": "Adam corrects Michelle when she claims that Benjamin Franklin",
+      "answer": "B",
+      "explanation": "Michelle nhận định Benjamin Franklin là người đầu tiên nhận ra nguyên nhân gây ra sương mù trước bất kỳ ai khác, nhưng Adam đã sửa lại rằng Benjamin Franklin thường được công nhận điều đó, nhưng thực ra một nhà tự nhiên học người Pháp đã phát hiện ra trước ông.",
+      "evidence": "MICHELLE: It was Benjamin Franklin who realised that before anyone else.\nADAM: He’s often credited with that, apparently. But a French naturalist beat him to it.",
+      "keywords": [
+        "Adam",
+        "corrects",
+        "Michelle",
+        "Benjamin Franklin",
+        "first to identify",
+        "reason",
+        "haze",
+        "credited",
+        "French naturalist",
+        "beat him to it"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 25,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO issues following the Laki eruption surprised the students? (First issue)",
+      "answer": "A",
+      "explanation": "Adam đề cập đến việc không ai ngờ rằng ảnh hưởng lại lan rộng (widespread) đến tận những nơi xa xôi như Bắc Mỹ và Bắc Phi, nơi cũng báo cáo các hiện tượng thời tiết kỳ lạ.",
+      "evidence": "ADAM: Mmm. You’d expect that - and the fact that the volcanic ash drifted so swiftly - but not that the effects would go on for so long. Or that two years after the eruption, strange weather events were being reported as far away as North America and North Africa.",
+      "keywords": [
+        "issues",
+        "Laki eruption",
+        "surprised",
+        "students",
+        "widespread",
+        "effects",
+        "as far away as",
+        "North America",
+        "North Africa"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 26,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO issues following the Laki eruption surprised the students? (Second issue)",
+      "answer": "B",
+      "explanation": "Adam bày tỏ sự ngạc nhiên khi ảnh hưởng của vụ phun trào núi lửa lại kéo dài lâu như vậy (long-lasting), ngay cả sau 2 năm từ khi phun trào các sự kiện thời tiết lạ vẫn được ghi nhận.",
+      "evidence": "ADAM: Mmm. You’d expect that - and the fact that the volcanic ash drifted so swiftly - but not that the effects would go on for so long. Or that two years after the eruption, strange weather events were being reported as far away as North America and North Africa.",
+      "keywords": [
+        "issues",
+        "Laki eruption",
+        "surprised",
+        "students",
+        "long-lasting",
+        "effects",
+        "go on for so long",
+        "two years after"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 27,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about the impact of the Laki eruption on Iceland?",
+      "answer": "D",
+      "explanation": "Tại Iceland, vật nuôi/gia súc (livestock) bị nhiễm độc do ăn thực vật bị nhiễm chất fluorine từ bụi núi lửa rơi xuống. Do đó tương ứng với phương án D (Animals suffered from a sickness).",
+      "evidence": "ADAM: Starting with Iceland, where the impact on farming was devastating.\nMICHELLE: Mmm. One of the most dramatic things there was the effect on livestock as they grazed in the fields. They were poisoned because they ate vegetation that had been contaminated with fluorine as a result of the volcanic fallout.",
+      "keywords": [
+        "Iceland",
+        "livestock",
+        "effect",
+        "poisoned",
+        "contaminated",
+        "fluorine",
+        "Animals suffered from a sickness"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about the impact of the Laki eruption on Egypt?",
+      "answer": "A",
+      "explanation": "Ở Ai Cập, hạn hán nghiêm trọng khiến mùa màng thất thu, dẫn đến nạn đói cướp đi nhiều sinh mạng hơn bất kỳ quốc gia nào khác. Do đó tương ứng với phương án A (This country suffered the most severe loss of life).",
+      "evidence": "ADAM: That was horrible. In Egypt, the bizarre weather patterns led to a severe drought and as a result the Nile didn’t flood, which meant the crops all failed.\nMICHELLE: It’s so far from where the eruption happened and yet the famine there led to more people dying than any other country.",
+      "keywords": [
+        "Egypt",
+        "drought",
+        "crops failed",
+        "famine",
+        "more people dying than any other country",
+        "loss of life"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about the impact of the Laki eruption on UK?",
+      "answer": "C",
+      "explanation": "Ở Anh, tỷ lệ tử vong (mortality rate) tăng gấp đôi so với mức bình thường, trong đó có tỷ lệ cao bất thường là những người dưới 25 tuổi. Do đó tương ứng với phương án C (There was a significant increase in deaths of young people).",
+      "evidence": "ADAM: OK. Then in the UK the mortality rate went up a lot - presumably from respiratory illnesses. According to one report it was about double the usual number and included an unusually high percentage of people under the age of 25.",
+      "keywords": [
+        "UK",
+        "mortality rate",
+        "went up",
+        "double",
+        "unusually high percentage",
+        "under the age of 25",
+        "deaths of young people"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about the impact of the Laki eruption on USA?",
+      "answer": "F",
+      "explanation": "Thời tiết ở Mỹ bị ảnh hưởng xấu với các hiện tượng tuyết bao phủ đến tận tháng 3 hay băng trôi trên sông Mississippi - điều chưa từng có tiền lệ. Do đó tương ứng với phương án F (It caused a particularly harsh winter).",
+      "evidence": "MICHELLE: Mmm. I think people will be surprised to hear that the weather in the USA was badly affected too. George Washington even makes a note in his diary that they were snowbound until March in Virginia. That was before he became president.\nADAM: Yes, and there was ice floating down the Mississippi, which was unprecedented",
+      "keywords": [
+        "USA",
+        "badly affected",
+        "snowbound",
+        "ice floating down",
+        "unprecedented",
+        "harsh winter"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Gap-fill",
+      "question_text": "Reason for choice of subject: They are 31 _____ but can be overlooked by consumers and designers.",
+      "answer": "convenient",
+      "explanation": "Từ cần điền là một tính từ (sau are), chỉ một đặc điểm của những chiếc túi, tuy nhiên chúng hay bị phớt lờ bởi người tiêu dùng và những nhà thiết kế. Trong audio, nội dung tương tự chỉ ra rằng không có gì tiện hơn (convenient) việc cho một chiếc túi để đặt thẻ tín dụng hay điện thoại vào. Tuy nhiên, chúng thường không được quan tâm lắm.",
+      "evidence": "I chose pockets for two reasons, really [...] nothing is quite as convenient as being able to pop your phone or credit card into your pocket. Yet, I suspect that, other than that, people don’t really think about pockets too much and they’re rather overlooked as a fashion item.",
+      "keywords": [
+        "choice of subject",
+        "convenient",
+        "overlooked",
+        "consumers",
+        "designers"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "Pockets in men’s clothes: Men started to wear 32 _____ in the 18th century.",
+      "answer": "suits",
+      "explanation": "Từ cần điền là một danh từ, chỉ một loại trang phục nam giới mặc ở thế kỷ 18. Trong audio, một loại trang phục được nhắc đến dành cho nam giới trong thời gian đó là đồ âu (suits).",
+      "evidence": "In the 18th century, fashions were quite different from the way they are now, and pockets were too. If we think about male fashion first [...] that was the time when suits became popular.",
+      "keywords": [
+        "men's clothes",
+        "started to wear",
+        "18th century",
+        "suits"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "A 33 _____ sewed pockets into the lining of the garments.",
+      "answer": "tailor",
+      "explanation": "Từ cần điền là một danh từ số ít, dự đoán là một đối tượng con người, do theo sau là hành động ‘may túi’. Trong audio, thông tin tương tự nói về việc may túi là chúng được may vào lớp vải bởi một thợ may (tailor) bất kì nào đó mà khách hàng lựa chọn.",
+      "evidence": "Trousers were knee-length only and referred to as ‘breeches’, the waistcoats were short and the jackets were long, but all three garments were lined with material and pockets were sewn into this cloth by whichever tailor the customer used.",
+      "keywords": [
+        "sewed pockets",
+        "lining",
+        "garments",
+        "tailor"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "The wearer could use the pockets for small items. Bigger pockets might be made for men who belonged to a certain type of 34 _____.",
+      "answer": "profession",
+      "explanation": "Từ cần điền là một danh từ, vì đứng sau giới từ of, chỉ ngành nghề của những người dùng túi. Audio cho thông tin rằng những chiếc túi to phù hợp với ai đó mà nghề nghiệp (profession) của họ yêu cầu mang nhiều vật dụng y tế.",
+      "evidence": "The wearer could then carry small objects such as pencils or coins on their person and reach them through a gap in the lining. Coat pockets [...] were often larger but plainer if the wearer was someone with a profession who needed to carry medical instruments – a doctor or physician, for example.",
+      "keywords": [
+        "wearer",
+        "small items",
+        "bigger pockets",
+        "certain type of",
+        "profession"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "Pockets in women’s clothes: Women’s pockets were less 35 _____ than men’s.",
+      "answer": "visible",
+      "explanation": "Từ cần điền là một tính từ, vì nằm trong cấu trúc so sánh hơn kém, mô tả những chiếc túi phụ nữ dùng. Trong audio, thông tin mô tả rằng những chiếc túi phụ nữ dùng không dễ thấy (visible) như của nam.",
+      "evidence": "The development of women’s pockets was a little different. For one thing, they weren’t nearly as visible or as easy to reach as men’s.",
+      "keywords": [
+        "women's pockets",
+        "less",
+        "than men's",
+        "visible"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "Women were very concerned about pickpockets. Pockets were produced in pairs using 36 _____ to link them together.",
+      "answer": "string",
+      "explanation": "Từ cần điền là một danh từ, chỉ một thứ gì đó dùng để buộc những chiếc túi được sản xuất theo từng cặp lại với nhau. Thông tin tương tự trong audio là dùng dây (string).",
+      "evidence": "Women were more vulnerable to theft and wealthy women, in particular, worried constantly about pickpockets. So – what they did was to have a pair of pockets made that were tied together with string.",
+      "keywords": [
+        "pickpockets",
+        "produced in pairs",
+        "link them together",
+        "string"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 37,
+      "question_type": "Gap-fill",
+      "question_text": "Pockets hung from the women’s 37 _____ under skirts and petticoats.",
+      "answer": "waist",
+      "explanation": "Từ cần điền là một danh từ, vì đứng sau sở hữu cách ‘s, nơi nào đó trên người phụ nữ mà những chiếc túi được treo vào, sao cho chúng nằm bên dưới những chiếc váy (lót) của họ. Thông tin tương ứng trong audio là waist.",
+      "evidence": "Women tied the pockets around their waist so that they hung beneath their clothes.",
+      "keywords": [
+        "hung from",
+        "women's",
+        "under skirts",
+        "petticoats",
+        "waist"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 38,
+      "question_type": "Gap-fill",
+      "question_text": "Items such as 38 _____ could be reached through a gap in the material.",
+      "answer": "perfume",
+      "explanation": "Từ cần điền là một danh từ, chỉ một món đồ có thể được với lấy thông qua một khe hở trong chất liệu. Trong audio, món đồ này là nước hoa (perfume).",
+      "evidence": "They would have an opening in the folds of their skirts through which they could reach whatever they needed, like their perfume.",
+      "keywords": [
+        "items such as",
+        "reached through a gap",
+        "material",
+        "perfume"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 39,
+      "question_type": "Gap-fill",
+      "question_text": "When dresses changed shape, hidden pockets had a negative effect on the 39 _____ of women.",
+      "answer": "image",
+      "explanation": "Từ cần điền là một danh từ, liên quan đến phụ nữ, bị ảnh hưởng xấu từ những chiếc túi khi những chiếc đầm bị thay đổi về kích cỡ. Trong audio, thông tin tương ứng nói rằng khi những chiếc váy trở nên chật hơn và bớt cồng kềnh, những cặp túi trở nên nổi bật quá mức và khiến hình ảnh (image) của người phụ nữ bị nhạt hòa đi.",
+      "evidence": "... when dresses became tighter and less bulky, and the pairs of pockets became very noticeable – they stood out too much and detracted from the woman’s image.",
+      "keywords": [
+        "dresses changed shape",
+        "hidden pockets",
+        "negative effect",
+        "image of women"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 40,
+      "question_type": "Gap-fill",
+      "question_text": "Bags called ‘pouches’ became popular, before women carried a 40 _____.",
+      "answer": "handbag",
+      "explanation": "Từ cần điền là một danh từ, chỉ một vật dụng phụ nữ mang theo, sau thời điểm mà những chiếc túi nhỏ (pouches) trở nên được ưa chuộng. Trong audio, những chiếc túi nhỏ này trở nên nổi tiếng và dẫn đến sự ra đời của túi xách tay (handbag) quen thuộc trong những thời kỳ hiện đại.",
+      "evidence": "That was when small bags, or pouches as they were known, came into fashion and, of course, they inevitably led on to the handbag of more modern times, particularly when fashion removed pockets altogether.",
+      "keywords": [
+        "pouches",
+        "became popular",
+        "before",
+        "carried",
+        "handbag"
+      ],
+      "skill": "listening",
+      "part": 4
+    }
+  ],
+  "reading": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Stage 1: the ditch and henge were dug, possibly using tools made from 1 _____",
+      "answer": "antlers",
+      "explanation": "Chỗ trống cần điền một danh từ đứng sau giới từ 'from', chỉ vật liệu được sử dụng để đào hào và xây dựng vòng tròn đá. Dựa vào Đoạn 2, người thời kỳ đồ đá đã dùng sừng hươu nai để đào hào.",
+      "evidence": "First, Neolithic Britons used primitive tools, which may have been fashioned out of deer antlers, to dig a massive circular ditch and bank, or henge.",
+      "keywords": [
+        "ditch",
+        "henge",
+        "tools",
+        "made from"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "Stage 1: 2 _____ may have been arranged in deep pits inside the circle",
+      "answer": "Timber posts",
+      "explanation": "Chỗ trống cần điền một danh từ làm chủ ngữ, chỉ những vật được đặt trong hố sâu trong vòng tròn. Dựa vào Đoạn 2, những cái hố sâu trong vòng tròn từng đặt những cột gỗ.",
+      "evidence": "Deep pits dating back to that era and located within the circle may have held a ring of timber posts, according to some scholars.",
+      "keywords": [
+        "arranged",
+        "deep pits",
+        "inside the circle"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "Stage 2: theories about the transportation of the bluestones: archaeological: builders used 3 _____ to make sledges and rollers",
+      "answer": "tree trunks",
+      "explanation": "Chỗ trống cần điền một danh từ chỉ vật liệu mà những người thợ sử dụng để tạo nên xe kéo và con lăn. Thợ xây dựng Stonehenge đã sử dụng thân cây để tạo ra xe kéo và con lăn.",
+      "evidence": "According to one long-standing theory, Stonehenge's builders fashioned sledges and rollers out of tree trunks to lug the bluestones from the Preseli Hills.",
+      "keywords": [
+        "builders",
+        "sledges",
+        "rollers"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "Stage 2: 4 _____ pulled them on giant baskets",
+      "answer": "oxen",
+      "explanation": "Chỗ trống cần điền một danh từ (dấu hiệu nhận biết là chủ ngữ), dùng để chỉ một ai đó/thứ gì đó kéo những viên đá trên những chiếc giỏ khổng lồ. Con bò đực đã chở những viên đá xám xanh, sử dụng những chiếc giỏ khổng lồ đặt trên tổ hợp ổ bi và tấm ván có rãnh dài.",
+      "evidence": "More recent archaeological hypotheses have them transporting the bluestones with supersized wicker baskets on a combination of ball bearings and long grooved planks, hauled by oxen.",
+      "keywords": [
+        "pulled",
+        "giant baskets"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "Stage 2: they were brought from Wales by 5 _____",
+      "answer": "glaciers",
+      "explanation": "Chỗ trống cần điền một danh từ hoặc danh từ động từ đứng sau giới từ 'by', dùng để chỉ đối tượng vận chuyển đá xám xanh của xứ Wales tới vùng đồng bằng Salisbury. Các nhà khoa học đó là sông băng chứ không phải con người là đối tượng chuyển đá.",
+      "evidence": "Challenging the classic image of industrious builders pushing, carting, rolling or hauling giant stones from faraway Wales, some scientists suggested that it was glaciers, not humans, that carried the bluestones to Salisbury Plain.",
+      "keywords": [
+        "brought from Wales",
+        "by"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Builders: a theory arose in the 17th century that its builders were Celtic 6 _____",
+      "answer": "druids",
+      "explanation": "Chỗ trống cần điền một danh từ đứng sau tính từ 'Celtic', dùng để chỉ nhóm người đã xây dựng nên Stonehenge. Vào thế kỷ 17, nhà khảo cổ học John Aubrey đã đưa ra giả thuyết Stonehenge là sản phẩm của những tu sĩ cổ đại người Xen-tơ.",
+      "evidence": "In the 17th century, archaeologist John Aubrey made the claim that Stonehenge was the work of druids, who had important religious, judicial and political roles in Celtic society.",
+      "keywords": [
+        "17th century",
+        "Celtic"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "Purpose: many experts agree it has been used as a 7 _____ site",
+      "answer": "burial",
+      "explanation": "Chỗ trống cần điền một tính từ hoặc danh từ đứng trước danh từ 'site', dùng để chỉ chức năng của một địa điểm nào đó mà Stonehenge được sử dụng trước đây. Phần lớn các học giả ngày nay cho rằng Stonehenge từng được sử dụng để làm nơi chôn cất.",
+      "evidence": "While there is consensus among the majority of modern scholars that Stonehenge once served the function of a burial ground, they have yet to determine what other purposes it had.",
+      "keywords": [
+        "experts agree",
+        "used as",
+        "site"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Purpose: in the 1960s, it was suggested that it worked as a kind of 8 _____",
+      "answer": "calendar",
+      "explanation": "Chỗ trống cần điền một danh từ đứng sau giới từ 'of', dùng để chỉ chức năng hoạt động của những khối đá này. Vào những năm 1960, nhà thiên văn học Gerald Hawkins cho rằng những khối đá cự thạch có chức năng vận hành như một loại lịch.",
+      "evidence": "In the 1960s, the astronomer Gerald Hawkins suggested that the cluster of megalithic stones operated as a form of calendar, with different points corresponding to astrological phenomena such as solstices, equinoxes and eclipses occurring at different times of the year.",
+      "keywords": [
+        "1960s",
+        "worked as",
+        "kind of"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "True-False-Not Given",
+      "question_text": "During the third phase of construction, sandstone slabs were placed in both the outer areas and the middle of the Stonehenge site.",
+      "answer": "TRUE",
+      "explanation": "Đoạn văn nêu rõ vào giai đoạn 3, các phiến đá sa thạch được đặt ở vị trí bên ngoài và ở giữa khu vực Stonehenge. Thông tin hoàn toàn trùng khớp.",
+      "evidence": "The third phase of construction took place around 2000 BCE. At this point, sandstone slabs - known as 'sarsens' - were arranged into an outer crescent or ring; some were assembled into the iconic three-pieced structures called trilithons that stand tall in the centre of Stonehenge.",
+      "keywords": [
+        "third phase of construction",
+        "sandstone slabs",
+        "outer areas",
+        "middle"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "True-False-Not Given",
+      "question_text": "There is scientific proof that the bluestones stood in the same spot until approximately 1600 BCE.",
+      "answer": "FALSE",
+      "explanation": "Bài đọc nói rằng việc định tuổi bằng phóng xạ carbon chỉ ra rằng những viên đá xám xanh đã được đổi vị trí vài lần, chứ không phải đứng yên một chỗ cho đến 1600 BCE.",
+      "evidence": "Radiocarbon dating has revealed that work continued at Stonehenge until roughly 1600 BCE, with the bluestones being repositioned multiple times.",
+      "keywords": [
+        "scientific proof",
+        "bluestones",
+        "same spot",
+        "1600 BCE"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "True-False-Not Given",
+      "question_text": "John Aubrey’s claim about Stonehenge was supported by 20th-century findings.",
+      "answer": "FALSE",
+      "explanation": "John Aubrey cho rằng Stonehenge là sản phẩm của tu sĩ Xen-tơ. Tuy nhiên, định tuổi bằng phóng xạ carbon chỉ ra rằng Stonehenge đã có ở vùng này từ trước đó hơn 1000 năm, trước khi người Xen-tơ đến đây. Do đó phát hiện thế kỷ 20 bác bỏ, không ủng hộ.",
+      "evidence": "In the 17th century, archaeologist John Aubrey made the claim that Stonehenge was the work of druids... However, in the mid-20th century, radiocarbon dating demonstrated that Stonehenge stood more than 1,000 years before the Celts inhabited the region.",
+      "keywords": [
+        "John Aubrey",
+        "claim",
+        "supported",
+        "20th-century findings"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 12,
+      "question_type": "True-False-Not Given",
+      "question_text": "Objects discovered at Stonehenge seem to indicate that it was constructed by a number of different groups of people.",
+      "answer": "NOT GIVEN",
+      "explanation": "Đoạn văn nói rằng nhiều nhà sử học và khảo cổ học hiện đại đồng ý rằng một số bộ tộc khác nhau đã đóng góp vào Stonehenge, nhưng không đề cập đến việc 'objects discovered at Stonehenge' (các hiện vật được tìm thấy) chỉ ra điều này.",
+      "evidence": "Many modern historians and archaeologists now agree that several distinct tribes of people contributed to Stonehenge, each undertaking a different...",
+      "keywords": [
+        "Objects discovered",
+        "constructed",
+        "different groups of people"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 13,
+      "question_type": "True-False-Not Given",
+      "question_text": "Câu hỏi số 13 (nếu có trong đề gốc)",
+      "answer": "NOT GIVEN",
+      "explanation": "Dữ liệu trang sách cung cấp từ câu 1 đến câu 12.",
+      "evidence": "Không có trong đoạn trích.",
+      "keywords": [],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "What point does the writer make about AI in the first paragraph?",
+      "answer": "C",
+      "explanation": "Đoạn 1 đề cập đến việc hiện tại AI có một vài hạn chế (narrow AI), nhưng các chuyên gia tin rằng giới hạn này chỉ là tạm thời và trong tương lai máy móc có thể đạt được hiệu suất ngang bằng con người trên mọi nhiệm vụ (AGI). Do đó, đáp án C (Tương lai không hẳn sẽ thấy các hạn chế về năng lực của AI) là chính xác.",
+      "evidence": "True, these prodigious accomplishments are all in so-called narrow AI, where machines perform highly specialized tasks. But many experts believe this restriction is very temporary. By mid-century, we may have artificial general intelligence (AGI) - machines that can achieve human-level performance on the full range of tasks that we ourselves can tackle.",
+      "keywords": [
+        "AI",
+        "first paragraph",
+        "point",
+        "writer"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Multiple choice",
+      "question_text": "What is the writer doing in the second paragraph?",
+      "answer": "A",
+      "explanation": "Đoạn 2 nêu rõ máy móc sẽ không bị ràng buộc bởi các hạn chế vật lý của trí tuệ con người như tốc độ xử lý hay kích thước não bộ, qua đó giải thích lý do tại sao máy móc có thể làm tốt hơn con người (outperform humans).",
+      "evidence": "Machines will be free of many of the physical constraints on human intelligence. Our brains run at slow biochemical processing speeds on the power of a light bulb, and their size is restricted by the dimensions of the human birth canal.",
+      "keywords": [
+        "writer doing",
+        "second paragraph"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Multiple choice",
+      "question_text": "Why does the writer mention the story of King Midas?",
+      "answer": "B",
+      "explanation": "Câu chuyện vua Midas được nhắc đến để minh họa cho việc các mục tiêu không được xác định rõ ràng sẽ dẫn đến hậu quả tồi tệ (yêu cầu mọi thứ chạm vào biến thành vàng nhưng quên mất bữa sáng), tương tự như việc AI có thể làm theo đúng mệnh lệnh nhưng gây ra thảm họa nếu mục tiêu không đồng nhất với giá trị con người.",
+      "evidence": "Folklore is full of tales of people who ask for the wrong thing, with disastrous consequences - King Midas, for example, might have wished that everything he touched turned to gold, but didn't really intend this to apply to his breakfast.",
+      "keywords": [
+        "King Midas",
+        "story",
+        "writer mention"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Multiple choice",
+      "question_text": "What challenge does the writer refer to in the fourth paragraph?",
+      "answer": "D",
+      "explanation": "Đoạn 4 chỉ ra thách thức là cần tạo ra các cỗ máy AI thân thiện với con người - tức là có các mục tiêu hoàn toàn phù hợp với giá trị của chính chúng ta, trong khi việc làm cho nhiệm vụ này trở nên khó khăn là điều chúng ta phải đối mặt.",
+      "evidence": "So we need to create powerful AI machines that are 'human-friendly' - that have goals reliably aligned with our own values. One thing that makes this task difficult is that we are far from reliably human-friendly ourselves.",
+      "keywords": [
+        "challenge",
+        "fourth paragraph"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Multiple choice",
+      "question_text": "What does the writer suggest about the future of AI in the fifth paragraph?",
+      "answer": "C",
+      "explanation": "Đoạn 5 nêu rằng AI sẽ đủ thông minh để ở vị thế đạo đức cao hơn và làm tốt hơn chúng ta trong việc tìm ra các giá trị đúng đắn, điều này đồng nghĩa với việc máy móc sẽ vượt trội hơn con người ở một số khía cạnh nhất định.",
+      "evidence": "Luckily they'll be smart enough for the job. If there are routes to the moral high ground, they’ll be better than us at finding them.",
+      "keywords": [
+        "future of AI",
+        "fifth paragraph"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Multiple choice",
+      "question_text": "Which of the following best summaries the writer's argument in the sixth paragraph?",
+      "answer": "D",
+      "explanation": "Đoạn 6 đề cập việc chúng ta cần nói cho máy móc biết những gì chúng ta đang tìm kiếm với độ rõ ràng đủ để tin rằng chúng sẽ tìm thấy, điều này khớp với việc những thiếu sót của con người khiến việc tạo ra máy móc theo nhu cầu trở nên khó khăn.",
+      "evidence": "[...] The 'getting started' problem is that we need to tell the machines what they're looking for with sufficient clarity that we can be confident they will find it - whatever 'it' actually turns out to be. This means that we are tribal creatures and conflicted about the ideals ourselves.",
+      "keywords": [
+        "Human shortcomings",
+        "creating the machines",
+        "difficult"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "Machines with the ability to make moral decisions may prevent us from promoting the interests of our communities",
+      "answer": "YES",
+      "explanation": "Đoạn 7 nêu rõ máy móc tốt hơn chúng ta trong việc tuân thủ các nguyên tắc đạo đức có thể ngăn chặn những lỗi lầm nhỏ, đồng thời ngăn chúng ta thúc đẩy lợi ích cho cộng đồng của mình.",
+      "evidence": "Machines who are better than us at sticking to the moral high ground may discourage some of the lapses we presently take for granted. We might lose our freedom to discriminate in favour of our own communities, for example.",
+      "keywords": [
+        "moral decisions",
+        "prevent us",
+        "interests of our communities"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "Silicon police would need to exist in large numbers in order to be effective",
+      "answer": "NOT GIVEN",
+      "explanation": "Mặc dù có nhắc đến khả năng làm việc hiệu quả của silicon police, bài đọc không nhắc đến việc chúng cần phải tồn tại với số lượng lớn.",
+      "evidence": "But are we ready for ethical silicon police limiting our options? They might be so good at doing it that we won't notice them; but few of us are likely to welcome such a future.",
+      "keywords": [
+        "Silicon police",
+        "exist in large numbers",
+        "effective"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 22,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "Many people are comfortable with the prospect of their independence being restricted by machines",
+      "answer": "NO",
+      "explanation": "Đoạn 8 nêu rõ 'few of us are likely to welcome such a future' (rất ít trong số chúng ta sẵn sàng chào đón tương lai bị giới hạn), trái ngược với việc 'nhiều người thoải mái' trong câu hỏi.",
+      "evidence": "They might be so good at doing it that we won't notice them; but few of us are likely to welcome such a future.",
+      "keywords": [
+        "Many people",
+        "comfortable",
+        "independence being restricted"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 23,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "If we want to ensure that machines act in our best interests, we all need to work together",
+      "answer": "YES",
+      "explanation": "Đoạn 10 chỉ ra rằng để định hướng máy móc phục vụ lợi ích tốt nhất của chúng ta, cần có tinh thần hợp tác và sẵn sàng đặt lợi ích cá nhân sang một bên.",
+      "evidence": "For our own safety, we need to point these new thinkers in the right direction, and get them to act well for us. It is not yet whether this is possible, but if it will require a cooperative spirit, and a willingness to set aside self-interest.",
+      "keywords": [
+        "machines act in our best interests",
+        "work together"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 24,
+      "question_type": "Summary Completion",
+      "question_text": "AI currently has a limited role in the way ______ are allocated in the health service.",
+      "answer": "C available resources",
+      "explanation": "Đoạn 9 nói về việc AI đã có sự can thiệp vào cách các nguồn lực được sử dụng trong National Health Service ở Anh, khớp với cụm từ 'available resources'.",
+      "evidence": "AI already has some input into how resources are used in our National Health Service (NHS) here in the UK, for example.",
+      "keywords": [
+        "AI currently",
+        "limited role",
+        "allocated",
+        "health service"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 25,
+      "question_type": "Summary Completion",
+      "question_text": "However, such a change would result, for example, in certain ______ not having their current level of ______.",
+      "answer": "A medical practitioners",
+      "explanation": "Câu hỏi tóm tắt dựa trên ý đoạn 9, nơi đề cập đến việc tước đoạt quyền kiểm soát mà một số người (ví dụ như các bác sĩ) đang có.",
+      "evidence": "However, we'd be depriving some humans (e.g. senior doctors) of the control they presently enjoy.",
+      "keywords": [
+        "change would result",
+        "certain",
+        "not having their current level"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 26,
+      "question_type": "Summary Completion",
+      "question_text": "However, such a change would result, for example, in certain medical practitioners not having their current level of ______.",
+      "answer": "control",
+      "explanation": "Điền từ chỉ mức độ mà các bác sĩ bị mất đi do sự thay đổi từ trí tuệ nhân tạo, đó chính là quyền kiểm soát ('control').",
+      "evidence": "However, we'd be depriving some humans (e.g. senior doctors) of the control they presently enjoy.",
+      "keywords": [
+        "medical practitioners",
+        "current level of"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 27,
+      "question_type": "True-False-Not Given",
+      "question_text": "People first referred to Leonardo da Vinci as a genius 500 years ago.",
+      "answer": "NOT GIVEN",
+      "explanation": "Bài đọc có đề cập tới việc Leonardo da Vinci gắn liền với từ genius nhưng không đề cập tới mọi người gắn biệt danh này cho ông lần đầu tiên vào thời gian 500 năm trước hay không.",
+      "evidence": "The word ‘genius’ is universally associated with the name of Leonardo da Vinci. A true Renaissance man, he embodied scientific spirit, artistic talent and humanist sensibilities.",
+      "keywords": [
+        "People",
+        "first referred to",
+        "Leonardo da Vinci",
+        "genius",
+        "500 years ago"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "True-False-Not Given",
+      "question_text": "The current climate crisis is predicted to cause more deaths than the plague.",
+      "answer": "NOT GIVEN",
+      "explanation": "Bài đọc đề cập tới dịch bệnh ở thế kỷ 14 và khủng hoảng khí hậu ở hiện tại nhưng không có sự so sánh cái nào gây ra nhiều cái chết hơn.",
+      "evidence": "The Renaissance marked the transition from the 15th century to modernity and took place after the spread of the plague in the 14th century . [...] Today, the world is on the cusp of a climate crisis, which is predicted to cause widespread displacement, extinctions and death, if left unaddressed.",
+      "keywords": [
+        "current climate crisis",
+        "predicted",
+        "cause more deaths",
+        "the plague"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "True-False-Not Given",
+      "question_text": "Some of the challenges we face today can be compared to those of earlier times.",
+      "answer": "TRUE",
+      "explanation": "Bài đọc có nhắc đến những vấn đề của cả quá khứ và hiện tại. Những vấn đề trong quá khứ gây ra nhiều vấn đề như chết chóc và những vấn đề ở hiện tại cũng có thể gây ra những vấn đề tương tự nếu không được giải quyết. Và cũng giống như ngày xưa, hiện tại chúng ta đang có kêu gọi giải pháp cho những vấn đề này.",
+      "evidence": "The Renaissance marked the transition from the 15th century to modernity and took place after the spread of the plague in the 14th century, which caused a global crisis resulting in some 200 million deaths across Europe and Asia. Today, the world is on the cusp of a climate crisis, which is predicted to cause widespread displacement, extinctions and death, if left unaddressed. Then, as now, radical solutions were called for [...]",
+      "keywords": [
+        "challenges",
+        "today",
+        "compared",
+        "earlier times"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "True-False-Not Given",
+      "question_text": "Leonardo da Vinci’s ‘ideal city’ was constructed in the 15th century.",
+      "answer": "FALSE",
+      "explanation": "Bài đọc có nhắc đến ideal city của Leonardo da Vinci vào thế kỷ 15. Tuy nhiên, do kinh phí quá lớn, dự án này không được thực hiện.",
+      "evidence": "Around 1486 -after a pestilence that killed half the population in Milan, Italy - Leonardo turned his thoughts to urban planning problems. Following a typical Renaissance trend, he began to work on an ‘ideal city’ project, which - due to its excessive costs - would remain unfulfilled.",
+      "keywords": [
+        "Leonardo da Vinci",
+        "ideal city",
+        "constructed",
+        "15th century"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "True-False-Not Given",
+      "question_text": "Poor town planning is a major contributor to climate change.",
+      "answer": "TRUE",
+      "explanation": "Thông tin của câu 31 được paraphrase lại y hệt trong bài đọc. Việc quản lý đô thị kém là nguyên nhân chính của biến đổi khí hậu.",
+      "evidence": "Yet given that unsustainable urban models are a key cause of global climate change today, it’s only natural to wonder how Leonardo might have changed the shape of modern cities.",
+      "keywords": [
+        "Poor town planning",
+        "major contributor",
+        "climate change"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 32,
+      "question_type": "True-False-Not Given",
+      "question_text": "In Renaissance times, local people fought against the changes to Pienza and Ferrara.",
+      "answer": "NOT GIVEN",
+      "explanation": "Bài viết có đề cập tới những thay đổi ở Pienza và Ferrara vào thời kỳ Renaissance. Tuy nhiên, bài đọc không đề cập tới những người dân địa phương có phản đối với sự thay đổi này hay không. Ở đây local people người dân địa phương (người phản đối dự án) và prominent Renaissance men những người lỗi lạc (người muốn xúc tiến dự án) là 2 đối tượng khác nhau.",
+      "evidence": "Although the Renaissance is renowned as an era of incredible progress in art and architecture, [...] The rigour and method behind the conscious conception of a city had been largely missing in Western thought until the moment when prominent Renaissance men pushed forward large-scale urban projects in Italy, such as the reconfiguration of the town of Pienza and the expansion of the city of Ferrara.",
+      "keywords": [
+        "Renaissance times",
+        "local people",
+        "fought against",
+        "changes",
+        "Pienza",
+        "Ferrara"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 33,
+      "question_type": "True-False-Not Given",
+      "question_text": "Leonardo da Vinci kept a neat, organised record of his designs.",
+      "answer": "FALSE",
+      "explanation": "Câu hỏi nói rằng những thiết kế của Leonardo được sắp xếp kỹ càng và ngăn nắp. Điều này trái ngược với thông tin trong bài đọc là thiếu ngăn nắp, trật tự.",
+      "evidence": "It is not easy to identify a coordinated vision of Leonardo’s ideal city because of his disordered way of working with notes and sketches.",
+      "keywords": [
+        "Leonardo da Vinci",
+        "kept",
+        "neat, organised record",
+        "his designs"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "This was to provide better 34 ______ for trade and a less polluted environment.",
+      "answer": "transport",
+      "explanation": "Từ cần điền là một danh từ vì trước đó có tính từ để so sánh hơn kém better. Danh từ này liên quan tới việc giúp cho giao thương, thương mại tốt hơn.",
+      "evidence": "He designed the city for the easy transport of goods and clean urban spaces, and he wanted a comfortable and spacious city, with well-ordered streets and architecture.",
+      "keywords": [
+        "better",
+        "trade",
+        "less polluted environment"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "They included features that can be seen in some tower blocks today, such as 35 ______ on the exterior of a building.",
+      "answer": "staircases",
+      "explanation": "Từ cần điền là một danh từ, nói về một cải tiến của Leonardo mà được áp dụng ở các tòa nhà chọc trời ở hiện tại. Cải tiến này có liên quan tới phần bên ngoài của tòa nhà.",
+      "evidence": "But, in keeping with his personality, Leonardo included several innovations in his urban design. Leonardo wanted the city to be built on several levels, linked with vertical outdoor staircases. This design can be seen in some of today’s high-rise buildings...",
+      "keywords": [
+        "features",
+        "can be seen",
+        "tower blocks today",
+        "exterior of a building"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "Leonardo da Vinci wasn’t only an architect. His expertise in 36 ______ was evident in his plans for artificial canals within his ideal city.",
+      "answer": "engineering",
+      "explanation": "Từ cần điền là một danh từ, nói về thế mạnh của Leonardo bên cạnh kiến trúc. Trong bài đọc nhắc tới đó là kỹ sư.",
+      "evidence": "But the true originality of Leonardo’s vision was its fusion of architecture and engineering. Leonardo designed extensive hydraulic plants to create artificial canals throughout the city.",
+      "keywords": [
+        "Leonardo da Vinci",
+        "architect",
+        "expertise",
+        "artificial canals",
+        "ideal city"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 37,
+      "question_type": "Gap-fill",
+      "question_text": "He also believed that the height of houses should relate to the width of streets in case earthquakes occurred. The design of many cities in Italy today follows this 37 ______ .",
+      "answer": "rule",
+      "explanation": "Từ cần điền ở đây là một danh từ số ít, vì phía trước có từ hạn định this. Đây là một điều mà các thành phố của Italy đều tuân theo, có liên quan tới chiều dài tòa nhà, chiều rộng của phố và việc giảm thiệt hại từ động đất.",
+      "evidence": "Leonardo also thought that the width of the streets ought to match the average height of the adjacent houses: a rule still followed in many contemporary cities across Italy, to allow access to sun and reduce the risk of damage from earthquakes.",
+      "keywords": [
+        "height of houses",
+        "width of streets",
+        "earthquakes",
+        "many cities in Italy",
+        "follows this"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 38,
+      "question_type": "Gap-fill",
+      "question_text": "While some cities from 38 ______ times have aspects that can also be found in Leonardo’s designs, his ideas weren’t put into practice until long after his death.",
+      "answer": "Roman",
+      "explanation": "Từ cần điền là một tính từ chỉ thời gian, nói về thời kỳ mà một số chi tiết trong thiết kế của Leonardo được tìm thấy ở các thành phố. Lưu ý: Trong bài nói rằng, ý tưởng của Leonardo không thực sự được áp dụng sau cái chết của ông nhiều năm. Ở đoạn 1, tác giả có đề cập Leonardo qua đời 500 năm trước (tức thế kỷ 15), còn đoạn 8 lại nói ý tưởng không được áp dụng cho tới thế kỷ 19 (tức nhiều năm sau khi Leonardo đã qua đời).",
+      "evidence": "Although some of these features existed in Roman cities, before Leonardo’s drawings there had never been a multi-level, compact modern city... Indeed, it wasn’t until the 19th century that some of his ideas were applied.",
+      "keywords": [
+        "cities",
+        "times",
+        "aspects",
+        "found in Leonardo's designs",
+        "put into practice"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 39,
+      "question_type": "Gap-fill",
+      "question_text": "39 ______ is one example of a city that was redesigned in the 19th century in the way that Leonardo had envisaged.",
+      "answer": "Paris",
+      "explanation": "Từ cần điền ở đây là một danh từ riêng chỉ thành phố. Thành phố này được xây dựng lại vào thế kỷ 19 mà ý tưởng được nó đã được Leonardo dự đoán từ trước.",
+      "evidence": "For example, the subdivision of the city by function... is an idea that can be found in Georges-Eugene Haussmann’s renovation of Paris under Emperor Napoleon III between 1853 and 1870.",
+      "keywords": [
+        "one example",
+        "city",
+        "redesigned",
+        "19th century",
+        "envisaged"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 40,
+      "question_type": "Gap-fill",
+      "question_text": "His ideas are also relevant to today’s world, where building 40 ______ no longer seems to be the best approach.",
+      "answer": "onwards",
+      "explanation": "Từ cần điền là một trạng từ, vì đứng sau động từ build, nói về một cách thức xây dựng mà ở xã hội hiện đại không còn phù hợp nữa. Bài đọc sử dụng từ instead of để nói đây là cách đã bị thay thế, không còn phù hợp.",
+      "evidence": "Today, Leonardo’s ideas are not simply valid, they actually suggest a way forward for urban planning. Many scholars think that the compact city, built upwards instead of outwards, integrated with nature...",
+      "keywords": [
+        "His ideas",
+        "relevant to today's world",
+        "building",
+        "no longer",
+        "best approach"
+      ],
+      "skill": "reading",
+      "part": 3
+    }
+  ],
+  "extracted_at": "2026-10-22 22:08:06"
+}

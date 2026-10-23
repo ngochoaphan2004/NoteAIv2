@@ -57,3 +57,19 @@ def get_llm_status():
     from app.services.llm_service import llm_service
     return llm_service.get_status()
 
+@router.post("/writing/evaluate-diff")
+def evaluate_writing_inline_diff(
+    attempt_text: str = Body(..., embed=True),
+    task_num: int = Body(1, embed=True),
+    source_file: Optional[str] = Body(None, embed=True)
+):
+    """
+    Endpoint chuyên biệt sinh Inline Visual Diff cho bài viết IELTS Writing.
+    Trả về cấu trúc từng câu với các cụm 🔴 ~~lỗi~~ -> 🟢 **sửa** kèm HTML render sẵn và flashcard candidates.
+    """
+    from app.services.writing_evaluator import writing_evaluator
+    if not attempt_text.strip():
+        raise HTTPException(status_code=400, detail="Văn bản bài viết không được để trống.")
+    
+    return writing_evaluator.evaluate_essay(attempt_text, task_num=task_num)
+

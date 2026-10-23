@@ -45,6 +45,38 @@ async function callApi(path: string, options: RequestInit): Promise<Response> {
   throw lastError || new Error("Không thể kết nối đến máy chủ backend.");
 }
 
+async function copyToClipboard(text: string): Promise<boolean> {
+  // 1. Thử dùng Clipboard API hiện đại nếu môi trường hỗ trợ (HTTPS / Localhost)
+  if (navigator?.clipboard && typeof navigator.clipboard.writeText === "function") {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
+      console.warn("navigator.clipboard.writeText bị từ chối, chuyển sang execCommand fallback:", e);
+    }
+  }
+
+  // 2. Fallback đáng tin cậy với textarea ẩn + execCommand('copy') cho HTTP / iframe / Direct IP
+  try {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "-9999px";
+    textArea.style.opacity = "0";
+    textArea.setAttribute("readonly", "");
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    const successful = document.execCommand("copy");
+    textArea.remove();
+    return successful;
+  } catch (err) {
+    console.error("Lỗi khi sao chép clipboard:", err);
+    return false;
+  }
+}
+
 document.addEventListener("nav", () => {
   const slug = getPageSlug();
   const activeTimers: number[] = [];
@@ -255,7 +287,11 @@ document.addEventListener("nav", () => {
         `👉 Nhờ bạn đối soát, nhận xét theo 4 tiêu chí chấm điểm IELTS Writing (TR/TA, CC, LR, GRA) và gợi ý các cụm từ nâng cấp tự nhiên!`,
       ].join("\n");
 
-      navigator.clipboard.writeText(promptPayload).then(() => {
+      copyToClipboard(promptPayload).then((success) => {
+        if (!success) {
+          alert("Không thể tự động sao chép. Hãy chọn bài làm và sao chép thủ công.");
+          return;
+        }
         const origText = btnCopy.textContent;
         btnCopy.textContent = "✅ Đã Sao Chép! Hãy dán vào chat";
         btnCopy.classList.add("ielts-btn-success");
@@ -372,18 +408,58 @@ document.addEventListener("nav", () => {
         if (aiResponseContainer) {
           const words = (text.match(/\b[\w'-]+\b/g) || []).length;
           const drills = result.recommended_drills || [];
+          const editsCount = result.edits_count ?? 0;
+          const hasDiff = Boolean(result.diff_html);
+
+          let diffContentHtml = "";
+          if (hasDiff) {
+            diffContentHtml = `
+              <div class="ielts-diff-tab-bar">
+                <button type="button" class="ielts-diff-tab-btn active" data-tab="diff">
+                  🔴🟢 Bản Sửa Trực Quan (${editsCount} điểm sửa)
+                </button>
+                <button type="button" class="ielts-diff-tab-btn" data-tab="clean">
+                  🌟 Bản Viết Lại Hoàn Chỉnh
+                </button>
+                <button type="button" class="ielts-diff-tab-btn" data-tab="rubric">
+                  📊 Nhận Xét 4 Tiêu Chí IELTS
+                </button>
+              </div>
+
+              <div class="ielts-diff-panel ielts-diff-panel-diff">
+                <div class="ielts-diff-view-content">
+                  ${result.diff_html}
+                </div>
+              </div>
+
+              <div class="ielts-diff-panel ielts-diff-panel-clean" style="display: none;">
+                <div class="ielts-diff-clean-box">${result.clean_rewritten_text || ""}</div>
+              </div>
+
+              <div class="ielts-diff-panel ielts-diff-panel-rubric" style="display: none;">
+                ${result.feedback ? `<div class="ielts-ai-feedback-box" style="padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; white-space: pre-line;"><div>${result.feedback}</div></div>` : ""}
+              </div>
+            `;
+          } else if (result.feedback) {
+            diffContentHtml = `
+              <div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; white-space: pre-line;"><div style="font-weight:700; color:var(--secondary); margin-bottom:0.35rem;">💡 Nhận Xét & Đánh Giá 4 Tiêu Chí Từ AI:</div><div>${result.feedback}</div></div>
+            `;
+          }
+
           aiResponseContainer.innerHTML = `
             <div class="ielts-ai-banner ielts-ai-banner-success">
               <span style="font-size: 1.5rem;">🎉</span>
               <div>
-                <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">AI Đã Tiếp Nhận Bài Viết Thành Công</div>
+                <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">AI Đã Tiếp Nhận & Sửa Bài Viết Thành Công</div>
                 <div style="font-size: 0.82rem; margin-top: 3px;">
-                  Độ dài: <strong>${words} từ</strong> &bull; Trạng thái: <strong>Đã ghi nhận bài làm vào hệ thống PKM</strong>
+                  Độ dài: <strong>${words} từ</strong> &bull; Điểm cải thiện: <strong>${editsCount} cụm từ nâng cấp</strong>
                 </div>
                 ${result.updated_file ? `<div style="margin-top: 4px; font-size: 0.8rem; color: #15803d; font-weight: 600;">📁 Đã đồng bộ vào: <code>${result.updated_file}</code></div>` : ""}
               </div>
             </div>
-            ${result.feedback ? `<div class="ielts-ai-feedback-box" style="margin-top: 0.75rem; padding: 0.85rem; background: var(--light); border: 1px solid var(--lightgray); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; white-space: pre-line;"><div style="font-weight:700; color:var(--secondary); margin-bottom:0.35rem;">💡 Nhận Xét & Đánh Giá 4 Tiêu Chí Từ AI:</div><div>${result.feedback}</div></div>` : ""}
+            
+            ${diffContentHtml}
+
             ${
               drills.length > 0
                 ? `
@@ -405,6 +481,24 @@ document.addEventListener("nav", () => {
           aiResponseContainer.scrollIntoView({
             behavior: "smooth",
             block: "nearest",
+          });
+
+          // Bind tab click events
+          const tabButtons = aiResponseContainer.querySelectorAll<HTMLButtonElement>(".ielts-diff-tab-btn");
+          const panels = aiResponseContainer.querySelectorAll<HTMLElement>(".ielts-diff-panel");
+          tabButtons.forEach((tabBtn) => {
+            tabBtn.addEventListener("click", () => {
+              const tab = tabBtn.dataset.tab;
+              tabButtons.forEach((b) => b.classList.remove("active"));
+              tabBtn.classList.add("active");
+              panels.forEach((p) => {
+                if (p.classList.contains(`ielts-diff-panel-${tab}`)) {
+                  p.style.display = "block";
+                } else {
+                  p.style.display = "none";
+                }
+              });
+            });
           });
 
           const btnClose = aiResponseContainer.querySelector(
@@ -750,10 +844,11 @@ document.addEventListener("nav", () => {
               <table class="ielts-ai-table">
                 <thead>
                   <tr>
-                    <th style="width: 50px; text-align: center;">Câu</th>
+                    <th style="width: 45px; text-align: center;">Câu</th>
                     <th>Đáp Án Của Bạn</th>
-                    <th style="width: 120px;">Trạng Thái</th>
-                    <th>Ghi Chú Phân Tích</th>
+                    <th>Đáp Án Chuẩn</th>
+                    <th style="width: 100px; text-align: center;">Trạng Thái</th>
+                    <th>Giải Thích & Bẫy Đề Thi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -766,7 +861,10 @@ document.addEventListener("nav", () => {
                         q.user_answer ||
                         '<span style="color:#8e8e93; font-style:italic;">(bỏ trống)</span>'
                       }</td>
-                      <td>
+                      <td style="font-family: monospace; font-weight: 700; color: var(--secondary);">${
+                        q.correct_answer || '<span style="color:#8e8e93; font-style:italic;">—</span>'
+                      }</td>
+                      <td style="text-align: center;">
                         ${
                           q.is_correct === true
                             ? '<span style="color:#34c759; font-weight:700;">✅ Đúng</span>'
@@ -776,7 +874,7 @@ document.addEventListener("nav", () => {
                         }
                       </td>
                       <td style="color: var(--darkgray); font-size: 0.78rem;">${
-                        q.trap_type || q.explanation || "—"
+                        (q.trap_type ? `<strong>[${q.trap_type}]</strong> ` : '') + (q.explanation || "—")
                       }</td>
                     </tr>
                   `,
@@ -955,7 +1053,11 @@ document.addEventListener("nav", () => {
         `👉 Nhờ bạn lưu trữ bài làm này vào bảng đối soát của hệ thống!`,
       ].join("\n");
 
-      navigator.clipboard.writeText(promptPayload).then(() => {
+      copyToClipboard(promptPayload).then((success) => {
+        if (!success) {
+          alert("Không thể tự động sao chép. Hãy chọn nội dung và sao chép thủ công.");
+          return;
+        }
         const origText = btnCopy.textContent;
         btnCopy.textContent = "✅ Đã Sao Chép Shorthand!";
         btnCopy.classList.add("ielts-btn-success");

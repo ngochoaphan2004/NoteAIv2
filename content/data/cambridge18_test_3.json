@@ -1,0 +1,1252 @@
+{
+  "test": 3,
+  "title": "Cambridge IELTS 18 - Test 3",
+  "listening": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Home address: (1) _____ Street, Peacetown",
+      "answer": "Marrowfield",
+      "explanation": "Từ cần điền là một danh từ chỉ tên đường. Theo như spelling trong script, tên đường được đánh vần là M-A double R-O-W-F-I-E-L-D.",
+      "evidence": "DAN: It’s Marrowfield Street. / BREDA: Is that M-A double R-O-W-F-I-E-L-D?",
+      "keywords": [
+        "Home address",
+        "Street",
+        "Peacetown"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "Heard about us: from a (2) _____",
+      "answer": "relative",
+      "explanation": "Đáp án cần điền là một danh từ chỉ nguồn thông tin giúp Dan biết tới câu lạc bộ. Dan nói rằng mình hay tìm thông tin trên mạng, nhưng lần này Dan biết đến câu lạc bộ khi đang nói chuyện với một người hàng và anh ấy đã gợi ý nó.",
+      "evidence": "BREDA: So how did you hear about our club? Did you look on the internet? / DAN: I usually do that, but this time, well, I was talking to a relative the other day and he suggested it.",
+      "keywords": [
+        "Heard about us",
+        "from a"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "Reasons for joining: - to enter competition - to (3) _____",
+      "answer": "socialise",
+      "explanation": "Đáp án cần điền là một động từ nguyên thể (do đứng sau “to”) chỉ lý do tham gia vào câu lạc bộ. Lý do thứ nhất là tham gia vào các cuộc thi (to enter competition), lý do thứ hai là để giao tiếp với những thợ chụp ảnh khác.",
+      "evidence": "BREDA: OK. So what do you hope to get from joining? / DAN: Well, one thing that really interests me is the competitions that you have. I enjoy entering those. / BREDA: Right. Anything else? / DAN: Well, also like to socialise with other photographers.",
+      "keywords": [
+        "Reasons for joining",
+        "enter competition"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "Type of membership: (4) _____ membership (£30)",
+      "answer": "full",
+      "explanation": "Đáp án cần điền là một tính từ đứng trước danh từ “membership”. Ở đây, Breda nhắc đến 2 loại tư cách thành viên: full membership (thành viên chính thức) - £30 và associate (cộng tác viên) - £20. Dan chọn làm thành viên chính thức.",
+      "evidence": "BREDA: It’s £30 a year for full membership or £20 a year if you’re an associate. / DAN: I think I’ll go for the full membership, then.",
+      "keywords": [
+        "Type of membership",
+        "membership",
+        "£30"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "Title of competition (5) _____",
+      "answer": "Domestic Life",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ chủ đề của cuộc thi. Theo lời của Dan, cuộc thi thứ nhất được đặt tiêu đề là ‘Domestic Life’.",
+      "evidence": "DAN: Well, the theme was entitled ‘Domestic Life’.",
+      "keywords": [
+        "Title of competition"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Instructions: Scene must show some (6) _____",
+      "answer": "clouds",
+      "explanation": "Đáp án cần điền là một danh từ chỉ sự vật mà phải xuất hiện trong cảnh. Ở đây, theo hướng dẫn, cảnh phải bao gồm những đám mây. Vì “đám mây” là danh từ đếm được nên khi đứng sau “some” phải chuyển thành số nhiều.",
+      "evidence": "DAN: Yes. The instructions were to capture the clouds as well - it couldn't just be blue sky and a setting sun.",
+      "keywords": [
+        "Instructions",
+        "Scene must show",
+        "some"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "The (7) _____ was wrong.",
+      "answer": "timing",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ một lỗi sai trong bài dự thi của Dan. Theo lời của Breda, thời gian không chính xác.",
+      "evidence": "DAN: Yeah — and I thought I’d done that well, but the feedback was that I should have waited a bit longer to get the shot. / BREDA: I see. So the timing wasn’t right.",
+      "keywords": [
+        "The",
+        "was wrong"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Title of competition (8) _____",
+      "answer": "Animal Magic",
+      "explanation": "Đáp án cần điền là tiêu đề của cuộc thi thứ ba. Theo lời của Dan, cuộc thi thứ ba mà Dan tham gia có tên gọi là ‘Animal Magic’.",
+      "evidence": "DAN: Yes — I took it too soon, basically. And then the third competition I entered was called ‘Animal Magic’.",
+      "keywords": [
+        "Title of competition"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Gap-fill",
+      "question_text": "Scene must show (9) _____",
+      "answer": "movement",
+      "explanation": "Đáp án cần điền là một danh từ chỉ sự vật mà phải xuất hiện trong cảnh. Ở đây, vì động vật luôn luôn vận động nên cái cần ghi lại là chuyển động của động vật.",
+      "evidence": "BREDA: I’m sure — because animals move all the time. / DAN: That's what we had to show — there had to be some movement in the scene.",
+      "keywords": [
+        "Scene must show"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Gap-fill",
+      "question_text": "The photograph was too (10) _____.",
+      "answer": "dark",
+      "explanation": "Đáp án cần điền là một tính từ bổ sung tính chất cho chủ ngữ “photograph”, vì đứng sau động từ to be “was”. Theo lời của Dan, Dan đã có một bức ảnh của một con cáo, nhưng do chụp vào ban đêm nên bức ảnh hơi tối.",
+      "evidence": "DAN: I got a great shot of a fox in the end, but I took it at night and, well, I suspected that it was a bit dark, which is what I was told.",
+      "keywords": [
+        "The photograph",
+        "was too"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO warnings does Dan give about picking mushrooms?",
+      "answer": "B",
+      "explanation": "Đáp án B: Don't pick mushrooms near busy roads (Đừng hái nấm mọc cạnh những con đường đông đúc). Trong bài nói, Dan đề cập việc cần tránh hái nấm mọc bên cạnh những con đường đông đúc vì lý do an toàn.\n\nPhân tích bẫy/phương án nhiễu:\n- A: Don't pick more than one variety of mushroom at a time -> NOT GIVEN (Bài đọc không đề cập đến số lượng loại nấm được hái trong cùng một thời điểm).\n- D: Don't eat mushrooms while picking them -> NOT GIVEN (Bài nói chỉ đề cập không ăn nấm do bạn bè/hàng xóm cho, không nói đến việc vừa hái vừa ăn).\n- E: Don't pick old mushrooms -> NOT GIVEN (Bài chỉ đề cập nấm bán ở cửa hàng thường là nấm cũ/đã để nhiều ngày, không khuyên không nên hái nấm già).",
+      "evidence": "The other thing to avoid is mushrooms growing beside busy roads for obvious reasons.",
+      "keywords": [
+        "warnings",
+        "picking mushrooms",
+        "avoid",
+        "beside busy roads"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 12,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO warnings does Dan give about picking mushrooms?",
+      "answer": "C",
+      "explanation": "Đáp án C: Don't eat mushrooms given to you (Đừng ăn nấm được người khác đưa cho bạn). Dan đưa ra lời khuyên không nên ăn nấm do bạn bè hoặc hàng xóm hái.",
+      "evidence": "But of course, you have to be very careful and that's why I always say you should never consume mushrooms picked by friends or neighbours",
+      "keywords": [
+        "warnings",
+        "picking mushrooms",
+        "never consume",
+        "picked by friends or neighbours"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 13,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO ideas about wild mushrooms does Dan say are correct?",
+      "answer": "B",
+      "explanation": "Đáp án B: Mushrooms eaten by animals may be unsafe (Loại nấm mà động vật ăn chưa chắc đã an toàn). Dan giải thích rằng việc hươu hay sóc ăn một loại nấm nào đó không có nghĩa là con người cũng có thể ăn được.\n\nPhân tích bẫy/phương án nhiễu:\n- A: Mushrooms should always be peeled before eating -> FALSE (Bài nói rõ không cần thiết phải gọt/bóc vỏ nấm: 'it's not necessary to peel them').\n- C: Cooking destroys toxins in mushrooms -> FALSE (Dan chỉ chia sẻ cá nhân anh ấy thích ăn nấm nấu chín chứ không nói việc nấu chín giúp loại bỏ độc tố).",
+      "evidence": "Finally, just because deer or squirrels eat a particular mushroom doesn't mean that you can.",
+      "keywords": [
+        "wild mushrooms",
+        "eaten by animals",
+        "unsafe",
+        "deer or squirrels"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO ideas about wild mushrooms does Dan say are correct?",
+      "answer": "D",
+      "explanation": "Đáp án D: Brightly coloured mushrooms can be edible (Những loại nấm có màu sắc sặc sỡ có thể ăn được). Dan bác bỏ quan niệm chỉ nấm màu nhạt/tối mới ăn được và đưa ra ví dụ một số loại nấm ăn được có màu đỏ rực.",
+      "evidence": "[...] it's only OK to eat mushrooms that are pale or dull - this is completely untrue. Some edible mushrooms are bright red, for example.",
+      "keywords": [
+        "wild mushrooms",
+        "brightly coloured",
+        "edible",
+        "bright red"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Multiple choice",
+      "question_text": "What advice does Dan give about picking mushrooms in parks?",
+      "answer": "C",
+      "explanation": "Đáp án C đúng vì Dan khuyên nên đến sớm ('need to be there first thing in the morning') do có nhiều sự cạnh tranh từ cả con người và động vật hoang dã. Đáp án A là FALSE vì khu vực nhiều cây cối (wooded areas) chỉ là một địa điểm được liệt kê chứ không phải lời khuyên. Đáp án B là NOT GIVEN vì bài chỉ nói loài nai thường đi kiếm nấm ở công viên gần nhà chứ không bảo không được làm phiền động vật.",
+      "evidence": "But you need to be there first thing in the morning, as there's likely be a lot of competition - not just from people but wildlife too.",
+      "keywords": [
+        "advice",
+        "Dan give",
+        "picking mushrooms",
+        "parks",
+        "Get there early"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Multiple choice",
+      "question_text": "Dan says it is a good idea for beginners to",
+      "answer": "B",
+      "explanation": "Đáp án B đúng vì Dan khuyên người mới bắt đầu nên tham gia cùng một nhóm do chuyên gia dẫn dắt ('should go with a group led by an expert'). Đáp án A là FALSE vì ứng dụng điện thoại không thể luôn tin tưởng được khi ở giữa rừng tín hiệu kém. Đáp án C là FALSE vì tác giả không khuyến khích việc đi một mình hoặc phụ thuộc vào hình ảnh trong sách.",
+      "evidence": "If possible, you should go with a group led by an expert",
+      "keywords": [
+        "good idea",
+        "beginners",
+        "join a group"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Multiple choice",
+      "question_text": "What does Dan say is important for conservation?",
+      "answer": "B",
+      "explanation": "Đáp án B đúng vì Dan khuyên không bao giờ hái tất cả nấm ở một khu vực mà chỉ thu thập đủ lượng phù hợp với nhu cầu cá nhân ('collect only enough for your own needs'). Đáp án A là NOT GIVEN vì bài chỉ lưu ý không giẫm lên nấm con chứ không nói chỉ hái nấm trưởng thành. Đáp án C là NOT GIVEN vì bài chỉ yêu cầu không hái các loại nấm có nguy cơ tuyệt chủng chứ không bảo tránh những khu vực nấm hiếm.",
+      "evidence": "You should never pick all the mushrooms in one area - collect only enough for your own needs.",
+      "keywords": [
+        "important",
+        "conservation",
+        "picking a limited amount of mushrooms"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Multiple choice",
+      "question_text": "According to Dan, some varieties of wild mushrooms are in decline because there is",
+      "answer": "C",
+      "explanation": "Đáp án C đúng vì lý do lớn nhất khiến nấm dại suy giảm là có quá nhiều nhà mới được xây dựng ở địa phương trong 10 năm qua ('so many new houses have been built in this area'). Đáp án A là FALSE vì nhu cầu từ nhà hàng không phải là nguyên nhân lớn nhất. Đáp án B là NOT GIVEN vì việc khai thác nước từ sông/hồ chứa là do xây nhà chứ không đề cập đến lượng mưa.",
+      "evidence": "[...] the biggest problem is that so many new houses have been built in this area in the last ten years",
+      "keywords": [
+        "varieties of wild mushrooms",
+        "in decline",
+        "rise in building developments locally"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Multiple choice",
+      "question_text": "Dan says that when storing mushrooms, people should",
+      "answer": "A",
+      "explanation": "Đáp án A đúng vì Dan nói nên cho nấm vào túi giấy nâu và để trong tủ lạnh, nấm sẽ bảo quản tốt trong khoảng 2 ngày ('put them in the fridge. They'll be fine for a couple of days'). Đáp án B là FALSE vì để trong tủ lạnh chứ không phải phòng tối. Đáp án C là NOT GIVEN vì bài chỉ nhắc rửa nấm cẩn thận trước khi nấu chứ không đề cập đến việc để nguyên nấm sau khi rửa.",
+      "evidence": "Collect them in a brown paper bag and as soon as you get home, put them in the fridge. They'll be fine for a couple of days, but it's best to cook them as soon as possible [..].",
+      "keywords": [
+        "storing mushrooms",
+        "keep them in the fridge",
+        "no more than two days"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Multiple choice",
+      "question_text": "What does Dan say about trying new varieties of mushrooms?",
+      "answer": "A",
+      "explanation": "Đáp án A đúng vì Dan đề xuất thử nghiệm nấm trong nhiều món ăn khác nhau như món xào, risotto, mì ý ('great in so many dishes - stir fries, risottos, pasta'). Đáp án B là FALSE vì bài chỉ lưu ý một số người có thể dị ứng/mẫn cảm với một số loại nấm chứ không đề cập đến vị mạnh.",
+      "evidence": "They're great in so many dishes - stir fries, risottos, pasta.",
+      "keywords": [
+        "trying new varieties of mushrooms",
+        "Experiment with different recipes"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO opinions about the Luddites do the students express? (Lựa chọn 1: Their actions were ineffective)",
+      "answer": "A",
+      "explanation": "Người phụ nữ nói rằng cuối cùng thì các công nhân biểu tình thuộc phong trào Luddites đã không đạt được gì cả (didn't achieve anything), đồng nghĩa với việc hành động của họ không mang lại hiệu quả.",
+      "evidence": "YOUNG WOMAN: Yes, and ultimately, they didn't achieve anything.",
+      "keywords": [
+        "Luddites",
+        "actions",
+        "ineffective",
+        "didn't achieve anything"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 22,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO opinions about the Luddites do the students express? (Lựa chọn 2: Their attitude is understandable)",
+      "answer": "E",
+      "explanation": "Người đàn ông nói rằng ông có thể hiểu được lý do tại sao người Luddites lại cảm thấy bị đe dọa như vậy, và người phụ nữ cũng đồng tình rằng cô ấy chắc chắn cũng sẽ cảm thấy như thế.",
+      "evidence": "YOUNG MAN: I can see why the Luddites felt so threatened. YOUNG WOMAN: I know. I'm sure I would have felt the same.",
+      "keywords": [
+        "Luddites",
+        "attitude",
+        "understandable",
+        "felt so threatened",
+        "felt the same"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 23,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO predictions about the future of work are the students doubtful about? (Lựa chọn 1: Unemployment will fall)",
+      "answer": "B",
+      "explanation": "Người phụ nữ bày tỏ sự hoài nghi về dự đoán tỉ lệ thất nghiệp sẽ giảm (lower unemployment), và người đàn ông cho rằng điều này chỉ có thể xảy ra trong dài hạn chứ không phải tương lai gần.",
+      "evidence": "YOUNG WOMAN: And what about lower unemployment? I'm not so sure about that. YOUNG MAN: Perhaps in the long term - but not in the foreseeable future.",
+      "keywords": [
+        "predictions",
+        "future of work",
+        "doubtful",
+        "unemployment will fall",
+        "lower unemployment"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 24,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO predictions about the future of work are the students doubtful about? (Lựa chọn 2: Working hours will be shorter)",
+      "answer": "D",
+      "explanation": "Người đàn ông hoài nghi về việc liệu mọi người có nhiều thời gian rảnh hơn (thời gian làm việc ngắn hơn) hay không khi các bằng chứng đều cho thấy con người đang dành nhiều thời gian ở nơi làm việc hơn bao giờ hết.",
+      "evidence": "YOUNG MAN: Bit too optimistic, don’t you think? For example, I can’t see how people are about to have more leisure time, when all the evidence shows people are spending longer than ever at work. YOUNG WOMAN: No - that’s true.",
+      "keywords": [
+        "predictions",
+        "future of work",
+        "doubtful",
+        "working hours",
+        "shorter",
+        "spending longer than ever at work"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 25,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Accountants?",
+      "answer": "G",
+      "explanation": "Người đàn ông cho biết số lượng kế toán viên đang tăng lên nhiều hơn bao giờ hết (employment has risen) và họ trở nên hiệu quả hơn rất nhiều (productivity has risen).",
+      "evidence": "YOUNG MAN: Yeah, incredible. Like accountants. You might think all the technological innovations would have put them out of a job, but in fact there are more of them than ever. They’re still really in demand and have become far more efficient.",
+      "keywords": [
+        "Accountants",
+        "employment",
+        "productivity",
+        "risen",
+        "in demand",
+        "efficient"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 26,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Hairdressers?",
+      "answer": "E",
+      "explanation": "Người phụ nữ giải thích nhu cầu cắt tóc tăng mạnh là do thu nhập/khả năng kiếm tiền của mọi người tăng lên (earning power has gone up = higher disposable income), khiến tạo ra sự gia tăng lớn về số lượng việc làm.",
+      "evidence": "YOUNG MAN: I know. I'd never have thought that demand for hairdressing would have gone up so much in the last hundred years... YOUNG WOMAN: Yeah because people’s earning power has gone up so they can afford to spend more on personal services like that.",
+      "keywords": [
+        "Hairdressers",
+        "disposable income",
+        "earning power",
+        "huge increase in jobs"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 27,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Administrative staff?",
+      "answer": "B",
+      "explanation": "Người đàn ông nhận xét công việc nhân viên hành chính ngày xưa rất chán so với ngày nay khi họ được giao nhiều trách nhiệm và địa vị cao hơn, tức là vai trò của họ trở nên thú vị hơn gần đây.",
+      "evidence": "YOUNG MAN: Yes. Really boring compared to these days, when they're given much more responsibility and higher status.",
+      "keywords": [
+        "Administrative staff",
+        "role",
+        "interesting",
+        "more responsibility",
+        "higher status"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Agricultural workers?",
+      "answer": "C",
+      "explanation": "Số lượng lao động trong ngành nông nghiệp đã giảm mạnh từ khoảng 25% dân số vào thế kỷ 19 xuống còn dưới 0.2% hiện nay.",
+      "evidence": "YOUNG WOMAN: ... But the 1871 census showed that roughly 25% of the population worked on the land. YOUNG MAN: ... Now it's less than 0.2%.",
+      "keywords": [
+        "Agricultural workers",
+        "number of people",
+        "fallen dramatically",
+        "worked on the land",
+        "less than 0.2%"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Care workers?",
+      "answer": "F",
+      "explanation": "Người đàn ông nhận định ngành nhân viên chăm sóc sẽ chứng kiến sự tăng trưởng lớn (huge growth), tương ứng với sự gia tăng đáng kể trong nhu cầu dịch vụ này.",
+      "evidence": "YOUNG MAN: They barely existed in the 19th century as people’s lifespan was so much shorter. But now of course this sector will see huge growth.",
+      "keywords": [
+        "Care workers",
+        "significant rise in demand",
+        "huge growth",
+        "this sector"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Matching",
+      "question_text": "What comment do the students make about Bank clerks?",
+      "answer": "A",
+      "explanation": "Tương lai của nhân viên ngân hàng khá ảm đạm (bleak) và công nghệ sẽ làm cho hầu hết công việc của họ trở nên dư thừa (redundant), tức là các công việc này đang gặp nguy cơ tiêu biến/rủi ro cao.",
+      "evidence": "YOUNG WOMAN: [...] The future looks quite bleak for bank clerks... YOUNG MAN: And technology will certainly make most of the jobs they do now redundant, I think.",
+      "keywords": [
+        "Bank clerks",
+        "at risk",
+        "bleak",
+        "technology",
+        "redundant"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Gap-fill",
+      "question_text": "A Space Traffic Management system would aim to set up legal and 31 _____ ways of improving safety.",
+      "answer": "technical",
+      "explanation": "Chỗ trống cần điền là một tính từ vì nó đứng trước danh từ ways, dùng để mô tả về hệ thống giúp cải thiện sự an toàn/ngăn chặn tai nạn. Chỗ trống này không phải là từ legal do đã xuất hiện trong câu hỏi.",
+      "evidence": "In today’s astronomy lecture, I’m going to talk about the need for a system to manage the movement of satellites and other objects in orbit around the Earth. In other words, a Space Traffic Management system. [...] The aim of such a system would be to prevent the danger of collisions in space between the objects in orbit around the Earth. In order to do this, we’d need to have a set of legal measures, and we’d also have to develop the technical systems to enable us to prevent such accidents.",
+      "keywords": [
+        "aim",
+        "set up",
+        "legal",
+        "ways",
+        "improving safety"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "Satellites are now quite 32 _____ and therefore more widespread.",
+      "answer": "cheap",
+      "explanation": "Chỗ trống cần điền là một tính từ dùng để mô tả về satellites ở hiện tại.",
+      "evidence": "But unfortunately, at present we don’t actually have a Space Traffic Management system that works. So why not? What are the problems in developing such a system? Well, for one thing, satellites are relatively cheap these days, compared with how they were in the past.",
+      "keywords": [
+        "problems",
+        "developing",
+        "Space Traffic Management",
+        "Satellites",
+        "now quite",
+        "widespread"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "(e.g. there are constellations made up of 33 _____ of satellites).",
+      "answer": "thousands",
+      "explanation": "Chỗ trống cần điền là lượng từ, cụ thể là số lượng satellites cho các constellations, hoặc là một danh từ.",
+      "evidence": "So there’s a lot more of them out there, and people aren’t just launching single satellites but whole constellations, consisting of thousands of them designed to work together.",
+      "keywords": [
+        "constellations",
+        "made up of",
+        "satellites"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "At present, satellites are not required to transmit information to help with their 34 _____ .",
+      "answer": "identification",
+      "explanation": "Chỗ trống cần điền là danh từ, vì đứng trước có tính từ sở hữu their. Danh từ này để nói về việc satellites không cần phải gửi lại thông tin liên quan tới cái gì.",
+      "evidence": "But in spite of this, one thing you may be surprised to learn is that you can launch a satellite into space and, once it’s out there, it doesn’t have to send back any information to Earth to allow its identification.",
+      "keywords": [
+        "satellites",
+        "not required",
+        "transmit information",
+        "help with",
+        "their"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "There are few systems for 35 _____ satellites.",
+      "answer": "tracking",
+      "explanation": "Chỗ trống cần điền là danh từ hoặc danh động từ, vì đứng sau for và đứng trước danh từ satellites. Câu hỏi nói về quá ít/thiếu hệ thống cho việc gì đối với satellites. Trong trường hợp này là theo dõi chúng.",
+      "evidence": "So while we have international systems for ensuring we know where the planes in our skies are, and to prevent them from colliding with one another, when it comes to the safety of satellites, at present we don’t have anything like enough proper ways of tracking them.",
+      "keywords": [
+        "few systems",
+        "satellites"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "Operators may be unwilling to share details of satellites used for 36 _____ or commercial reasons.",
+      "answer": "military",
+      "explanation": "Chỗ trống cần điền là một tính từ, được liệt kê ngang hàng với commercial, theo sau là danh từ reasons. Tính từ này dùng để mô tả mục đích của chiếc satellites, cái mà không được chia sẻ thông tin. Bên cạnh mục đích thương mại (commercial) thì chỉ có mục đích quân đội được đề cập trong bài nghe.",
+      "evidence": "In addition, some operators may be unwilling to share information about the satellites they’ve launched. For example, a satellite may be designed for military purposes, or it may have been launched for commercial reasons, and the operators don’t want competitors to have information about it.",
+      "keywords": [
+        "operators",
+        "unwilling to share details",
+        "satellites",
+        "used for",
+        "commercial reasons"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 37,
+      "question_type": "Gap-fill",
+      "question_text": "It may be hard to collect details of the object’s 37 _____ at a given time.",
+      "answer": "location",
+      "explanation": "Chỗ trống cần điền là một danh từ, vì đứng sau sở hữu cách the object’s, nói về một thứ khó có thể thu thập được tại một thời điểm nào đó.",
+      "evidence": "And even if the operators are willing to provide it, the information isn’t easy to collect. Details are needed about the object itself, as well as about its location at a particular time - and remember that a satellite isn’t very big, and it’s likely to be moving at thousands of kilometres an hour.",
+      "keywords": [
+        "hard to collect details",
+        "object's",
+        "at a given time"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 38,
+      "question_type": "Gap-fill",
+      "question_text": "Scientists can only make a 38 _____ about where the satellite will go.",
+      "answer": "prediction",
+      "explanation": "Chỗ trống cần điền là một danh từ số ít vì đứng trước là mạo từ a. Danh từ này thể hiện cái mà các nhà khoa học có đưa ra liên quan tới việc satellites sẽ đi về đâu.",
+      "evidence": "We don’t have any sensors that can constantly follow something moving so fast, so all that the scientists can do is to put forward a prediction concerning where the satellite is heading next.",
+      "keywords": [
+        "scientists",
+        "can only make a",
+        "about where the satellite will go"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 39,
+      "question_type": "Gap-fill",
+      "question_text": "The information should be combined in one 39 _____ .",
+      "answer": "database",
+      "explanation": "Chỗ trống cần điền là một danh từ số ít vì đứng trước có lượng từ one. Thông tin nên được tổng hợp trong một cái gì.",
+      "evidence": "Then, as all this information’s collected, it needs to be put together so it can be used, and that will involve creating a single database on which it can be entered.",
+      "keywords": [
+        "information",
+        "combined in one"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 40,
+      "question_type": "Gap-fill",
+      "question_text": "A coordinated system must be designed to create 40 _____ in its users.",
+      "answer": "trust",
+      "explanation": "Chỗ trống cần điền là một danh từ, nói về việc một hệ thống phối hợp cần được thiết kế để tạo ra cái gì giữa những người dùng của hệ thống đó.",
+      "evidence": "To cope with this, we need to develop a system like the one I’ve described to coordinate the work of the numerous spacecraft operators, but it’s also essential that this system is one that establishes trust in the people that use it, both nationally and at a global level.",
+      "keywords": [
+        "coordinated system",
+        "must be designed",
+        "create",
+        "in its users"
+      ],
+      "skill": "listening",
+      "part": 4
+    }
+  ],
+  "reading": [
+    {
+      "question_number": 1,
+      "question_type": "Matching",
+      "question_text": "an explanation of the industrial processes that create potential raw materials for concrete",
+      "answer": "G",
+      "explanation": "Đoạn G giải thích các quá trình công nghiệp tạo ra các sản phẩm phụ như tro bay (từ nhà máy đốt than) và tro từ quặng sắt, có thể dùng làm nguyên liệu thay thế xi măng trong hỗn hợp bê tông.",
+      "evidence": "Fly ash and slag from iron ore are possible alternatives to cement in a concrete mix. Fly ash, a byproduct of coal-burning power plants, can be incorporated into concrete mixes to make up as much as 15 to 30% of the cement... Iron-ore slag, a byproduct of the iron-ore smelting process, can be used in a similar way.",
+      "keywords": [
+        "industrial processes",
+        "raw materials",
+        "concrete",
+        "fly ash",
+        "slag"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Matching",
+      "question_text": "a reference to the various locations where high-rise wooden buildings can be found",
+      "answer": "D",
+      "explanation": "Đoạn D liệt kê nhiều địa điểm cụ thể có các tòa nhà cao tầng làm bằng gỗ như Vancouver, Vienna và Brumunddal ở Na Uy.",
+      "evidence": "Recent years have seen the emergence of tall buildings constructed almost entirely from timber. Vancouver, Vienna and Brumunddal in Norway are all home to constructed tall, wooden buildings.",
+      "keywords": [
+        "various locations",
+        "high-rise",
+        "wooden buildings",
+        "timber"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Matching",
+      "question_text": "an indication of how widely available the raw materials of concrete are",
+      "answer": "C",
+      "explanation": "Đoạn C chỉ ra rằng các nguyên liệu làm bê tông tương đối rẻ và được tìm thấy với số lượng lớn ở hầu hết mọi nơi trên thế giới.",
+      "evidence": "Not only are the ingredients of concrete relatively cheap and found in abundance in most places around the globe.",
+      "keywords": [
+        "widely available",
+        "raw materials",
+        "concrete",
+        "abundance"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Matching",
+      "question_text": "the belief that more high-rise wooden buildings are needed before wood can be regarded as a viable construction material",
+      "answer": "F",
+      "explanation": "Đoạn F đề cập đến việc khi có nhiều công trình xây dựng bằng gỗ hơn được chứng minh thực tế, lúc đó gỗ mới thực sự được xem là vật liệu thay thế khả thi cho các tòa nhà cao tầng.",
+      "evidence": "But even treated wood has its limitations and only when a wider range of construction projects has been proven in practice will it be possible to see wood as a real alternative to concrete in constructing tall buildings.",
+      "keywords": [
+        "high-rise wooden buildings",
+        "viable construction material",
+        "alternative to concrete"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "Wood is a traditional building material, but current environmental concerns are encouraging 5 _____ to use wood in modern construction projects.",
+      "answer": "architects",
+      "explanation": "Chỗ trống cần điền là một danh từ số nhiều đứng giữa 'are encouraging' và 'to use', chỉ nhóm người được khuyến khích sử dụng gỗ.",
+      "evidence": "Making buildings from wood may seem like a rather medieval idea, but climate change is driving architects to turn to treated timber as a possible resource.",
+      "keywords": [
+        "traditional building material",
+        "environmental concerns",
+        "encouraging",
+        "modern construction"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Using wood, however, has its challenges. For example, as 6 _____ in the atmosphere enters wood, it increases in size.",
+      "answer": "moisture",
+      "explanation": "Chỗ trống cần điền là một danh từ đứng trước 'in the atmosphere' chỉ yếu tố từ không khí xâm nhập vào gỗ làm nó phình to.",
+      "evidence": "Using wood to construct buildings, however, is not straightforward. Wood expands as it absorbs moisture from the air and is susceptible to pests, not to mention fire.",
+      "keywords": [
+        "challenges",
+        "atmosphere enters wood",
+        "increases in size"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "However, wood can be turned into a better construction material if it is treated and combined with other materials. In one process, 7 _____ of solid wood are glued together to create building blocks.",
+      "answer": "layers",
+      "explanation": "Chỗ trống cần điền là một danh từ số nhiều đứng trước 'of solid wood', chỉ các lớp gỗ cứng được dán lại với nhau.",
+      "evidence": "Cross-laminated timber is engineered wood. An adhesive is used to stick layers of solid sawn timber together, crosswise, to form building blocks.",
+      "gap_fill_note": "Đáp án chính xác là layers từ đoạn E.",
+      "keywords": [
+        "treated and combined",
+        "solid wood",
+        "glued together",
+        "building blocks"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Experts say that wooden buildings are an improvement on those made of concrete and steel in terms of the 8 _____ with which they can be constructed and how much noise is generated by the process.",
+      "answer": "speed",
+      "explanation": "Chỗ trống cần điền là một danh từ đứng sau 'the' và trước 'with which', chỉ ưu điểm về tốc độ xây dựng.",
+      "evidence": "Construction experts say that wooden buildings can be constructed at a greater speed than ones of concrete and steel and the process, it seems, is quieter.",
+      "keywords": [
+        "wooden buildings",
+        "improvement",
+        "concrete and steel",
+        "constructed",
+        "noise"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Matching",
+      "question_text": "The environmental advantage of cement alternatives may not be as great as initially assumed.",
+      "answer": "C Anna Surgenor",
+      "explanation": "Đoạn G nhắc đến Anna Surgenor chỉ ra rằng việc thay thế xi măng bằng sản phẩm thải có thể không giúp giảm tổng lượng carbon như tính toán ban đầu nếu tính đến yếu tố vận chuyển bằng nhiên liệu hóa thạch.",
+      "evidence": "But Anna Surgenor, of the UK’s Green Building Council, notes that although these waste products can save carbon in the concrete mix, their use is not always straightforward... If they are transported over long distances, using fossil fuels, the use of alternative materials...",
+      "keywords": [
+        "environmental advantage",
+        "cement alternatives",
+        "initially assumed",
+        "Anna Surgenor"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Matching",
+      "question_text": "It would be hard to create a construction alternative to concrete that offers so many comparable benefits.",
+      "answer": "A",
+      "explanation": "Đoạn C nhắc đến ý kiến của Cheeseman rằng bê tông và thép có đặc tính giãn nở nhiệt tương tự giúp thép gia cố bê tông rất chắc chắn và linh hoạt. Do đó, việc tạo ra một sản phẩm thay thế có các thuộc tính tương tự là vô cùng khó khăn. Đáp án đúng là A Chris Cheeseman.",
+      "evidence": "According to Cheeseman, all these factors together make concrete hard to beat. “Concrete is amazing stuff. Making anything with similar properties is going to be very difficult”.",
+      "keywords": [
+        "hard",
+        "create",
+        "construction alternative",
+        "concrete",
+        "comparable benefits"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Matching",
+      "question_text": "Worries about the environment have led to increased interest in wood as a construction material.",
+      "answer": "B",
+      "explanation": "Đoạn F nêu rõ Markus Mannstrom báo cáo rằng công ty cung cấp gỗ quan sát thấy xu hướng tăng toàn cầu về nhu cầu xây nhà bằng gỗ, trong đó lo ngại về thay đổi khí hậu là nguyên nhân chính. Đáp án là B Markus Mannstrom.",
+      "evidence": "Stora Enso is Europe’s biggest supplier of cross-laminated timber, and its vice-president Markus Mannstrom reports that the company is seeing increasing demand globally for building in wood, with climate change concerns the key driver.",
+      "keywords": [
+        "Worries about the environment",
+        "increased interest",
+        "wood",
+        "construction material"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 12,
+      "question_type": "Matching",
+      "question_text": "Expense has been a factor in the negative response to the development of new cements.",
+      "answer": "D",
+      "explanation": "Đoạn H đề cập đến Felix Preston và Johanna Lehne, những người kết luận rằng các loại xi măng mới tuy được thảo luận trong hơn một thập kỷ nhưng thiếu sự đột phá, và hiện tại các sản phẩm thay thế này hiếm khi có hiệu quả về mặt chi phí so với xi măng truyền thống, dẫn đến phản ứng từ khách hàng. Đáp án là D Felix Preston and Johanna Lehne.",
+      "evidence": "At present, these alternatives are rarely as cost-effective as conventional cement, and they face raw-material shortages and resistance from customers.",
+      "keywords": [
+        "Expense",
+        "negative response",
+        "development of new cements"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 13,
+      "question_type": "Matching",
+      "question_text": "The environmental damage caused by concrete is due to it being produced in large quantities.",
+      "answer": "A",
+      "explanation": "Đoạn B trích lời Chris Cheeseman phân tích rằng bản thân bê tông không phải là sản phẩm có carbon cao, mà chính quy mô sản xuất quá lớn (sử dụng nhiều) mới là vấn đề gây ảnh hưởng môi trường. Đáp án là A Chris Cheeseman.",
+      "evidence": "Concrete is not a high-carbon product. Cement is high carbon, but concrete is not. But it is the scale on which it is used that makes it high carbon. The sheer scale of manufacture is so huge, that is the issue.",
+      "keywords": [
+        "environmental damage",
+        "concrete",
+        "produced",
+        "large quantities"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 14,
+      "question_type": "Matching",
+      "question_text": "Heading iii: Good and bad aspects of steam technology",
+      "answer": "iii",
+      "explanation": "Đoạn A đề cập đến cả điểm yếu (như lò hơi phải được thắp sáng bằng tay, mất 20 phút tạo áp suất, chỉ chạy được khoảng 30 dặm) và điểm mạnh (khả năng vận chuyển nhanh chóng - quick transportation) của công nghệ xe hơi hơi nước thời kỳ đầu.",
+      "evidence": "But these early cars inherited steam's weaknesses along with its strengths. The boilers had to be lit by hand, and they required about twenty minutes to build up pressure before they could be driven. Furthermore, their water reservoirs only lasted for about thirty miles before needing replenishment. Despite such shortcomings, these newly designed self-propelled carriages offered quick transportation",
+      "keywords": [
+        "early cars",
+        "weaknesses",
+        "strengths",
+        "boilers",
+        "transportation"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Matching",
+      "question_text": "Heading viii: A better option than the steam car arises",
+      "answer": "viii",
+      "explanation": "Đoạn B nói về sự xuất hiện của công nghệ mới (động cơ đốt trong - Internal Combustion Engine) mang lại khả năng lái xe tốt hơn, dẫn đến việc xe hơi hơi nước dần bị loại bỏ.",
+      "evidence": "A new technology called the Internal Combustion Engine soon appeared, which offered the ability to drive down the road just moments after starting up. [...] But in 1912 General Motors introduced the electric starter, and over the following few years steam power was gradually phased out.",
+      "keywords": [
+        "Internal Combustion Engine",
+        "electric starter",
+        "steam power",
+        "phased out"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Matching",
+      "question_text": "Heading vi: Positive publicity at last for this quiet, clean, fast vehicle",
+      "answer": "vi",
+      "explanation": "Đoạn C đề cập đến phản hồi tích cực từ cộng đồng (positive publicity/attention of automobile trade magazines) đối với phương tiện Model B với các đặc điểm: yên tĩnh (virtual silence), sạch sẽ (high-pressure steam), và nhanh (amazingly swift).",
+      "evidence": "[...] it drew the attention of automobile trade magazines due to its numerous improvements over previous steam cars. The Model B proved to be superior to gasoline automobiles in many ways. Its high-pressure steam drove the engine pistons in virtual silence [...] The Model B was amazingly swift. It could accelerate from zero to sixty miles per hour in just fifteen seconds",
+      "keywords": [
+        "attention",
+        "trade magazines",
+        "virtual silence",
+        "amazingly swift"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching",
+      "question_text": "Heading v: Further improvements lead to commercial orders",
+      "answer": "v",
+      "explanation": "Đoạn D mô tả những cải tiến (enhancements) trên xe mới của anh em nhà Dobler đã mang lại các đơn đặt hàng thương mại với 5.390 khoản đặt cọc.",
+      "evidence": "With these enhancements, the Dobles' new car company promised a steam vehicle which would provide all of the convenience of a gasoline car, but with much greater speed, much simpler driving controls, and a virtually silent powerplant. By the following April, the General Engineering Company had received 5,390 deposits for Doble Detroits",
+      "keywords": [
+        "enhancements",
+        "promised",
+        "received 5,390 deposits"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching",
+      "question_text": "Heading vii: A disappointing outcome for customers",
+      "answer": "vii",
+      "explanation": "Đoạn E nói về kết quả đáng thất vọng cho khách hàng khi những chiếc xe giao đến chạy ì ạch, thất thường và gặp nhiều trục trặc nghiêm trọng (serious glitches).",
+      "evidence": "Later that year Abner Doble delivered unhappy news to those eagerly awaiting the delivery of their modern new cars. Those buyers who received the handful of completed cars complained that the vehicles were sluggish and erratic, sometimes going in reverse when they should go forward. The new engine design, though innovative, was still plagued with serious glitches.",
+      "keywords": [
+        "unhappy news",
+        "sluggish and erratic",
+        "serious glitches"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Matching",
+      "question_text": "Heading i: A period in cold conditions before the technology is assessed",
+      "answer": "i",
+      "explanation": "Đoạn F nhắc đến việc để chiếc xe qua đêm trong điều kiện nhiệt độ đóng băng (freezing temperatures / over an hour in the frosty morning air) trước khi đưa ra đường để đánh giá công nghệ vận hành.",
+      "evidence": "After sitting overnight in freezing temperatures, the car was pushed out into the road and left to sit for over an hour in the frosty morning air. At the turn of the key, the boiler lit and reached its operating pressure inside of forty seconds.",
+      "keywords": [
+        "overnight",
+        "freezing temperatures",
+        "frosty morning air"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "Heading iv: A possible solution to the issues of today",
+      "answer": "iv",
+      "explanation": "Đoạn G đề cập đến việc ô tô chạy bằng hơi nước có thể hoạt động hiệu quả nhờ vật liệu và máy tính hiện đại, trở thành giải pháp cho các vấn đề hiện tại về cải thiện hiệu suất và giảm khí thải.",
+      "evidence": "[...], but you cannot help but wonder how efficient a steam car might be with the benefit of modern materials and computers. Under the current pressure to improve automotive performance and reduce emissions, it is not unthinkable that the steam car may rise again.",
+      "keywords": [
+        "efficient a steam car",
+        "modern materials",
+        "improve automotive performance",
+        "reduce emissions"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Multiple choice",
+      "question_text": "What point does the writer make about the steam car in Paragraph B?",
+      "answer": "A",
+      "explanation": "Đoạn B nêu rõ \"But the glory days of steam cars were few\", đồng nghĩa với việc thành công của chúng chỉ tồn tại trong thời gian ngắn (short-lived).",
+      "evidence": "But the glory days of steam cars were few.",
+      "keywords": [
+        "glory days",
+        "steam cars",
+        "few"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 22,
+      "question_type": "Multiple choice",
+      "question_text": "When building their first steam car, the Doble brothers...",
+      "answer": "C",
+      "explanation": "Đoạn C nhắc đến nỗ lực của anh em Dobles khi tiếp tục sản xuất chiếc xe thứ hai và thứ ba, kết quả là họ đã đạt được một mô hình mang tính cạnh tranh (Model B tỏ ra vượt trội so với ô tô chạy xăng về nhiều mặt). Các lựa chọn khác như tự lắp ráp tất cả bộ phận (A), ghi chép lại từng bước (B), hay tìm lời khuyên từ người có kinh nghiệm (D) đều không được đề cập hoặc sai thông tin so với bài đọc.",
+      "evidence": "Though it did not run well, the Doble brothers went on to build a second and third prototype in the following years. [...] The Model B proved to be superior to gasoline automobiles in many ways.",
+      "keywords": [
+        "building",
+        "first steam car",
+        "Doble brothers"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 23,
+      "question_type": "Multiple choice",
+      "question_text": "In order to produce the Model C, the Doble brothers...",
+      "answer": "B",
+      "explanation": "Đoạn D đề cập việc Abner Doble lái chiếc Model B từ Massachusetts đến Detroit để tìm kiếm đầu tư (seek investment) cho thiết kế ô tô của mình, thông tin này khớp với việc huy động vốn tài chính (raised financial capital). Các phương án khác như chuyển nơi sản xuất đến Detroit (A), thuê thêm nhân công (C), hay bỏ thiết kế cũ (D) đều không chính xác hoặc không được nhắc tới.",
+      "evidence": "The following year Abner Doble drove the Model B from Massachusetts to Detroit in order to seek investment in his automobile design, which he used to open the General Engineering Company.",
+      "keywords": [
+        "Model C",
+        "Doble brothers"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 24,
+      "question_type": "Gap-fill",
+      "question_text": "A later version of the Model E raised its _______ while keeping its emissions extremely low.",
+      "answer": "speed",
+      "explanation": "Chỗ trống cần điền là một danh từ đứng sau tính từ sở hữu 'its'. Dựa vào đoạn F, tốc độ (speed) tối đa của nó đã được đẩy lên hơn một trăm dặm một giờ.",
+      "evidence": "As the new Doble steamer was further developed and tested, its maximum speed was pushed to over a hundred miles per hour, and it achieved about fifteen miles per gallon of kerosene with negligible emissions.",
+      "keywords": [
+        "Model E",
+        "raised",
+        "emissions extremely low"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 25,
+      "question_type": "Gap-fill",
+      "question_text": "Under _______ cars were produced before the company went out of business.",
+      "answer": "fifty / 50",
+      "explanation": "Chỗ trống cần điền là một từ chỉ số lượng hoặc danh từ chỉ số lượng đứng trước 'cars'. Dựa vào đoạn G, vào thời điểm công ty giải thể vào năm 1931, gần 50 (fifty) chiếc ô tô hơi nước Model E đã được sản xuất.",
+      "evidence": "By the time the company folded in 1931, fewer than fifty of the amazing Model E steam cars had been produced.",
+      "keywords": [
+        "cars were produced",
+        "company went out of business"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 26,
+      "question_type": "Gap-fill",
+      "question_text": "They are straightforward to maintain, and they satisfy California's _______ emissions laws.",
+      "answer": "strict",
+      "explanation": "Chỗ trống cần điền là một tính từ đứng trước cụm danh từ 'emissions laws' để bổ nghĩa. Dựa vào đoạn G, một chiếc Doble Model E đáp ứng đủ tiêu chí sạch sẽ của luật khí thải ở California ngày nay, và luật này khá nghiêm ngặt (strict).",
+      "evidence": "Astonishingly, an unmodified Doble Model E runs clean enough to pass the emissions laws in California today, and they are pretty strict.",
+      "keywords": [
+        "straightforward to maintain",
+        "satisfy",
+        "California's",
+        "emissions laws"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 27,
+      "question_type": "Multiple choice",
+      "question_text": "The writer describes the Romeo and Juliet lesson in order to demonstrate",
+      "answer": "A",
+      "explanation": "Tác giả mô tả tiết học Romeo và Juliet trong đoạn 1 để minh họa cách giáo viên xử lý một lớp học có nhu cầu học tập đa dạng (từ việc dùng bản dịch dễ hiểu cho học sinh yếu đến việc yêu cầu học sinh giỏi vẽ hoặc phát biểu)",
+      "evidence": "It’s an English literature lesson in a UK school, and the teacher has just read an extract from Shakespeare’s Romeo and Juliet with a class of 15-year-olds... Another girl simply can’t focus and he gives her pens and paper to draw with... He can ask most of the class about character development, and five of them might be able to support their statements with textual evidence.",
+      "keywords": [
+        "Romeo and Juliet",
+        "lesson",
+        "demonstrate",
+        "teacher",
+        "learning needs"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Multiple choice",
+      "question_text": "What does the writer say about streaming in the third paragraph?",
+      "answer": "A",
+      "explanation": "Trong đoạn 3, tác giả nói rằng phương pháp phân luồng (streaming) mang tính hấp dẫn trực quan đối với hầu như mọi người (appealing to almost every stakeholder). Do đó đáp án A (It has a very broad appeal) hoàn toàn chính xác.",
+      "evidence": "The practice of 'streaming', or 'tracking', involves separating students into classes depending on their diagnosed levels of attainment. At a macro level, it requires the establishment of academically selective schools for the brightest students, and comprehensive schools for the rest.",
+      "keywords": [
+        "streaming",
+        "third paragraph",
+        "writer say"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Multiple choice",
+      "question_text": "What idea is suggested by the reference to Mount Qomolangma in the fifth paragraph?",
+      "answer": "C",
+      "explanation": "Việc nhắc đến đỉnh núi Qomolangma (Everest) trong đoạn 5 ngụ ý rằng học sinh giỏi nhất sẽ không bao giờ đạt được hết tiềm năng của mình trong lớp học đa dạng năng lực (mixed-ability classes bore students... The brightest ones will never summit Mount Qomolangma), khớp với đáp án C (students not achieving their full potential).",
+      "evidence": "Mixed-ability classes bore students, frustrate parents and bum out teachers. The brightest ones will never summit Mount Qomolangma, [...] Individuals suffer at the collective, mediocrity prevails.",
+      "keywords": [
+        "Mount Qomolangma",
+        "fifth paragraph",
+        "suggested"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Multiple choice",
+      "question_text": "What does the word 'scaffolding' in the sixth paragraph refer to?",
+      "answer": "C",
+      "explanation": "Trong đoạn 6, 'scaffolding' được định nghĩa là sự hỗ trợ từ giáo viên, sách giáo khoa, ví dụ... cung cấp cho học sinh trong giai đoạn đầu học tập và sau đó được giảm dần khi học sinh có thể tự chủ.",
+      "evidence": "This is the gap between what they can achieve only with support - teachers, textbooks, worked examples, parents and so on - and what they can achieve independently. The purpose of teaching is to provide and then gradually remove this 'scaffolding' until they are autonomous.",
+      "keywords": [
+        "scaffolding",
+        "sixth paragraph",
+        "refer to"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Gap-fill",
+      "question_text": "According to Professor John Hattie of the Melbourne Education Research Institute there is very little indication that streaming leads to ______.",
+      "answer": "H",
+      "explanation": "Từ loại cần điền là danh từ đứng sau giới từ 'to'. Đoạn 7 đề cập rằng John Hattie lưu ý việc phân luồng mang lại ít tác động đến kết quả học tập.",
+      "evidence": "Despite all this, there is limited empirical evidence to suggest that streaming results in better outcomes for students. Professor John Hattie, director of the Melbourne Education Research Institute, notes that ‘tracking has minimal effects on learning outcomes’.",
+      "keywords": [
+        "Professor John Hattie",
+        "streaming",
+        "leads to"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "He points out that, in schools which use streaming, the most significant impact is on those students placed in the ______, [...]",
+      "answer": "D",
+      "explanation": "Từ loại cần điền là danh từ đứng sau mạo từ 'the'. Đoạn 7 chỉ ra rằng việc phân luồng ảnh hưởng tiêu cực nhất đến học sinh ở các lớp trình độ thấp (bottom sets).",
+      "evidence": "What is more, streaming appears to significantly - and negatively - affect those students assigned to the lowest sets.",
+      "keywords": [
+        "schools",
+        "streaming",
+        "significant impact",
+        "students placed in"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "[...], especially where a large proportion of them have ______.",
+      "answer": "F",
+      "explanation": "Từ loại cần điền là danh từ làm tân ngữ theo sau động từ 'have'. Phân luồng còn đặc biệt ảnh hưởng tới những trường có đa số học sinh có hoàn cảnh khó khăn (disadvantaged backgrounds).",
+      "evidence": "These students tend to have much higher representation of low socioeconomic class.",
+      "keywords": [
+        "especially where",
+        "large proportion",
+        "have"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "Meanwhile, for the ______ there appears to be only minimal advantage.",
+      "answer": "E",
+      "explanation": "Từ loại cần điền là danh từ đứng sau mạo từ 'the'. Người được hưởng những lợi ích bé nhỏ từ việc phân luồng là những học sinh thông minh (brightest pupils).",
+      "evidence": "Less significant is the small benefit for those lucky clever students in the higher sets.",
+      "keywords": [
+        "Meanwhile",
+        "there appears to be",
+        "minimal advantage"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "A further issue is that teachers tend to have ______ of students in streamed groups.",
+      "answer": "B",
+      "explanation": "Từ loại cần điền là danh từ đứng trước giới từ 'of'. Một vấn đề nữa là giáo viên có xu hướng kỳ vọng thấp đi đối với học sinh đã được phân luồng (lower expectations).",
+      "evidence": "Streaming students by diagnosed achievement automatically limits what the teacher feels the student is capable of.",
+      "keywords": [
+        "further issue",
+        "teachers tend to have",
+        "students in streamed groups"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 36,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "The Vygotsky model of education supports the concept of a mixed-ability class.",
+      "answer": "NO",
+      "explanation": "Đoạn 6 nêu rõ rằng nếu chấp nhận mô hình của Vygotsky thì việc phân luồng học sinh lại là giải pháp hiệu quả, trái ngược với quan điểm ủng hộ lớp học đa dạng trình độ.",
+      "evidence": "If we accept this model, it follows that streaming students with similar ZPDs would be an efficient and effective solution.",
+      "keywords": [
+        "Vygotsky model",
+        "supports",
+        "mixed-ability class"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 37,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "Some teachers are uncertain about allowing students to take on MKO roles in the classroom.",
+      "answer": "NOT GIVEN",
+      "explanation": "Bài đọc không hề nhắc đến việc giáo viên có không chắc chắn về việc cho học sinh đóng vai trò MKO hay không, mà chỉ nói rằng nên ghi nhận giá trị của học sinh có hiểu biết.",
+      "evidence": "While teachers are traditionally the MKOs in classrooms, the value of knowledgeable student peers must not go unrecognized either.",
+      "keywords": [
+        "Some teachers",
+        "uncertain",
+        "MKO roles"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 38,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "It can be rewarding to teach knowledge which you have only recently acquired.",
+      "answer": "YES",
+      "explanation": "Thông tin trong câu hỏi hoàn toàn tương ứng với nội dung trong Đoạn 10 của bài đọc.",
+      "evidence": "There is also something exciting about passing on skills and knowledge that you yourself have just mastered",
+      "keywords": [
+        "rewarding",
+        "teach knowledge",
+        "recently acquired"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 39,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "The priority should be to ensure that the highest-achieving students attain their goals.",
+      "answer": "NOT GIVEN",
+      "explanation": "Đoạn 11 chỉ nêu rằng chúng ta cần giúp 'nhiều người' phát triển chứ không đề cập đến việc ưu tiên đảm bảo cho học sinh đạt thành tích cao nhất.",
+      "evidence": "And today, more than ever, we need the many to flourish - not suffer at the expense of a few bright stars.",
+      "keywords": [
+        "priority",
+        "ensure",
+        "highest-achieving students"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 40,
+      "question_type": "Yes-No-Not Given",
+      "question_text": "Taking part in collaborative outdoor activities with teachers and classmates can improve student outcomes in the classroom.",
+      "answer": "NOT GIVEN",
+      "explanation": "Câu hỏi đề cập đến việc tham gia các hoạt động ngoại khóa hợp tác có thể cải thiện kết quả học tập của học sinh trong lớp học. Đoạn 11 nói về việc đi bộ đường dài cùng lớp, nhưng không có thông tin nào nhắc đến việc này cải thiện kết quả học tập trong lớp (improve student outcomes in the classroom). Do đó, đáp án là NOT GIVEN.",
+      "evidence": "Once a year, I go on a hike with my class, a mixed bunch of students. It is challenging. The fittest students realise they need to encourage the reluctant. There are lookouts who report back, and extra items to carry for others. We make it-together.",
+      "keywords": [
+        "collaborative outdoor activities",
+        "improve student outcomes",
+        "classroom"
+      ],
+      "skill": "reading",
+      "part": 3
+    }
+  ],
+  "extracted_at": "2026-10-22 22:10:28"
+}

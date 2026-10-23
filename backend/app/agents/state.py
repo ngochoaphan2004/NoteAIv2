@@ -8,6 +8,8 @@ class QuestionResult(BaseModel):
     is_correct: Optional[bool] = Field(default=None, description="Đúng / Sai (chỉ đánh giá khi có đáp án chuẩn)")
     trap_type: Optional[str] = Field(default=None, description="Loại bẫy: phát âm -teen/-ty, singular/plural, paraphrase...")
     explanation: Optional[str] = Field(default=None, description="Giải thích chi tiết bẫy âm/ngữ nghĩa")
+    evidence: Optional[str] = Field(default=None, description="Dẫn chứng audio transcript hoặc đoạn văn bản trích dẫn")
+    keywords: Optional[List[str]] = Field(default=None, description="Từ khóa quan trọng")
 
 class EvaluationOutput(BaseModel):
     score_fraction: Optional[str] = Field(default=None, description="Tỷ lệ câu đúng (Ví dụ: '22/40')")
@@ -18,6 +20,11 @@ class EvaluationOutput(BaseModel):
     recommended_drills: List[str] = Field(default_factory=list, description="Các bài tập micro-session đề xuất (30-35p)")
     feedback: Optional[str] = Field(default=None, description="Nhận xét chi tiết và phân tích sâu từ AI")
     updated_file: Optional[str] = Field(default=None, description="Đường dẫn file Markdown đã được cập nhật bảng đối soát")
+    diff_html: Optional[str] = Field(default=None, description="HTML đối soát trực quan từng cụm từ đỏ/xanh")
+    clean_rewritten_text: Optional[str] = Field(default=None, description="Toàn văn bài viết chuẩn sạch sẽ sau sửa")
+    inline_diff_markdown: Optional[str] = Field(default=None, description="Markdown đối soát trực quan")
+    edits_count: Optional[int] = Field(default=None, description="Tổng số điểm lỗi đã phát hiện và sửa")
+    writing_correction: Optional[Dict[str, Any]] = Field(default=None, description="Dữ liệu chi tiết các câu sửa")
 
 class AgentState(BaseModel):
     task_type: str = Field(default="evaluation", description="evaluation | planning | ingestion")

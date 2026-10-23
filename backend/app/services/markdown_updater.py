@@ -191,13 +191,15 @@ class MarkdownNoteUpdater:
         file_path: str,
         raw_text: str,
         feedback: Optional[str] = None,
-        task_id: Optional[str] = None
+        task_id: Optional[str] = None,
+        diff_markdown: Optional[str] = None,
+        clean_text: Optional[str] = None
     ) -> bool:
         """
         Cập nhật bài viết Writing của người học và phản hồi AI vào file Markdown,
         bảo toàn cấu trúc phân tách rõ ràng độc lập giữa Task 1 và Task 2:
-        - Task 1: Workspace -> Bài làm thực tế Task 1 -> Chẩn đoán AI Task 1
-        - Task 2: Workspace -> Bài làm thực tế Task 2 -> Chẩn đoán AI Task 2
+        - Task 1: Workspace -> Bài làm thực tế Task 1 -> Bản sửa Inline Diff -> Chẩn đoán AI Task 1
+        - Task 2: Workspace -> Bài làm thực tế Task 2 -> Bản sửa Inline Diff -> Chẩn đoán AI Task 2
         """
         if not os.path.isfile(file_path):
             logger.warning(f"[MARKDOWN UPDATER] Không tìm thấy file: {file_path}")
@@ -232,6 +234,20 @@ class MarkdownNoteUpdater:
                 f"{quoted_lines}\n"
             )
 
+            # Khối Bản sửa trực quan (Inline Visual Diff) mới
+            diff_block = ""
+            if diff_markdown:
+                clean_section = f"\n\n<details>\n<summary><b>🌟 Bản Viết Lại Hoàn Chỉnh Sau Khi Sửa (Model Clean Rewrite)</b></summary>\n\n{clean_text.strip()}\n\n</details>" if clean_text else ""
+                diff_block = (
+                    f"#### 🎨 Bản Sửa Chi Tiết Từng Cụm Từ (Inline Visual Diff)\n\n"
+                    f"> [!TIP]\n"
+                    f"> **Quy ước ký hiệu:**  \n"
+                    f"> • `🔴 ~~từ gạch ngang~~`: Cụm từ có lỗi sai hoặc diễn đạt chưa tự nhiên.  \n"
+                    f"> • `🟢 **từ in đậm**`: Cụm từ nâng cấp học thuật chuẩn IELTS Band 8.0+.  \n\n"
+                    f"{diff_markdown.strip()}"
+                    f"{clean_section}\n\n"
+                )
+
             # 3. Tìm các section Level 2 (## ...) để khoanh vùng Task 1 vs Task 2
             h2_matches = list(re.finditer(r"(?m)^##\s+(.+)$", content))
             target_idx = None
@@ -257,13 +273,17 @@ class MarkdownNoteUpdater:
                     flags=re.DOTALL
                 )
 
+                combined_user_and_diff = user_section.strip()
+                if diff_block:
+                    combined_user_and_diff += f"\n\n---\n\n{diff_block.strip()}"
+
                 if user_pat.search(sec_text):
-                    sec_text = user_pat.sub(user_section.strip(), sec_text, count=1)
+                    sec_text = user_pat.sub(combined_user_and_diff, sec_text, count=1)
                 else:
                     # Kiểm tra xem có `### 🔬 ... Task {task_num}` chưa
                     diag_pat = re.compile(rf"(### 🔬 [^\n]*Task {task_num}[^\n]*\n)", flags=re.IGNORECASE)
                     if diag_pat.search(sec_text):
-                        sec_text = diag_pat.sub(r"\1\n" + user_section.strip() + "\n\n", sec_text, count=1)
+                        sec_text = diag_pat.sub(r"\1\n" + combined_user_and_diff + "\n\n", sec_text, count=1)
                     else:
                         div_idx = sec_text.rfind("</div>")
                         if div_idx != -1:
@@ -271,13 +291,13 @@ class MarkdownNoteUpdater:
                             sec_text = (
                                 sec_text[:insert_at]
                                 + f"\n\n---\n\n### 🔬 Phân Tích & Chẩn Đoán Chi Tiết Task {task_num} (Diagnostic Feedback)\n\n"
-                                + user_section.strip()
+                                + combined_user_and_diff
                                 + sec_text[insert_at:]
                             )
                         else:
-                            sec_text = sec_text.rstrip() + f"\n\n---\n\n{user_section.strip()}\n\n"
+                            sec_text = sec_text.rstrip() + f"\n\n---\n\n{combined_user_and_diff}\n\n"
 
-                # Cập nhật feedback AI vào section nếu có
+                # Cập nhật feedback AI cũ vào section nếu có
                 if feedback:
                     fb_pat = re.compile(
                         rf"#### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task {task_num} Của AI[^\n]*\n.*?(?=\n#### |\n### |\n## |\Z)",
@@ -287,27 +307,22 @@ class MarkdownNoteUpdater:
                     if fb_pat.search(sec_text):
                         sec_text = fb_pat.sub(clean_fb, sec_text, count=1)
                     else:
-                        user_match = re.search(
-                            rf"#### 📝 Bài Làm Thực Tế Task {task_num}[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)",
-                            sec_text,
-                            flags=re.DOTALL
-                        )
-                        if user_match:
-                            insert_at = user_match.end()
-                            sec_text = sec_text[:insert_at] + f"\n\n---\n\n{clean_fb}" + sec_text[insert_at:]
-                        else:
-                            sec_text = sec_text.rstrip() + f"\n\n---\n\n{clean_fb}\n\n"
+                        sec_text = sec_text.rstrip() + f"\n\n---\n\n{clean_fb}\n\n"
 
                 # Ghép lại content
                 content = content[:start_pos] + sec_text + content[end_pos:]
 
             else:
                 # Fallback: Không tìm thấy section ## Task 1 hay ## Task 2, cập nhật theo cơ chế generic
+                combined_user_and_diff = user_section.strip()
+                if diff_block:
+                    combined_user_and_diff += f"\n\n---\n\n{diff_block.strip()}"
+
                 user_pattern = r"#### 📝 Bài Làm Thực Tế[^\n]*\n.*?(?=\n#### |\n### |\n## |\n---|\Z)"
                 if re.search(user_pattern, content, flags=re.DOTALL):
-                    content = re.sub(user_pattern, user_section.strip(), content, flags=re.DOTALL)
+                    content = re.sub(user_pattern, combined_user_and_diff, content, flags=re.DOTALL)
                 else:
-                    content += f"\n\n---\n\n{user_section}"
+                    content += f"\n\n---\n\n{combined_user_and_diff}"
 
                 if feedback:
                     feedback_block = (

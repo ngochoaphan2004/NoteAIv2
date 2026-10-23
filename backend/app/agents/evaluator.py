@@ -43,20 +43,34 @@ class EvaluatorAgent:
                 if "task 2" in lower or "opinion" in lower or "agree or disagree" in lower:
                     task_num = 2
 
-            # Tạo nhận xét chẩn đoán bằng LLM (Gemini API qua llm_service)
+            # 1. Tạo nhận xét chẩn đoán bằng LLM theo 4 tiêu chí cũ
             ai_eval = self._evaluate_writing_with_llm(raw_text, task_num=task_num)
+
+            # 2. Sinh bản sửa lỗi chi tiết từng cụm từ (Fine-grained Inline Diff) mới
+            from app.services.writing_evaluator import writing_evaluator
+            writing_diff = writing_evaluator.evaluate_essay(raw_text, task_num=task_num)
+
+            # Tổng hợp nhận xét điểm mạnh / điểm yếu
+            strengths = ai_eval.get("strengths") or writing_diff.strengths or [f"Đã hoàn thành bài viết Task {task_num} với độ dài {words} từ."]
+            weaknesses = ai_eval.get("weaknesses") or writing_diff.weaknesses or ["Cần chú ý trau chuốt từ vựng học thuật và độ chính xác ngữ pháp."]
+            drills = ai_eval.get("recommended_drills") or writing_diff.recommended_drills or [
+                f"Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing Task {task_num}.",
+                "Micro-session 35p: Mở rộng vốn từ học thuật thay cho các từ lặp lại."
+            ]
 
             state.evaluation = EvaluationOutput(
                 score_fraction=f"{words} từ (Task {task_num})",
                 band_score=None,
-                strengths=ai_eval.get("strengths", [f"Đã hoàn thành bài viết Task {task_num} với độ dài {words} từ."]),
-                weaknesses=ai_eval.get("weaknesses", ["Cần chú ý trau chuốt từ vựng học thuật và độ chính xác ngữ pháp."]),
+                strengths=strengths,
+                weaknesses=weaknesses,
                 questions=[],
-                recommended_drills=ai_eval.get("recommended_drills", [
-                    f"Micro-session 30p: Luyện viết lại câu theo 4 tiêu chí IELTS Writing Task {task_num}.",
-                    "Micro-session 35p: Mở rộng vốn từ học thuật thay cho các từ lặp lại."
-                ]),
-                feedback=ai_eval.get("feedback")
+                recommended_drills=drills,
+                feedback=ai_eval.get("feedback"),
+                diff_html=writing_diff.diff_html,
+                clean_rewritten_text=writing_diff.clean_rewritten_text,
+                inline_diff_markdown=writing_diff.inline_diff_markdown,
+                edits_count=writing_diff.total_edits,
+                writing_correction=writing_diff.model_dump()
             )
 
             # Cập nhật trực tiếp bài viết vào file Markdown (SSOT)
@@ -70,15 +84,19 @@ class EvaluatorAgent:
                     file_path=target_file,
                     raw_text=raw_text,
                     feedback=ai_eval.get("feedback"),
-                    task_id=state.task_id or f"task-{task_num}"
+                    task_id=state.task_id or f"task-{task_num}",
+                    diff_markdown=writing_diff.inline_diff_markdown,
+                    clean_text=writing_diff.clean_rewritten_text
                 )
                 state.evaluation.updated_file = os.path.relpath(target_file, settings.CONTENT_DIR).replace("\\", "/")
 
-            # Lưu vào PostgreSQL và tự động đồng bộ tiến độ kế hoạch tuần
+            # Lưu vào PostgreSQL và tự động đồng bộ tiến độ kế hoạch tuần + flashcards
             try:
-                from sqlmodel import Session
+                from sqlmodel import Session, select
+                from datetime import date
                 from app.core.database import engine
                 from app.models.test_attempt import TestAttempt
+                from app.models.flashcard import Flashcard
                 from app.services.plan_service import plan_service
 
                 with Session(engine) as session:
@@ -92,6 +110,25 @@ class EvaluatorAgent:
                         raw_attempt_text=raw_text
                     )
                     session.add(attempt)
+
+                    # Tự động nạp các thẻ lỗi sai tiêu biểu vào Flashcards nếu có
+                    if writing_diff.flashcard_candidates:
+                        for fc in writing_diff.flashcard_candidates:
+                            front_txt = fc.get("front", "")
+                            if front_txt:
+                                existing = session.exec(select(Flashcard).where(Flashcard.front == front_txt)).first()
+                                if not existing:
+                                    card = Flashcard(
+                                        front=front_txt,
+                                        back=fc.get("back", ""),
+                                        tag=f"writing-task{task_num}",
+                                        state=0,
+                                        difficulty=5.0,
+                                        stability=1.0,
+                                        due_date=date.today()
+                                    )
+                                    session.add(card)
+
                     session.commit()
 
                 plan_service.mark_task_attempt(skill="writing", source_file=state.source_file)
@@ -101,83 +138,44 @@ class EvaluatorAgent:
             return state
 
         # =====================================================================
-        # 2. XỬ LÝ BÀI THI LISTENING / READING (Cú pháp Shorthand hoặc Bảng Đáp Án)
+        # 2. XỬ LÝ BÀI THI LISTENING / READING (Chấm Điểm & Đối Soát Đáp Án Cambridge 18)
         # =====================================================================
-        parsed_items = markdown_parser.parse_test_shorthand(raw_text)
+        from app.services.cambridge_key_service import cambridge_key_service
 
-        if not parsed_items:
-            state.error = "Không tìm thấy câu trả lời nào theo cú pháp hợp lệ."
+        eval_res = cambridge_key_service.evaluate_test_attempt(
+            raw_text=raw_text,
+            skill=state.skill,
+            source_file=state.source_file
+        )
+
+        if "error" in eval_res:
+            state.error = eval_res["error"]
             return state
 
-        # Kiểm tra xem người học có cung cấp đáp án đối chiếu không
-        has_any_key = any(item.get("correct_answer") is not None for item in parsed_items)
+        has_any_key = eval_res.get("has_official_key", True)
         state.has_official_key = has_any_key
 
-        questions: List[QuestionResult] = []
-        correct_count = 0
-        total_graded = 0
-
-        for item in parsed_items:
-            q_num = item["question_number"]
-            user_ans = item["user_answer"]
-            correct_ans = item.get("correct_answer")
-            is_corr = item.get("is_correct")
-            trap = item.get("trap_type")
-            exp = item.get("explanation")
-
-            if has_any_key and correct_ans is not None:
-                # Đối chiếu khi người học cung cấp key
-                total_graded += 1
-                if user_ans.strip().lower() == correct_ans.strip().lower():
-                    is_corr = True
-                    correct_count += 1
-                else:
-                    is_corr = False
-            else:
-                # TUYỆT ĐỐI KHÔNG SUY ĐOÁN KHI THIẾU KEY
-                is_corr = None
-                correct_ans = None
-
-            questions.append(QuestionResult(
-                question_number=q_num,
-                user_answer=user_ans,
-                correct_answer=correct_ans,
-                is_correct=is_corr,
-                trap_type=trap,
-                explanation=exp
-            ))
-
-        # Khởi tạo nhận xét, điểm mạnh, điểm yếu & drills
-        score_fraction: Optional[str] = None
-        band_score: Optional[float] = None
-        feedback: Optional[str] = None
-        strengths: List[str] = []
-        weaknesses: List[str] = []
-        drills: List[str] = []
-
-        if has_any_key and total_graded > 0:
-            score_fraction = f"{correct_count}/{len(questions)}"
-            band_score = self._estimate_band_score(correct_count, len(questions), state.skill)
-            
-            # Gọi LLM chẩn đoán chuyên sâu các câu sai
-            diag = self._diagnose_mistakes_with_llm(questions, state.skill)
-            feedback = diag.get("feedback")
-            strengths = diag.get("strengths", [f"Hoàn thành đối soát {total_graded} câu hỏi trong bài."])
-            weaknesses = diag.get("weaknesses", [])
-            drills = diag.get("recommended_drills", [])
-        else:
-            # Tuân thủ Nguyên Tắc Vàng khi chưa có key chính thức
-            strengths.append(f"Hệ thống đã lưu trữ trung thực {len(questions)} câu trả lời của bạn vào Bảng Đối Soát Bài Làm.")
-            weaknesses.append("Chưa có bảng đáp án chính thức từ người học để thực hiện chấm điểm và bóc tách bẫy.")
-            drills.append("Bước tiếp theo: Cung cấp bảng đáp án chính thức để kích hoạt chế độ chẩn đoán bẫy đề thi.")
-            feedback = (
-                f"🛡️ **Nguyên Tắc Vàng: Lưu Trữ Trung Thực Bài Làm**\n\n"
-                f"Hệ thống đã ghi nhận đầy đủ **{len(questions)} câu trả lời** của bạn "
-                f"vào Bảng Đối Soát Bài Làm trong ghi chú Markdown. Trợ lý AI **tuyệt đối không tự suy đoán điểm số** "
-                f"hay tự phán đoán đúng/sai khi chưa có đáp án chính thức từ bạn.\n\n"
-                f"👉 **Để mở khóa tính năng Chẩn Đoán Lỗi Sai & Nhận Xét Chuyên Sâu:** Hãy cung cấp đáp án chính thức "
-                f"bằng cú pháp tốc ký (ví dụ: `1 sai - đúng / lý do: nghe nhầm danh từ`)."
+        questions: List[QuestionResult] = [
+            QuestionResult(
+                question_number=q["question_number"],
+                user_answer=q["user_answer"],
+                correct_answer=q.get("correct_answer"),
+                is_correct=q.get("is_correct"),
+                trap_type=q.get("trap_type"),
+                explanation=q.get("explanation"),
+                evidence=q.get("evidence"),
+                keywords=q.get("keywords")
             )
+            for q in eval_res.get("questions", [])
+        ]
+
+        correct_count = sum(1 for q in questions if q.is_correct is True)
+        score_fraction = eval_res.get("score_fraction")
+        band_score = eval_res.get("band_score")
+        feedback = eval_res.get("feedback")
+        strengths = eval_res.get("strengths", [])
+        weaknesses = eval_res.get("weaknesses", [])
+        drills = eval_res.get("recommended_drills", [])
 
         state.evaluation = EvaluationOutput(
             score_fraction=score_fraction,

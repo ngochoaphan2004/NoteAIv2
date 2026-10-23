@@ -1,0 +1,1298 @@
+{
+  "test": 1,
+  "title": "Cambridge IELTS 18 - Test 1",
+  "listening": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Postcode: ____",
+      "answer": "DW307YZ",
+      "explanation": "Đáp án cần điền là mã bưu chính, thường là sự kết hợp cả chữ và số.",
+      "evidence": "MAN: So next your postcode, please.\nSADIE: It's DW307YZ.",
+      "keywords": [
+        "Postcode"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "Date of bus journey: ____",
+      "answer": "24(th) April",
+      "explanation": "Đáp án cần điền là ngày của chuyến đi xe buýt (bus journey).",
+      "evidence": "MAN: Right, so now I want to ask you some questions about how you travelled here today. Did you use public transport?\nSADIE: Yes. I came by bus.\nMAN: OK. And that was today. It's the 24th of April, isn't it?\nSADIE: Isn't it the 25th? No, actually, you're right.",
+      "keywords": [
+        "Date of bus journey",
+        "bus journey"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "Reason for trip: shopping and visit to the ____",
+      "answer": "dentist",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ nơi mà Sadie đến trong chuyến đi bằng xe buýt.",
+      "evidence": "MAN: Ha ha. And what was the reason for your trip today? I can see you've got some shopping with you.\nSADIE: Yes. I did some shopping but the main reason I came here was to go to the dentist.",
+      "keywords": [
+        "Reason for trip",
+        "shopping",
+        "visit to the"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "Travelled by bus because cost of ____ too high",
+      "answer": "parking",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ thứ mà có chi phí quá cao khiến Sadie quyết định đi xe buýt.",
+      "evidence": "SADIE: Yes. I stopped driving in ages ago because parking was so difficult to find and it costs so much.",
+      "keywords": [
+        "Travelled by bus",
+        "cost of",
+        "too high"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "Got on bus at ____ Street",
+      "answer": "Claxby",
+      "explanation": "Đáp án cần điền là tên đường, là nơi Sadie lên xe buýt, khả năng cao sẽ được đánh vần.",
+      "evidence": "MAN: That’s good. So where did you start your journey?\nSADIE: At the bus stop on Claxby Street.\nMAN: Is that C-L-A-X-B-Y?\nSADIE: That's right.",
+      "keywords": [
+        "Got on bus",
+        "Street"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "Complaints about bus service: bus today was ____",
+      "answer": "late",
+      "explanation": "Đáp án cần điền là một tính từ, chỉ tình trạng của xe buýt theo lời phàn nàn (complaints) của Sadie.",
+      "evidence": "MAN: And how satisfied with the service are you? Do you have any complaints?\nSADIE: Well, as I said, it's very convenient and quick when it's on time, but this morning it was late. Only about 10 minutes, but still.",
+      "keywords": [
+        "Complaints",
+        "bus service",
+        "bus today was"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "Complaints about bus service: frequency of buses in the ____",
+      "answer": "evening",
+      "explanation": "Đáp án cần điền là một danh từ, có thể là địa điểm hoặc thời điểm mà Sadie phàn nàn về tần suất xe buýt. Ở đây, đáp án không phải là “town” vì cấu trúc “in town” không có “the”, mà trong câu hỏi đã có sẵn từ “the” trước danh từ cần điền.",
+      "evidence": "SADIE: Mmm. I suppose I mainly use the bus during the day, but any time I've been in town in the evening - for dinner or at the cinema - I've noticed you have to wait a long time for a bus - there aren't that many.",
+      "keywords": [
+        "Complaints",
+        "frequency of buses",
+        "in the"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "Gap-fill",
+      "question_text": "Goes to the ____ by car",
+      "answer": "supermarket",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ nơi mà Sadie hay đến bằng ô tô.",
+      "evidence": "MAN: OK, thanks. So now I'd like to ask you about your car use.\nSADIE: Well, I have got a car but I don't use it that often. Mainly just to go to the supermarket. But that's about it really.",
+      "keywords": [
+        "Goes to the",
+        "by car"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "Gap-fill",
+      "question_text": "Dislikes travelling by bike in the city centre because of the ____",
+      "answer": "pollution",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ lý do mà Sadie không thích đi xe đạp trong trung tâm thành phố (city centre).",
+      "evidence": "MAN: What about the city bikes you can rent? Do you ever use those?\nSADIE: No - I’m not keen on cycling there because of all the pollution.",
+      "keywords": [
+        "Dislikes travelling by bike",
+        "in the city centre",
+        "because of"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "Gap-fill",
+      "question_text": "Doesn't own a bike because of a lack of ____",
+      "answer": "storage",
+      "explanation": "Đáp án cần điền là một danh từ, chỉ thứ mà bị thiếu, khiến Sadie không sở hữu xe đạp.",
+      "evidence": "SADIE: [...] But I would like to get a bike - it would be good to use it to get to work.\nMAN: So why haven't you got one now?\nSADIE: Well, I live in a flat - on the second floor and it doesn't have any storage - so we'd have to leave it in the hall outside the flat.",
+      "keywords": [
+        "Doesn't own a bike",
+        "because of a lack of"
+      ],
+      "skill": "listening",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "Multiple choice",
+      "question_text": "Why does the speaker apologise about the seats?",
+      "answer": "C",
+      "explanation": "Bài nghe nói rằng một số chỗ ngồi, cụ thể là của những người ở cuối căn phòng có thể được kê sát nhau 'squased'. Do đó đáp án C là chính xác.",
+      "evidence": "By the way, I hope you’re all comfortable – we have brought in extra seats so that one has to stand, but it does mean that the people at the back of the room may be a bit squashed. We’ll only be here for about half an hour so, hopefully, that’s OK.",
+      "keywords": [
+        "speaker",
+        "apologise",
+        "seats"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 12,
+      "question_type": "Multiple choice",
+      "question_text": "What does the speaker say about the age of volunteers?",
+      "answer": "A",
+      "explanation": "Bài nghe nói rằng các yếu tố khác, chẳng hạn như sự đáng tin cậy, là quan trọng đối với công việc tình nguyện. Tuổi tác là không liên quan, không đóng vai trò quan trọng trong những trường hợp này.",
+      "evidence": "One of the first questions we’re often asked is how old you need to be for volunteer. Well, you can be as young as 16 or you can be 60 or over: it all depends on what type of voluntary work you want to do. Other considerations, such as reliability, are crucial in voluntary work and age isn’t related to these, in our experience.",
+      "keywords": [
+        "speaker",
+        "age",
+        "volunteers"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 13,
+      "question_type": "Multiple choice",
+      "question_text": "What does the speaker say about training?",
+      "answer": "A",
+      "explanation": "Bài nghe nói rằng việc huấn luyện không dừng lại khi mọi người bắt đầu vào làm. Nó diễn ra trước, trong và sau các giai đoạn làm việc. Vì vậy, nó diễn ra liên tục 'continuous'.",
+      "evidence": "Another question we get asked relates to training. Well, there’s plenty of that and it’s all face-to-face. What’s more, training doesn’t end when you start working for us – it takes place before, during and after periods of work. Often, it’s run by other experienced volunteers as managers tend to prefer to get on with other things.",
+      "keywords": [
+        "speaker",
+        "training"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 14,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO issues does the speaker ask the audience to consider before they apply to be volunteers? (Option 1)",
+      "answer": "B",
+      "explanation": "Từ 'commitment' - 'sự cam kết' của đáp án được paraphrase thành từ 'dedication' - 'sự tận tụy' trong bài nghe. Hơn thế nữa, từ 'commitment' còn được thể hiện qua việc dành hết năng lượng cho công việc mà họ làm.",
+      "evidence": "You may think that your income is important, but we don’t ask about that. It’s up to you to decide if you can work without earning money. What we value is dedication. Some of our most loyal volunteers earn very little themselves but still give their full energy to the work they do with us.",
+      "keywords": [
+        "issues",
+        "speaker",
+        "consider",
+        "apply",
+        "volunteers"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO issues does the speaker ask the audience to consider before they apply to be volunteers? (Option 2)",
+      "answer": "E",
+      "explanation": "Bài nghe nói rằng những người làm công viên tình nguyện viên cần chắc chắn việc họ có đủ số giờ trong ngày để hoàn thành công việc cho nhiệm vụ phụ hợp với họ. Điều này tương ứng với từ 'availability' - 'sự rảnh rỗi cho công việc gì' của đáp án.",
+      "evidence": "Now, I would ask you to consider a couple of important issues before you decide to apply for voluntary work. [...] But it is critical that you have enough hours in the day for whatever role we agree is suitable for you.",
+      "keywords": [
+        "issues",
+        "speaker",
+        "consider",
+        "apply",
+        "volunteers"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Matching",
+      "question_text": "What does the speaker suggest would be helpful for each of the following areas of voluntary work? - Fundraising",
+      "answer": "B",
+      "explanation": "Bài nghe nói nếu những tình nguyện khuyên có cách sáng tạo và mới lạ để có thể gây quỹ thì đây là một điều tốt. Do đó đáp án phù hợp là original, new ideas (B).",
+      "evidence": "You may wish simply to help us raise money. If you have the creativity to come up with an imaginative or novel way of fundraising, we’d be delighted...",
+      "keywords": [
+        "Fundraising",
+        "creativity",
+        "imaginative",
+        "novel way"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching",
+      "question_text": "What does the speaker suggest would be helpful for each of the following areas of voluntary work? - Litter collection",
+      "answer": "G",
+      "explanation": "Bài nghe nói với hoạt động nhặt rác thì sẽ hữu dụng nếu tình nguyện viên có khả năng đi bộ trong một khoảng thời gian dài, đôi khi là leo dốc. Điều này tương ứng với 'a good level of fitness' (G).",
+      "evidence": "One outdoor activity that we need volunteers for is litter collection and for this it’s useful if you can walk for long periods, sometimes uphill.",
+      "keywords": [
+        "Litter collection",
+        "walk for long periods",
+        "uphill"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching",
+      "question_text": "What does the speaker suggest would be helpful for each of the following areas of voluntary work? - Playmates",
+      "answer": "D",
+      "explanation": "Đối với hoạt động 'playmates', sẽ là một điều tốt nếu tình nguyện viên có kiến thức về dinh dưỡng và có thể đưa ra chỉ dẫn rõ ràng. Do đó đáp án là an understanding of food and diet (D).",
+      "evidence": "‘playmates’. [...] but it’s good if you know something about nutrition and can give clear instructions.",
+      "keywords": [
+        "Playmates",
+        "nutrition",
+        "clear instructions"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Matching",
+      "question_text": "What does the speaker suggest would be helpful for each of the following areas of voluntary work? - Story Club",
+      "answer": "A",
+      "explanation": "Nếu tình nguyện viên có khả năng diễn xuất tương đương với việc thể hiện trên sân khấu, họ có thể tham gia vào hoạt động story club. Do đó đáp án là experience on stage (A).",
+      "evidence": "If that doesn’t appeal to you, maybe you would be interested in helping out at our story club for disabled children, especially if you have done some acting.",
+      "keywords": [
+        "Story Club",
+        "acting"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "What does the speaker suggest would be helpful for each of the following areas of voluntary work? - First aid",
+      "answer": "F",
+      "explanation": "Đối với hoạt động sơ cứu, điều mà tình nguyện viên cần ưu tiên là nắm được nhiều thông tin và không quên các bước hay chi tiết quan trọng nào, tương ứng với 'a good memory' (F).",
+      "evidence": "The last area I’ll mention today is first aid. Volunteers who join this group can end up teaching others in vulnerable groups who may be at risk of injury. Initially, though, your priority will be to take in a lot of information and not forget any important steps or details.",
+      "keywords": [
+        "First aid",
+        "take in a lot of information",
+        "not forget"
+      ],
+      "skill": "listening",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Multiple choice",
+      "question_text": "What problem did Chantal have at the start of the talk?\nA. Her view of the speaker was blocked.\nB. She was unable to find an empty seat.\nC. The students next to her were talking.",
+      "answer": "A",
+      "explanation": "Chantal nhắc đến việc mình phải đổi chỗ là do người ngồi đằng trước quá cao nên không thể nhìn được diễn giả (Her view of the speaker was blocked). Bẫy: B - Chantal đến sớm nên có chỗ ngồi chứ không phải không tìm được chỗ (unable to find an empty seat => FALSE). C - Hugo hỏi liệu có phải do người ngồi cạnh Chantal nói chuyện hay không, nhưng Chantal phủ nhận (students next to her were talking => FALSE).",
+      "evidence": "Chantal: ... I went early so that I'd get a seat and not have to stand, but then this guy sat right in front of me and he was so tall!\nHugo: It's hard to see through people's heads, isn't it?",
+      "keywords": [
+        "problem",
+        "Chantal",
+        "start of the talk",
+        "view",
+        "blocked"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 22,
+      "question_type": "Multiple choice",
+      "question_text": "What were Hugo and Chantal surprised to hear about the job market?\nA. It has become more competitive than it used to be.\nB. There is more variety in it than they had realised.\nC. Some areas of it are more exciting than others.",
+      "answer": "B",
+      "explanation": "Có đa dạng các lĩnh vực công việc trong ngành thời trang mà trước đây cả Hugo và Chantal chưa từng nghĩ đến (fashion journalism, ...). Chantal khẳng định cô không ngờ có nhiều lựa chọn nghề nghiệp đến vậy (more variety in it than they had realised). Bẫy: A - Hugo có nhắc đến đây là một lĩnh vực cạnh tranh, tuy nhiên không so sánh bây giờ đã trở nên cạnh tranh hơn trước (NOT GIVEN). C - Hugo có nhắc đến các lĩnh vực làm việc nhưng không so sánh lĩnh vực nào thú vị hơn (NOT GIVEN).",
+      "evidence": "Hugo: Yeah, but it looks like there's a whole range of areas of work that we hadn't even thought of - like fashion journalism, for instance.\nChantal: Yeah - I wasn't expecting so many career options.",
+      "keywords": [
+        "Hugo",
+        "Chantal",
+        "surprised",
+        "job market",
+        "more variety",
+        "realised"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 23,
+      "question_type": "Multiple choice",
+      "question_text": "Hugo and Chantal agree that the speaker's message was\nA. unfair to them at times.\nB. hard for them to follow.\nC. critical of the industry.",
+      "answer": "A",
+      "explanation": "Diễn giả thường mở đầu bằng: 'Tôi biết là các bạn nghĩ thế này, nhưng ...' rồi sau đó nói thực tế là như thế nào. Cách nói này khiến Hugo cảm giác diễn giả nghĩ các sinh viên hơi thiếu hiểu biết (narrow-minded). Chantal và Hugo đều đồng tình rằng nhận định như vậy là hơi gay gắt và bất công (harsh / unfair), vì họ dù sao cũng mới chỉ là sinh viên năm nhất và còn phải học hỏi nhiều. Bẫy: B - Audio không nhắc gì đến việc khó theo dõi thông điệp của diễn giả (NOT GIVEN). C - Chantal có nhận định rằng đây là một ngành khó khăn (tough industry), tuy nhiên đây không phải là ý thông điệp chính của diễn giả (NOT GIVEN).",
+      "evidence": "Hugo: Perhaps she thinks students are a bit narrow-minded about the industry.\nChantal: It was a bit harsh, though! We know it's a tough industry.\nHugo: Yeah - and we're only first years, after all. We've got a lot to learn.",
+      "keywords": [
+        "Hugo",
+        "Chantal",
+        "agree",
+        "speaker's message",
+        "unfair",
+        "harsh"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 24,
+      "question_type": "Multiple choice",
+      "question_text": "What do Hugo and Chantal criticise about their school careers advice?\nA. when they received the advice\nB. [not provided in text]\nC. who gave the advice",
+      "answer": "C",
+      "explanation": "Điều Hugo và Chantal chỉ trích về định hướng nghề nghiệp ở trường phổ thông là người tư vấn: mặc dù trường tổ chức nhiều buổi chia sẻ, các diễn giả lại không phải là những chuyên gia thực sự hiểu biết sâu về ngành (not by the experts who really know stuff). Bẫy: A - Chantal cho biết họ nhận được thông tin tư vấn đúng vào thời điểm họ cần ('just when we needed to be'), do đó thời điểm nhận tư vấn không phải là điều bị chỉ trích (FALSE).",
+      "evidence": "Hugo: Well, we had numerous talks on careers, which was good, but none of them were very inspiring. They could have asked more people like today's speaker to talk to us.\nChantal: I agree. We were told about lots of different careers - just when we needed to be, but not by the experts who really know stuff.",
+      "keywords": [
+        "Hugo",
+        "Chantal",
+        "criticise",
+        "school careers advice",
+        "who gave the advice",
+        "experts"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 25,
+      "question_type": "Multiple choice",
+      "question_text": "When discussing their future, Hugo and Chantal disagree on",
+      "answer": "B",
+      "explanation": "Hugo và Chantal chấp nhận có sự bất đồng về quan điểm nghề nghiệp giữa hai người: Chantal muốn học hết khóa rồi mới quyết định, còn Hugo lại nghĩ nên chọn một lĩnh vực ngay bây giờ và tập trung phát triển nó. Do đó, hai người không đồng ý với nhau về thời điểm đưa ra lựa chọn nghề nghiệp (when to choose a career in fashion). Mẫu câu Chantal nói: 'Well, I think we'll just have to differ on that issue!' xác nhận sự bất đồng này.",
+      "evidence": "Hugo: So did today's talk influence your thoughts on what career you'd like to take up in the future?\nChantal: Well. I promised myself that I'd go through this course and keep an open mind till the end.\nHugo: But I think it's better to pick an area of the industry now and then aim to get better and better at it.\nChantal: Well, I think we'll just have to differ on that issue!",
+      "keywords": [
+        "discussing",
+        "future",
+        "disagree",
+        "when to choose",
+        "career in fashion"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 26,
+      "question_type": "Multiple choice",
+      "question_text": "How does Hugo feel about being an unpaid assistant?",
+      "answer": "A",
+      "explanation": "Hugo có quan điểm thực tế và chấp nhận việc làm trợ lý không lương trong ngành thời trang qua câu nói 'I'm prepared for that, aren't you?' (Tôi đã chuẩn bị tinh thần cho việc đó rồi). Điều này tương ứng với đáp án A (He is realistic about the practice).\n- Bẫy B (dishonest): Không có thông tin cho thấy việc này là lừa dối/không trung thực (NOT GIVEN).\n- Bẫy C (others want to change): Hugo đề cập diễn giả và những người khác đều thừa nhận đây là thực tế chung ('everyone else says the same'), không hề nhắc tới việc mọi người muốn thay đổi nó (FALSE).",
+      "evidence": "Hugo: One thing's for certain, though. From what she said, we'll be unpaid assistants in the industry for quite a long time.\nChantal: Mmm.\nHugo: I'm prepared for that, aren't you?\nChantal: Actually, I'm not going to accept that view.\nHugo: Really? But she knows it's the case - and everyone else says the same.",
+      "keywords": [
+        "Hugo feel",
+        "unpaid assistant",
+        "realistic",
+        "practice",
+        "prepared"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 27,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO mistakes did the speaker admit she made in her first job? (Select 1 of 2)",
+      "answer": "B",
+      "explanation": "Diễn giả thừa nhận người nhạc sĩ (chủ lao động) đã đúng khi chỉ ra cô quan tâm đến ngoại hình của bản thân hơn là của khách hàng ('telling her she was more interested in her own appearance than his! ... she did realise he was right about that'). Vì vậy, đáp án B (paying too much attention to how she looked) là chính xác.",
+      "evidence": "Hugo: Mmm. And then he was so mean, telling her she was more interested in her own appearance than his!\nChantal: But - she did realise he was right about that, which really made me think.",
+      "keywords": [
+        "mistakes",
+        "speaker admit",
+        "first job",
+        "paying too much attention",
+        "how she looked"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO mistakes did the speaker admit she made in her first job? (Select 2 of 2)",
+      "answer": "E",
+      "explanation": "Diễn giả thể hiện sự hối hận vì để mất công việc và cho biết lẽ ra cô nên giấu đi những cảm xúc tiêu cực đối với khách hàng của mình ('she should have hidden her negative feelings about him, but she didn't'). Việc cô không giấu cảm xúc tiêu cực đồng nghĩa với việc cô đã bộc lộ sự không hài lòng/ghét khách hàng ra mặt. Vì vậy, đáp án E (openly disliking her client) là đáp án đúng.\n- Bẫy A (dishonest to employer): NOT GIVEN.\n- Bẫy C (expecting to become well known): NOT GIVEN.\n- Bẫy D (trying to earn a lot of money): FALSE, vì cô chỉ tìm kiếm kinh nghiệm chứ không phải phần thưởng tài chính ('all she was looking for back then was experience, not financial reward').",
+      "evidence": "Hugo: She obviously regretted losing the job.\nChantal: Well, as she said, she should have hidden her negative feelings about him, but she didn't.",
+      "keywords": [
+        "mistakes",
+        "speaker admit",
+        "first job",
+        "openly disliking",
+        "client",
+        "negative feelings"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO pieces of retail information do Hugo and Chantal agree would be useful? (Select 1 of 2)",
+      "answer": "C",
+      "explanation": "Cả Hugo và Chantal đều đồng ý rằng thông tin hữu ích là biết được khoảng trống trên thị trường (gap in the market), tức là các mặt hàng thiết kế mà người tiêu dùng muốn mua nhưng không cửa hàng nào cung cấp ('an item that no one's stocking but that consumers are looking for'). Do đó chọn C (fashion designs people want but can't find).",
+      "evidence": "Hugo: However, it would be useful to know if there's a gap in the market - you know, an item that no one's stocking but that consumers are looking for.\nChantal: Yeah, people don't give up searching.",
+      "keywords": [
+        "retail information",
+        "Hugo and Chantal agree",
+        "useful",
+        "gap in the market",
+        "fashion designs"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Multiple choice",
+      "question_text": "Which TWO pieces of retail information do Hugo and Chantal agree would be useful? (Select 2 of 2)",
+      "answer": "A",
+      "explanation": "Cả hai cùng thống nhất rằng việc biết lý do tại sao mọi người trả lại đồ thời trang là rất hữu ích, ví dụ như quần áo bị hỏng/rách sau khi giặt ('returned because they ... fell apart in the wash! Yeah, it would be good to know that kind of thing'). Vì vậy chọn A (the reasons people return fashion items).\n- Bẫy B (time people have to shop) & D (best time of year): NOT GIVEN.\n- Bẫy E (most popular fashion sizes): FALSE, vì Chantal muốn biết thông tin này nhưng Hugo lại cho rằng đây là vấn đề của nhà sản xuất chứ không phải nhà thiết kế ('that's an issue for manufacturers, not designers'), nên hai người không đồng ý với nhau.",
+      "evidence": "Chantal: They also take things back to the store if they aren't right.\nHugo: Yeah. Imagine you worked in an expensive shop and you found out the garments sold there were being returned because they ... fell apart in the wash!\nChantal: Yeah, it would be good to know that kind of thing.",
+      "keywords": [
+        "retail information",
+        "agree",
+        "useful",
+        "reasons",
+        "return fashion items",
+        "returned"
+      ],
+      "skill": "listening",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Gap-fill",
+      "question_text": "damage to 31 _____ in the park",
+      "answer": "fences",
+      "explanation": "Từ cần điền là một danh từ, có thể là một cơ sở vật chất nào đó ở trong công viên. Trong audio, người nói có nhắc đến việc voi thường đạp đổ (knock down) hàng rào (fences) quanh công viên để đi ra ngoài tìm thức ăn. Việc đạp đổ hàng rào chính là gây thiệt hại (damage) cho hàng rào.",
+      "evidence": "Elephants were routinely knocking down fences around the park, which then had to be repaired at a significant cost.",
+      "keywords": [
+        "damage to",
+        "fences",
+        "knocking down",
+        "park"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "a suitable group of elephants from the same 32 _____ was selected",
+      "answer": "family",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết ở đây là trước từ này có tính từ “same” và mạo từ “the”. Trong audio, người nói nhắc đến việc một nhóm voi thuộc về cùng một gia đình (family) cần được di chuyển cùng lúc.",
+      "evidence": "Elephants were moved in groups of between eight and twenty, all belonging to one family. Because relationships are very important to elephants, they all had to be moved at the same time.",
+      "keywords": [
+        "group of elephants",
+        "same",
+        "family",
+        "belonging to one family"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "vets and park staff made use of 33 _____ to help guide the elephants into an open plain",
+      "answer": "helicopters",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là trước từ này có cụm “made use of”. Người nói trong audio nhắc đến việc một đội ngũ bác sĩ thú y và nhân viên trông coi công viên bay bằng trực thăng (helicopters) để điều hướng (directed) một nhóm voi vào khu đất trống đã định trước (a designated open plain).",
+      "evidence": "A team of vets and park rangers flew over the park in helicopters and targeted a group, which were rounded up and directed to a designated open plain.",
+      "keywords": [
+        "vets",
+        "park staff",
+        "park rangers",
+        "made use of",
+        "flew over",
+        "helicopters",
+        "guide",
+        "directed",
+        "open plain"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "this process had to be completed quickly to reduce 34 _____",
+      "answer": "stress",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là trước từ này có động từ “reduce”. Voi bị bắn phi tiêu (darts) tẩm chất gây mê (tranquiliser) để nằm bất động (immobilise). Quá trình này cần được làm nhanh nhất có thể để giảm thiểu tối đa (minimise) sự căng thẳng (stress) cho voi.",
+      "evidence": "This also had to be done as quickly as possible so as to minimise the stress caused.",
+      "keywords": [
+        "completed quickly",
+        "done as quickly as possible",
+        "reduce",
+        "minimise",
+        "stress"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "elephants had to be turned on their 35 _____ to avoid damage to their lungs",
+      "answer": "sides",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là trước từ này có tính từ sở hữu “their”. Voi cần được lật qua bên sườn (sides) để tránh nằm đè lên ngực (lying on their chests), tránh hiện tượng phổi bị dập (crushed) và dẫn đến ngạt thở (suffocation).",
+      "evidence": "To avoid the risk of suffocation, the team had to make sure none of the elephants were lying on their chests because their lungs could be crushed in this position. So all the elephants had to be placed on their sides.",
+      "keywords": [
+        "turned on",
+        "placed on",
+        "sides",
+        "avoid damage",
+        "avoid the risk of suffocation",
+        "lungs"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 36,
+      "question_type": "Gap-fill",
+      "question_text": "elephants' 36 _____ had to be monitored constantly",
+      "answer": "breathing",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là trước từ này có tính từ sở hữu “elephants'”. Để ý đến việc thở (breathing) của voi là rất quan trọng, và khi voi thở ít hơn sáu hơi thở mỗi phút (there were fewer than six breaths per minute) thì chúng cần cấp cứu (urgent medical attention).",
+      "evidence": "It was very important to keep an eye on their breathing - if there were fewer than six breaths per minute, the elephant would need urgent medical attention.",
+      "keywords": [
+        "elephants'",
+        "monitored constantly",
+        "keep an eye on",
+        "breathing"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 37,
+      "question_type": "Gap-fill",
+      "question_text": "data including the size of their tusks and 37 _____ was taken",
+      "answer": "feet",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là trước từ này là cụm “the size of their tusks and”. Các dữ liệu về kích cỡ ngà voi (tusks) và chân (feet) của chúng cần được trích xuất.",
+      "evidence": "Measurements were taken of each elephant's tusks -elephants with large tusks would be at greater risk from poachers - and also of their feet.",
+      "keywords": [
+        "data",
+        "measurements",
+        "size",
+        "tusks",
+        "feet"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 38,
+      "question_type": "Gap-fill",
+      "question_text": "38 _____ opportunities",
+      "answer": "employment",
+      "explanation": "Từ cần điền có thể là một danh từ hoặc tính từ vì sau từ này là danh từ “opportunities”. Dự án di dời voi đến công viên Nkhotakota thành công lớn không chỉ với loài voi mà còn cho người dân ở vùng đó. Cụ thể, cơ hội việc làm (employment prospects) tăng lên đáng kể.",
+      "evidence": "Employment prospects have improved enormously, contributing to rising living standards for the whole community.",
+      "keywords": [
+        "opportunities",
+        "prospects",
+        "employment"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 39,
+      "question_type": "Gap-fill",
+      "question_text": "a reduction in the number of poachers and 39 _____",
+      "answer": "weapons",
+      "explanation": "Từ cần điền là một danh từ, dấu hiệu nhận biết là từ này đi sau cụm “the number of”. Săn bắn không còn xuất hiện nữa (Poaching is no longer an issue) và nhiều thợ săn (poachers) còn giao nộp cả vũ khí (weapons). Như vậy, số lượng thợ săn và cả vũ khí cũng giảm.",
+      "evidence": "Poaching is no longer an issue, as former poachers are able to find more reliable sources of income. In fact, many of them volunteered to give up their weapons, as they were no longer of any use to them.",
+      "keywords": [
+        "reduction",
+        "number of",
+        "poachers",
+        "weapons",
+        "give up"
+      ],
+      "skill": "listening",
+      "part": 4
+    },
+    {
+      "question_number": 40,
+      "question_type": "Gap-fill",
+      "question_text": "an increase in 40 _____ as a contributor to GDP",
+      "answer": "tourism",
+      "explanation": "Từ cần điền là một danh từ vì từ này đi sau cụm “an increase in”. Việc di dời voi đến nơi ở mới tạo điều kiện cho voi phát triển. Việc này được triển khai ở nhiều công viên khác nhau (be replicated in other parks). Mô hình bảo tồn bền vững (sustainable conservation model) tạo ra mối quan tâm lớn (big draw) cho ngành du lịch (tourism), ngành đóng góp nhiều cho GDP.",
+      "evidence": "All this has been a big draw for tourism, which contributes five times more than the illegal wildlife trade to GDP, and this is mainly because of the elephants.",
+      "keywords": [
+        "increase in",
+        "tourism",
+        "contributor to GDP",
+        "big draw",
+        "contributes"
+      ],
+      "skill": "listening",
+      "part": 4
+    }
+  ],
+  "reading": [
+    {
+      "question_number": 1,
+      "question_type": "Gap-fill",
+      "question_text": "Vertical tubes are used to grow strawberries, _____ and herbs.",
+      "answer": "lettuces",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là chuỗi liệt kê các nông sản) chỉ tên một loại nông sản.",
+      "evidence": "Strawberries that are small, intensely flavoured and resplendently red sprout abundantly from large plastic tubes. Peer inside and you see the tubes are completely hollow, the roots of dozens of strawberry plants dangling down inside them. From identical vertical tubes nearby burst row upon row of lettuces; near those are aromatic herbs, such as basil, sage and peppermint.",
+      "keywords": [
+        "Vertical tubes",
+        "grow strawberries",
+        "herbs",
+        "lettuces"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 2,
+      "question_type": "Gap-fill",
+      "question_text": "There will eventually be a daily harvest of as much as _____ in weight of fruit and vegetables.",
+      "answer": "1,000 kg",
+      "explanation": "Câu hỏi yêu cầu điền thông tin chỉ số lượng (dấu hiệu nhận biết là as much as và in weight) chỉ số cân hoa quả và rau được thu hoạch hàng ngày.",
+      "evidence": "When the remaining two thirds of the vast open area are in production, 20 staff will harvest up to 1,000 kg of perhaps 35 different varieties of fruit and vegetables, every day.",
+      "keywords": [
+        "daily harvest",
+        "as much as",
+        "in weight",
+        "fruit and vegetables",
+        "1,000 kg"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 3,
+      "question_type": "Gap-fill",
+      "question_text": "It may be possible that the farm’s produce will account for as much as 10% of the city’s _____ overall.",
+      "answer": "(food) consumption",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là sau sở hữu cách the city’s). Trong bài đọc này produce được hiểu là nông sản, những sản phẩm thu được từ trồng trọt hay chăn nuôi. Nông sản từ nông trại có thể góp tới 10% tổng tiêu thụ của thành phố.",
+      "evidence": "But if enough unused space can be developed like this, there’s no reason why you shouldn’t eventually target maybe between 5% and 10% of consumption.",
+      "keywords": [
+        "It may be possible",
+        "produce",
+        "as much as 10%",
+        "city's",
+        "consumption"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 4,
+      "question_type": "Gap-fill",
+      "question_text": "Intensive farming versus aeroponic urban farming: wide range of _____ used",
+      "answer": "pesticides",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là wide range of) chỉ một thứ đã được sử dụng với khối lượng lớn trong phương pháp Intensive farming.",
+      "evidence": "‘First, I don’t much like the fact that most of the fruit and vegetables we eat have been treated with something like 17 different pesticides, or that the intensive farming techniques that produced them are such huge generators of greenhouse gases. [...]’",
+      "keywords": [
+        "Intensive farming",
+        "wide range of",
+        "used",
+        "pesticides"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 5,
+      "question_type": "Gap-fill",
+      "question_text": "varieties of fruit and vegetables chosen that can survive long _____",
+      "answer": "journeys",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là long là tính từ). Những loại quả và rau được chọn để “sống sót” qua những chuyến đi dài - long journeys.",
+      "evidence": "[...] I don’t much like the fact, either, that they’ve travelled an average of 2,000 refrigerated kilometres to my plate, that their quality is so poor, because the varieties are selected for their capacity to withstand such substantial journeys, or that 80% of the price I pay goes to wholesalers and transport companies, not the producers.",
+      "keywords": [
+        "varieties of fruit and vegetables",
+        "chosen",
+        "can survive long",
+        "journeys"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 6,
+      "question_type": "Gap-fill",
+      "question_text": "_____ receive very little of overall income",
+      "answer": "producers",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là từ đang đóng vai trò làm chủ ngữ, đứng trước động từ) chỉ đối tượng nhận được thu nhập ít. 80% tiền sẽ về các nhà bán buôn (thu mua lại từ nông trại) và công ty vận chuyển, chứ không phải các người trồng trọt, sản xuất.",
+      "evidence": "[...] or that 80% of the price I pay goes to wholesalers and transport companies, not the producers.",
+      "keywords": [
+        "receive",
+        "very little",
+        "overall income",
+        "producers"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 7,
+      "question_type": "Gap-fill",
+      "question_text": "produce chosen because of its _____",
+      "answer": "flavour / flavor",
+      "explanation": "Câu hỏi yêu cầu điền danh từ (dấu hiệu nhận biết là sau tính từ sở hữu its). Các nông sản có thể được (người tiêu dùng) lựa chọn vì hương vị của nó.",
+      "evidence": "Produce grown using this soil-free method, [...] ‘You can select crop varieties for their flavour, not their resistance to the transport and storage chain, and you can pick them when they’re really at their best, and not before.’",
+      "keywords": [
+        "produce",
+        "chosen",
+        "because of its",
+        "flavour",
+        "flavor"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 8,
+      "question_type": "True-False-Not Given",
+      "question_text": "Urban farming can take place above or below ground.",
+      "answer": "TRUE",
+      "explanation": "Qua phương pháp urban farming này, dâu tây có thể được trồng trên mặt đất ở những container chở hàng bỏ đi; nấm được trồng dưới mặt đất ở những hầm đỗ xe.",
+      "evidence": "Urban farming is not, of course, a new phenomenon. [...] Strawberries are being grown in disused shipping containers, mushrooms in underground carparks.",
+      "keywords": [
+        "Urban farming",
+        "take place",
+        "above or below ground"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 9,
+      "question_type": "True-False-Not Given",
+      "question_text": "Some of the equipment used in aeroponic farming can be made by hand.",
+      "answer": "NOT GIVEN",
+      "explanation": "Đoạn văn chỉ nói thiết bị sử dụng nhẹ, có thể lắp đặt trên mọi mặt phẳng, giá mua và vận hành đều rẻ nhưng không nhắc tới việc liệu thiết bị này có thể được làm thủ công hay không.",
+      "evidence": "The equipment weighs little, can be installed on almost any flat surface and is cheap to buy: roughly 100 to 150 per square metre. It is cheap to run, too, consuming a tiny fraction of the electricity used by some techniques.",
+      "keywords": [
+        "equipment",
+        "aeroponic farming",
+        "made by hand"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 10,
+      "question_type": "True-False-Not Given",
+      "question_text": "Urban farming relies more on electricity than some other types of farming.",
+      "answer": "FALSE",
+      "explanation": "Phương pháp này không phụ thuộc nhiều vào điện mà chỉ tiêu thụ một lượng nhỏ so với số lượng điện sử dụng bởi các loại hình nông trại khác.",
+      "evidence": "It is cheap to run, too, consuming a tiny fraction of the electricity used by some techniques.",
+      "keywords": [
+        "Urban farming",
+        "relies more on",
+        "electricity",
+        "other types"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 11,
+      "question_type": "True-False-Not Given",
+      "question_text": "Fruit and vegetables grown on an aeroponic urban farm are cheaper than traditionally grown organic produce.",
+      "answer": "TRUE",
+      "explanation": "Rau quả trồng theo phương pháp aeroponic urban farm được bán với giá vẫn thấp hơn những loại nông sản hữu cơ trồng trên đất. Ở đây sử dụng từ growers mang nghĩa loài thực vật được trồng/mọc theo một cách thức nhất định.",
+      "evidence": "Produce grown this way typically sells at prices that, while generally higher than those of classic intensive agriculture, are lower than soil-based organic growers.",
+      "keywords": [
+        "Fruit and vegetables",
+        "grown on an aeroponic urban farm",
+        "cheaper",
+        "traditionally grown organic produce"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 12,
+      "question_type": "True-False-Not Given",
+      "question_text": "Most produce can be grown on an aeroponic urban farm at any time of the year.",
+      "answer": "FALSE",
+      "explanation": "Bài đọc chỉ ra rằng nhiều loại nông sản ('much of the produce') sẵn có quanh năm, chứ không phải hầu hết ('most produce'), và vẫn có những hạn chế nhất định đối với một số loại cây trồng.",
+      "evidence": "At the moment, you can't grow trees in aeroponics, you can't grow root vegetables like potatoes or carrots... Much of the produce is available year-round...",
+      "keywords": [
+        "Most produce",
+        "grown on an aeroponic urban farm",
+        "any time of the year"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 13,
+      "question_type": "True-False-Not Given",
+      "question_text": "Beans take longer to grow on an aeroponic urban farm than other vegetables.",
+      "answer": "NOT GIVEN",
+      "explanation": "Bài đọc không đề cập đến việc hạt đậu (beans) có mất nhiều thời gian để trồng hơn so với các loại rau khác khi trồng bằng phương pháp aeroponic hay không.",
+      "evidence": "Không có thông tin trong bài đọc.",
+      "keywords": [
+        "Beans",
+        "take longer to grow",
+        "aeroponic urban farm",
+        "other vegetables"
+      ],
+      "skill": "reading",
+      "part": 1
+    },
+    {
+      "question_number": 14,
+      "question_type": "Matching",
+      "question_text": "bad outcomes for a forest when people focus only on its financial reward",
+      "answer": "B",
+      "explanation": "Đoạn B đề cập đến việc người sở hữu đất chỉ quan tâm đến giá trị kinh tế của cây gỗ tốt (high-quality timber) và để lại những cây kém chất lượng, khiến cho khu rừng trở nên yếu đi trước thời tiết và dịch bệnh.",
+      "evidence": "In the past, Pennsylvania landowners were solely interested in the value of their trees as high-quality timber... leave behind poorly formed trees [...]. These trees [...] decrease the health of a stand* leaving it more vulnerable to poor weather and disease.",
+      "keywords": [
+        "bad outcomes",
+        "forest",
+        "financial reward",
+        "high-quality timber"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 15,
+      "question_type": "Matching",
+      "question_text": "reference to the aspects of any tree that contribute to its worth",
+      "answer": "A",
+      "explanation": "Đoạn A đề cập đến các yếu tố cấu thành giá trị của một cái cây bao gồm loài, kích thước, hình dáng, tình trạng, công dụng và khả năng tiếp cận.",
+      "evidence": "A tree's 'value' depends on several factors including its species, size, form, condition, quality, function, and accessibility, and depends on the management goals for a given forest.",
+      "keywords": [
+        "reference",
+        "aspects",
+        "tree",
+        "contribute",
+        "worth",
+        "value"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 16,
+      "question_type": "Matching",
+      "question_text": "mention of the potential use of wood to help run vehicles",
+      "answer": "C",
+      "explanation": "Đoạn C đề cập đến việc gỗ có thể được chuyển hóa thành nhiên liệu lỏng như ethanol và gasoline để chạy xe tải và ô tô (lorries and cars).",
+      "evidence": "Wood can also be gasified for electrical generation and can even be made into liquid fuels like ethanol and gasoline for lorries and cars.",
+      "keywords": [
+        "potential use",
+        "wood",
+        "run vehicles",
+        "liquid fuels",
+        "lorries and cars"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 17,
+      "question_type": "Matching",
+      "question_text": "examples of insects that attack trees",
+      "answer": "E",
+      "explanation": "Đoạn E đưa ra các ví dụ cụ thể về sâu bọ và dịch bệnh tấn công rừng như hemlock woolly adelgid, Asian longhorned beetle, emerald ash borer, và gypsy moth.",
+      "evidence": "With the many pests and pathogens visiting forests including hemlock woolly adelgid, Asian longhorned beetle, emerald ash borer, and gypsy moth, to name just a few...",
+      "keywords": [
+        "examples",
+        "insects",
+        "attack trees",
+        "pests",
+        "pathogens"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 18,
+      "question_type": "Matching",
+      "question_text": "an alternative name for trees that produce low-use wood",
+      "answer": "B",
+      "explanation": "Đoạn B nhắc đến tên gọi thay thế cho những cây có chất lượng gỗ thấp (low-use wood) là 'junk trees'.",
+      "evidence": "Some people even call these 'junk trees', and they are abundant in Pennsylvania.",
+      "keywords": [
+        "alternative name",
+        "trees",
+        "low-use wood",
+        "junk trees"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 19,
+      "question_type": "Matching",
+      "question_text": "to remove trees that are diseased",
+      "answer": "B",
+      "explanation": "Đoạn E mô tả phương pháp 'Salvage Cut' giúp giảm số lượng cây bệnh (reduce the number of sick trees). (Lưu ý: Đáp án trong sách ghi nhận là B tương ứng với đoạn có nội dung đề cập đến phương pháp này hoặc cấu trúc bài tập tương ứng).",
+      "evidence": "[...] Salvage Cut [...]. These types of cut reduce the number of sick trees and seek to manage the future spread of a pest problem.",
+      "keywords": [
+        "remove trees",
+        "diseased",
+        "Salvage Cut",
+        "reduce the number of sick trees"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 20,
+      "question_type": "Matching",
+      "question_text": "to generate income across a number of years",
+      "answer": "C",
+      "explanation": "Đoạn F mô tả phương pháp 'Shelterwood Cut' giúp nguồn thu nhập được trải đều trong một thập kỷ hoặc hơn.",
+      "evidence": "A Shelterwood Cut [...] can also be used to develop a two-tier forest so that there are two harvests and the money that comes in is spread out over a decade or more.",
+      "keywords": [
+        "generate income",
+        "number of years",
+        "spread out",
+        "decade"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 21,
+      "question_type": "Matching",
+      "question_text": "to create a forest whose trees are close in age",
+      "answer": "C",
+      "explanation": "Đoạn F giải thích về phương pháp 'Shelterwood Cut' để lại một khu rừng non nơi tất cả các cây đều có điểm phát triển tương đồng nhau về độ tuổi.",
+      "evidence": "A Shelterwood Cut... leaves a young forest where all trees are at a similar point in their growth.",
+      "keywords": [
+        "create a forest",
+        "close in age",
+        "similar point in their growth",
+        "young forest"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 22,
+      "question_type": "Gap-fill",
+      "question_text": "Some dead wood is removed to avoid the possibility of ______.",
+      "answer": "fire",
+      "explanation": "Từ cần điền là một danh từ (sau giới từ of), chỉ sự việc: một số cây chết được loại bỏ để tránh rủi ro sự việc này diễn ra. Đoạn G có thông tin rằng sự loại bỏ cây chết để phòng tránh cháy (fire).",
+      "evidence": "Thinnings and dense and dead wood removal for fire prevention also center on the production of low-use wood.",
+      "keywords": [
+        "dead wood",
+        "removed",
+        "avoid",
+        "possibility"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 23,
+      "question_type": "Gap-fill",
+      "question_text": "The ______ from the tops of cut trees can help improve soil quality.",
+      "answer": "nutrients",
+      "explanation": "Từ cần điền là một danh từ (sau mạo từ the), chỉ thứ gì đó từ đỉnh các cây bị chặt, giúp cải thiện chất lượng đất. Đoạn G cho thông tin phần đỉnh của những cây bị chặt nên được để lại tại cùng vị trí để những chất dinh dưỡng (nutrients) có thể 'quay lại' đất.",
+      "evidence": "The tops of trees that have been cut down should be left on the site so that their nutrients cycle back into the soil.",
+      "keywords": [
+        "tops of trees",
+        "cut trees",
+        "improve soil quality"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 24,
+      "question_type": "Gap-fill",
+      "question_text": "Some damaged trees should be left, as their______ provide habitats for a range of creatures.",
+      "answer": "cavities",
+      "explanation": "Từ cần điền là một danh từ (sau tính từ sở hữu their), chỉ cái gì đó cung cấp bởi những cây bị mục nát: một số cây nên được để lại, bởi vì cái gì đó của chúng mang lại nơi ở cho hàng loạt sinh vật khác. Trong đoạn G, những cây có nhiều hốc trống (cavities) là những nơi ở quan trọng đối với những loài thiên địch của côn trùng.",
+      "evidence": "However, it is important to remember that some retention of what many would classify as low-use wood is very important. In addition, trees with many cavities are extremely important habitats for insect predators like woodpeckers, bats and small mammals.",
+      "keywords": [
+        "damaged trees",
+        "left",
+        "provide habitats",
+        "creatures"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 25,
+      "question_type": "Gap-fill",
+      "question_text": "Some trees that are small, such as ______, are a source of food for animals and insects.",
+      "answer": "hawthorn",
+      "explanation": "Từ cần điền là một danh từ (theo sau such as), chỉ một loài cây nào đó, được dùng như một nguồn thức ăn cho động vật. Đoạn G cung cấp một loài cây là 'hawthorn', mang lại thức ăn cho thế giới hoang dã.",
+      "evidence": "It is also important to remember that not all small trees are low-use. For example, many species like hawthorn provide food for wildlife.",
+      "keywords": [
+        "trees that are small",
+        "such as",
+        "source of food",
+        "animals and insects"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 26,
+      "question_type": "Gap-fill",
+      "question_text": "Any trees that are ______ should be left to grow, as they add to the variety of species in the forest.",
+      "answer": "rare",
+      "explanation": "Từ cần điền là một tính từ (mệnh đề quan hệ that + are), chỉ đặc tính của các cây được cho là nên để lại để tiếp tục phát triển, bởi vì chúng mang lại sự đa dạng về loài cho rừng. Đoạn G cho biết một số loại cây hiếm (rare) nên được để lại vì chúng mang lại sự đa dạng cho cấu trúc rừng.",
+      "evidence": "Finally, rare species of trees in a forest should also stay behind as they add to its structural diversity.",
+      "keywords": [
+        "trees",
+        "should be left to grow",
+        "add to the variety of species"
+      ],
+      "skill": "reading",
+      "part": 2
+    },
+    {
+      "question_number": 27,
+      "question_type": "Matching",
+      "question_text": "a reference to the cooperation that takes place to try and minimise risk",
+      "answer": "C",
+      "explanation": "Đoạn C nhắc đến sự hợp tác (cooperation) từ các công ty, chính phủ và các nhà chức trách khác trong không gian để tìm ra những cách mới nhằm tránh mối đe dọa chung.",
+      "evidence": "companies, governments and other players in space are collaborating in new ways to avoid a shared threat.",
+      "keywords": [
+        "cooperation",
+        "minimise risk",
+        "collaborating",
+        "threat"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 28,
+      "question_type": "Matching",
+      "question_text": "an explanation of a person's aims",
+      "answer": "F",
+      "explanation": "Lời giải thích cho mục tiêu của một người nằm ở đoạn F. Người đó chính là Jah, mục tiêu của ông là biến không gian thành một nơi an toàn để hoạt động và hữu ích cho các thế hệ tương lai.",
+      "evidence": "Jah describes himself as a space environmentalist: 'I want to make space a place that is safe to operate, that is free and useful for generations to come.'",
+      "keywords": [
+        "explanation",
+        "person's aims",
+        "space environmentalist",
+        "safe to operate"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 29,
+      "question_type": "Matching",
+      "question_text": "a description of a major collision that occurred in space",
+      "answer": "A",
+      "explanation": "Một mô tả về một vụ va chạm lớn xảy ra trong không gian nằm ở đoạn A. Theo đoạn A, mười năm trước, một vệ tinh Iridium thương mại của Hoa Kỳ đã đâm vào một vệ tinh liên lạc không hoạt động của Nga có tên là Cosmos-2251, tạo ra hàng nghìn mảnh đạn không gian.",
+      "evidence": "a US commercial Iridium satellite smashed into an inactive Russian communications satellite called Cosmos-2251, creating thousands of new pieces of space shrapnel",
+      "keywords": [
+        "description",
+        "major collision",
+        "smashed into",
+        "space shrapnel"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 30,
+      "question_type": "Matching",
+      "question_text": "a comparison between tracking objects in space and the efficiency of a transportation system",
+      "answer": "E",
+      "explanation": "Đoạn E có thông tin về so sánh giữa theo dõi các đối tượng trong không gian và hiệu quả của hệ thống giao thông. Thiết bị điều khiển trên không biết vị trí máy bay với độ chính xác một mét, nhưng với các mảnh vụn trong không gian thì không.",
+      "evidence": "Air-traffic controllers know the location of the planes down to one metre in accuracy. The same can't be said for space debris.",
+      "keywords": [
+        "comparison",
+        "tracking objects",
+        "efficiency",
+        "transportation system",
+        "Air-traffic controllers"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 31,
+      "question_type": "Matching",
+      "question_text": "a reference to efforts to classify space junk",
+      "answer": "B",
+      "explanation": "Đoạn B có nhắc đến nỗ lực để phân loại rác không gian của nhiều đội nhóm. Cụ thể, họ nghiên cứu các thuộc tính đo lường như hình dạng và kích thước của một vật thể.",
+      "evidence": "Several teams are trying to improve methods for assessing what is in orbit [...] Others are developing taxonomies of space debris — working on measuring properties such as the shape and size of an object",
+      "keywords": [
+        "efforts",
+        "classify",
+        "space junk",
+        "taxonomies",
+        "measuring properties"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 32,
+      "question_type": "Gap-fill",
+      "question_text": "The committee gives advice on how the ______ of space can be achieved.",
+      "answer": "sustainability",
+      "explanation": "Từ cần điền là danh từ (vì đứng sau mạo từ 'the' và trước giới từ 'of'). Inter-Agency Space Debris Coordination Committee đã phát triển các hướng dẫn liên quan đến sự bền vững không gian.",
+      "evidence": "Inter-Agency Space Debris Coordination Committee have developed guidelines on space sustainability.",
+      "keywords": [
+        "committee",
+        "advice",
+        "space",
+        "achieved",
+        "sustainability"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 33,
+      "question_type": "Gap-fill",
+      "question_text": "The committee advises that when satellites are no longer active, any unused ______ or pressurised material [...] should be removed.",
+      "answer": "fuel",
+      "explanation": "Từ cần điền là một danh từ (vì đứng sau tính từ 'unused'). Những hướng dẫn này bao gồm việc vô hiệu hóa các vệ tinh khi hết thời gian sử dụng bằng cách loại bỏ các vật liệu có áp suất hoặc nhiên liệu còn sót lại mà có nguy cơ gây ra các vụ nổ.",
+      "evidence": "Those include inactivating satellites at the end of their useful life by venting pressurised materials or leftover fuel that might lead to explosions.",
+      "keywords": [
+        "satellites",
+        "no longer active",
+        "unused",
+        "pressurised material",
+        "removed",
+        "fuel"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 34,
+      "question_type": "Gap-fill",
+      "question_text": "The committee advises that when satellites are no longer active, any unused fuel or pressurised material that could cause ______ should be removed.",
+      "answer": "explosions",
+      "explanation": "Từ cần điền là một danh từ (vì đứng sau động từ 'cause', nêu điều được gây ra là gì). Những hướng dẫn này nhằm loại bỏ nhiên liệu hoặc vật liệu có áp suất có thể dẫn đến các vụ nổ.",
+      "evidence": "Those include inactivating satellites at the end of their useful life by venting pressurised materials or leftover fuel that might lead to explosions.",
+      "keywords": [
+        "satellites",
+        "no longer active",
+        "unused fuel",
+        "cause",
+        "removed",
+        "explosions"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 35,
+      "question_type": "Gap-fill",
+      "question_text": "Although operators of large satellite constellations accept that they have obligations as stewards of space, Holger Krag points out that the operators that become ______ are unlikely to prioritise removing their satellites from space.",
+      "answer": "bankrupt",
+      "explanation": "Đoạn C đề cập đến việc các nhà điều hành chòm sao vệ tinh hứa hẹn bảo vệ không gian nhưng Krag lo ngại rằng nếu họ thất bại hoặc phá sản (go bankrupt), họ sẽ không có tiền để loại bỏ vệ tinh.",
+      "evidence": "Operators of the planned large constellations of satellites say they will be responsible stewards in their enterprises in space, but Krag worries that problems could increase, despite their best intentions. ‘What happens to those that fail or go bankrupt?’ he asks. ‘They are probably not going to spend money to remove their satellites from space.’",
+      "keywords": [
+        "operators",
+        "large satellite constellations",
+        "stewards",
+        "Holger Krag",
+        "unlikely to prioritise removing"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 36,
+      "question_type": "Matching",
+      "question_text": "Knowing the exact location of space junk would help prevent any possible danger.",
+      "answer": "C Marlon Sorge",
+      "explanation": "Đoạn D đề cập đến câu nói của Marlon Sorge: 'If you knew precisely where everything was, you would almost never have a problem', trùng khớp với nội dung biết chính xác vị trí rác vũ trụ sẽ giúp tránh được nguy hiểm.",
+      "evidence": "‘If you knew precisely where everything was, you would almost never have a problem,’ says Marlon Sorge, a debris specialist at the Aerospace Corporation in El Segundo, California.",
+      "keywords": [
+        "exact location",
+        "space junk",
+        "prevent",
+        "danger"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 37,
+      "question_type": "Matching",
+      "question_text": "Space should be available to everyone and should be preserved for the future.",
+      "answer": "D Moriba Jah",
+      "explanation": "Đoạn F trích dẫn phát biểu của Jah, định nghĩa bản thân là một nhà bảo vệ không gian: 'I want to make space a place that is safe to operate, that is free and useful for generations to come.'",
+      "evidence": "Jah describes himself as a space environmentalist: ‘I want to make space a place that is safe to operate, that is free and useful for generations to come.’",
+      "keywords": [
+        "Space",
+        "available",
+        "preserved",
+        "future"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 38,
+      "question_type": "Matching",
+      "question_text": "A recommendation regarding satellites is widely ignored.",
+      "answer": "B Holger Krag",
+      "explanation": "Đoạn C nói về việc các nhóm liên chính phủ khuyên hạ thấp vệ tinh trong vòng 25 năm, nhưng Holger Krag cho biết cho đến nay chỉ có khoảng một nửa tuân thủ mục tiêu này (tức là khuyến nghị bị phớt lờ bởi phần lớn).",
+      "evidence": "The intergovernmental groups also advise lowering satellites deep enough into the atmosphere that they will burn up or disintegrate within 25 years. But so far, only about half of all missions have abided by this 25-year goal, says Holger Krag...",
+      "keywords": [
+        "recommendation",
+        "satellites",
+        "widely ignored"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 39,
+      "question_type": "Matching",
+      "question_text": "There is conflicting information about where some satellites are in space.",
+      "answer": "D Moriba Jah",
+      "explanation": "Đoạn F đề cập đến việc dữ liệu của Mỹ và Nga về cùng một vật thể tạo ra quỹ đạo hoàn toàn khác nhau, và Jah nói rằng gần như không thể biết cái nào đúng (thông tin mâu thuẫn).",
+      "evidence": "When Jah enters that number, the database draws two purple lines: the US and Russian sources contain two completely different orbits for the same object. Jah says that it is almost impossible to tell which is correct...",
+      "keywords": [
+        "conflicting information",
+        "where",
+        "satellites"
+      ],
+      "skill": "reading",
+      "part": 3
+    },
+    {
+      "question_number": 40,
+      "question_type": "Matching",
+      "question_text": "There is a risk we will not be able to undo the damage that occurs in space.",
+      "answer": "A Carolin Frueh",
+      "explanation": "Đoạn B trích dẫn câu nói của Carolin Frueh: 'If we go on like this, we will reach a point of no return', có nghĩa là đạt đến điểm không thể quay đầu hay không thể sửa chữa/hoàn lại thiệt hại.",
+      "evidence": "‘If we go on like this, we will reach a point of no return,’ says Carolin Frueh, an astrodynamical researcher at Purdue University in West Lafayette, Indiana.",
+      "keywords": [
+        "risk",
+        "undo the damage",
+        "space"
+      ],
+      "skill": "reading",
+      "part": 3
+    }
+  ],
+  "extracted_at": "2026-10-22 22:10:56"
+}

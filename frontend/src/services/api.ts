@@ -61,6 +61,10 @@ export interface EvaluationResponse {
   recommended_drills: string[];
   feedback?: string;
   updated_file?: string;
+  diff_html?: string;
+  clean_rewritten_text?: string;
+  inline_diff_markdown?: string;
+  edits_count?: number;
 }
 
 export const api = {

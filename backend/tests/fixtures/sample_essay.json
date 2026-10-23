@@ -1,0 +1,28 @@
+{
+  "title": "Aviation and Environment IELTS Writing Task 2 Sample",
+  "task_num": 2,
+  "raw_essay": "In today's connected world, air transport has become a major part of modern life, allowing people come to remote places more easily. Some individuals believe that should encourage cheap air trips because they offer more opportunities for ordinary people to travel, while some argue that the cost of plane tickets should be more expensive that aims to decrease negative impacts to environment. Although both views hold their merits, I agree more with later perspective.\n\nOn the one hand, there are various factors why cheap air trips bring many advantages that explain why cheap air travel brings many advantages. It is true that the low cost of ticket help many people who have a wide range of different salaries have chances to travel remote places to study, work and visit. Before, international travel is designed for rich people, but cheap air brands have help ordinary families and students have opportunities to visit other countries and experience different cultures. This can expand their knowledge, enhance their quality of life and support travel industry. As a result, it is understandable why some people think that cheap air travel should be encouraged because they create many opportunities more equally to explore the world.",
+  "expected_edits_sample": [
+    {
+      "original": "air transport",
+      "replacement": "air travel",
+      "category": "collocation",
+      "criteria": "Lexical Resource",
+      "explanation_vi": "Trong ngữ cảnh hàng không dân dụng, dùng 'air travel' chuẩn học thuật và tự nhiên hơn 'air transport'."
+    },
+    {
+      "original": "come",
+      "replacement": "to travel",
+      "category": "grammar",
+      "criteria": "Grammatical Range & Accuracy",
+      "explanation_vi": "Cấu trúc 'allow someone to V': cần dùng to-infinitive 'to travel'."
+    },
+    {
+      "original": "ticket help",
+      "replacement": "tickets helps",
+      "category": "grammar",
+      "criteria": "Grammatical Range & Accuracy",
+      "explanation_vi": "Chủ ngữ 'the low cost' là số ít nên động từ 'helps' phải chia số ít; 'tickets' nên dùng số nhiều."
+    }
+  ]
+}

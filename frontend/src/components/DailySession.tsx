@@ -333,6 +333,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
           src={currentUrl}
           className="w-full h-full border-none"
           title="Digital Garden Study Plan"
+          allow="clipboard-write; clipboard-read"
         />
       </div>
     </div>

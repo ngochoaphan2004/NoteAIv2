@@ -388,3 +388,122 @@
   font-size: 0.82rem;
 }
 
+
+/* --------------------------------------------------------------------------
+   IELTS Writing Inline Diff & Error Correction Badges
+   -------------------------------------------------------------------------- */
+.ielts-diff-tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gray) 25%, transparent);
+  padding-bottom: 0.6rem;
+  overflow-x: auto;
+}
+
+.ielts-diff-tab-btn {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--apple-radius-pill, 999px);
+  border: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+  background: color-mix(in srgb, var(--light) 90%, var(--lightgray) 10%);
+  color: var(--darkgray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ielts-diff-tab-btn:hover {
+  background: color-mix(in srgb, var(--secondary) 15%, transparent);
+  color: var(--secondary);
+}
+
+.ielts-diff-tab-btn.active {
+  background: var(--secondary);
+  color: #ffffff;
+  border-color: var(--secondary);
+  box-shadow: 0 2px 6px rgba(0, 113, 227, 0.25);
+}
+
+.ielts-diff-view-content {
+  background: var(--light);
+  border: 1px solid color-mix(in srgb, var(--gray) 25%, transparent);
+  border-radius: var(--apple-radius-md, 9px);
+  padding: 1.15rem;
+  font-size: 0.95rem;
+  line-height: 2.1;
+  color: var(--dark);
+}
+
+.ielts-diff-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--lightgray) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gray) 20%, transparent);
+  margin: 0 0.15rem;
+  vertical-align: baseline;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.ielts-diff-pill:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ielts-diff-del {
+  color: #d32f2f;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-weight: 500;
+  del {
+    text-decoration: line-through;
+  }
+}
+
+.ielts-diff-arrow {
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+.ielts-diff-ins {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.15);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-weight: 600;
+  ins {
+    text-decoration: none;
+  }
+}
+
+.ielts-diff-clean-box {
+  background: var(--light);
+  border: 1px solid color-mix(in srgb, var(--gray) 25%, transparent);
+  border-radius: var(--apple-radius-md, 9px);
+  padding: 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--dark);
+  white-space: pre-line;
+}
+
+.ielts-diff-flashcard-alert {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.95rem;
+  background: rgba(0, 113, 227, 0.08);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+  border-radius: var(--apple-radius-md, 9px);
+  font-size: 0.82rem;
+  color: #0071e3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

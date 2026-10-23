@@ -90,6 +90,7 @@ content/assets/Cambridge-18.pdf
 content\assets\Cambridge-18.pdf
 content/assets/audio/
 content\assets\audio\
+data/cambridge18_images/
 *.tar.gz
 *.tar
 *.zip
