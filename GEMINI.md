@@ -57,7 +57,8 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
 - Trước khi commit git, luôn chạy:
 
   ```bash
-  python scripts/run_pipeline.py
+  python scripts/_py_/run_pipeline.py
+  # (hoặc: python scripts/run_pipeline.py)
   ```
 
 - 4 chặng: YAML & Dead Link $\rightarrow$ Markdownlint $\rightarrow$ FSRS/Anki Sync $\rightarrow$ Quartz Build.

@@ -12,7 +12,7 @@ echo ====================================================================
 
 cd /d "%~dp0\.."
 
-python -X utf8 scripts\pull_server_content.py
+python -X utf8 scripts\_py_\pull_server_content.py %*
 if %errorlevel% neq 0 (
     echo.
     echo [ERROR] Qua trinh keo du lieu tu VPS gap su co! Vui long kiem tra lai.

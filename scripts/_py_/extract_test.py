@@ -16,7 +16,7 @@ if sys.stdout.encoding != 'utf-8':
         pass
 
 # Load môi trường
-load_dotenv(os.path.join(os.path.dirname(__file__), "..", "backend", ".env"))
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", "..", "backend", ".env"))
 api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("GEMINI_API_KEY không tìm thấy trong backend/.env")

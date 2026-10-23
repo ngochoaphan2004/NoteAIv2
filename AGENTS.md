@@ -125,7 +125,8 @@ Hệ thống hỗ trợ và tự động chuẩn hóa các cú pháp tốc ký c
 Trước khi thực hiện Git commit & push, bắt buộc chạy pipeline kiểm chứng qua lệnh:
 
 ```bash
-python scripts/run_pipeline.py
+python scripts/_py_/run_pipeline.py
+# (hoặc: python scripts/run_pipeline.py)
 ```
 
 Pipeline kiểm chứng thực thi 4 chặng nghiêm ngặt:

@@ -12,9 +12,10 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SOURCE_DIR = r"D:\Ielts\Cambridge 18 - The IELTS Workshop\AUDIO FILES"
-DEST_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "content", "assets", "audio")
-METADATA_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "content", "assets", "audio_metadata.json")
+DEST_DIR = os.path.join(PROJECT_ROOT, "content", "assets", "audio")
+METADATA_FILE = os.path.join(PROJECT_ROOT, "content", "assets", "audio_metadata.json")
 
 PART_TOPICS = {
     (1, 1): {"title": "Transport Survey", "questions": "1 – 10"},

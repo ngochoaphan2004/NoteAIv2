@@ -76,10 +76,9 @@ tags:
 - 🗣️ **Bài tiếp theo:** [[plans/week-01/test-1-speaking|Test 1 Speaking Part 2]]
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]
 
-
 ---
 
-#### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 198 từ)
+### 📝 Bài Làm Thực Tế Task 1 (Lưu Trữ Nguyên Bản - 198 từ)
 
 > [!NOTE]
 > **Trạng thái:** Đã nộp bài và ghi nhận vào hệ thống PKM | **Độ dài:** 198 từ
@@ -96,7 +95,7 @@ tags:
 
 ---
 
-#### 🎨 Bản Sửa Chi Tiết Từng Cụm Từ (Inline Visual Diff)
+### 🎨 Bản Sửa Chi Tiết Từng Cụm Từ (Inline Visual Diff)
 
 > [!TIP]
 > **Quy ước ký hiệu:**  
@@ -116,7 +115,7 @@ The percentage of the population in four Asian countries living in cities increa
 
 ### 🔬 Nhận Xét & Phân Tích Chẩn Đoán Task 1 Của AI
 
-Chào bạn, với tư cách là một IELTS Senior Examiner, tôi đã đọc kỹ bài viết Task 1 của bạn (198 từ). Về mặt độ dài, bạn đã đạt yêu cầu tối thiểu trên 150 từ. Tuy nhiên, bài viết của bạn đang mắc **rất nhiều lỗi nghiêm trọng về ngữ pháp, chính tả và cấu trúc câu**, đẩy bài viết xuống mức **Band 4.5 – 5.0**. 
+Chào bạn, với tư cách là một IELTS Senior Examiner, tôi đã đọc kỹ bài viết Task 1 của bạn (198 từ). Về mặt độ dài, bạn đã đạt yêu cầu tối thiểu trên 150 từ. Tuy nhiên, bài viết của bạn đang mắc **rất nhiều lỗi nghiêm trọng về ngữ pháp, chính tả và cấu trúc câu**, đẩy bài viết xuống mức **Band 4.5 – 5.0**.
 
 Dưới đây là bảng phân tích chi tiết theo chuẩn 4 tiêu chí IELTS.
 
@@ -125,31 +124,35 @@ Dưới đây là bảng phân tích chi tiết theo chuẩn 4 tiêu chí IELTS.
 ### 1. 📊 Đánh giá năng lực theo 4 tiêu chí IELTS
 
 #### 🎯 Task Achievement (TA): Band 5.0
-*   **Điểm mạnh:** Bạn đã cố gắng đưa ra một phần Overview (Tổng quan) và nhắc đến các số liệu chính của cả 4 quốc gia (Malaysia, Indonesia, Thailand, Philippines) trong giai đoạn quá khứ và dự báo tương lai.
-*   **Điểm yếu chí mạng:** 
-    *   Phần Overview viết rời rạc, lặp ý, và có lỗi ngớ ngẩn (*"Malaysia and Indonesia are the highest increase"* - quốc gia không thể là "sự tăng trưởng").
-    *   Sai sót nghiêm trọng về dữ liệu trong bài: Bạn viết *“Malaysia was decreased 10% just for 20 years”* là hoàn toàn sai so với biểu đồ đô thị hóa tiêu chuẩn (tỷ lệ đô thị hóa của Malaysia luôn tăng hoặc đi ngang chứ không giảm mạnh như vậy).
-    *   Bạn tự ý dùng sai mốc thời gian dự báo (viết là 2040 thay vì 2040, hoặc nhầm lẫn xu hướng).
+
+- **Điểm mạnh:** Bạn đã cố gắng đưa ra một phần Overview (Tổng quan) và nhắc đến các số liệu chính của cả 4 quốc gia (Malaysia, Indonesia, Thailand, Philippines) trong giai đoạn quá khứ và dự báo tương lai.
+- **Điểm yếu chí mạng:**
+  - Phần Overview viết rời rạc, lặp ý, và có lỗi ngớ ngẩn (*"Malaysia and Indonesia are the highest increase"* - quốc gia không thể là "sự tăng trưởng").
+  - Sai sót nghiêm trọng về dữ liệu trong bài: Bạn viết *“Malaysia was decreased 10% just for 20 years”* là hoàn toàn sai so với biểu đồ đô thị hóa tiêu chuẩn (tỷ lệ đô thị hóa của Malaysia luôn tăng hoặc đi ngang chứ không giảm mạnh như vậy).
+  - Bạn tự ý dùng sai mốc thời gian dự báo (viết là 2040 thay vì 2040, hoặc nhầm lẫn xu hướng).
 
 #### 🔗 Coherence & Cohesion (CC): Band 5.0
-*   **Điểm mạnh:** Có chia các đoạn (mở bài, tổng quan, thân bài).
-*   **Điểm yếu:** 
-    *   Lạm dụng từ nối cơ bản và sai ngữ pháp ở đầu câu như *"And in spire"* (phải là *In spite of* hoặc *Inspire* là động từ), *"Otherwise"* (dùng sai hoàn toàn nghĩa tương phản).
-    *   Bắt đầu câu bằng từ nối yếu: *"In specific"* (nên dùng *Specifically*), *"With Thailand was started..."* (ngữ pháp vỡ vụn).
-    *   Liên tục dùng từ "And" để nối câu đầu dòng, phong cách viết giống văn nói (conversational) hơn là Academic Report.
+
+- **Điểm mạnh:** Có chia các đoạn (mở bài, tổng quan, thân bài).
+- **Điểm yếu:**
+  - Lạm dụng từ nối cơ bản và sai ngữ pháp ở đầu câu như *"And in spire"* (phải là *In spite of* hoặc *Inspire* là động từ), *"Otherwise"* (dùng sai hoàn toàn nghĩa tương phản).
+  - Bắt đầu câu bằng từ nối yếu: *"In specific"* (nên dùng *Specifically*), *"With Thailand was started..."* (ngữ pháp vỡ vụn).
+  - Liên tục dùng từ "And" để nối câu đầu dòng, phong cách viết giống văn nói (conversational) hơn là Academic Report.
 
 #### Lexical Resource (LR): Band 5.0
-*   **Điểm mạnh:** Có sử dụng một số từ vựng về số liệu (percent, population, percentage).
-*   **Điểm yếu:** 
-    *   Lỗi chính tả dày đặc: *popullation, citez, inscrease, acchive, ThaiLan, overrall*.
-    *   Dùng sai từ loại (Word form): Dùng động từ thay cho danh từ hoặc tính từ (*"was increased", "are increase", "has keep"*).
-    *   Thiếu hoàn toàn các từ vựng band cao (7.5+) để mô tả xu hướng như: *experience an upward trend, surge, climb steadily, outpace, surpass, projected to reach*.
+
+- **Điểm mạnh:** Có sử dụng một số từ vựng về số liệu (percent, population, percentage).
+- **Điểm yếu:**
+  - Lỗi chính tả dày đặc: *popullation, citez, inscrease, acchive, ThaiLan, overrall*.
+  - Dùng sai từ loại (Word form): Dùng động từ thay cho danh từ hoặc tính từ (*"was increased", "are increase", "has keep"*).
+  - Thiếu hoàn toàn các từ vựng band cao (7.5+) để mô tả xu hướng như: *experience an upward trend, surge, climb steadily, outpace, surpass, projected to reach*.
 
 #### ✍️ Grammatical Range & Accuracy (GRA): Band 4.0 - 4.5
-*   **Điểm yếu lớn nhất của bài nằm ở đây.** Bài viết chi chít lỗi cấu trúc cơ bản:
-    *   **Lỗi bị động/nội động từ kinh điển:** *"has been increased"* và *"will be increase"* -> *Increase* là nội động từ, **tuyệt đối không dùng bị động**. Phải dùng chủ động: *has increased*, *will increase*.
-    *   Chia sai thì loạn xạ giữa quá khứ đơn, hiện tại hoàn thành và tương lai.
-    *   Lỗi cấu trúc câu ghép/câu đơn: *"With Thailand was started 20%"* (Thừa giới từ *With*, sai động từ to be đi với động từ thường).
+
+- **Điểm yếu lớn nhất của bài nằm ở đây.** Bài viết chi chít lỗi cấu trúc cơ bản:
+  - **Lỗi bị động/nội động từ kinh điển:** *"has been increased"* và *"will be increase"* -> *Increase* là nội động từ, **tuyệt đối không dùng bị động**. Phải dùng chủ động: *has increased*, *will increase*.
+  - Chia sai thì loạn xạ giữa quá khứ đơn, hiện tại hoàn thành và tương lai.
+  - Lỗi cấu trúc câu ghép/câu đơn: *"With Thailand was started 20%"* (Thừa giới từ *With*, sai động từ to be đi với động từ thường).
 
 ---
 
@@ -169,10 +172,10 @@ Dưới đây là các câu sai nặng nhất trong bài của bạn và cách s
 
 Dưới đây là **Paragraph Overview & Body 1** được viết lại theo chuẩn Band 8.0+ để bạn học cách triển khai ý và dùng từ:
 
-> **Overview**
+> **Overview**  
 > Overall, the proportion of urban residents in all four nations experienced an upward trend between 1970 and 2020, a pattern that is projected to continue over the subsequent two decades. Furthermore, Malaysia consistently maintained the highest level of urbanization throughout the period.
-
-> **Body 1 (Malaysia & Philippines)**
+>
+> **Body 1 (Malaysia & Philippines)**  
 > In 1970, Malaysia started with 30% of its population living in urban areas. This figure witnessed a steady climb, surpassing the Philippines in 1990 at 45% and eventually exceeding 70% by 2010. By contrast, the Philippines began with the highest initial percentage in 1970 at over 32% and managed to cross the 50% threshold by 1990, growing at a more moderate pace thereafter.
 
 ---
@@ -181,16 +184,16 @@ Dưới đây là **Paragraph Overview & Body 1** được viết lại theo chu
 
 Để cải thiện ngay lập tức cho bài Task 1 tiếp theo, hãy hoàn thành 3 bài tập ngắn sau:
 
-*   **Micro-session 1: Sửa lỗi Nội động từ (Passive vs. Active) (10 phút)**
-    *   *Quy tắc:* Các từ chỉ xu hướng tăng/giảm như *increase, decrease, rise, fall, fluctuate, drop* **KHÔNG BAO GIỜ** dùng dạng bị động (*was increased / is decreased*).
-    *   *Bài tập:* Sửa lại 3 câu sau cho đúng ngữ pháp:
+- **Micro-session 1: Sửa lỗi Nội động từ (Passive vs. Active) (10 phút)**
+  - *Quy tắc:* Các từ chỉ xu hướng tăng/giảm như *increase, decrease, rise, fall, fluctuate, drop* **KHÔNG BAO GIỜ** dùng dạng bị động (*was increased / is decreased*).
+  - *Bài tập:* Sửa lại 3 câu sau cho đúng ngữ pháp:
         1. *The rate of urbanization was increased significantly in 2010.*
         2. *Urban population in Indonesia will be decreased next year.*
         3. *House prices have been risen by 10% since 2015.*
 
-*   **Micro-session 2: Nâng cấp từ vựng vượt qua (Surpass / Outpace) thay vì dùng "Pass" (10 phút)**
-    *   *Quy tắc:* Trong biểu đồ đường hoặc bảng số liệu, khi quốc gia A vượt qua quốc gia B, thay vì dùng từ *"pass"*, hãy dùng: *surpass, outpace, overtake*.
-    *   *Bài tập:* Viết lại câu sau dùng từ vựng nâng cao: *"In 2000, Indonesia pass Thailand in urban population."*
+- **Micro-session 2: Nâng cấp từ vựng vượt qua (Surpass / Outpace) thay vì dùng "Pass" (10 phút)**
+  - *Quy tắc:* Trong biểu đồ đường hoặc bảng số liệu, khi quốc gia A vượt qua quốc gia B, thay vì dùng từ *"pass"*, hãy dùng: *surpass, outpace, overtake*.
+  - *Bài tập:* Viết lại câu sau dùng từ vựng nâng cao: *"In 2000, Indonesia pass Thailand in urban population."*
 
-*   **Micro-session 3: Viết lại phần Overview chuẩn (15 phút)**
-    *   *Yêu cầu:* Viết lại đoạn Overview hoàn chỉnh cho biểu đồ trên chỉ trong **2 câu** (Câu 1: Xu hướng chung; Câu 2: Điểm nổi bật nhất/Quốc gia dẫn đầu). Không dùng từ "And" ở đầu câu, không lặp từ "increase".
+- **Micro-session 3: Viết lại phần Overview chuẩn (15 phút)**
+  - *Yêu cầu:* Viết lại đoạn Overview hoàn chỉnh cho biểu đồ trên chỉ trong **2 câu** (Câu 1: Xu hướng chung; Câu 2: Điểm nổi bật nhất/Quốc gia dẫn đầu). Không dùng từ "And" ở đầu câu, không lặp từ "increase".

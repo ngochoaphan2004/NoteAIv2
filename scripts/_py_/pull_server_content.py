@@ -28,7 +28,7 @@ VPS_USER = os.environ.get("VPS_USER", "root")
 REMOTE_DIR = os.environ.get("REMOTE_DIR", "/opt/noteai")
 
 # Định vị thư mục gốc của dự án
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 CONTENT_DIR = PROJECT_ROOT / "content"
 BACKUP_DIR = PROJECT_ROOT / "backups"
 
