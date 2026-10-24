@@ -19,10 +19,20 @@ import {
   Edit3,
 } from "lucide-react";
 
-const QUARTZ_BASE_URL =
-  typeof window !== "undefined"
-    ? `${window.location.protocol}//${window.location.hostname}:8088`
-    : "http://localhost:8088";
+export const getGardenBaseUrl = (): string => {
+  if (typeof window === "undefined") return "/garden";
+  // Nếu đang dev cục bộ trên máy tính (Vite port 5173 và Quartz dev preview port 8088)
+  if (
+    (window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1") &&
+    window.location.port === "5173"
+  ) {
+    return "http://localhost:8088";
+  }
+  // Mọi môi trường khác (Cloudflare Tunnel, VPS, Production, hoặc truy cập cổng 8000):
+  // Phục vụ hợp nhất qua route /garden cùng origin (không port, không bao giờ timeout)
+  return `${window.location.origin}/garden`;
+};
 
 interface DailySessionProps {
   onNavigateToFlashcards: () => void;
@@ -32,7 +42,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
   onNavigateToFlashcards,
 }) => {
   const [currentUrl, setCurrentUrl] = useState(
-    `${QUARTZ_BASE_URL}/plans/week-01/`,
+    `${getGardenBaseUrl()}/plans/week-01/`,
   );
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const iframeContainerRef = useRef<HTMLDivElement>(null);
@@ -106,7 +116,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
   };
 
   const handleNavigate = (path: string) => {
-    const fullUrl = `${QUARTZ_BASE_URL}${path}`;
+    const fullUrl = `${getGardenBaseUrl()}${path}`;
     setCurrentUrl(fullUrl);
     if (iframeRef.current) {
       iframeRef.current.src = fullUrl;
@@ -231,7 +241,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
             </span>
 
             {quickNavLinks.map((item) => {
-              const isActive = currentUrl === `${QUARTZ_BASE_URL}${item.path}`;
+              const isActive = currentUrl === `${getGardenBaseUrl()}${item.path}`;
               return (
                 <button
                   key={item.path}

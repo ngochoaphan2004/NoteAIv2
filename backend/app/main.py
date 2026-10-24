@@ -100,9 +100,29 @@ INDEX_HTML_PATH = os.path.join(FRONTEND_DIST, "index.html")
 ASSETS_DIR = os.path.join(FRONTEND_DIST, "assets")
 QUARTZ_PUBLIC = os.path.join(PROJECT_ROOT, "public")
 
-# 1. Mount Quartz v4 Digital Garden tĩnh tại /garden (nếu tồn tại)
+class QuartzStaticFiles(StaticFiles):
+    """
+    Phục vụ tài nguyên tĩnh Quartz v4 hỗ trợ Clean URLs (tự động giải quyết .html hoặc /index.html).
+    Giúp iframe Daily Session tải mượt mà không cần mở port 8088 ra ngoài Internet.
+    """
+    async def get_response(self, path: str, scope):
+        full_path, stat_result = self.lookup_path(path)
+        if stat_result is None:
+            # 1. Thử thêm đuôi .html nếu đường dẫn chưa có extension
+            html_path = path + ".html"
+            full_html, html_stat = self.lookup_path(html_path)
+            if html_stat is not None:
+                return await super().get_response(html_path, scope)
+            # 2. Thử thêm /index.html nếu là thư mục con
+            index_path = path.rstrip("/") + "/index.html"
+            full_index, index_stat = self.lookup_path(index_path)
+            if index_stat is not None:
+                return await super().get_response(index_path, scope)
+        return await super().get_response(path, scope)
+
+# 1. Mount Quartz v4 Digital Garden tĩnh tại /garden (hỗ trợ clean URLs)
 if os.path.isdir(QUARTZ_PUBLIC):
-    app.mount("/garden", StaticFiles(directory=QUARTZ_PUBLIC, html=True), name="garden")
+    app.mount("/garden", QuartzStaticFiles(directory=QUARTZ_PUBLIC, html=True), name="garden")
 
 # 2. Mount thư mục tài nguyên JS/CSS của React SPA tại /assets (nếu đã build)
 if os.path.isdir(ASSETS_DIR):
