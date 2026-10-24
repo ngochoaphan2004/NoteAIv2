@@ -23,6 +23,7 @@ echo -e "${BLUE}====================================================${NC}"
 # 0. Chuẩn hóa cấu hình VPS: Khóa cổng nội bộ 127.0.0.1 (chỉ qua Cloudflare Tunnel)
 if [ -f "$PROJECT_DIR/backend/.env" ]; then
     sed -i 's/:5433/:5432/g' "$PROJECT_DIR/backend/.env"
+    sed -i 's/localhost:5432/127.0.0.1:5432/g' "$PROJECT_DIR/backend/.env"
     sed -i 's/HOST=0.0.0.0/HOST=127.0.0.1/g' "$PROJECT_DIR/backend/.env"
 fi
 
