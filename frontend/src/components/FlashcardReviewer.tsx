@@ -266,14 +266,14 @@ export const FlashcardReviewer: React.FC = () => {
         )}
       </div>
 
-      {/* 4 Nút đánh giá FSRS v4 */}
+      {/* 4 Nút đánh giá FSRS v4 (Responsive 2 cột trên mobile, 4 cột trên desktop) */}
       {isFlipped && (
-        <div className="grid grid-cols-4 gap-3 mt-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-4 sm:mt-6">
           <button
             onClick={() =>
               reviewMutation.mutate({ cardId: currentCard.id, rating: 1 })
             }
-            className="flex flex-col items-center justify-center p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-2xl hover:bg-red-100 dark:hover:bg-red-900/50 transition group"
+            className="flex flex-col items-center justify-center p-2.5 sm:p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-2xl hover:bg-red-100 dark:hover:bg-red-900/50 transition group"
           >
             <span className="text-xs font-bold text-red-600 dark:text-red-400 group-hover:scale-105 transition">
               Again (1)
@@ -287,7 +287,7 @@ export const FlashcardReviewer: React.FC = () => {
             onClick={() =>
               reviewMutation.mutate({ cardId: currentCard.id, rating: 2 })
             }
-            className="flex flex-col items-center justify-center p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-2xl hover:bg-amber-100 dark:hover:bg-amber-900/50 transition group"
+            className="flex flex-col items-center justify-center p-2.5 sm:p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-2xl hover:bg-amber-100 dark:hover:bg-amber-900/50 transition group"
           >
             <span className="text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:scale-105 transition">
               Hard (2)
@@ -301,7 +301,7 @@ export const FlashcardReviewer: React.FC = () => {
             onClick={() =>
               reviewMutation.mutate({ cardId: currentCard.id, rating: 3 })
             }
-            className="flex flex-col items-center justify-center p-3.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/50 transition group"
+            className="flex flex-col items-center justify-center p-2.5 sm:p-3.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/50 transition group"
           >
             <span className="text-xs font-bold text-apple-blue dark:text-apple-blueDark group-hover:scale-105 transition">
               Good (3)
@@ -315,7 +315,7 @@ export const FlashcardReviewer: React.FC = () => {
             onClick={() =>
               reviewMutation.mutate({ cardId: currentCard.id, rating: 4 })
             }
-            className="flex flex-col items-center justify-center p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 rounded-2xl hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition group"
+            className="flex flex-col items-center justify-center p-2.5 sm:p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 rounded-2xl hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition group"
           >
             <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition">
               Easy (4)

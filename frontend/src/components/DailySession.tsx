@@ -232,7 +232,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
         )}
 
         {/* Action Header: Thanh điều hướng Kế hoạch chính (Chỉ giữ mục trọng tâm tránh cấn thông tin) */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-white dark:bg-[#1c1c1e] p-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5 sm:gap-3 bg-white dark:bg-[#1c1c1e] p-2.5 sm:p-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
           {/* Quick Links Chọn Kế Hoạch Trong Vườn Tri Thức */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             <span className="text-xs font-bold text-apple-subtextLight dark:text-apple-subtextDark mr-1 flex items-center gap-1">
@@ -271,7 +271,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
           </div>
 
           {/* Nút Tải lại, Mở Tab mới, Chế độ 2 Cột và Flashcard */}
-          <div className="flex items-center gap-2 justify-end flex-shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 justify-end flex-shrink-0 pt-1 lg:pt-0 border-t lg:border-t-0 border-gray-100 dark:border-gray-800/80">
             <button
               onClick={handleRefresh}
               title="Tải lại nội dung trang"
@@ -294,7 +294,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
             <button
               onClick={handleToggleSplitMode}
               title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
-              className="px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1"
+              className="hidden sm:inline-flex px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition items-center gap-1"
             >
               <Columns className="w-3.5 h-3.5 text-apple-blue" />
               <span>2 Cột</span>
@@ -305,7 +305,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
               className="group px-3.5 py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5"
             >
               <CheckCircle2 className="w-4 h-4 text-white" />
-              <span>Ôn Thẻ Nhớ</span>
+              <span className="hidden sm:inline">Ôn Thẻ Nhớ</span><span className="sm:hidden">Ôn Thẻ</span>
               {dueCount > 0 ? (
                 <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.5 rounded-full font-extrabold shadow-sm">
                   {dueCount}
@@ -336,7 +336,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
       {/* Frame Trình Chiếu Giao Diện Kế Hoạch & Bài Học */}
       <div
         ref={iframeContainerRef}
-        className="w-full h-screen min-h-[720px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
+        className="w-full h-[70vh] sm:h-[78vh] md:h-[calc(100vh-160px)] min-h-[460px] sm:min-h-[580px] md:min-h-[700px] bg-white dark:bg-[#1c1c1e] rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
       >
         <iframe
           ref={iframeRef}

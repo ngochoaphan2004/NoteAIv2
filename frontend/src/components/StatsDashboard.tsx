@@ -46,9 +46,9 @@ export const StatsDashboard: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header & Sync Button */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white dark:bg-apple-cardDark p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white dark:bg-apple-cardDark p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
         <div>
-          <h2 className="text-xl font-bold text-apple-textLight dark:text-apple-textDark">
+          <h2 className="text-lg sm:text-xl font-bold text-apple-textLight dark:text-apple-textDark">
             Động Cơ Trí Nhớ FSRS v4 & Viễn Trắc Tri Thức
           </h2>
           <p className="text-xs text-apple-subtextLight dark:text-apple-subtextDark mt-1">
@@ -59,7 +59,7 @@ export const StatsDashboard: React.FC = () => {
         <button
           onClick={() => syncMutation.mutate()}
           disabled={syncMutation.isPending}
-          className="px-5 py-2.5 bg-apple-blue text-white rounded-xl text-xs font-semibold hover:bg-apple-blueHover transition flex items-center gap-2 shadow-sm disabled:opacity-50"
+          className="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 bg-apple-blue text-white rounded-xl text-xs font-semibold hover:bg-apple-blueHover transition flex items-center gap-2 shadow-sm disabled:opacity-50"
         >
           <RefreshCw
             className={`w-4 h-4 ${syncMutation.isPending ? "animate-spin" : ""}`}

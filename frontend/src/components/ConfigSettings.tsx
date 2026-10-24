@@ -610,19 +610,19 @@ export const ConfigSettings: React.FC = () => {
       {/* ========================================================= */}
       {/* SECTION 3: FIXED INFRASTRUCTURE PORTS & HARDWARE SAFETY   */}
       {/* ========================================================= */}
-      <div className="bg-white dark:bg-apple-cardDark p-5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800/80 pb-3">
+      <div className="bg-white dark:bg-apple-cardDark p-4 sm:p-5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 dark:border-gray-800/80 pb-3">
           <div className="flex items-center gap-2">
-            <Network className="w-4 h-4 text-apple-blue" />
-            <h2 className="text-sm font-bold">Bản Đồ Cổng Mạng & An Toàn Phần Cứng (AGENTS.md)</h2>
+            <Network className="w-4 h-4 text-apple-blue shrink-0" />
+            <h2 className="text-sm font-bold">Bản Đồ Cổng Mạng & An Toàn Phần Cứng</h2>
           </div>
           <div className="flex items-center gap-1.5 text-xs text-apple-subtextLight dark:text-apple-subtextDark">
-            <Cpu className="w-3.5 h-3.5 text-apple-blue" />
-            <span>FastEmbed ONNX (CPU AVX2) | GPU VRAM Safe</span>
+            <Cpu className="w-3.5 h-3.5 text-apple-blue shrink-0" />
+            <span>FastEmbed ONNX (CPU AVX2)</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
           {/* PostgreSQL */}
           <div className="p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 space-y-1">
             <div className="flex items-center justify-between text-xs">

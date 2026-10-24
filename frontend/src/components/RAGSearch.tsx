@@ -145,7 +145,7 @@ export const RAGSearch: React.FC = () => {
             <button
               onClick={handleAsk}
               disabled={askMutation.isPending || !question.trim()}
-              className="px-5 py-2 bg-apple-blue text-white rounded-xl font-bold hover:bg-apple-blueHover transition flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+              className="w-full sm:w-auto px-5 py-2 bg-apple-blue text-white rounded-xl font-bold hover:bg-apple-blueHover transition flex items-center justify-center gap-1.5 shadow-sm disabled:opacity-50"
             >
               {askMutation.isPending ? (
                 <>
@@ -244,28 +244,28 @@ export const RAGSearch: React.FC = () => {
                         className="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 text-xs transition"
                       >
                         <div
-                          className="flex items-center justify-between cursor-pointer"
+                          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 cursor-pointer"
                           onClick={() => setExpandedChunk(isExpanded ? null : idx)}
                         >
-                          <div className="flex items-center gap-2 font-semibold text-apple-blue">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 font-semibold text-apple-blue">
                             <span className="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-[10px] font-bold">
                               {idx + 1}
                             </span>
-                            <span>{source.source_file}</span>
+                            <span className="break-all">{source.source_file}</span>
                             <span className="text-gray-400 font-normal">&gt;</span>
                             <span className="text-gray-700 dark:text-gray-300 font-medium">
                               {source.heading}
                             </span>
                           </div>
 
-                          <div className="flex items-center gap-2">
-                            <span className="px-2 py-0.5 rounded-full font-mono text-[10px] font-bold bg-blue-50 dark:bg-blue-950/40 text-apple-blue border border-blue-200 dark:border-blue-900">
+                          <div className="flex items-center gap-2 self-end sm:self-auto">
+                            <span className="px-2 py-0.5 rounded-full font-mono text-[10px] font-bold bg-blue-50 dark:bg-blue-950/40 text-apple-blue border border-blue-200 dark:border-blue-900 whitespace-nowrap">
                               Độ tương đồng: {(source.score * 100).toFixed(1)}%
                             </span>
                             {isExpanded ? (
-                              <ChevronUp className="w-3.5 h-3.5 text-gray-400" />
+                              <ChevronUp className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                             ) : (
-                              <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
+                              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                             )}
                           </div>
                         </div>

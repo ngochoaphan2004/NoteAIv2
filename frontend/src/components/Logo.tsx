@@ -84,7 +84,7 @@ export const Logo: React.FC<LogoProps> = ({
               v2
             </span>
           </div>
-          <span className="text-[9px] text-apple-subtextLight dark:text-apple-subtextDark uppercase tracking-wider font-semibold mt-0.5">
+          <span className="hidden sm:block text-[9px] text-apple-subtextLight dark:text-apple-subtextDark uppercase tracking-wider font-semibold mt-0.5">
             Local Autonomous PKM
           </span>
         </div>
