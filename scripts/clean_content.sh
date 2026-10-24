@@ -9,8 +9,8 @@
 #   - package.json & package-lock.json
 #   - tsconfig.json, quartz.config.ts, quartz.layout.ts
 #   - backend/.env (Database credentials & Gemini API Key)
-#   - content/assets/audio/ (File audio luyện nghe 110MB)
 #   - scripts/ (Thư mục công cụ bảo trì server)
+# (Đã XÓA HOÀN TOÀN: content/, audio/, dist/, public/, code cũ)
 # ==============================================================================
 
 set -euo pipefail
@@ -29,16 +29,17 @@ echo -e "${BLUE}================================================================
 echo -e "${GREEN} 🧹 NOTEAI.V2 - CLEAN SERVER TOOL (/opt/noteai) ${NC}"
 echo -e "${BLUE}====================================================================${NC}"
 
-# Chế độ chạy: 1 = Content & Dist, 2 = Full Reset (trừ dependencies)
+# Chế độ chạy: 1 = Content, Dist & Audio, 2 = Full Reset (trừ dependencies)
 MODE="${1:-}"
 
 if [ -z "$MODE" ]; then
     echo -e "${YELLOW}Vui lòng chọn chế độ dọn dẹp server:${NC}"
-    echo -e "  ${CYAN}[1] Dọn sạch Content & Dist/Build cũ${NC} (Xóa content, dist, public, script cũ, logs)"
-    echo -e "      👉 Giữ lại: backend, frontend, venv, node_modules, audio, .env"
+    echo -e "  ${CYAN}[1] Dọn sạch Content, Audio & Dist/Build cũ${NC}"
+    echo -e "      👉 Xóa: content (gồm cả audio), dist, public, script cũ, logs"
+    echo -e "      👉 Giữ lại: backend, frontend, venv, node_modules, .env"
     echo -e "  ${CYAN}[2] Dọn sạch TOÀN BỘ Server (Full Reset trừ dependencies)${NC}"
-    echo -e "      👉 Xóa: content, dist, public, script, backend, frontend, quartz, templates"
-    echo -e "      👉 Giữ lại: venv, node_modules, package*.json, .env, audio, scripts"
+    echo -e "      👉 Xóa: content (gồm cả audio), dist, public, script, backend, frontend, quartz, templates"
+    echo -e "      👉 Giữ lại: venv, node_modules, package*.json, .env, scripts"
     echo -e "  ${RED}[0] Hủy bỏ${NC}"
     echo ""
     read -p "Nhập lựa chọn của bạn (1, 2 hoặc 0): " choice
@@ -51,9 +52,9 @@ if [ "$MODE" == "0" ] || [ "$MODE" == "cancel" ]; then
 fi
 
 # ==============================================================================
-# BƯỚC 1: BẢO TỒN CÁC TÀI NGUYÊN QUAN TRỌNG (AUDIO & .ENV)
+# BƯỚC 1: BẢO TỒN BIẾN MÔI TRƯỜNG QUAN TRỌNG (BACKEND/.ENV)
 # ==============================================================================
-echo -e "\n${YELLOW}🛡️ [1/3] Đang bảo lưu các tài nguyên quan trọng (.env & Audio)...${NC}"
+echo -e "\n${YELLOW}🛡️ [1/3] Đang bảo lưu tệp cấu hình quan trọng (backend/.env)...${NC}"
 PRESERVE_DIR="/tmp/noteai_preserve_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$PRESERVE_DIR"
 
@@ -61,13 +62,6 @@ mkdir -p "$PRESERVE_DIR"
 if [ -f "$PROJECT_DIR/backend/.env" ]; then
     cp -p "$PROJECT_DIR/backend/.env" "$PRESERVE_DIR/backend.env"
     echo -e "   ✅ Đã bảo lưu: backend/.env"
-fi
-
-# Lưu content/assets/audio nếu có
-if [ -d "$PROJECT_DIR/content/assets/audio" ]; then
-    mkdir -p "$PRESERVE_DIR/audio"
-    cp -rp "$PROJECT_DIR/content/assets/audio"/* "$PRESERVE_DIR/audio/" 2>/dev/null || true
-    echo -e "   ✅ Đã bảo lưu: content/assets/audio (16 file mp3)"
 fi
 
 # ==============================================================================
@@ -97,9 +91,9 @@ fi
 # Xóa file tạm
 rm -f /tmp/noteai_*.tar.gz /tmp/vps_*.tar.gz 2>/dev/null || true
 
-# Xóa content hoàn toàn
+# Xóa content hoàn toàn (bao gồm cả audio)
 rm -rf "$PROJECT_DIR/content" 2>/dev/null || true
-echo -e "   • Đã xóa hoàn toàn: content/"
+echo -e "   • Đã xóa hoàn toàn: content/ (bao gồm toàn bộ audio, bài thi, tài liệu)"
 
 if [ "$MODE" == "2" ] || [ "$MODE" == "all" ] || [ "$MODE" == "full" ]; then
     echo -e "\n${RED}⚠️ Đang thực hiện Full Clean Reset (Xóa toàn bộ mã nguồn cũ)...${NC}"
@@ -119,16 +113,9 @@ if [ "$MODE" == "2" ] || [ "$MODE" == "all" ] || [ "$MODE" == "full" ]; then
 fi
 
 # ==============================================================================
-# BƯỚC 3: PHỤC HỒI TÀI NGUYÊN & KIỂM TRA TRẠNG THÁI
+# BƯỚC 3: PHỤC HỒI BIẾN MÔI TRƯỜNG & KIỂM TRA TRẠNG THÁI
 # ==============================================================================
 echo -e "\n${YELLOW}✨ [3/3] Đang thiết lập lại cấu trúc sạch cho server...${NC}"
-
-# Tạo lại thư mục content sạch và phục hồi audio
-mkdir -p "$PROJECT_DIR/content/assets/audio"
-if [ -d "$PRESERVE_DIR/audio" ] && [ "$(ls -A "$PRESERVE_DIR/audio" 2>/dev/null)" ]; then
-    cp -rp "$PRESERVE_DIR/audio"/* "$PROJECT_DIR/content/assets/audio/"
-    echo -e "   ✅ Đã khôi phục: content/assets/audio"
-fi
 
 # Khôi phục backend/.env
 if [ -f "$PRESERVE_DIR/backend.env" ]; then

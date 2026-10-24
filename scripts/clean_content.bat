@@ -12,7 +12,7 @@ echo ====================================================================
 
 echo.
 echo [!] CANH BAO: Script nay se xoa du lieu tren server %VPS_IP%
-echo     - Giu nguyen 100%%: venv, node_modules, package*.json, .env, audio
+echo     - Giu nguyen 100%%: venv, node_modules, package*.json, .env (XOA ca content va audio)
 echo.
 
 ssh -t -o StrictHostKeyChecking=no %VPS_USER%@%VPS_IP% "bash %REMOTE_DIR%/clean_content.sh"
