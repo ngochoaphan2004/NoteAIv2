@@ -50,7 +50,7 @@ if [ -f "$VENV_PYTHON" ]; then
     cd "$PROJECT_DIR"
 fi
 
-# 4. Kiểm tra môi trường Node.js & dependencies của Quartz SSG
+# 4. Kiểm tra môi trường Node.js & dependencies của Quartz SSG và Frontend
 if [ -f "$PROJECT_DIR/package.json" ]; then
     if [ ! -d "$PROJECT_DIR/node_modules" ]; then
         echo -e "${YELLOW}📦 [4/5] node_modules chưa tồn tại. Đang cài đặt thư viện Quartz...${NC}"
@@ -59,6 +59,16 @@ if [ -f "$PROJECT_DIR/package.json" ]; then
         echo -e "${YELLOW}📦 [4/5] Thư viện Quartz node_modules đã sẵn sàng.${NC}"
     fi
 fi
+
+# Đảm bảo frontend/dist sẵn sàng để FastAPI phục vụ trực tiếp
+if [ ! -f "$PROJECT_DIR/frontend/dist/index.html" ] && [ -f "$PROJECT_DIR/frontend/package.json" ]; then
+    echo -e "${YELLOW}⚛️ frontend/dist chưa được biên dịch. Tiến hành build React SPA...${NC}"
+    cd "$PROJECT_DIR/frontend"
+    npm install --prefer-offline --no-audit || true
+    npm run build || true
+    cd "$PROJECT_DIR"
+fi
+
 if [ -d "$PROJECT_DIR/content/assets/audio" ]; then
     echo -e "${YELLOW}🎧 Liên kết audio tĩnh vào public/assets/audio...${NC}"
     mkdir -p "$PROJECT_DIR/public/assets"
