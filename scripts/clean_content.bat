@@ -7,7 +7,7 @@ set VPS_USER=root
 set REMOTE_DIR=/opt/noteai
 
 echo ====================================================================
-echo  NoteAI.v2 - Clean Server Content & Files: %VPS_IP%
+echo  NoteAI.v2 - Clean Server Content va Files: %VPS_IP%
 echo ====================================================================
 
 echo.
