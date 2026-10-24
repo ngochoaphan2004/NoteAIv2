@@ -27,6 +27,14 @@ if [ -f "$PROJECT_DIR/backend/.env" ]; then
     sed -i 's/HOST=0.0.0.0/HOST=127.0.0.1/g' "$PROJECT_DIR/backend/.env"
 fi
 
+# Tắt và vô hiệu hóa hoàn toàn Nginx (chặn đứng mọi truy cập trực tiếp qua IP public)
+if systemctl is-active --quiet nginx || [ -f /etc/nginx/sites-enabled/noteai ]; then
+    echo -e "${YELLOW}🛡️ Vô hiệu hóa Nginx để chuyển toàn bộ sang Cloudflare Tunnel...${NC}"
+    systemctl stop nginx || true
+    systemctl disable nginx || true
+    rm -f /etc/nginx/sites-enabled/noteai || true
+fi
+
 # 1. Kéo code mới nhất từ Git (nếu thư mục có .git)
 if [ -d ".git" ]; then
     echo -e "${YELLOW}📥 [1/4] Đang kéo commit mới nhất từ Git origin main...${NC}"
