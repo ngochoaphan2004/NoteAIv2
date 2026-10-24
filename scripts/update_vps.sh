@@ -20,9 +20,10 @@ echo -e "${BLUE}====================================================${NC}"
 echo -e "${GREEN} 🔄 BẮT ĐẦU CẬP NHẬT NOTEAI.V2 TRÊN MÁY CHỦ VPS ${NC}"
 echo -e "${BLUE}====================================================${NC}"
 
-# 0. Chuẩn hóa cổng PostgreSQL sang 5432 nếu file .env mang cổng 5433 từ local
+# 0. Chuẩn hóa cấu hình VPS: Khóa cổng nội bộ 127.0.0.1 (chỉ qua Cloudflare Tunnel)
 if [ -f "$PROJECT_DIR/backend/.env" ]; then
     sed -i 's/:5433/:5432/g' "$PROJECT_DIR/backend/.env"
+    sed -i 's/HOST=0.0.0.0/HOST=127.0.0.1/g' "$PROJECT_DIR/backend/.env"
 fi
 
 # 1. Kéo code mới nhất từ Git (nếu thư mục có .git)
@@ -64,21 +65,22 @@ if [ -d "$PROJECT_DIR/content/assets/audio" ]; then
     ln -sfn "$PROJECT_DIR/content/assets/audio" "$PROJECT_DIR/public/assets/audio"
 fi
 
-# 5. Khởi động lại dịch vụ Backend & Nginx
-echo -e "${YELLOW}🚀 [5/5] Kiểm tra và khởi động lại dịch vụ...${NC}"
+# 5. Khởi động lại dịch vụ Backend (Định tuyến an toàn qua Cloudflare Tunnel)
+echo -e "${YELLOW}🚀 [5/5] Cập nhật và khởi động lại dịch vụ...${NC}"
 
-# Kiểm tra nếu service chưa từng được cài đặt (chưa chạy setup ban đầu)
-if [ ! -f /etc/systemd/system/noteai-backend.service ]; then
-    echo -e "${YELLOW}  ⚠️ Phát hiện NoteAI service chưa cài đặt. Vui lòng kiểm tra lại cấu hình systemd.${NC}"
-else
-    if [ -f "$PROJECT_DIR/scripts/noteai_nginx.conf" ]; then
-        cp "$PROJECT_DIR/scripts/noteai_nginx.conf" /etc/nginx/sites-available/noteai
-    fi
+# Cập nhật hoặc cài đặt systemd service tự động nếu có tệp mẫu
+if [ -f "$PROJECT_DIR/scripts/noteai-backend.service" ]; then
+    cp "$PROJECT_DIR/scripts/noteai-backend.service" /etc/systemd/system/noteai-backend.service
     systemctl daemon-reload
+    systemctl enable noteai-backend || true
+fi
+
+if systemctl is-active --quiet noteai-backend || [ -f /etc/systemd/system/noteai-backend.service ]; then
     systemctl restart noteai-backend
-    nginx -t && systemctl reload nginx
     echo -e "\n${BLUE}====================================================${NC}"
-    echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG! ${NC}"
+    echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG CHO CLOUDFLARE TUNNEL! ${NC}"
     echo -e "${BLUE}====================================================${NC}"
+else
+    echo -e "${YELLOW}  ℹ️ NoteAI đang chạy trong Docker hoặc môi trường thủ công.${NC}"
 fi
 

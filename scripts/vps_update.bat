@@ -88,8 +88,10 @@ del /f /q noteai_update.tar.gz 2>nul
 
 echo ====================================================================
 echo  UPDATE SUCCESSFUL!
-echo  Web SPA:        http://%VPS_IP%/
-echo  Digital Garden: http://%VPS_IP%:8088/
-echo  API Swagger:    http://%VPS_IP%/docs
+echo  Cac service dang chay an toan tren localhost (127.0.0.1):
+echo  - NoteAI Unified Gateway (React SPA + API + Garden): http://127.0.0.1:8000
+echo  - PostgreSQL (Local): 127.0.0.1:5432
+echo  - Qdrant Vector DB:   127.0.0.1:6333
+echo  Truy cap cong cong an toan qua Cloudflare Tunnel (tro ve http://127.0.0.1:8000)
 echo ====================================================================
 pause

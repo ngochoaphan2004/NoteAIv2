@@ -39,7 +39,7 @@ tags:
 
 - [ ] **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A challenge at work_).
 - [ ] **20p:** Thu âm 2 phút liên tục, kiểm soát độ trôi chảy và đếm lỗi ngập ngừng.
-- [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Gửi Câu Trả Lời Cho AI"_.
+- [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Nộp Bài & Chấm Điểm Trực Tiếp"_.
 - 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/test-1-speaking|Luyện Speaking Part 2]]
 - 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
 

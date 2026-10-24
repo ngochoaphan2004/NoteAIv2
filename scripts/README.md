@@ -18,8 +18,9 @@ Thư mục chứa các công cụ tự động hóa điều phối hệ thống,
 ## 🐧 2. Các Script Chạy Trực Tiếp Trên VPS Linux
 
 *   **`clean_content.sh`** *(và alias `clean_content.bat` trên VPS)*: Script bash dọn dẹp môi trường trên VPS, bảo lưu `.env` và thư viện nặng trước khi xóa.
-*   **`update_vps.sh`**: Script tự động chạy sau khi giải nén cập nhật trên VPS: kiểm tra `requirements.txt`, chạy init DB PostgreSQL, restart service `noteai-backend` và reload `nginx`.
-*   **`noteai_nginx.conf`**: Bản mẫu cấu hình Nginx reverse proxy cho React SPA (Port 80) và Quartz Digital Garden (Port 8088).
+*   **`update_vps.sh`**: Script tự động chạy sau khi giải nén cập nhật trên VPS: kiểm tra `requirements.txt`, chạy init DB PostgreSQL và restart service `noteai-backend` (kết nối trực tiếp qua Cloudflare Tunnel).
+*   **`noteai-backend.service`**: Tệp cấu hình mẫu cho Systemd service, khóa uvicorn trên `127.0.0.1:8000` để chỉ định tuyến qua Cloudflare Tunnel.
+*   **`cloudflare_tunnel_setup.md`**: Hướng dẫn chi tiết cài đặt và cấu hình Cloudflare Zero Trust Tunnel cho NoteAI.v2.
 
 ---
 

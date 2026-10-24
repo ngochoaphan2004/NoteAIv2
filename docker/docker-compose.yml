@@ -8,8 +8,8 @@ services:
       POSTGRES_PASSWORD: noteai_secret_password
       POSTGRES_DB: noteai_pkm
     ports:
-      # Host port 5433 -> Container port 5432 (Tránh xung đột với CVAT trên host port 5432)
-      - "5433:5432"
+      # Khóa chặt cổng trên 127.0.0.1 (chỉ cho phép truy cập cục bộ trên host, ngăn chặn quét port từ IP public)
+      - "127.0.0.1:5433:5432"
     volumes:
       - noteai_postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -28,8 +28,8 @@ services:
     container_name: noteai_qdrant
     restart: unless-stopped
     ports:
-      - "6333:6333"
-      - "6334:6334"
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
     volumes:
       - noteai_qdrant_data:/qdrant/storage
     healthcheck:
@@ -51,9 +51,10 @@ services:
     container_name: noteai_app
     restart: unless-stopped
     ports:
-      - "8000:8000" # FastAPI Backend & Swagger Docs (/docs)
-      - "5173:5173" # Interactive React SPA Frontend
-      - "8088:8088" # Quartz v4 Digital Garden Preview
+      # Khóa chặt các cổng trên 127.0.0.1: Chặn đứng truy cập trực tiếp từ IP Public VPS, bắt buộc qua Cloudflare Tunnel
+      - "127.0.0.1:8000:8000" # FastAPI Backend & Swagger Docs (/docs)
+      - "127.0.0.1:5173:5173" # Interactive React SPA Frontend
+      - "127.0.0.1:8088:8088" # Quartz v4 Digital Garden Preview
     environment:
       - DATABASE_URL=postgresql://noteai:noteai_secret_password@postgres:5432/noteai_pkm
       - QDRANT_URL=http://qdrant:6333

@@ -169,12 +169,12 @@ def get_system_config():
         "cron_timezone": "Asia/Ho_Chi_Minh",
         "cron_schedule": "00:00 ICT (Chuyển giao ngày mới) & 23:59 ICT (Tổng kết & FSRS Sync)",
         "ports": {
-            "database_postgres": 5433,
+            "database_postgres": 5432 if ":5432" in settings.DATABASE_URL else 5433,
             "qdrant_rest": 6333,
             "qdrant_grpc": 6334,
-            "fastapi_backend": 8000,
+            "fastapi_backend": settings.PORT,
             "quartz_preview": 8088,
-            "frontend_spa": 5173
+            "frontend_spa": settings.PORT
         }
     }
 

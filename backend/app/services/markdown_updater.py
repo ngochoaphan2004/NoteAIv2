@@ -25,14 +25,18 @@ class MarkdownNoteUpdater:
 
         # 1. Thử phân giải trực tiếp từ source_file
         if source_file:
-            cleaned = source_file.strip().replace("\\", "/").lstrip("/")
+            cleaned = source_file.strip().replace("\\", "/").strip("/")
             # Bỏ prefix content/ nếu có
             if cleaned.startswith("content/"):
-                cleaned = cleaned[len("content/"):]
+                cleaned = cleaned[len("content/"):].strip("/")
+            if cleaned.endswith(".html"):
+                cleaned = cleaned[:-5].strip("/")
+            if cleaned.endswith(".md"):
+                cleaned = cleaned[:-3].strip("/")
 
             candidates = [
-                os.path.join(content_dir, cleaned),
                 os.path.join(content_dir, f"{cleaned}.md"),
+                os.path.join(content_dir, cleaned),
                 os.path.join(content_dir, f"{cleaned}/index.md")
             ]
             for cand in candidates:
@@ -50,15 +54,27 @@ class MarkdownNoteUpdater:
 
         # 2. Thử nhận diện theo nội dung văn bản (attempt_text)
         lower_text = attempt_text.lower()
-        if "listening" in lower_text:
-            cand = os.path.join(content_dir, "plans", "week-01", "test-1-listening.md")
-            if os.path.isfile(cand):
-                return cand
-        elif "reading" in lower_text or "passage 3" in lower_text or "space junk" in lower_text:
-            cand = os.path.join(content_dir, "plans", "week-01", "test-1-reading-p3.md")
-            if os.path.isfile(cand):
-                return cand
-        elif "writing" in lower_text or "task 1" in lower_text or "urban" in lower_text:
+        if "listening" in lower_text or skill.lower() == "listening":
+            # Phân biệt Part 1-2 (câu 1-20) vs Part 3-4 (câu 21-40)
+            has_high_q = any(re.search(rf"\b{q}\b", attempt_text) for q in range(21, 41))
+            cand_p34 = os.path.join(content_dir, "plans", "week-01", "test-1-listening-p3-p4.md")
+            cand_p12 = os.path.join(content_dir, "plans", "week-01", "test-1-listening-p1-p2.md")
+            if has_high_q and os.path.isfile(cand_p34):
+                return cand_p34
+            elif os.path.isfile(cand_p12):
+                return cand_p12
+
+        elif "reading" in lower_text or skill.lower() == "reading" or "passage 3" in lower_text or "space junk" in lower_text:
+            # Phân biệt Passage 1-2 (câu 1-26) vs Passage 3 (câu 27-40)
+            has_p3_q = any(re.search(rf"\b{q}\b", attempt_text) for q in range(27, 41))
+            cand_p3 = os.path.join(content_dir, "plans", "week-01", "test-1-reading-p3.md")
+            cand_p12 = os.path.join(content_dir, "plans", "week-01", "test-1-reading-p1-p2.md")
+            if has_p3_q and os.path.isfile(cand_p3):
+                return cand_p3
+            elif os.path.isfile(cand_p12):
+                return cand_p12
+
+        elif "writing" in lower_text or skill.lower() == "writing" or "task 1" in lower_text or "urban" in lower_text:
             cand = os.path.join(content_dir, "plans", "week-01", "test-1-writing.md")
             if os.path.isfile(cand):
                 return cand
@@ -66,7 +82,7 @@ class MarkdownNoteUpdater:
         # 3. Fallback theo kỹ năng (skill)
         skill_lower = (skill or "listening").lower()
         if skill_lower == "listening":
-            default_path = os.path.join(content_dir, "plans", "week-01", "test-1-listening.md")
+            default_path = os.path.join(content_dir, "plans", "week-01", "test-1-listening-p1-p2.md")
         elif skill_lower == "reading":
             default_path = os.path.join(content_dir, "plans", "week-01", "test-1-reading-p3.md")
         elif skill_lower == "writing":

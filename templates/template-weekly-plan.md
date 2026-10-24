@@ -38,7 +38,7 @@ tags:
 ### 🎯 {{TODAY_SKILL}} — {{TODAY_DURATION}}
 
 - [ ] **Hoạt động trọng tâm:** {{TODAY_FOCUS}}
-- [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Gửi Câu Trả Lời Cho AI"_.
+- [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Nộp Bài & Chấm Điểm Trực Tiếp"_.
 - 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-{{WEEK_PADDED}}/{{TODAY_TARGET_FILE}}|Làm bài {{TODAY_TARGET_NAME}}]]
 - 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
 

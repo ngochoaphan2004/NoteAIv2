@@ -28,13 +28,19 @@ class Settings(BaseSettings):
         models = [m.strip() for m in raw.split(",") if m.strip()]
         return models if models else ["gemini-1.5-flash"]
 
+    # Authentication
+    AUTH_USERNAME: str = "admin"
+    AUTH_PASSWORD: str = "noteai2026"
+    AUTH_SECRET_KEY: str = "noteai_pkm_jwt_secret_key_2026"
+    AUTH_TOKEN_EXPIRE_DAYS: int = 30
+
     # App directories & behavior
     PROJECT_ROOT: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
     CONTENT_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "content"))
     TEMPLATE_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "templates"))
     ENVIRONMENT: str = "development"
     PORT: int = 8000
-    HOST: str = "0.0.0.0"
+    HOST: str = "127.0.0.1"
     WATCHDOG_ENABLED: bool = True
 
     model_config = SettingsConfigDict(

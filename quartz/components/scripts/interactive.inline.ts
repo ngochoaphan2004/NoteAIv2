@@ -13,15 +13,15 @@ async function callApi(path: string, options: RequestInit): Promise<Response> {
   // Xây dựng danh sách URL ứng viên theo thứ tự ưu tiên thông minh:
   const candidates: string[] = [];
 
-  // 1. Relative path trực tiếp (chuẩn nhất cho production qua Nginx reverse proxy tại port 80 & 8088)
+  // 1. Relative path trực tiếp (chuẩn nhất khi chạy qua Cloudflare Tunnel / Reverse Proxy)
   candidates.push(path);
 
-  // 2. Cổng web chuẩn (port 80 / 443) trên cùng hostname (khi Quartz nằm trong iframe có port khác)
+  // 2. Cổng web chuẩn (port 80 / 443) trên cùng hostname (khi Quartz nằm trong iframe)
   if (port && port !== "80" && port !== "443" && port !== "8000") {
     candidates.push(`${protocol}//${hostname}${path}`);
   }
 
-  // 3. Cổng 8000 trực tiếp (dành cho môi trường local dev độc lập không qua Nginx)
+  // 3. Cổng 8000 trực tiếp (dành cho môi trường local dev độc lập)
   candidates.push(`${protocol}//${hostname}:8000${path}`);
 
   // 4. Fallback loopback cho localhost / 127.0.0.1
@@ -810,7 +810,7 @@ document.addEventListener("nav", () => {
               <div class="ielts-ai-banner ielts-ai-banner-success">
                 <span style="font-size: 1.5rem;">🎉</span>
                 <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">Kết Quả Chấm Điểm Chính Thức</div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: #2e7d32;">Kết Quả Chấm Điểm Trực Tiếp (Cambridge 18)</div>
                   <div style="font-size: 0.82rem; margin-top: 3px;">
                     <strong>${result.score_fraction} câu đúng</strong> &bull; Band Score: <strong style="color: #007aff; font-size: 1rem;">${result.band_score}</strong>
                   </div>

@@ -1,8 +1,11 @@
 import time
+import os
 import logging
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from app.core.config import settings
 from app.core.database import init_db
 from app.core.events import watchdog_daemon
@@ -14,6 +17,7 @@ from app.api.v1.agents import router as agents_router
 from app.api.v1.cron import router as cron_router
 from app.api.v1.system import router as system_router
 from app.api.v1.plans import router as plans_router
+from app.api.v1.auth import router as auth_router
 
 # 1. Khởi tạo hệ thống Ghi Log Bền Vững (Persistent Rotating File + Console)
 setup_logging()
@@ -87,18 +91,75 @@ app.include_router(agents_router, prefix="/api/v1")
 app.include_router(cron_router, prefix="/api/v1")
 app.include_router(system_router, prefix="/api/v1")
 app.include_router(plans_router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
 
-@app.get("/")
-def health_check():
+# Xác định đường dẫn thư mục Frontend build và Quartz Public
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+FRONTEND_DIST = os.path.join(PROJECT_ROOT, "frontend", "dist")
+INDEX_HTML_PATH = os.path.join(FRONTEND_DIST, "index.html")
+ASSETS_DIR = os.path.join(FRONTEND_DIST, "assets")
+QUARTZ_PUBLIC = os.path.join(PROJECT_ROOT, "public")
+
+# 1. Mount Quartz v4 Digital Garden tĩnh tại /garden (nếu tồn tại)
+if os.path.isdir(QUARTZ_PUBLIC):
+    app.mount("/garden", StaticFiles(directory=QUARTZ_PUBLIC, html=True), name="garden")
+
+# 2. Mount thư mục tài nguyên JS/CSS của React SPA tại /assets (nếu đã build)
+if os.path.isdir(ASSETS_DIR):
+    app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
+
+def get_system_health():
+    db_port = 5432 if ":5432" in settings.DATABASE_URL else 5433
     return {
         "app": "NoteAI.v2 - Local Autonomous PKM",
         "status": "online",
         "environment": settings.ENVIRONMENT,
         "docs_url": "/docs",
         "ports": {
-            "backend": settings.PORT,
-            "database_pg": 5433,
+            "gateway_unified": settings.PORT,
+            "database_pg": db_port,
             "qdrant": 6333,
-            "frontend_spa": 5173
+            "quartz_preview": 8088
+        },
+        "cloudflare_tunnel": {
+            "status": "active",
+            "proxy_target": f"http://127.0.0.1:{settings.PORT}"
         }
     }
+
+@app.get("/api/v1/health")
+@app.get("/health")
+def api_health():
+    return get_system_health()
+
+@app.get("/")
+def health_check(request: Request):
+    # 1. Nếu client yêu cầu JSON rõ ràng (Accept application/json hoặc query ?format=json) -> Trả về JSON health check
+    accept = request.headers.get("accept", "")
+    if "application/json" in accept or request.query_params.get("format") == "json":
+        return get_system_health()
+
+    # 2. Mặc định: Phục vụ Frontend React SPA (index.html) nếu đã build
+    if os.path.exists(INDEX_HTML_PATH):
+        return FileResponse(INDEX_HTML_PATH)
+
+    # 3. Fallback: Nếu frontend chưa build, trả về JSON health check
+    return get_system_health()
+
+# SPA Fallback & Root Static Files Router (phục vụ favicon.ico, logo.svg, icon-*.png và SPA routes)
+@app.get("/{full_path:path}")
+def serve_spa_or_static(request: Request, full_path: str):
+    # Bỏ qua các endpoint API, docs, openapi, garden
+    if full_path.startswith(("api/", "docs", "openapi.json", "garden/")):
+        raise HTTPException(status_code=404, detail="Not Found")
+
+    # Phục vụ file tĩnh trực tiếp trong frontend/dist (nếu tồn tại)
+    static_file = os.path.join(FRONTEND_DIST, full_path)
+    if os.path.isfile(static_file):
+        return FileResponse(static_file)
+
+    # Điều hướng toàn bộ SPA routes về index.html
+    if os.path.exists(INDEX_HTML_PATH):
+        return FileResponse(INDEX_HTML_PATH)
+
+    raise HTTPException(status_code=404, detail="Not Found")

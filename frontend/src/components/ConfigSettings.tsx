@@ -682,14 +682,14 @@ export const ConfigSettings: React.FC = () => {
           {/* React SPA */}
           <div className="p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 space-y-1">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold">Vite React SPA</span>
+              <span className="font-bold">Unified React SPA</span>
               <span className="w-2 h-2 rounded-full bg-apple-green animate-pulse" />
             </div>
             <div className="text-base font-extrabold font-mono text-apple-blue">
-              :5173
+              :8000
             </div>
             <p className="text-[10px] text-apple-subtextLight dark:text-apple-subtextDark">
-              Giao diện người dùng
+              Phục vụ hợp nhất qua Gateway
             </p>
           </div>
         </div>

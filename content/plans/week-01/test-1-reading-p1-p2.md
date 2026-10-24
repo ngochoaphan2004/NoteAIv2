@@ -88,7 +88,7 @@ tags:
 
   <div class="ielts-card-actions">
     <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
+      🚀 Nộp Bài & Chấm Điểm Trực Tiếp
     </button>
     <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
       📋 Sao Chép Shorthand

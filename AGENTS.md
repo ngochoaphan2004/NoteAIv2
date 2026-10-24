@@ -9,29 +9,31 @@ Bộ quy tắc dưới đây là **bất biến và bắt buộc tuân thủ tuy
 
 ---
 
-## 1. 🚫 Nguyên Tắc Vàng (Inviolable Rule): KHÔNG Tự Đoán Đáp Án / KHÔNG Tự Chấm Điểm
+## 1. 🎯 Luồng Chấm Điểm & Đối Soát Trực Tiếp Với Kho Đáp Án Chuẩn (Direct Evaluation Pipeline)
 
-- **Vai trò trung tâm:** Trợ lý đóng vai trò **người đồng hành và lưu trữ trung thực** bài làm cùng tiến trình học tập của người học.
-- **Quy tắc tuyệt đối:**
-  - **Chỉ ghi nhận đáp án thực tế** của người học vào bảng đối soát bài làm (cột "Đáp án của bạn").
-  - **TUYỆT ĐỐI KHÔNG ĐƯỢC PHÉP:**
-    - Tự ý suy diễn / phán đoán câu trả lời Đúng hay Sai khi người học chưa cung cấp bảng key.
-    - Tự tra cứu đáp án trên Internet rồi tự chấm bài khi chưa có sự xác nhận của người học.
-    - Tự tính điểm, quy đổi số câu đúng hoặc ước lượng Band Score khi chưa có bảng đáp án chính thức.
-  - Chỉ thực hiện chấm điểm, phân tích lỗi sai, giải thích bẫy âm/từ vựng khi người học **chủ động cung cấp bảng đáp án chính thức** và yêu cầu đối soát.
+- **Vai trò trung tâm:** Hệ thống tự động đối soát và chấm điểm bài làm của người học **trực tiếp từ kho đáp án và giải thích chính thức Cambridge 18 có sẵn trong `data/`** (`cambridge_18_answers_and_explanations.json` và `cambridge18_test_*.json`).
+- **Quy tắc luồng làm việc mới:**
+  - **KHÔNG bắt người dùng phải nhập tay đáp án qua chức năng "Luyện thi & Chấm bài"** (chức năng này đã được tinh gọn và loại bỏ khỏi giao diện).
+  - Người học điền câu trả lời trực tiếp vào bảng làm bài tương tác (`.ielts-grid-answers`) trong Phiên Học Hôm Nay (Daily Session / Quartz) hoặc nộp bài viết Writing.
+  - Khi người học bấm nộp bài ("🚀 Nộp Bài & Chấm Điểm Trực Tiếp"), hệ thống **tự động tra cứu đáp án chuẩn từ `data/`**, so khớp kết quả, tính điểm, ước lượng Band Score, trích xuất giải thích dẫn chứng và cập nhật trực tiếp vào Bảng Đối Soát trong file Markdown (SSOT) và cơ sở dữ liệu.
+  - TUYỆT ĐỐI KHÔNG tự bịa hoặc đoán mò đáp án khi ngoài phạm vi dữ liệu đề chuẩn; chỉ đối soát theo dữ liệu chính thức đã được kiểm chứng.
 
 ---
 
-## 2. ⚡ Cấu Trúc Hệ Thống & Hạ Tầng Cổng Mạng (Network & Hardware Safety)
+## 2. ⚡ Cấu Trúc Hệ Thống, Bảo Mật Cổng Mạng & Cloudflare Tunnel (Network & Hardware Safety)
 
-Để bảo vệ môi trường máy chủ cục bộ và tránh xung đột với các dịch vụ container hiện có (CVAT, Traefik, YOLO):
+Để bảo vệ máy chủ cục bộ, tránh xung đột container (CVAT, Traefik, YOLO) và chuẩn bị xuất bản an toàn qua Cloudflare Zero Trust:
 
-- **Bản Đồ Cổng Mạng (Port Allocations) Cố Định:**
-  - **PostgreSQL 16:** Ánh xạ host **`5433`** $\rightarrow$ container `5432` (`DATABASE_URL=postgresql://noteai:noteai_secret_password@localhost:5433/noteai_pkm`). **TUYỆT ĐỐI KHÔNG DÙNG CỔNG 5432** (cổng này đã được container `cvat_db` sử dụng).
-  - **Qdrant Vector DB:** Host **`6333`** (REST API) và **`6334`** (gRPC).
-  - **FastAPI Backend Gateway:** Host **`8000`** (`http://localhost:8000`, docs tại `/docs`).
-  - **Interactive React SPA Frontend:** Host **`5173`** (`http://localhost:5173`).
-  - **Quartz v4 Dev Preview:** Host **`8088`** (nếu khởi chạy preview tĩnh).
+- **Bản Đồ Cổng Mạng Cố Định Khóa 127.0.0.1:**
+  - Toàn bộ các cổng dịch vụ **BẮT BUỘC gán vào loopback `127.0.0.1`** (`127.0.0.1:port`) để chặn đứng mọi kết nối trực tiếp từ IP công cộng bên ngoài:
+    - **PostgreSQL 16:** Ánh xạ host **`127.0.0.1:5433`** $ightarrow$ container `5432` (`DATABASE_URL=postgresql://noteai:noteai_secret_password@localhost:5433/noteai_pkm`). **TUYỆT ĐỐI KHÔNG DÙNG CỔNG 5432** (cổng này đã được container `cvat_db` sử dụng).
+    - **Qdrant Vector DB:** Host **`127.0.0.1:6333`** (REST API) và **`127.0.0.1:6334`** (gRPC).
+    - **FastAPI Backend Gateway:** Host **`127.0.0.1:8000`** (`http://127.0.0.1:8000`, docs tại `/docs`).
+    - **Interactive React SPA Frontend:** Host **`127.0.0.1:5173`** (`http://127.0.0.1:5173`).
+    - **Quartz v4 Dev Preview:** Host **`127.0.0.1:8088`** (nếu khởi chạy preview tĩnh).
+- **Kiến Trúc Định Tuyến & Xác Thực:**
+  - **Loại bỏ Nginx:** Hệ thống không dùng Nginx reverse proxy mà định tuyến công cộng trực tiếp qua **Cloudflare Tunnel (`cloudflared`)**.
+  - **Màn Hình Đăng Nhập (Auth Guard):** Toàn bộ giao diện người dùng được bảo vệ bằng màn hình đăng nhập (mặc định: `admin` / `noteai2026`, cấu hình qua `backend/.env`).
 - **An Toàn Phần Cứng & Tối Ưu Hóa CPU (Hardware Safety):**
   - Máy tính trang bị GPU NVIDIA T1200 Laptop (4GB VRAM). Để tránh tràn bộ nhớ VRAM và giữ GPU cho các tác vụ khác, **toàn bộ pipeline nhúng vector (RAG) BẮT BUỘC chạy tối ưu trên CPU** thông qua thư viện `fastembed` (Rust-backed ONNX Runtime với tập lệnh AVX2/AVX-512).
   - LLM suy luận sử dụng **Cloud API** (Google Gemini API / OpenAI API) để đạt tốc độ cao, không tốn RAM máy.

@@ -4,19 +4,23 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
 
 ---
 
-## 1. 🚫 Nguyên Tắc Vàng (Inviolable Rule)
+## 1. 🎯 Luồng Chấm Điểm & Đối Soát Trực Tiếp Với Kho Đáp Án Chuẩn
 
-- **TUYỆT ĐỐI KHÔNG tự đoán đáp án, không tự chấm điểm, không tự suy diễn Band Score** khi người học chưa cung cấp bảng đáp án chính thức.
-- Luôn ghi nhận trung thực kết quả làm bài của người học vào bảng đối soát.
+- Thay vì yêu cầu người dùng nhập tay đáp án qua tab "Luyện thi & Chấm bài", hệ thống **sử dụng trực tiếp kho đáp án chính thức Cambridge 18 có sẵn trong `data/`** để chấm điểm bài làm trực tiếp.
+- Người học làm bài và nộp trực tiếp qua bảng làm bài tương tác trong Daily Session (Quartz). AI tự động tra cứu đáp án chuẩn trong `data/`, chấm điểm, ước lượng Band Score và phân tích bẫy lỗi sai.
+- Tuyệt đối không tự suy diễn hoặc bịa đáp án ngoài phạm vi dữ liệu đề chuẩn Cambridge.
 
 ---
 
-## 2. ⚡ Cấu Trúc Cổng Mạng & An Toàn Phần Cứng
+## 2. ⚡ Cấu Trúc Cổng Mạng Khóa 127.0.0.1 & Cloudflare Tunnel
 
-- **PostgreSQL:** Ánh xạ host **`5433`** $\rightarrow$ container `5432` (`noteai_pkm`). Cấm dùng port `5432` (tránh xung đột với CVAT).
-- **Qdrant Vector DB:** Host **`6333`** (REST) và **`6334`** (gRPC).
-- **FastAPI Backend:** Host **`8000`** (`http://localhost:8000`, docs tại `/docs`).
-- **Interactive React SPA:** Host **`5173`** (`http://localhost:5173`).
+- **Khóa chặt cổng trên 127.0.0.1:** Ngăn chặn truy cập trực tiếp từ IP public, toàn bộ lưu lượng công cộng đi qua **Cloudflare Tunnel (`cloudflared`)**.
+  - **PostgreSQL:** Ánh xạ host **`127.0.0.1:5433`** $ightarrow$ container `5432` (`noteai_pkm`). Cấm dùng port `5432` (tránh xung đột với CVAT).
+  - **Qdrant Vector DB:** Host **`127.0.0.1:6333`** (REST) và **`127.0.0.1:6334`** (gRPC).
+  - **FastAPI Backend:** Host **`127.0.0.1:8000`** (`http://127.0.0.1:8000`, docs tại `/docs`).
+  - **Interactive React SPA:** Host **`127.0.0.1:5173`** (`http://127.0.0.1:5173`).
+- **Loại bỏ Nginx:** Không sử dụng Nginx, chuyển hoàn toàn sang Cloudflare Tunnel.
+- **Xác thực đăng nhập:** Trang Login bảo vệ ứng dụng (mặc định: `admin` / `noteai2026`).
 - **An toàn phần cứng CPU:** RAG Embedding sử dụng `fastembed` (ONNX CPU AVX2/AVX-512), bảo toàn 4GB VRAM của card NVIDIA T1200.
 - **LLM Engine:** Cloud API (Google Gemini API) với Structured Output Pydantic v2.
 

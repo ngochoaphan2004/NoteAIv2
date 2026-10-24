@@ -4,12 +4,12 @@ from app.main import app
 client = TestClient(app)
 
 def test_health_check_endpoint():
-    response = client.get("/")
+    response = client.get("/api/v1/health")
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "online"
-    assert data["ports"]["backend"] == 8000
-    assert data["ports"]["database_pg"] == 5433
+    assert data["ports"]["gateway_unified"] == 8000
+    assert data["ports"]["database_pg"] in (5432, 5433)
     assert data["ports"]["qdrant"] == 6333
 
 def test_flashcard_stats_endpoint():
@@ -82,4 +82,25 @@ def test_auth_login_and_verify_flow():
     # 4. Thử verify không có token -> 401
     no_token_res = client.get("/api/v1/auth/me")
     assert no_token_res.status_code == 401
+
+def test_spa_and_static_serving():
+    # 1. Trình duyệt truy cập root (mặc định) -> trả về SPA HTML
+    res = client.get("/")
+    assert res.status_code == 200
+    assert "<!doctype html>" in res.text.lower()
+
+    # 2. Truy cập với query format=json -> trả về JSON health check
+    json_res = client.get("/?format=json")
+    assert json_res.status_code == 200
+    assert json_res.json()["status"] == "online"
+
+    # 3. Trình duyệt truy cập một route SPA bất kỳ (ví dụ: /plans) -> trả về SPA HTML
+    spa_res = client.get("/plans", headers={"accept": "text/html"})
+    assert spa_res.status_code == 200
+    assert "<!doctype html>" in spa_res.text.lower()
+
+    # 4. Yêu cầu file tĩnh favicon.ico -> trả về 200
+    fav_res = client.get("/favicon.ico")
+    assert fav_res.status_code == 200
+
 

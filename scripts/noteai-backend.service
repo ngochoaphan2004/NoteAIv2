@@ -1,0 +1,18 @@
+[Unit]
+Description=NoteAI.v2 Backend FastAPI Service (Khóa cổng 127.0.0.1 qua Cloudflare Tunnel)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/noteai/backend
+Environment="PATH=/opt/noteai/venv/bin:/usr/local/bin:/usr/bin:/bin"
+EnvironmentFile=/opt/noteai/backend/.env
+ExecStart=/opt/noteai/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+StandardOutput=append:/opt/noteai/logs/backend.out.log
+StandardError=append:/opt/noteai/logs/backend.err.log
+
+[Install]
+WantedBy=multi-user.target

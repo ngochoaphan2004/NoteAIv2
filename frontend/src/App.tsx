@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FlashcardReviewer } from "./components/FlashcardReviewer";
 import { StatsDashboard } from "./components/StatsDashboard";
-import { TestAttemptEditor } from "./components/TestAttemptEditor";
 import { RAGSearch } from "./components/RAGSearch";
 import DailySession from "./components/DailySession";
 import { ConfigSettings } from "./components/ConfigSettings";
 import { Logo } from "./components/Logo";
+import { LoginPage } from "./components/LoginPage";
+import {
+  api,
+  getAuthToken,
+  getStoredUser,
+} from "./services/api";
 import {
   CalendarDays,
   BookOpen,
-  CheckSquare,
   Bot,
   BarChart3,
   Settings,
+  LogOut,
+  User,
 } from "lucide-react";
 
 const queryClient = new QueryClient({
@@ -25,7 +31,7 @@ const queryClient = new QueryClient({
   },
 });
 
-type Tab = "session" | "flashcards" | "test" | "rag" | "stats" | "config";
+type Tab = "session" | "flashcards" | "rag" | "stats" | "config";
 
 const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
   {
@@ -37,11 +43,6 @@ const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
     id: "flashcards",
     icon: <BookOpen className="w-3.5 h-3.5" />,
     label: "Thẻ Nhớ FSRS",
-  },
-  {
-    id: "test",
-    icon: <CheckSquare className="w-3.5 h-3.5" />,
-    label: "Luyện Thi & Chấm Bài",
   },
   {
     id: "rag",
@@ -62,11 +63,49 @@ const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string }[] = [
 
 export const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>("session");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() =>
+    Boolean(getAuthToken())
+  );
+  const [currentUser, setCurrentUser] = useState<{
+    username: string;
+    role: string;
+  } | null>(() => getStoredUser());
+
+  // Kiểm tra tính hợp lệ của token khi khởi động
+  useEffect(() => {
+    if (isAuthenticated) {
+      api.verifyAuth().then((isValid) => {
+        if (!isValid) {
+          setIsAuthenticated(false);
+          setCurrentUser(null);
+        }
+      });
+    }
+  }, [isAuthenticated]);
+
+  const handleLoginSuccess = (user: { username: string; role: string }) => {
+    setIsAuthenticated(true);
+    setCurrentUser(user);
+    setActiveTab("session");
+  };
+
+  const handleLogout = async () => {
+    if (window.confirm("Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?")) {
+      await api.logout();
+      setIsAuthenticated(false);
+      setCurrentUser(null);
+    }
+  };
+
+  // Nếu chưa đăng nhập, hiển thị màn hình Login
+  if (!isAuthenticated) {
+    return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f5f5f7] dark:bg-[#1c1c1e] text-[#1d1d1f] dark:text-[#f5f5f7]">
       {/* Navigation Header */}
-      <header className="backdrop-blur-md bg-white/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800 transition">
+      <header className="backdrop-blur-md bg-white/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800 transition sticky top-0 z-50">
         <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
           {/* Brand */}
           <div
@@ -98,6 +137,23 @@ export const AppContent: React.FC = () => {
               </button>
             ))}
           </nav>
+
+          {/* User Info & Logout Button */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-xl text-xs font-medium text-gray-700 dark:text-gray-300">
+              <User className="w-3.5 h-3.5 text-apple-blue" />
+              <span>{currentUser?.username || "admin"}</span>
+            </div>
+
+            <button
+              onClick={handleLogout}
+              className="p-1.5 sm:px-2.5 sm:py-1 bg-gray-100 hover:bg-red-50 dark:bg-gray-800 dark:hover:bg-red-950/40 text-gray-600 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 border border-transparent hover:border-red-200 dark:hover:border-red-900"
+              title="Đăng xuất khỏi hệ thống"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Đăng xuất</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -113,7 +169,6 @@ export const AppContent: React.FC = () => {
           />
         )}
         {activeTab === "flashcards" && <FlashcardReviewer />}
-        {activeTab === "test" && <TestAttemptEditor />}
         {activeTab === "rag" && <RAGSearch />}
         {activeTab === "stats" && <StatsDashboard />}
         {activeTab === "config" && <ConfigSettings />}

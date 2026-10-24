@@ -1,5 +1,44 @@
 const API_BASE = "/api/v1";
 
+const AUTH_TOKEN_KEY = "noteai_auth_token";
+const AUTH_USER_KEY = "noteai_auth_user";
+
+export function getAuthToken(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(AUTH_TOKEN_KEY);
+}
+
+export function setAuthSession(token: string, user: { username: string; role: string }) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(AUTH_TOKEN_KEY, token);
+  localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+}
+
+export function clearAuthSession() {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_USER_KEY);
+}
+
+export function getStoredUser(): { username: string; role: string } | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem(AUTH_USER_KEY);
+  try {
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function request(url: string, options: RequestInit = {}): Promise<Response> {
+  const token = getAuthToken();
+  const headers = new Headers(options.headers || {});
+  if (token && !headers.has("Authorization")) {
+    headers.set("Authorization", `Bearer ${token}`);
+  }
+  return fetch(url, { ...options, headers });
+}
+
 export interface FlashcardItem {
   id: string;
   front: string;
@@ -68,15 +107,54 @@ export interface EvaluationResponse {
 }
 
 export const api = {
+  // Authentication
+  async login(username: string, password: string): Promise<{ access_token: string; user: { username: string; role: string } }> {
+    const res = await request(`${API_BASE}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.detail || "Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
+    }
+    const data = await res.json();
+    setAuthSession(data.access_token, data.user);
+    return data;
+  },
+
+  async verifyAuth(): Promise<boolean> {
+    const token = getAuthToken();
+    if (!token) return false;
+    try {
+      const res = await request(`${API_BASE}/auth/me`);
+      if (!res.ok) {
+        clearAuthSession();
+        return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  },
+
+  async logout(): Promise<void> {
+    try {
+      await request(`${API_BASE}/auth/logout`, { method: "POST" });
+    } finally {
+      clearAuthSession();
+    }
+  },
+
   // Flashcards FSRS
   async getDueCards(limit = 20): Promise<FlashcardItem[]> {
-    const res = await fetch(`${API_BASE}/flashcards/due?limit=${limit}`);
+    const res = await request(`${API_BASE}/flashcards/due?limit=${limit}`);
     if (!res.ok) throw new Error("Không thể tải danh sách thẻ đến hạn");
     return res.json();
   },
 
   async reviewCard(cardId: string, rating: number): Promise<any> {
-    const res = await fetch(
+    const res = await request(
       `${API_BASE}/flashcards/${cardId}/review?rating=${rating}`,
       {
         method: "POST",
@@ -87,7 +165,7 @@ export const api = {
   },
 
   async syncMarkdownCards(): Promise<any> {
-    const res = await fetch(`${API_BASE}/flashcards/sync-markdown`, {
+    const res = await request(`${API_BASE}/flashcards/sync-markdown`, {
       method: "POST",
     });
     if (!res.ok) throw new Error("Lỗi đồng bộ thẻ từ Markdown");
@@ -95,14 +173,14 @@ export const api = {
   },
 
   async getStats(): Promise<FlashcardStats> {
-    const res = await fetch(`${API_BASE}/flashcards/stats`);
+    const res = await request(`${API_BASE}/flashcards/stats`);
     if (!res.ok) throw new Error("Không thể tải thống kê FSRS");
     return res.json();
   },
 
   // RAG Q&A & Search
   async askRAG(question: string, topK = 4): Promise<AskResponse> {
-    const res = await fetch(`${API_BASE}/rag/ask`, {
+    const res = await request(`${API_BASE}/rag/ask`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question, top_k: topK }),
@@ -115,7 +193,7 @@ export const api = {
   },
 
   async searchRAG(query: string, limit = 5): Promise<any[]> {
-    const res = await fetch(
+    const res = await request(
       `${API_BASE}/rag/query?query=${encodeURIComponent(query)}&limit=${limit}`,
       {
         method: "POST",
@@ -126,7 +204,7 @@ export const api = {
   },
 
   async reindexRAG(): Promise<{ status: string; files_indexed: number; total_chunks: number }> {
-    const res = await fetch(`${API_BASE}/rag/reindex`, {
+    const res = await request(`${API_BASE}/rag/reindex`, {
       method: "POST",
     });
     if (!res.ok) throw new Error("Lỗi lập chỉ mục lại Vector DB");
@@ -140,7 +218,7 @@ export const api = {
     sourceFile?: string,
     taskId?: string,
   ): Promise<EvaluationResponse> {
-    const res = await fetch(`${API_BASE}/agents/evaluate`, {
+    const res = await request(`${API_BASE}/agents/evaluate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -158,7 +236,7 @@ export const api = {
   },
 
   async generatePlan(weekNumber = 2): Promise<any> {
-    const res = await fetch(`${API_BASE}/agents/plan`, {
+    const res = await request(`${API_BASE}/agents/plan`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ week_number: weekNumber }),
@@ -169,13 +247,13 @@ export const api = {
 
   // System Configuration & Monitoring
   async getConfig(): Promise<SystemConfig> {
-    const res = await fetch(`${API_BASE}/system/config`);
+    const res = await request(`${API_BASE}/system/config`);
     if (!res.ok) throw new Error("Không thể tải cấu hình hệ thống");
     return res.json();
   },
 
   async updateConfig(payload: UpdateConfigPayload): Promise<{ success: boolean; message: string }> {
-    const res = await fetch(`${API_BASE}/system/config`, {
+    const res = await request(`${API_BASE}/system/config`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -186,7 +264,7 @@ export const api = {
 
   async testLLM(): Promise<TestLLMResponse> {
     try {
-      const res = await fetch(`${API_BASE}/system/test-llm`, {
+      const res = await request(`${API_BASE}/system/test-llm`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -214,13 +292,13 @@ export const api = {
 
   // Cronjob Scheduler
   async getCronStatus(): Promise<CronStatus> {
-    const res = await fetch(`${API_BASE}/cron/status`);
+    const res = await request(`${API_BASE}/cron/status`);
     if (!res.ok) throw new Error("Không thể lấy trạng thái Cronjob");
     return res.json();
   },
 
   async triggerCron(): Promise<CronTriggerResult> {
-    const res = await fetch(`${API_BASE}/cron/trigger`, {
+    const res = await request(`${API_BASE}/cron/trigger`, {
       method: "POST",
     });
     if (!res.ok) throw new Error("Lỗi kích hoạt Cronjob");
@@ -229,13 +307,13 @@ export const api = {
 
   // System Logs & Health
   async getLogs(logType: "app" | "error" = "app", lines = 100): Promise<LogResponse> {
-    const res = await fetch(`${API_BASE}/system/logs?log_type=${logType}&lines=${lines}`);
+    const res = await request(`${API_BASE}/system/logs?log_type=${logType}&lines=${lines}`);
     if (!res.ok) throw new Error("Không thể tải nhật ký máy chủ");
     return res.json();
   },
 
   async getHealthMetrics(): Promise<HealthMetrics> {
-    const res = await fetch(`${API_BASE}/system/health-metrics`);
+    const res = await request(`${API_BASE}/system/health-metrics`);
     if (!res.ok) throw new Error("Không thể lấy chỉ số sức khỏe máy chủ");
     return res.json();
   },
@@ -252,7 +330,7 @@ export const api = {
     is_done: boolean;
     status: string;
   }> {
-    const res = await fetch(`${API_BASE}/plans/today`);
+    const res = await request(`${API_BASE}/plans/today`);
     if (!res.ok) throw new Error("Không thể lấy thông tin kế hoạch hôm nay");
     return res.json();
   },
@@ -262,7 +340,7 @@ export const api = {
     today: string;
     updated_files: string[];
   }> {
-    const res = await fetch(`${API_BASE}/plans/sync`, { method: "POST" });
+    const res = await request(`${API_BASE}/plans/sync`, { method: "POST" });
     if (!res.ok) throw new Error("Lỗi kích hoạt đồng bộ kế hoạch");
     return res.json();
   },
@@ -348,4 +426,3 @@ export interface LogResponse {
   total_lines_returned: number;
   lines: string[];
 }
-

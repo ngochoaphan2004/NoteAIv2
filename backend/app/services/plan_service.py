@@ -323,7 +323,7 @@ class PlanService:
             if clean_bullets:
                 body_lines.extend(clean_bullets)
             if link_display:
-                body_lines.append(f"- {checked_box} **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _\"🚀 Gửi Câu Trả Lời Cho AI\"_.")
+                body_lines.append(f"- {checked_box} **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _\"🚀 Nộp Bài & Chấm Điểm Trực Tiếp\"_.")
                 body_lines.append(f"- 🔗 **Mở bài làm chi tiết:** 👉 {link_display}")
             else:
                 body_lines.append(f"- {checked_box} **Thực hành & Tự đánh giá:** Hoàn thành bài luyện tập theo thời lượng quy định và ghi chú lại khó khăn.")

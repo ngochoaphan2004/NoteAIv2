@@ -32,7 +32,7 @@ Mọi file Markdown trong dự án phải thuộc một trong các mẫu chuẩn
    - Phải có `.ielts-card-header` chứa `.ielts-timer-widget` (nút ▶️, ⏸️, 🔄).
    - Phải có `.ielts-stats-bar` chứa `.ielts-sheet-progress` và `.ielts-sheet-save-text`.
    - **BẮT BUỘC có `<div class="ielts-grid-answers"></div>`** để engine JavaScript tự động sinh các ô input nhập liệu.
-   - Phải có cụm nút tác vụ `.ielts-card-actions`: `🚀 Gửi Câu Trả Lời Cho AI`, `📋 Sao Chép Shorthand`, `🗑️ Xóa Bài Làm`.
+   - Phải có cụm nút tác vụ `.ielts-card-actions`: `🚀 Nộp Bài & Chấm Điểm Trực Tiếp`, `📋 Sao Chép Shorthand`, `🗑️ Xóa Bài Làm`.
 3. **Quy tắc Mạng Lưới Kiến Thức (Bidirectional Linking):**
    - Mọi bài con (Leaf Node) **chỉ được liên kết ngược về Hub cha của nó (`[[plans/week-XX/|Kế Hoạch Tuần X]]`)**, không nối tắt về root index.
    - Hub tuần cha liên kết tới tất cả các bài con trong tuần.
