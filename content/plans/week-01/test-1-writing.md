@@ -187,9 +187,9 @@ Dưới đây là **Paragraph Overview & Body 1** được viết lại theo chu
 - **Micro-session 1: Sửa lỗi Nội động từ (Passive vs. Active) (10 phút)**
   - *Quy tắc:* Các từ chỉ xu hướng tăng/giảm như *increase, decrease, rise, fall, fluctuate, drop* **KHÔNG BAO GIỜ** dùng dạng bị động (*was increased / is decreased*).
   - *Bài tập:* Sửa lại 3 câu sau cho đúng ngữ pháp:
-        1. *The rate of urbanization was increased significantly in 2010.*
-        2. *Urban population in Indonesia will be decreased next year.*
-        3. *House prices have been risen by 10% since 2015.*
+    1. *The rate of urbanization was increased significantly in 2010.*
+    2. *Urban population in Indonesia will be decreased next year.*
+    3. *House prices have been risen by 10% since 2015.*
 
 - **Micro-session 2: Nâng cấp từ vựng vượt qua (Surpass / Outpace) thay vì dùng "Pass" (10 phút)**
   - *Quy tắc:* Trong biểu đồ đường hoặc bảng số liệu, khi quốc gia A vượt qua quốc gia B, thay vì dùng từ *"pass"*, hãy dùng: *surpass, outpace, overtake*.
