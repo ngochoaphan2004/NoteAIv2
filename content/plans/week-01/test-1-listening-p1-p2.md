@@ -96,7 +96,7 @@ tags:
 
   <div class="ielts-card-actions">
     <button type="button" class="ielts-btn ielts-btn-primary ielts-btn-submit-ai">
-      🚀 Gửi Câu Trả Lời Cho AI
+      🚀 Nộp Bài & Chấm Điểm Trực Tiếp
     </button>
     <button type="button" class="ielts-btn ielts-btn-secondary ielts-btn-copy-shorthand">
       📋 Sao Chép Shorthand
@@ -112,35 +112,44 @@ tags:
 
 ## 📊 Bảng Đối Soát Chi Tiết & Phân Tích Lỗi Sai (Questions 1 – 20)
 
+> [!TIP] **Kết Quả Đối Soát Chính Thức (Cambridge IELTS 18)**
+>
+> - **Số câu đúng:** **17/20** câu (Tỷ lệ chính xác: **85%**)
+> - **Ước lượng Band Score:** **7.5** (Quy đổi tương đương thang 40 câu: ~34/40)
+> - **3 câu cần rút kinh nghiệm:**
+>   - **Câu 1:** Bạn điền `dw137yz` ➜ Đáp án chuẩn: **`DW307YZ`** (Nghe nhầm cụm số `307` thành `137`).
+>   - **Câu 4:** Bạn điền `cost` ➜ Đáp án chuẩn: **`parking`** (Bẫy: Sadie nói "The cost is too high" để đánh lạc hướng, nhưng danh từ chỉ thứ có chi phí cao cần điền là "parking").
+>   - **Câu 20:** Bạn điền `E` ➜ Đáp án chuẩn: **`F`** (Bẫy: Speaker nhấn mạnh không cần bằng cấp y khoa "medical qualification", mà ưu tiên hàng đầu là trí nhớ tốt "a good memory").
+
 ### 🔹 Part 1 (Questions 1 – 10)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-| **1** | `DW30YZ` | | ⚪ | |
-| **2** | `24 april` | | ⚪ | |
-| **3** | `dentist` | | ⚪ | |
-| **4** | `cost` | | ⚪ | |
-| **5** | `CLAXBY` | | ⚪ | |
-| **6** | `late` | | ⚪ | |
-| **7** | `evening` | | ⚪ | |
-| **8** | `supermarket` | | ⚪ | |
-| **9** | `pollution` | | ⚪ | |
-| **10** | `storage` | | ⚪ | |
+| **1** | `dw137yz` | DW307YZ | ❌ | Gap-fill: Đáp án cần điền là mã bưu chính, thường là sự kết hợp cả chữ và số. |
+| **2** | `24th April` | 24(th) April | ✅ | Gap-fill: Đáp án cần điền là ngày của chuyến đi xe buýt (bus journey). |
+| **3** | `dentist` | dentist | ✅ | Gap-fill: Đáp án cần điền là một danh từ, chỉ nơi mà Sadie đến trong chuyến đi bằng xe buýt. |
+| **4** | `cost` | parking | ❌ | Gap-fill: Đáp án cần điền là một danh từ, chỉ thứ mà có chi phí quá cao khiến Sadie quyết định đi xe buýt. |
+| **5** | `CLAXBY` | Claxby | ✅ | Gap-fill: Đáp án cần điền là tên đường, là nơi Sadie lên xe buýt, khả năng cao sẽ được đánh vần. |
+| **6** | `late` | late | ✅ | Gap-fill: Đáp án cần điền là một tính từ, chỉ tình trạng của xe buýt theo lời phàn nàn (complaints) của Sadie. |
+| **7** | `evening` | evening | ✅ | Gap-fill: Đáp án cần điền là một danh từ, có thể là địa điểm hoặc thời điểm mà Sadie phàn nàn về tần suất xe buýt. Ở đây, đáp án không phải là “town” vì cấu trúc “in town” không có “the”, mà trong câu hỏi đã có sẵn từ “the” trước danh từ cần điền. |
+| **8** | `supermarket` | supermarket | ✅ | Gap-fill: Đáp án cần điền là một danh từ, chỉ nơi mà Sadie hay đến bằng ô tô. |
+| **9** | `pollution` | pollution | ✅ | Gap-fill: Đáp án cần điền là một danh từ, chỉ lý do mà Sadie không thích đi xe đạp trong trung tâm thành phố (city centre). |
+| **10** | `storage` | storage | ✅ | Gap-fill: Đáp án cần điền là một danh từ, chỉ thứ mà bị thiếu, khiến Sadie không sở hữu xe đạp. |
 
 ### 🔹 Part 2 (Questions 11 – 20)
 
 | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú Lỗi Sai / Phân Tích Bẫy |
 | :---: | :--- | :--- | :---: | :--- |
-| **11** | `C` | | ⚪ | |
-| **12** | `A` | | ⚪ | |
-| **13** | `A` | | ⚪ | |
-| **14** | `E` | | ⚪ | |
-| **15** | `B` | | ⚪ | |
-| **16** | `B` | | ⚪ | |
-| **17** | `G` | | ⚪ | |
-| **18** | `D` | | ⚪ | |
-| **19** | `A` | | ⚪ | |
-| **20** | `E` | | ⚪ | |
+| **11** | `C` | C | ✅ | Multiple choice: Bài nghe nói rằng một số chỗ ngồi, cụ thể là của những người ở cuối căn phòng có thể được kê sát nhau 'squased'. Do đó đáp án C là chính xác. |
+| **12** | `A` | A | ✅ | Multiple choice: Bài nghe nói rằng các yếu tố khác, chẳng hạn như sự đáng tin cậy, là quan trọng đối với công việc tình nguyện. Tuổi tác là không liên quan, không đóng vai trò quan trọng trong những trường hợp này. |
+| **13** | `A` | A | ✅ | Multiple choice: Bài nghe nói rằng việc huấn luyện không dừng lại khi mọi người bắt đầu vào làm. Nó diễn ra trước, trong và sau các giai đoạn làm việc. Vì vậy, nó diễn ra liên tục 'continuous'. |
+| **14** | `E` | B, E | ✅ | Multiple choice: Từ 'commitment' - 'sự cam kết' của đáp án được paraphrase thành từ 'dedication' - 'sự tận tụy' trong bài nghe. Hơn thế nữa, từ 'commitment' còn được thể hiện qua việc dành hết năng lượng cho công việc mà họ làm. |
+| **15** | `B` | B, E | ✅ | Multiple choice: Bài nghe nói rằng những người làm công viên tình nguyện viên cần chắc chắn việc họ có đủ số giờ trong ngày để hoàn thành công việc cho nhiệm vụ phụ hợp với họ. Điều này tương ứng với từ 'availability' - 'sự rảnh rỗi cho công việc gì' của đáp án. |
+| **16** | `B` | B | ✅ | Matching: Bài nghe nói nếu những tình nguyện khuyên có cách sáng tạo và mới lạ để có thể gây quỹ thì đây là một điều tốt. Do đó đáp án phù hợp là original, new ideas (B). |
+| **17** | `G` | G | ✅ | Matching: Bài nghe nói với hoạt động nhặt rác thì sẽ hữu dụng nếu tình nguyện viên có khả năng đi bộ trong một khoảng thời gian dài, đôi khi là leo dốc. Điều này tương ứng với 'a good level of fitness' (G). |
+| **18** | `D` | D | ✅ | Matching: Đối với hoạt động 'playmates', sẽ là một điều tốt nếu tình nguyện viên có kiến thức về dinh dưỡng và có thể đưa ra chỉ dẫn rõ ràng. Do đó đáp án là an understanding of food and diet (D). |
+| **19** | `A` | A | ✅ | Matching: Nếu tình nguyện viên có khả năng diễn xuất tương đương với việc thể hiện trên sân khấu, họ có thể tham gia vào hoạt động story club. Do đó đáp án là experience on stage (A). |
+| **20** | `E` | F | ❌ | Matching: Đối với hoạt động sơ cứu, điều mà tình nguyện viên cần ưu tiên là nắm được nhiều thông tin và không quên các bước hay chi tiết quan trọng nào, tương ứng với 'a good memory' (F). |
 
 ---
 

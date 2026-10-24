@@ -17,53 +17,96 @@ class CambridgeKeyService:
         self._loaded = False
         self._load_keys()
 
-    def _find_json_path(self) -> Optional[str]:
-        # Ưu tiên content/data (SSOT trong dự án)
+    def _find_data_dirs(self) -> List[str]:
+        # Ưu tiên thư mục data gốc của dự án (D:\Ielts\code\NoteAI.v2\data)
         candidates = [
-            os.path.join(os.path.dirname(__file__), "..", "..", "..", "content", "data", "cambridge_18_answers_and_explanations.json"),
-            os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "cambridge_18_answers_and_explanations.json"),
-            os.path.join(os.getcwd(), "content", "data", "cambridge_18_answers_and_explanations.json"),
-            os.path.join(os.getcwd(), "data", "cambridge_18_answers_and_explanations.json"),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "data")),
+            os.path.abspath(os.path.join(os.getcwd(), "data")),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "content", "data")),
+            os.path.abspath(os.path.join(os.getcwd(), "content", "data")),
         ]
+        valid_dirs = []
+        seen = set()
         for c in candidates:
-            abs_p = os.path.abspath(c)
-            if os.path.isfile(abs_p):
-                return abs_p
-        return None
+            if c not in seen and os.path.isdir(c):
+                seen.add(c)
+                valid_dirs.append(c)
+        return valid_dirs
 
     def _load_keys(self):
-        json_path = self._find_json_path()
-        if not json_path:
-            logger.warning("Không tìm thấy tệp cambridge_18_answers_and_explanations.json!")
+        data_dirs = self._find_data_dirs()
+        if not data_dirs:
+            logger.warning("Không tìm thấy thư mục data chứa đáp án Cambridge 18!")
             return
 
-        try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+        total_loaded = 0
 
-            count = 0
-            tests = data.get("tests", {})
-            for test_key, test_data in tests.items():
-                test_num = test_data.get("test", 1)
+        # 1. Nạp từ file tổng hợp cambridge_18_answers_and_explanations.json
+        for d in data_dirs:
+            full_json = os.path.join(d, "cambridge_18_answers_and_explanations.json")
+            if os.path.isfile(full_json):
+                try:
+                    with open(full_json, "r", encoding="utf-8") as f:
+                        data = json.load(f)
 
-                # Nạp Listening
-                for q in test_data.get("listening", []):
-                    q_num = q.get("question_number")
-                    if q_num is not None:
-                        self._keys_db[(test_num, "listening", int(q_num))] = q
-                        count += 1
+                    tests = data.get("tests", {})
+                    for test_key, test_data in tests.items():
+                        test_num = test_data.get("test", 1)
 
-                # Nạp Reading
-                for q in test_data.get("reading", []):
-                    q_num = q.get("question_number")
-                    if q_num is not None:
-                        self._keys_db[(test_num, "reading", int(q_num))] = q
-                        count += 1
+                        for q in test_data.get("listening", []):
+                            q_num = q.get("question_number")
+                            if q_num is not None:
+                                key = (test_num, "listening", int(q_num))
+                                if key not in self._keys_db:
+                                    self._keys_db[key] = q
+                                    total_loaded += 1
 
+                        for q in test_data.get("reading", []):
+                            q_num = q.get("question_number")
+                            if q_num is not None:
+                                key = (test_num, "reading", int(q_num))
+                                if key not in self._keys_db:
+                                    self._keys_db[key] = q
+                                    total_loaded += 1
+
+                    logger.info(f"Đã nạp {total_loaded} câu hỏi từ: {full_json}")
+                    break
+                except Exception as e:
+                    logger.error(f"Lỗi khi đọc file {full_json}: {e}", exc_info=True)
+
+        # 2. Bổ sung từ các file riêng lẻ cambridge18_test_*.json trong data/ nếu có
+        for d in data_dirs:
+            for i in range(1, 5):
+                indiv_file = os.path.join(d, f"cambridge18_test_{i}.json")
+                if os.path.isfile(indiv_file):
+                    try:
+                        with open(indiv_file, "r", encoding="utf-8") as f:
+                            t_data = json.load(f)
+                        test_num = t_data.get("test", i)
+
+                        for q in t_data.get("listening", []):
+                            q_num = q.get("question_number")
+                            if q_num is not None:
+                                key = (test_num, "listening", int(q_num))
+                                if key not in self._keys_db:
+                                    self._keys_db[key] = q
+                                    total_loaded += 1
+
+                        for q in t_data.get("reading", []):
+                            q_num = q.get("question_number")
+                            if q_num is not None:
+                                key = (test_num, "reading", int(q_num))
+                                if key not in self._keys_db:
+                                    self._keys_db[key] = q
+                                    total_loaded += 1
+                    except Exception as e:
+                        logger.warning(f"Lỗi khi nạp file riêng lẻ {indiv_file}: {e}")
+
+        if total_loaded > 0:
             self._loaded = True
-            logger.info(f"Đã nạp thành công {count} câu hỏi đáp án chính thức Cambridge 18 từ: {json_path}")
-        except Exception as e:
-            logger.error(f"Lỗi khi nạp dữ liệu đáp án Cambridge 18: {e}", exc_info=True)
+            logger.info(f"Tổng cộng đã nạp thành công {len(self._keys_db)} câu hỏi đáp án Cambridge 18 từ data/")
+        else:
+            logger.warning("Không có câu hỏi nào được nạp từ các thư mục data!")
 
     def get_question_info(self, test_num: int, skill: str, question_number: int) -> Optional[Dict[str, Any]]:
         """Lấy thông tin đáp án và giải thích cho một câu hỏi cụ thể"""
@@ -206,6 +249,41 @@ class CambridgeKeyService:
         else:
             return 3.0
 
+    @staticmethod
+    def _clean_stem(txt: str) -> str:
+        """Loại bỏ các hậu tố '(Option 1)', '(Select 1 of 2)' để so khớp gốc câu hỏi"""
+        t = re.sub(r"\s*\((?:option|select|first|second|\d+ of \d+)[^)]*\)", "", txt, flags=re.IGNORECASE)
+        t = re.sub(r"\s+", " ", t).strip().lower()
+        return t
+
+    def get_question_group(self, test_num: int, skill: str, q_num: int) -> List[int]:
+        """
+        Phát hiện nếu câu hỏi nằm trong nhóm multi-select (ví dụ cặp câu 'Choose TWO letters' như Q14 & Q15).
+        Trả về danh sách số thứ tự câu hỏi trong cùng nhóm (ví dụ [14, 15]).
+        """
+        curr = self.get_question_info(test_num, skill, q_num)
+        if not curr:
+            return [q_num]
+        stem = self._clean_stem(curr.get("question_text", ""))
+        is_multi = "two" in stem or "three" in stem or "choose" in stem
+        if not is_multi:
+            return [q_num]
+
+        group = [q_num]
+        prev_info = self.get_question_info(test_num, skill, q_num - 1)
+        if prev_info:
+            prev_stem = self._clean_stem(prev_info.get("question_text", ""))
+            if (prev_stem == stem) or (("two" in prev_stem or "three" in prev_stem) and is_multi):
+                group.insert(0, q_num - 1)
+
+        next_info = self.get_question_info(test_num, skill, q_num + 1)
+        if next_info:
+            next_stem = self._clean_stem(next_info.get("question_text", ""))
+            if (next_stem == stem) or (("two" in next_stem or "three" in next_stem) and is_multi):
+                group.append(q_num + 1)
+
+        return sorted(list(set(group)))
+
     def evaluate_test_attempt(
         self,
         raw_text: str,
@@ -244,56 +322,114 @@ class CambridgeKeyService:
         correct_count = 0
         total_questions = len(parsed_items)
 
+        # Xử lý theo từng nhóm câu hỏi (hỗ trợ các câu 'Choose TWO letters' đảo thứ tự tự do)
+        processed_q_nums = set()
+        items_by_q = {it["question_number"]: it for it in parsed_items}
+
         for item in parsed_items:
             q_num = item["question_number"]
-            user_ans = item["user_answer"]
+            if q_num in processed_q_nums:
+                continue
 
-            # Tra cứu trong cơ sở dữ liệu đáp án Cambridge 18
-            q_info = self.get_question_info(test_num, skill_norm, q_num)
+            group_nums = self.get_question_group(test_num, skill_norm, q_num)
+            group_items = [items_by_q[qn] for qn in group_nums if qn in items_by_q]
 
-            if q_info:
-                official_ans = q_info.get("answer", "")
-                explanation = q_info.get("explanation", "")
-                evidence = q_info.get("evidence", "")
-                trap_type = q_info.get("question_type", "")
-                keywords = q_info.get("keywords", [])
+            if len(group_items) > 1 and len(group_nums) > 1:
+                # Nhóm câu hỏi chọn nhiều đáp án: thu thập tập hợp đáp án chính thức khả dụng
+                avail_answers = []
+                group_infos = {}
+                for gn in group_nums:
+                    info = self.get_question_info(test_num, skill_norm, gn)
+                    if info:
+                        group_infos[gn] = info
+                        ans_raw = info.get("answer", "")
+                        for part in re.split(r"[,/]", ans_raw):
+                            clean_part = part.strip()
+                            if clean_part and clean_part not in avail_answers:
+                                avail_answers.append(clean_part)
 
-                # Đối chiếu câu trả lời
-                is_correct = self.match_answer(user_ans, official_ans)
-                if is_correct:
-                    correct_count += 1
+                used_answers = set()
+                for g_item in group_items:
+                    gn = g_item["question_number"]
+                    u_ans = g_item["user_answer"]
+                    q_info = group_infos.get(gn) or self.get_question_info(test_num, skill_norm, gn)
 
-                questions_result.append({
-                    "question_number": q_num,
-                    "user_answer": user_ans,
-                    "correct_answer": official_ans,
-                    "is_correct": is_correct,
-                    "trap_type": trap_type,
-                    "explanation": explanation,
-                    "evidence": evidence,
-                    "keywords": keywords,
-                    "part": q_info.get("part")
-                })
+                    matched_ans = None
+                    for a in avail_answers:
+                        if a not in used_answers and self.match_answer(u_ans, a):
+                            matched_ans = a
+                            break
+
+                    is_correct = False
+                    if matched_ans:
+                        is_correct = True
+                        used_answers.add(matched_ans)
+                        correct_count += 1
+
+                    official_display = ", ".join(avail_answers) if avail_answers else (q_info.get("answer", "") if q_info else "")
+                    explanation = q_info.get("explanation", "") if q_info else ""
+                    evidence = q_info.get("evidence", "") if q_info else ""
+                    trap_type = q_info.get("question_type", "Multiple choice") if q_info else "Multiple choice"
+
+                    questions_result.append({
+                        "question_number": gn,
+                        "user_answer": u_ans,
+                        "correct_answer": official_display,
+                        "is_correct": is_correct,
+                        "trap_type": trap_type,
+                        "explanation": explanation,
+                        "evidence": evidence,
+                        "keywords": q_info.get("keywords", []) if q_info else [],
+                        "part": q_info.get("part") if q_info else None
+                    })
+                    processed_q_nums.add(gn)
             else:
-                # Không tìm thấy trong key Cambridge (custom / ngoài đề)
-                is_correct = None
-                corr_from_item = item.get("correct_answer")
-                if corr_from_item:
-                    is_correct = self.match_answer(user_ans, corr_from_item)
+                # Câu hỏi đơn lẻ bình thường
+                processed_q_nums.add(q_num)
+                user_ans = item["user_answer"]
+                q_info = self.get_question_info(test_num, skill_norm, q_num)
+
+                if q_info:
+                    official_ans = q_info.get("answer", "")
+                    explanation = q_info.get("explanation", "")
+                    evidence = q_info.get("evidence", "")
+                    trap_type = q_info.get("question_type", "")
+                    keywords = q_info.get("keywords", [])
+
+                    is_correct = self.match_answer(user_ans, official_ans)
                     if is_correct:
                         correct_count += 1
 
-                questions_result.append({
-                    "question_number": q_num,
-                    "user_answer": user_ans,
-                    "correct_answer": corr_from_item,
-                    "is_correct": is_correct,
-                    "trap_type": item.get("trap_type", "Tự luận / Tự check"),
-                    "explanation": item.get("explanation", ""),
-                    "evidence": "",
-                    "keywords": [],
-                    "part": None
-                })
+                    questions_result.append({
+                        "question_number": q_num,
+                        "user_answer": user_ans,
+                        "correct_answer": official_ans,
+                        "is_correct": is_correct,
+                        "trap_type": trap_type,
+                        "explanation": explanation,
+                        "evidence": evidence,
+                        "keywords": keywords,
+                        "part": q_info.get("part")
+                    })
+                else:
+                    is_correct = None
+                    corr_from_item = item.get("correct_answer")
+                    if corr_from_item:
+                        is_correct = self.match_answer(user_ans, corr_from_item)
+                        if is_correct:
+                            correct_count += 1
+
+                    questions_result.append({
+                        "question_number": q_num,
+                        "user_answer": user_ans,
+                        "correct_answer": corr_from_item,
+                        "is_correct": is_correct,
+                        "trap_type": item.get("trap_type", "Tự luận / Tự check"),
+                        "explanation": item.get("explanation", ""),
+                        "evidence": "",
+                        "keywords": [],
+                        "part": None
+                    })
 
         score_fraction = f"{correct_count}/{total_questions}"
         band_score = self.estimate_band_score(correct_count, total_questions, skill_norm)
