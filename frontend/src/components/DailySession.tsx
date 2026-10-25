@@ -79,58 +79,7 @@ export const DailySession: React.FC<DailySessionProps> = ({
       }
     };
     window.addEventListener("message", handleMessage);
-    const renderActionButtons = (isMobile: boolean = false) => (
-    <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-      <button
-        onClick={handleRefresh}
-        title="Tải lại nội dung trang"
-        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-      >
-        <RotateCw className="w-3.5 h-3.5" />
-      </button>
-
-      <a
-        href={currentUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Mở tab mới trong trình duyệt"
-        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-      >
-        <ExternalLink className="w-3.5 h-3.5" />
-      </a>
-
-      {!isMobile && (
-        <button
-          onClick={handleToggleSplitMode}
-          title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
-          className="hidden sm:inline-flex px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition items-center gap-1"
-        >
-          <Columns className="w-3.5 h-3.5 text-apple-blue" />
-          <span>2 Cột</span>
-        </button>
-      )}
-
-      <button
-        onClick={onNavigateToFlashcards}
-        className="group px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1 sm:gap-1.5"
-      >
-        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-        <span className="hidden sm:inline">Ôn Thẻ Nhớ</span>
-        <span className="sm:hidden">Ôn Thẻ</span>
-        {dueCount > 0 ? (
-          <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.2 rounded-full font-extrabold shadow-sm">
-            {dueCount}
-          </span>
-        ) : (
-          <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.2 rounded-full">
-            0
-          </span>
-        )}
-      </button>
-    </div>
-  );
-
-  return () => window.removeEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, [refetchTodayPlan]);
 
   const dueCount = dueCards.length;
