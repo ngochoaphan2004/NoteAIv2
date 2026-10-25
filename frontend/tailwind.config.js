@@ -3,6 +3,28 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"SF Pro Text"',
+          '"SF Pro Display"',
+          '"SF Pro"',
+          "system-ui",
+          '"Helvetica Neue"',
+          '"Segoe UI"',
+          "Roboto",
+          "sans-serif",
+        ],
+        mono: [
+          '"SF Mono"',
+          "Monaco",
+          "Menlo",
+          "Consolas",
+          '"JetBrains Mono"',
+          "monospace",
+        ],
+      },
       colors: {
         apple: {
           lightBg: "#f5f5f7",

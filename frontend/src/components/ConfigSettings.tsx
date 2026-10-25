@@ -665,20 +665,6 @@ export const ConfigSettings: React.FC = () => {
             </p>
           </div>
 
-          {/* Quartz v4 */}
-          <div className="p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 space-y-1">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-bold">Quartz v4 SSG</span>
-              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-            </div>
-            <div className="text-base font-extrabold font-mono text-purple-600">
-              :8088
-            </div>
-            <p className="text-[10px] text-apple-subtextLight dark:text-apple-subtextDark">
-              Digital Garden Preview
-            </p>
-          </div>
-
           {/* React SPA */}
           <div className="p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 space-y-1">
             <div className="flex items-center justify-between text-xs">

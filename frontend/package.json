@@ -11,13 +11,20 @@
   "dependencies": {
     "@tanstack/react-query": "^5.62.8",
     "clsx": "^2.1.1",
+    "katex": "^0.19.1",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
     "recharts": "^2.15.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.8",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
