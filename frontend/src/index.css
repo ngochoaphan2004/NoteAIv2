@@ -88,8 +88,7 @@ samp {
 
 /* IELTS Exam Seamless Booklet Images */
 details.ielts-exam-details p:has(img),
-details p:has(img),
-.split-images-wrapper p:has(img) {
+details p:has(img) {
   margin: 0 !important;
   padding: 0 !important;
   line-height: 0;
@@ -97,8 +96,7 @@ details p:has(img),
 }
 
 details.ielts-exam-details img,
-details img,
-.split-images-wrapper img {
+details img {
   max-width: 90% !important;
   max-height: 90vh !important;
   object-fit: contain;
@@ -106,6 +104,25 @@ details img,
   display: block;
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Split-Screen Exam Booklet Images (Fully Zoomable) */
+.split-images-wrapper p:has(img) {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0;
+  text-align: center;
+}
+
+.split-images-wrapper img {
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+  margin: 0.5rem auto !important;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: width 0.15s ease-out;
 }
 
 /* Quartz Callout Box Enhancements */

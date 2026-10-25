@@ -55,7 +55,7 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
   initialSectionIndex = 0,
 }) => {
   const [activeSectionIdx, setActiveSectionIdx] = useState(initialSectionIndex);
-  const [zoom, setZoom] = useState(95); // 60% to 160%
+  const [zoom, setZoom] = useState(100); // 50% to 200%
   const [splitRatio, setSplitRatio] = useState<50 | 40 | 60>(50); // Left column width %
 
   // Trích xuất các khối <details> chứa đề thi/ảnh từ nội dung Markdown
@@ -207,18 +207,23 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
           <div className="flex items-center gap-1 bg-gray-200/60 dark:bg-gray-800/60 p-0.5 rounded-lg text-xs">
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.max(60, z - 10))}
+              onClick={() => setZoom((z) => Math.max(50, z - 10))}
               title="Thu nhỏ ảnh đề bài"
               className="p-1 hover:text-apple-blue rounded text-gray-600 dark:text-gray-300"
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
-            <span className="px-1 text-[11px] font-mono font-semibold text-gray-700 dark:text-gray-300 min-w-[36px] text-center">
-              {zoom}%
-            </span>
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.min(160, z + 10))}
+              onClick={() => setZoom(100)}
+              title="Nhấp để đặt lại 100%"
+              className="px-1.5 py-0.5 text-[11px] font-mono font-bold text-gray-700 dark:text-gray-300 hover:text-apple-blue hover:bg-white/60 dark:hover:bg-gray-700/60 rounded min-w-[38px] text-center transition"
+            >
+              {zoom}%
+            </button>
+            <button
+              type="button"
+              onClick={() => setZoom((z) => Math.min(200, z + 10))}
               title="Phóng to ảnh đề bài"
               className="p-1 hover:text-apple-blue rounded text-gray-600 dark:text-gray-300"
             >
@@ -333,7 +338,7 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
         {/* CỘT PHẢI: ĐỀ BÀI, HÌNH ẢNH SÁCH GỐC, AUDIO SCRIPT */}
         <div
           style={{ width: `${100 - splitRatio}%` }}
-          className="h-full overflow-y-auto px-4 py-4 bg-gray-50/50 dark:bg-[#12141a]/50 space-y-4 select-text"
+          className="h-full overflow-auto px-4 py-4 bg-gray-50/50 dark:bg-[#12141a]/50 space-y-4 select-text"
         >
           {activeSection ? (
             <div className="space-y-3">
@@ -342,13 +347,23 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
                   <BookOpen className="w-4 h-4 text-apple-blue" />
                   <span>{activeSection.summary}</span>
                 </div>
-                <span className="text-[11px] text-gray-400">Tỷ lệ zoom: {zoom}%</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-gray-500 font-medium">Tỷ lệ zoom: {zoom}%</span>
+                  {zoom !== 100 && (
+                    <button
+                      type="button"
+                      onClick={() => setZoom(100)}
+                      className="text-[10px] px-1.5 py-0.5 rounded bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-apple-blue transition"
+                    >
+                      Đặt lại 100%
+                    </button>
+                  )}
+                </div>
               </div>
 
               {/* Nội dung đề bài & Hình ảnh được phóng to/thu nhỏ */}
               <div
-                style={{ "--split-zoom": `${zoom}%` } as React.CSSProperties}
-                className="split-images-wrapper space-y-0 text-xs sm:text-sm text-gray-800 dark:text-gray-200"
+                className="split-images-wrapper space-y-2 text-xs sm:text-sm text-gray-800 dark:text-gray-200"
               >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm, remarkMath]}
@@ -356,14 +371,18 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
                   components={{
                     audio: ({ src }) => (src ? <CustomAudioPlayer src={src} /> : null),
                     p: ({ children }) => (
-                      <p className="my-1 text-center leading-none">{children}</p>
+                      <p className="my-1.5 text-center leading-none">{children}</p>
                     ),
                     img: ({ src, alt }) => (
                       <img
                         src={src}
                         alt={alt || "Đề bài IELTS"}
-                        style={{ maxWidth: `${zoom}%` }}
-                        className="mx-auto rounded-lg shadow-sm border border-gray-200/60 dark:border-gray-700/60 my-1 object-contain transition-all"
+                        style={{
+                          width: `${zoom}%`,
+                          maxWidth: "none",
+                          height: "auto",
+                        }}
+                        className="mx-auto rounded-lg shadow-sm border border-gray-200/60 dark:border-gray-700/60 my-2 object-contain block transition-all duration-150"
                         loading="eager"
                       />
                     ),
