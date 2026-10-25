@@ -1,9 +1,9 @@
 # 🤖 NoteAI.v2 (Local Autonomous PKM) - Rules & Governance Guidelines
 
-Bạn là trợ lý AI chuyên trách quản trị và phát triển khu vườn tri thức tự trị (**Local Autonomous PKM & Digital Garden**) phục vụ luyện thi IELTS, vận hành theo mô hình **Hybrid Dual-Engine**:
+Bạn là trợ lý AI chuyên trách quản trị và phát triển khu vườn tri thức tự trị (**Local Autonomous PKM & Digital Garden**) phục vụ luyện thi IELTS, vận hành theo kiến trúc **Pure Unified Engine**:
 
-1. **Engine 1 - Static Knowledge Garden:** Quartz v4 (Read-Only SSG, Interactive Graph, xuất bản GitHub Pages).
-2. **Engine 2 - Local Autonomous Runtime:** FastAPI + LangGraph + Qdrant (CPU FastEmbed) + FSRS v4 + PostgreSQL + Vite React SPA.
+- **FastAPI Core Gateway & Backend Service:** Quản lý dữ liệu SSOT Markdown (`/api/v1/content`), phục vụ Audio trực tiếp (`/assets/audio`), điều phối RAG Vector Search (Qdrant + FastEmbed CPU), FSRS v4 Spaced Repetition và các Autonomous Agent.
+- **Interactive Vite React SPA Frontend:** Client-side Markdown rendering tự nhiên (`react-markdown` + `remark-gfm` + `rehype-raw` + `rehype-katex`), tích hợp các Interactive Components bản địa (`IeltsAnswerSheet`, `IeltsWritingWorkspace`, `GardenSidebar`) và lưu trữ bền vững 2 tầng LocalStorage (đáp án nháp + kết quả chấm AI), hoàn toàn không phụ thuộc SSG bên thứ ba hay iframe.
 
 Bộ quy tắc dưới đây là **bất biến và bắt buộc tuân thủ tuyệt đối** trong mọi phiên làm việc, dòng lệnh CLI và tương tác với dự án.
 
@@ -28,9 +28,8 @@ Bộ quy tắc dưới đây là **bất biến và bắt buộc tuân thủ tuy
   - Toàn bộ các cổng dịch vụ **BẮT BUỘC gán vào loopback `127.0.0.1`** (`127.0.0.1:port`) để chặn đứng mọi kết nối trực tiếp từ IP công cộng bên ngoài:
     - **PostgreSQL 16:** Ánh xạ host **`127.0.0.1:5433`** $ightarrow$ container `5432` (`DATABASE_URL=postgresql://noteai:noteai_secret_password@localhost:5433/noteai_pkm`). **TUYỆT ĐỐI KHÔNG DÙNG CỔNG 5432** (cổng này đã được container `cvat_db` sử dụng).
     - **Qdrant Vector DB:** Host **`127.0.0.1:6333`** (REST API) và **`127.0.0.1:6334`** (gRPC).
-    - **FastAPI Backend Gateway:** Host **`127.0.0.1:8000`** (`http://127.0.0.1:8000`, docs tại `/docs`).
-    - **Interactive React SPA Frontend:** Host **`127.0.0.1:5173`** (`http://127.0.0.1:5173`).
-    - **Quartz v4 Dev Preview:** Host **`127.0.0.1:8088`** (nếu khởi chạy preview tĩnh).
+    - **FastAPI Backend Gateway:** Host **`127.0.0.1:8000`** (`http://127.0.0.1:8000`, docs tại `/docs`). Phục vụ API và kiêm luôn React SPA Frontend (`frontend/dist/`).
+    - **Interactive React SPA Frontend (Dev Mode):** Host **`127.0.0.1:5173`** (`http://127.0.0.1:5173`).
 - **Kiến Trúc Định Tuyến & Xác Thực:**
   - **Loại bỏ Nginx:** Hệ thống không dùng Nginx reverse proxy mà định tuyến công cộng trực tiếp qua **Cloudflare Tunnel (`cloudflared`)**.
   - **Màn Hình Đăng Nhập (Auth Guard):** Toàn bộ giao diện người dùng được bảo vệ bằng màn hình đăng nhập (mặc định: `admin` / `noteai2026`, cấu hình qua `backend/.env`).
@@ -136,7 +135,7 @@ Pipeline kiểm chứng thực thi 4 chặng nghiêm ngặt:
 1. **Kiểm tra Schema Frontmatter & Dead Link Checker:** Xác minh 100% file đủ frontmatter và không có bất kỳ liên kết hỏng (dead link) nào.
 2. **Markdown Linter (`markdownlint-cli`):** Đảm bảo cú pháp Markdown chuẩn mực theo `.markdownlint.json`.
 3. **Đồng bộ Dữ Liệu FSRS & Anki:** Kiểm tra và đồng bộ thẻ từ vựng mới vào PostgreSQL / `.apkg`.
-4. **Kiểm thử biên dịch Quartz (`npx quartz build`):** Xác nhận trang web build thành công 100%.
+4. **Kiểm thử biên dịch React SPA Production (`cd frontend && npm run build`):** Xác nhận giao diện người dùng build thành công 100%.
 
 **Sau khi vượt qua hoàn toàn:**
 

@@ -7,9 +7,8 @@ Tài liệu hướng dẫn kết nối hệ thống **NoteAI.v2** an toàn ra m�
 ## 🛡️ 1. Tại Sao Tất Cả Port Đều Bị Khóa Trên `127.0.0.1`?
 
 Trong `docker/docker-compose.yml`, toàn bộ các port đã được cấu hình gán cố định vào `127.0.0.1`:
-- `127.0.0.1:5173` $\rightarrow$ React SPA Frontend
-- `127.0.0.1:8000` $\rightarrow$ FastAPI Backend Gateway
-- `127.0.0.1:8088` $\rightarrow$ Quartz v4 Digital Garden
+- `127.0.0.1:8000` $\rightarrow$ FastAPI Backend Gateway (phục vụ hợp nhất API + React SPA)
+- `127.0.0.1:5173` $\rightarrow$ React SPA Frontend (Dev Mode)
 - `127.0.0.1:5433` $\rightarrow$ PostgreSQL 16 (tránh xung đột với CVAT 5432)
 - `127.0.0.1:6333` $\rightarrow$ Qdrant Vector DB
 
@@ -42,15 +41,11 @@ tunnel: <UUID_CỦA_TUNNEL>
 credentials-file: /root/.cloudflared/<UUID_CỦA_TUNNEL>.json
 
 ingress:
-  # 1. Tên miền truy cập NoteAI.v2 (Phục vụ trọn gói React SPA, Login Guard & Backend API trên port 8000)
+  # 1. Tên miền truy cập NoteAI.v2 (Phục vụ trọn gói Pure React SPA, Login Guard, Digital Garden & Backend API trên port 8000)
   - hostname: ielts.yourdomain.com
     service: http://127.0.0.1:8000
 
-  # 2. Tên miền truy cập Quartz Digital Garden độc lập (nếu chạy preview 8088 hoặc truy cập qua ielts.yourdomain.com/garden)
-  - hostname: garden.yourdomain.com
-    service: http://127.0.0.1:8000/garden
-
-  # 3. Catch-all mặc định (bắt buộc)
+  # 2. Catch-all mặc định (bắt buộc)
   - service: http_status:404
 ```
 

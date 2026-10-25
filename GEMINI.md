@@ -7,7 +7,7 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
 ## 1. 🎯 Luồng Chấm Điểm & Đối Soát Trực Tiếp Với Kho Đáp Án Chuẩn
 
 - Thay vì yêu cầu người dùng nhập tay đáp án qua tab "Luyện thi & Chấm bài", hệ thống **sử dụng trực tiếp kho đáp án chính thức Cambridge 18 có sẵn trong `data/`** để chấm điểm bài làm trực tiếp.
-- Người học làm bài và nộp trực tiếp qua bảng làm bài tương tác trong Daily Session (Quartz). AI tự động tra cứu đáp án chuẩn trong `data/`, chấm điểm, ước lượng Band Score và phân tích bẫy lỗi sai.
+- Người học làm bài và nộp trực tiếp qua bảng làm bài tương tác trong Daily Session (React SPA). AI tự động tra cứu đáp án chuẩn trong `data/`, chấm điểm, ước lượng Band Score và phân tích bẫy lỗi sai.
 - Tuyệt đối không tự suy diễn hoặc bịa đáp án ngoài phạm vi dữ liệu đề chuẩn Cambridge.
 
 ---
@@ -65,7 +65,7 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
   # (hoặc: python scripts/run_pipeline.py)
   ```
 
-- 4 chặng: YAML & Dead Link $\rightarrow$ Markdownlint $\rightarrow$ FSRS/Anki Sync $\rightarrow$ Quartz Build.
+- 4 chặng: YAML & Dead Link $\rightarrow$ Markdownlint $\rightarrow$ FSRS/Anki Sync $\rightarrow$ React SPA Build.
 
 ---
 
@@ -73,7 +73,7 @@ Tệp này đồng bộ nội dung và ràng buộc với `AGENTS.md`. Toàn b�
 
 - **Nguyên tắc cốt lõi:** Cả **Trợ lý AI (Antigravity)** và **AI Cronjob / Autonomous Planning Agent** BẮT BUỘC tuân thủ 100% hệ thống 7 mẫu chuẩn tại thư mục `templates/` (`template-weekly-plan.md`, `template-listening-session.md`, `template-reading-session.md`, `template-writing-session.md`, `template-speaking-session.md`, `template-vocab-week.md`, `template-review-week.md`).
 - **Ràng buộc tương tác bất biến:**
-  - Listening & Reading BẮT BUỘC chứa container `.ielts-sheet-card` cùng `<div class="ielts-grid-answers"></div>` để JavaScript sinh các ô nhập đáp án.
+  - Listening & Reading BẮT BUỘC chứa container `.ielts-sheet-card` cùng `<div class="ielts-grid-answers"></div>` để React component `IeltsAnswerSheet` tự động render bảng điền đáp án, bộ đếm giờ và lưu trữ bền vững LocalStorage.
   - Sổ từ vựng tuần BẮT BUỘC có `sr-due: "YYYY-MM-DD"` và bảng từ vựng đúng định dạng để FSRS đồng bộ.
   - Mọi bài con (Leaf Node) BẮT BUỘC chỉ liên kết ngược về Hub tuần cha `[[plans/week-XX/|...]]`.
 

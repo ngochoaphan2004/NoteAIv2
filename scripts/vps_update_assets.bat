@@ -29,8 +29,8 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-echo [3/3] Extracting on VPS and refreshing audio symlinks...
-ssh -o StrictHostKeyChecking=no %VPS_USER%@%VPS_IP% "tar -xzf /tmp/noteai_assets.tar.gz -C %REMOTE_DIR%/ && rm -f /tmp/noteai_assets.tar.gz && mkdir -p %REMOTE_DIR%/public/assets && ln -sfn %REMOTE_DIR%/content/assets/audio %REMOTE_DIR%/public/assets/audio"
+echo [3/3] Extracting assets on VPS...
+ssh -o StrictHostKeyChecking=no %VPS_USER%@%VPS_IP% "tar -xzf /tmp/noteai_assets.tar.gz -C %REMOTE_DIR%/ && rm -f /tmp/noteai_assets.tar.gz"
 
 del /f /q noteai_assets.tar.gz 2>nul
 

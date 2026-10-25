@@ -22,8 +22,7 @@ echo -e "${BLUE}====================================================${NC}"
 
 # 0. Chuẩn hóa cấu hình VPS: Khóa cổng nội bộ 127.0.0.1 (chỉ qua Cloudflare Tunnel)
 if [ -f "$PROJECT_DIR/backend/.env" ]; then
-    sed -i 's/:5433/:5432/g' "$PROJECT_DIR/backend/.env"
-    sed -i 's/localhost:5432/127.0.0.1:5432/g' "$PROJECT_DIR/backend/.env"
+    sed -i 's/localhost:5433/127.0.0.1:5433/g' "$PROJECT_DIR/backend/.env"
     sed -i 's/HOST=0.0.0.0/HOST=127.0.0.1/g' "$PROJECT_DIR/backend/.env"
 fi
 
@@ -59,17 +58,7 @@ if [ -f "$VENV_PYTHON" ]; then
     cd "$PROJECT_DIR"
 fi
 
-# 4. Kiểm tra môi trường Node.js & dependencies của Quartz SSG và Frontend
-if [ -f "$PROJECT_DIR/package.json" ]; then
-    if [ ! -d "$PROJECT_DIR/node_modules" ]; then
-        echo -e "${YELLOW}📦 [4/5] node_modules chưa tồn tại. Đang cài đặt thư viện Quartz...${NC}"
-        npm install --prefer-offline --no-audit || echo "  ⚠️ npm install warning"
-    else
-        echo -e "${YELLOW}📦 [4/5] Thư viện Quartz node_modules đã sẵn sàng.${NC}"
-    fi
-fi
-
-# Đảm bảo frontend/dist sẵn sàng để FastAPI phục vụ trực tiếp
+# 4. Đảm bảo frontend/dist sẵn sàng để FastAPI phục vụ trực tiếp
 if [ ! -f "$PROJECT_DIR/frontend/dist/index.html" ] && [ -f "$PROJECT_DIR/frontend/package.json" ]; then
     echo -e "${YELLOW}⚛️ frontend/dist chưa được biên dịch. Tiến hành build React SPA...${NC}"
     cd "$PROJECT_DIR/frontend"
@@ -78,24 +67,29 @@ if [ ! -f "$PROJECT_DIR/frontend/dist/index.html" ] && [ -f "$PROJECT_DIR/fronte
     cd "$PROJECT_DIR"
 fi
 
-if [ -d "$PROJECT_DIR/content/assets/audio" ]; then
-    echo -e "${YELLOW}🎧 Liên kết audio tĩnh vào public/assets/audio...${NC}"
-    mkdir -p "$PROJECT_DIR/public/assets"
-    ln -sfn "$PROJECT_DIR/content/assets/audio" "$PROJECT_DIR/public/assets/audio"
-fi
-
 # 5. Khởi động lại dịch vụ Backend (Định tuyến an toàn qua Cloudflare Tunnel)
 echo -e "${YELLOW}🚀 [5/5] Cập nhật và khởi động lại dịch vụ...${NC}"
 
 # Cập nhật hoặc cài đặt systemd service tự động nếu có tệp mẫu
 if [ -f "$PROJECT_DIR/scripts/noteai-backend.service" ]; then
-    cp "$PROJECT_DIR/scripts/noteai-backend.service" /etc/systemd/system/noteai-backend.service
-    systemctl daemon-reload
-    systemctl enable noteai-backend || true
+    cp "$PROJECT_DIR/scripts/noteai-backend.service" /etc/systemd/system/noteai-backend.service 2>/dev/null || true
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable noteai-backend 2>/dev/null || true
 fi
 
-if systemctl is-active --quiet noteai-backend || [ -f /etc/systemd/system/noteai-backend.service ]; then
-    systemctl restart noteai-backend
+SERVICE_RESTARTED=false
+
+if systemctl is-active --quiet noteai-backend 2>/dev/null || [ -f /etc/systemd/system/noteai-backend.service ]; then
+    systemctl restart noteai-backend 2>/dev/null && SERVICE_RESTARTED=true || true
+    echo -e "  ✅ Đã khởi động lại dịch vụ systemd: noteai-backend"
+fi
+
+if [ -f "$PROJECT_DIR/docker/docker-compose.yml" ] && command -v docker >/dev/null 2>&1; then
+    echo -e "  🐳 Đồng bộ container Docker NoteAI..."
+    docker compose -f "$PROJECT_DIR/docker/docker-compose.yml" restart app 2>/dev/null && SERVICE_RESTARTED=true || true
+fi
+
+if [ "$SERVICE_RESTARTED" = true ]; then
     echo -e "\n${BLUE}====================================================${NC}"
     echo -e "${GREEN} ✅ CẬP NHẬT HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG CHO CLOUDFLARE TUNNEL! ${NC}"
     echo -e "${BLUE}====================================================${NC}"

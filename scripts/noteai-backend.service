@@ -8,6 +8,7 @@ User=root
 WorkingDirectory=/opt/noteai/backend
 Environment="PATH=/opt/noteai/venv/bin:/usr/local/bin:/usr/bin:/bin"
 EnvironmentFile=/opt/noteai/backend/.env
+ExecStartPre=/bin/mkdir -p /opt/noteai/logs
 ExecStart=/opt/noteai/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
 Restart=always
 RestartSec=5

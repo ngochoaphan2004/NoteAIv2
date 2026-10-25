@@ -5,12 +5,9 @@
 # Xóa hoàn toàn các file trên server từ content, dist, logs, script...
 # TUYỆT ĐỐI GIỮ LẠI (DEPENDENCIES & CRITICAL SECRETS):
 #   - venv/ (Python Virtualenv & tất cả AI packages)
-#   - node_modules/ (Node.js dependencies của Quartz & Sass)
-#   - package.json & package-lock.json
-#   - tsconfig.json, quartz.config.ts, quartz.layout.ts
 #   - backend/.env (Database credentials & Gemini API Key)
 #   - scripts/ (Thư mục công cụ bảo trì server)
-# (Đã XÓA HOÀN TOÀN: content/, audio/, dist/, public/, code cũ)
+# (Đã XÓA HOÀN TOÀN: content/, audio/, dist/, code cũ)
 # ==============================================================================
 
 set -euo pipefail
@@ -35,11 +32,11 @@ MODE="${1:-}"
 if [ -z "$MODE" ]; then
     echo -e "${YELLOW}Vui lòng chọn chế độ dọn dẹp server:${NC}"
     echo -e "  ${CYAN}[1] Dọn sạch Content, Audio & Dist/Build cũ${NC}"
-    echo -e "      👉 Xóa: content (gồm cả audio), dist, public, script cũ, logs"
-    echo -e "      👉 Giữ lại: backend, frontend, venv, node_modules, .env"
+    echo -e "      👉 Xóa: content (gồm cả audio), dist, script cũ, logs"
+    echo -e "      👉 Giữ lại: backend, frontend, venv, .env"
     echo -e "  ${CYAN}[2] Dọn sạch TOÀN BỘ Server (Full Reset trừ dependencies)${NC}"
-    echo -e "      👉 Xóa: content (gồm cả audio), dist, public, script, backend, frontend, quartz, templates"
-    echo -e "      👉 Giữ lại: venv, node_modules, package*.json, .env, scripts"
+    echo -e "      👉 Xóa: content (gồm cả audio), dist, script, backend, frontend, templates"
+    echo -e "      👉 Giữ lại: venv, .env, scripts"
     echo -e "  ${RED}[0] Hủy bỏ${NC}"
     echo ""
     read -p "Nhập lựa chọn của bạn (1, 2 hoặc 0): " choice
@@ -104,9 +101,6 @@ if [ "$MODE" == "2" ] || [ "$MODE" == "all" ] || [ "$MODE" == "full" ]; then
 
     rm -rf "$PROJECT_DIR/frontend" 2>/dev/null || true
     echo -e "   • Đã xóa: frontend/"
-
-    rm -rf "$PROJECT_DIR/quartz" 2>/dev/null || true
-    echo -e "   • Đã xóa: quartz/"
 
     rm -rf "$PROJECT_DIR/templates" 2>/dev/null || true
     echo -e "   • Đã xóa: templates/"

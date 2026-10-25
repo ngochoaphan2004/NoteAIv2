@@ -13,10 +13,13 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+CONTENT_DIR = os.path.join(PROJECT_ROOT, "content")
+
 DECK_ID = 2026100901
 DECK_NAME = "IELTS - NoteAI Master Deck"
 MODEL_ID = 2026100902
-OUTPUT_APKG = os.path.join("content", "assets", "IELTS_Master_Deck.apkg")
+OUTPUT_APKG = os.path.join(CONTENT_DIR, "assets", "IELTS_Master_Deck.apkg")
 
 CSS = """
 .card {
@@ -303,7 +306,7 @@ def parse_vocab_file(file_path):
 
 def find_all_vocab():
     all_vocab = []
-    for root, _, files in os.walk("content"):
+    for root, _, files in os.walk(CONTENT_DIR):
         for file in files:
             if file.startswith("vocab-") and file.endswith(".md"):
                 fp = os.path.join(root, file)

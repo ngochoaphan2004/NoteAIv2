@@ -29,16 +29,18 @@ def main():
     print("=" * 65)
 
     # Bước 1: Kiểm chứng Schema Frontmatter & Broken Link
-    run_step(1, "Kiểm chứng Schema Frontmatter & Broken Link", "python scripts/_py_/verify_knowledge_base.py")
+    run_step(1, "Kiểm chứng Schema Frontmatter & Broken Link", f'"{sys.executable}" scripts/_py_/verify_knowledge_base.py')
 
     # Bước 2: Markdownlint kiểm tra định dạng và layout
-    run_step(2, "Markdown Linter & Format Verification", "npx markdownlint-cli \"content/**/*.md\" --config .markdownlint.json")
+    run_step(2, "Markdown Linter & Format Verification", 'npx --yes markdownlint-cli "content/**/*.md" --config .markdownlint.json')
 
     # Bước 3: Đồng bộ Anki Master Deck
-    run_step(3, "Đồng bộ Anki Master Deck (Single Deck Rule)", "python scripts/_py_/anki_sync.py")
+    run_step(3, "Đồng bộ Anki Master Deck (Single Deck Rule)", f'"{sys.executable}" scripts/_py_/anki_sync.py')
 
-    # Bước 4: Kiểm thử Quartz Website Build
-    run_step(4, "Kiểm thử Quartz Website Compilation", "npx quartz build")
+    # Bước 4: Kiểm thử React SPA Production Build
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    frontend_dir = os.path.join(project_root, "frontend")
+    run_step(4, "Kiểm thử Biên Dịch React SPA Production Build", f"cd \"{frontend_dir}\" && npm run build")
 
     print("\n" + "=" * 65)
     print("🎉 TOÀN BỘ PIPELINE HOÀN TOÀN THÀNH CÔNG! SẴN SÀNG COMMIT & PUSH!")

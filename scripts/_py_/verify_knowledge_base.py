@@ -12,11 +12,12 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
-CONTENT_DIR = "content"
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+CONTENT_DIR = os.path.join(PROJECT_ROOT, "content") if os.path.exists(os.path.join(PROJECT_ROOT, "content")) else "content"
 ASSETS_DIR = os.path.join(CONTENT_DIR, "assets")
 
 def normalize_slug(path_str):
-    """Normalize path into standard Quartz slug format."""
+    """Normalize path into standard web slug format."""
     s = path_str.replace("\\", "/").strip("/")
     if s.endswith(".md"):
         s = s[:-3]
@@ -238,13 +239,13 @@ def check_broken_links(full_path, rel_path, valid_slugs, valid_assets):
                 continue
 
             url_path = url_clean.split("#")[0].split("?")[0].strip()
-            # Quartz asset links should be vault-root relative (./assets/... or assets/...)
+            # Asset links should be vault-root relative (./assets/... or assets/...)
             if "assets/" in url_path and url_path.startswith("../"):
                 broken.append({
                     "line": line_num,
                     "type": "Invalid Asset Link Format",
                     "raw": f"[{label}]({url})",
-                    "target": "Đường dẫn asset không được dùng '../' (dùng './assets/...' để Quartz không nhảy ra ngoài website)"
+                    "target": "Đường dẫn asset không được dùng '../' (dùng './assets/...' để đảm bảo tính toàn vẹn SSOT)"
                 })
                 continue
 
