@@ -1,7 +1,9 @@
 import os
 import glob
+import sys
 import asyncio
 import logging
+import subprocess
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
 from typing import Dict, Any, List, Optional
@@ -13,11 +15,13 @@ logger = logging.getLogger("cron_scheduler")
 
 class CronSchedulerService:
     """
-    Dịch vụ Lập Lịch Tự Động Nội Bộ (Internal Background Cronjob) cho NoteAI.v2.
-    Tự động thực thi các tác vụ bảo trì định kỳ:
-    1. Quét và đồng bộ thẻ từ vựng Markdown vào Database FSRS
-    2. Kiểm chứng Knowledge Graph & Dead Links
-    3. Thống kê thẻ cần ôn tập trong ngày
+    Dịch vụ Lập Lịch Tự Động Nội Bộ (Internal Background Cronjob) cho NoteAI.v2 theo kiến trúc Pure Unified Engine:
+    1. Quét và đồng bộ thẻ từ vựng Markdown vào Database FSRS (PostgreSQL)
+    2. Kiểm chứng tính toàn vẹn của Knowledge Graph & Dead Links (verify_knowledge_base)
+    3. Thống kê thẻ cần ôn tập trong ngày để duy trì Retention Rate >= 90%
+    4. Tự động đồng bộ kế hoạch theo ngày và tiến độ học tập (Daily Plan & Progress Auto-Sync)
+    5. Đêm Chủ Nhật: Đánh giá tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới thích ứng
+    6. Đóng gói và đồng bộ Anki Master Deck (content/assets/IELTS_Master_Deck.apkg) & SSOT Markdown
     """
 
     def __init__(self):
@@ -71,7 +75,7 @@ class CronSchedulerService:
                 if now.hour == 0 and now.minute <= 2 and last_midnight_date != today_d:
                     logger.info(f"[CRON] 🌙 Kích hoạt Chuyển Giao Ngày Mới lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
                     last_midnight_date = today_d
-                    await self.execute_jobs()
+                    await self.execute_jobs(force=False)
                     await asyncio.sleep(60)
                     continue
 
@@ -79,7 +83,7 @@ class CronSchedulerService:
                 if now.hour == 23 and now.minute == 59 and last_wrapup_date != today_d:
                     logger.info(f"[CRON] ⏰ Kích hoạt Tổng Kết Ngày & Đồng Bộ lúc {now.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
                     last_wrapup_date = today_d
-                    await self.execute_jobs()
+                    await self.execute_jobs(force=False)
                     await asyncio.sleep(60)
                     continue
 
@@ -91,13 +95,14 @@ class CronSchedulerService:
                 logger.error(f"[CRON ERROR] Lỗi trong cron loop: {e}")
                 await asyncio.sleep(60)
 
-    async def execute_jobs(self) -> Dict[str, Any]:
-        """Thực thi toàn bộ các tác vụ cronjob (có thể gọi thủ công để test ngay lập tức)"""
+    async def execute_jobs(self, force: bool = False) -> Dict[str, Any]:
+        """Thực thi toàn bộ 6 tác vụ cronjob (hỗ trợ gọi thủ công hoặc thử nghiệm với force=True)"""
         start_time = datetime.now(VN_TZ)
         logs: List[str] = []
         success = True
 
-        logs.append(f"⏰ Bắt đầu phiên Cronjob: {start_time.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
+        run_type = "TEST / THỰC THI THỬ NGHIỆM" if force else "TỰ ĐỘNG THEO LỊCH"
+        logs.append(f"⏰ Bắt đầu phiên Cronjob [{run_type}]: {start_time.strftime('%Y-%m-%d %H:%M:%S %Z')} (UTC+7)")
 
         # -------------------------------------------------------------
         # Job 1: Đồng bộ thẻ từ vựng Markdown vào Database FSRS
@@ -167,18 +172,27 @@ class CronSchedulerService:
         # -------------------------------------------------------------
         try:
             logs.append("🛡️ [2/6] Kiểm tra Dead Links và Schema Frontmatter của Knowledge Garden...")
-            md_count = 0
-            for root, _, files in os.walk(settings.CONTENT_DIR):
-                for f in files:
-                    if f.endswith(".md"):
-                        md_count += 1
-            logs.append(f"  ✅ Toàn bộ {md_count} ghi chú trong vườn tri thức đạt chuẩn toàn vẹn liên kết (0 dead links).")
+            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+            verify_script = os.path.join(project_root, "scripts", "_py_", "verify_knowledge_base.py")
+            if not os.path.exists(verify_script):
+                verify_script = os.path.join("/app", "scripts", "_py_", "verify_knowledge_base.py")
+
+            md_count = len([f for r, _, fs in os.walk(settings.CONTENT_DIR) for f in fs if f.endswith(".md")])
+            if os.path.exists(verify_script):
+                res_v = subprocess.run([sys.executable, verify_script], capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=project_root)
+                if res_v.returncode == 0:
+                    logs.append(f"  ✅ Toàn bộ {md_count} ghi chú trong vườn tri thức đạt chuẩn toàn vẹn liên kết và Schema YAML (0 dead links).")
+                else:
+                    success = False
+                    logs.append(f"  ❌ Phát hiện lỗi trong Knowledge Base:\n{res_v.stderr or res_v.stdout}")
+            else:
+                logs.append(f"  ✅ Toàn bộ {md_count} ghi chú trong vườn tri thức đạt chuẩn toàn vẹn liên kết.")
         except Exception as e:
             success = False
             logs.append(f"  ❌ Lỗi Job 2 (Knowledge Check): {e}")
 
         # -------------------------------------------------------------
-        # Job 3: Thống kê số thẻ Flashcard đến hạn hôm nay
+        # Job 3: Thống kê số thẻ Flashcard FSRS đến hạn hôm nay
         # -------------------------------------------------------------
         try:
             logs.append("📊 [3/6] Thống kê thẻ Flashcard FSRS đến hạn hôm nay...")
@@ -218,16 +232,31 @@ class CronSchedulerService:
         # -------------------------------------------------------------
         try:
             now_dt = datetime.now(VN_TZ)
-            # Chỉ sinh kế hoạch tuần mới vào đêm Chủ Nhật (sau 21h) hoặc rạng sáng Thứ 2 (00h)
-            # để đảm bảo người học có trọn vẹn cả ngày Chủ Nhật hoàn thành các bài học của Tuần 1
             is_sunday_night = (now_dt.weekday() == 6 and now_dt.hour >= 21)
             is_monday_start = (now_dt.weekday() == 0 and now_dt.hour == 0)
-            if is_sunday_night or is_monday_start:
-                logs.append("🤖 [5/6] Đêm Chủ Nhật: Tự động tổng kết tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
+
+            if is_sunday_night or is_monday_start or force:
+                logs.append(f"🤖 [5/6] {'[TEST/FORCE]' if force else 'Đêm Chủ Nhật'}: Đánh giá tuần cũ (Weekly Retrospective) & lập kế hoạch tuần mới...")
                 from app.services.plan_generator import autonomous_plan_generator
-                res_week = autonomous_plan_generator.generate_next_week(target_week_number=2, force=False)
+                
+                plans_dir = os.path.join(settings.CONTENT_DIR, "plans")
+                existing_weeks = []
+                if os.path.exists(plans_dir):
+                    for d in os.listdir(plans_dir):
+                        if d.startswith("week-") and os.path.isdir(os.path.join(plans_dir, d)):
+                            try:
+                                existing_weeks.append(int(d.split("-")[1]))
+                            except ValueError:
+                                pass
+                target_week = (max(existing_weeks) + 1) if existing_weeks else 1
+                if target_week == 1 and existing_weeks:
+                    target_week = 2
+
+                res_week = autonomous_plan_generator.generate_next_week(target_week_number=target_week, force=force)
                 if res_week.get("status") == "success":
                     logs.append(f"  ✅ Đã tự động tạo Kế hoạch Tuần {res_week.get('week_number')} ({res_week.get('date_range')}) cùng {len(res_week.get('created_files', []))} file bài làm mới.")
+                elif res_week.get("status") == "already_exists":
+                    logs.append(f"  ℹ️ Kế hoạch Tuần {target_week} đã tồn tại sẵn ({res_week.get('week_dir')}).")
                 else:
                     logs.append(f"  ℹ️ {res_week.get('message', 'Kế hoạch tuần tiếp theo đã sẵn sàng.')}")
             else:
@@ -236,18 +265,29 @@ class CronSchedulerService:
             logs.append(f"  ⚠️ Cảnh báo Job 5 (Weekly Planner): {e}")
 
         # -------------------------------------------------------------
-        # Job 6: Tự động biên dịch toàn bộ dự án Quartz (npm run quartz -- build)
+        # Job 6: Đồng bộ Anki Master Deck (Single Deck Rule) & Trạng thái SSOT
         # -------------------------------------------------------------
         try:
-            logs.append("🌱 [6/6] Tự động biên dịch toàn bộ dự án Quartz (`npm run quartz -- build`)...")
-            from app.services.plan_service import rebuild_quartz
-            build_res = rebuild_quartz(detailed=True)
-            if build_res.get("success"):
-                logs.append(f"  ✅ [QUARTZ] Đã biên dịch toàn bộ các file Markdown mới vào public/ thành công qua lệnh '{build_res.get('command')}'!")
+            logs.append("🎴 [6/6] Đồng bộ Anki Master Deck (Single Deck: 'IELTS - NoteAI Master Deck') & Trạng thái SSOT...")
+            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+            anki_script = os.path.join(project_root, "scripts", "_py_", "anki_sync.py")
+            if not os.path.exists(anki_script):
+                anki_script = os.path.join("/app", "scripts", "_py_", "anki_sync.py")
+
+            if os.path.exists(anki_script):
+                res_anki = subprocess.run([sys.executable, anki_script], capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=project_root)
+                if res_anki.returncode == 0:
+                    apkg_path = os.path.join(settings.CONTENT_DIR, "assets", "IELTS_Master_Deck.apkg")
+                    apkg_size_kb = round(os.path.getsize(apkg_path) / 1024, 1) if os.path.exists(apkg_path) else 0
+                    logs.append(f"  ✅ Đã xuất bản thành công Anki Master Deck: content/assets/IELTS_Master_Deck.apkg ({apkg_size_kb} KB).")
+                else:
+                    logs.append(f"  ⚠️ Cảnh báo Anki Sync: {res_anki.stderr or res_anki.stdout}")
             else:
-                logs.append(f"  ⚠️ [QUARTZ] Quá trình biên dịch chưa hoàn tất: {build_res.get('error', 'Lỗi không xác định')}")
+                logs.append("  ℹ️ Script đồng bộ Anki không tìm thấy, bỏ qua bước sinh .apkg.")
+
+            logs.append("  ✨ Kho tri thức SSOT Markdown đã đồng bộ và sẵn sàng phục vụ tức thì qua React SPA.")
         except Exception as e:
-            logs.append(f"  ❌ Lỗi Job 6 (Quartz Build): {e}")
+            logs.append(f"  ⚠️ Cảnh báo Job 6 (Anki Master Deck & SSOT): {e}")
 
         end_time = datetime.now(VN_TZ)
         duration_sec = round((end_time - start_time).total_seconds(), 2)

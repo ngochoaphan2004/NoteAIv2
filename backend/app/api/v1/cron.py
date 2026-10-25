@@ -9,7 +9,7 @@ def get_cronjob_status():
     return cron_scheduler.get_status()
 
 @router.post("/trigger")
-async def trigger_cronjob_now():
+async def trigger_cronjob_now(force: bool = False):
     """
     Kích hoạt thực thi Cronjob ngay lập tức (Dùng để test khả năng của Cronjob mà không cần đợi đến 23:59).
     Thực hiện 6 tác vụ tự trị trọn gói:
@@ -18,9 +18,9 @@ async def trigger_cronjob_now():
     3. Thống kê số lượng thẻ cần ôn hôm nay
     4. Tự động đồng bộ kế hoạch theo ngày và tiến độ học tập
     5. Tự động đánh giá tuần cũ và chuẩn bị kế hoạch tuần mới vào Chủ Nhật
-    6. TỰ ĐỘNG BIÊN DỊCH VÀ XUẤT BẢN TOÀN BỘ DỰ ÁN QUARTZ (`npm run quartz -- build`)
+    6. Đồng bộ Anki Master Deck (.apkg) và sẵn sàng kho tri thức SSOT Markdown cho React SPA.
     """
-    result = await cron_scheduler.execute_jobs()
+    result = await cron_scheduler.execute_jobs(force=force)
     return {
         "message": "Cronjob đã được kích hoạt và thực thi thành công!",
         "result": result

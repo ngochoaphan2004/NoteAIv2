@@ -12,7 +12,6 @@ from app.core.database import engine
 from app.models.test_attempt import TestAttempt, QuestionAnalysis
 from app.models.flashcard import Flashcard
 from app.services.llm_service import llm_service
-from app.services.plan_service import rebuild_quartz
 from app.services.template_service import template_service
 
 VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
@@ -246,7 +245,6 @@ class AutonomousPlanGenerator:
            - test-2-writing.md
            - vocab-week-02.md
         5. Cập nhật links tại content/plans/index.md và content/index.md.
-        6. Kích hoạt Quartz rebuild.
         """
         prev_week_number = target_week_number - 1
         plans_dir = os.path.join(self.content_dir, "plans")
@@ -395,9 +393,6 @@ class AutonomousPlanGenerator:
 
         # 9. Cập nhật liên kết cấp Macro tại content/plans/index.md và content/index.md
         self._update_macro_indexes(target_week_number, start_str, end_str, year)
-
-        # 10. Kích hoạt Quartz HTML Rebuild tĩnh
-        rebuild_quartz()
 
         return {
             "status": "success",

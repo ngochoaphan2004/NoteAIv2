@@ -30,7 +30,7 @@ class Settings(BaseSettings):
 
     # Authentication
     AUTH_USERNAME: str = "admin"
-    AUTH_PASSWORD: str = "noteai2026"
+    AUTH_PASSWORD: str = "890"
     AUTH_SECRET_KEY: str = "noteai_pkm_jwt_secret_key_2026"
     AUTH_TOKEN_EXPIRE_DAYS: int = 30
 
