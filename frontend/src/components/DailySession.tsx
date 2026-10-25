@@ -79,30 +79,85 @@ export const DailySession: React.FC<DailySessionProps> = ({
       }
     };
     window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+    const renderActionButtons = (isMobile: boolean = false) => (
+    <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+      <button
+        onClick={handleRefresh}
+        title="Tải lại nội dung trang"
+        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+      >
+        <RotateCw className="w-3.5 h-3.5" />
+      </button>
+
+      <a
+        href={currentUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Mở tab mới trong trình duyệt"
+        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+      >
+        <ExternalLink className="w-3.5 h-3.5" />
+      </a>
+
+      {!isMobile && (
+        <button
+          onClick={handleToggleSplitMode}
+          title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
+          className="hidden sm:inline-flex px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition items-center gap-1"
+        >
+          <Columns className="w-3.5 h-3.5 text-apple-blue" />
+          <span>2 Cột</span>
+        </button>
+      )}
+
+      <button
+        onClick={onNavigateToFlashcards}
+        className="group px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1 sm:gap-1.5"
+      >
+        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+        <span className="hidden sm:inline">Ôn Thẻ Nhớ</span>
+        <span className="sm:hidden">Ôn Thẻ</span>
+        {dueCount > 0 ? (
+          <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.2 rounded-full font-extrabold shadow-sm">
+            {dueCount}
+          </span>
+        ) : (
+          <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.2 rounded-full">
+            0
+          </span>
+        )}
+      </button>
+    </div>
+  );
+
+  return () => window.removeEventListener("message", handleMessage);
   }, [refetchTodayPlan]);
 
   const dueCount = dueCards.length;
 
   const quickNavLinks = [
     {
-      label: "Kế Hoạch Tuần 1",
+      label: "Tuần 1",
+      desktopLabel: "Kế Hoạch Tuần 1",
       path: "/plans/week-01/",
       icon: <Calendar className="w-3.5 h-3.5 text-apple-blue" />,
       badge: "Hiện tại",
     },
     {
-      label: "Tất cả kế hoạch",
+      label: "Tất cả",
+      desktopLabel: "Tất cả kế hoạch",
       path: "/plans/",
       icon: <Compass className="w-3.5 h-3.5 text-apple-blue" />,
     },
     {
       label: "Lộ trình 5.0 → 7.5",
+      desktopLabel: "Lộ trình 5.0 → 7.5",
       path: "/roadmap-5.0-to-7.5",
       icon: <Sparkles className="w-3.5 h-3.5 text-purple-500" />,
     },
     {
-      label: "Tài Nguyên & Công Cụ",
+      label: "Tài nguyên",
+      desktopLabel: "Tài Nguyên & Công Cụ",
       path: "/resources-learning-tools",
       icon: <BookOpen className="w-3.5 h-3.5 text-emerald-500" />,
     },
@@ -151,6 +206,57 @@ export const DailySession: React.FC<DailySessionProps> = ({
       setIsSyncing(false);
     }
   };
+
+  const renderActionButtons = (isMobile: boolean = false) => (
+    <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+      <button
+        onClick={handleRefresh}
+        title="Tải lại nội dung trang"
+        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+      >
+        <RotateCw className="w-3.5 h-3.5" />
+      </button>
+
+      <a
+        href={currentUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Mở tab mới trong trình duyệt"
+        className="p-1.5 sm:p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
+      >
+        <ExternalLink className="w-3.5 h-3.5" />
+      </a>
+
+      {!isMobile && (
+        <button
+          onClick={handleToggleSplitMode}
+          title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
+          className="hidden sm:inline-flex px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition items-center gap-1"
+        >
+          <Columns className="w-3.5 h-3.5 text-apple-blue" />
+          <span>2 Cột</span>
+        </button>
+      )}
+
+      <button
+        onClick={onNavigateToFlashcards}
+        className="group px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1 sm:gap-1.5"
+      >
+        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+        <span className="hidden sm:inline">Ôn Thẻ Nhớ</span>
+        <span className="sm:hidden">Ôn Thẻ</span>
+        {dueCount > 0 ? (
+          <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.2 rounded-full font-extrabold shadow-sm">
+            {dueCount}
+          </span>
+        ) : (
+          <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.2 rounded-full">
+            0
+          </span>
+        )}
+      </button>
+    </div>
+  );
 
   return (
     <div className="flex flex-col gap-3 pb-6 relative">
@@ -231,11 +337,20 @@ export const DailySession: React.FC<DailySessionProps> = ({
           </div>
         )}
 
-        {/* Action Header: Thanh điều hướng Kế hoạch chính (Chỉ giữ mục trọng tâm tránh cấn thông tin) */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5 sm:gap-3 bg-white dark:bg-[#1c1c1e] p-2.5 sm:p-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
-          {/* Quick Links Chọn Kế Hoạch Trong Vườn Tri Thức */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-            <span className="text-xs font-bold text-apple-subtextLight dark:text-apple-subtextDark mr-1 flex items-center gap-1">
+        {/* Action Header: Thanh điều hướng Kế hoạch chính (Responsive 2 tầng trên mobile/cửa sổ hẹp, 1 hàng trên desktop) */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-3 bg-white dark:bg-[#1c1c1e] p-2.5 sm:p-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm transition">
+          {/* Header hàng trên hiển thị trên màn hình nhỏ / mobile (< lg) */}
+          <div className="flex items-center justify-between gap-2 lg:hidden pb-2 border-b border-gray-100 dark:border-gray-800/80">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800 dark:text-gray-200">
+              <BookOpen className="w-4 h-4 text-apple-blue flex-shrink-0" />
+              <span>Kế Hoạch Học Tập</span>
+            </div>
+            {renderActionButtons(true)}
+          </div>
+
+          {/* Dải Nút Chọn Kế Hoạch (Scroll ngang mượt mà, ẩn thanh cuộn thô trên mọi thiết bị) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none py-0.5 w-full lg:w-auto -mx-0.5 px-0.5">
+            <span className="hidden lg:flex items-center gap-1 text-xs font-bold text-apple-subtextLight dark:text-apple-subtextDark mr-1 flex-shrink-0">
               <BookOpen className="w-4 h-4 text-apple-blue" />
               Kế Hoạch:
             </span>
@@ -246,14 +361,15 @@ export const DailySession: React.FC<DailySessionProps> = ({
                 <button
                   key={item.path}
                   onClick={() => handleNavigate(item.path)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? "bg-apple-blue text-white shadow-sm"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`}
                 >
                   {item.icon}
-                  <span>{item.label}</span>
+                  <span className="hidden sm:inline">{item.desktopLabel}</span>
+                  <span className="sm:hidden">{item.label}</span>
                   {item.badge && (
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
@@ -270,52 +386,9 @@ export const DailySession: React.FC<DailySessionProps> = ({
             })}
           </div>
 
-          {/* Nút Tải lại, Mở Tab mới, Chế độ 2 Cột và Flashcard */}
-          <div className="flex items-center gap-1.5 sm:gap-2 justify-end flex-shrink-0 pt-1 lg:pt-0 border-t lg:border-t-0 border-gray-100 dark:border-gray-800/80">
-            <button
-              onClick={handleRefresh}
-              title="Tải lại nội dung trang"
-              className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-            >
-              <RotateCw className="w-3.5 h-3.5" />
-            </button>
-
-            <a
-              href={currentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Mở tab mới trong trình duyệt"
-              className="p-2 text-gray-500 hover:text-apple-blue hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition border border-gray-200 dark:border-gray-700"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-
-            {/* Nút Kích Hoạt Nhanh Chế Độ Thi 2 Cột */}
-            <button
-              onClick={handleToggleSplitMode}
-              title="Bật/Tắt chế độ thi chia 2 cột độc lập (Đề thi bên phải, bài làm bên trái)"
-              className="hidden sm:inline-flex px-2.5 py-2 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-apple-blue border border-blue-200 dark:border-blue-800 text-xs font-bold rounded-xl shadow-sm transition items-center gap-1"
-            >
-              <Columns className="w-3.5 h-3.5 text-apple-blue" />
-              <span>2 Cột</span>
-            </button>
-
-            <button
-              onClick={onNavigateToFlashcards}
-              className="group px-3.5 py-2 bg-gradient-to-r from-apple-blue to-indigo-600 hover:from-apple-blueHover hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5"
-            >
-              <CheckCircle2 className="w-4 h-4 text-white" />
-              <span className="hidden sm:inline">Ôn Thẻ Nhớ</span><span className="sm:hidden">Ôn Thẻ</span>
-              {dueCount > 0 ? (
-                <span className="bg-white text-apple-blue text-[10px] px-1.5 py-0.5 rounded-full font-extrabold shadow-sm">
-                  {dueCount}
-                </span>
-              ) : (
-                <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.5 rounded-full">
-                  0
-                </span>
-              )}
-            </button>
+          {/* Nút Action trên màn hình lớn (>= lg) */}
+          <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
+            {renderActionButtons(false)}
           </div>
         </div>
       </div>
