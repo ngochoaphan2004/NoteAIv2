@@ -40,17 +40,24 @@ class ContentService:
             return metadata, body
         return {}, text
 
+    @staticmethod
+    def slugify_heading(text: str) -> str:
+        """Chuyển đổi tiêu đề tiếng Việt thành slug không dấu chuẩn ASCII cho anchor ID web"""
+        import unicodedata
+        nfkd = unicodedata.normalize("NFKD", text)
+        no_accent = "".join([c for c in nfkd if not unicodedata.combining(c)]).replace("đ", "d").replace("Đ", "D")
+        clean = re.sub(r"[^a-zA-Z0-9\s-]", "", no_accent).strip().lower()
+        return re.sub(r"[\s-]+", "-", clean).strip("-")
+
     def extract_headings(self, markdown_text: str) -> List[Dict[str, Any]]:
-        """Trích xuất cấu trúc Table of Contents từ các tiêu đề Markdown (#, ##, ###)"""
+        """Trích xuất cấu trúc Table of Contents từ các tiêu đề Markdown (#, ##, ###) không dấu chuẩn web"""
         headings = []
         for line in markdown_text.splitlines():
             m = re.match(r"^(#{1,4})\s+(.+)$", line.strip())
             if m:
                 level = len(m.group(1))
                 text = m.group(2).strip()
-                # Tạo slug đơn giản cho anchor ID
-                clean_id = re.sub(r"[^\w\s-]", "", text).strip().lower()
-                clean_id = re.sub(r"\s+", "-", clean_id)
+                clean_id = self.slugify_heading(text)
                 headings.append({
                     "level": level,
                     "text": text,

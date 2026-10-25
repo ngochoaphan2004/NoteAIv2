@@ -17,6 +17,24 @@ const TAB_ROUTES: Record<string, TabType> = {
 };
 
 /**
+ * Chuyển đổi chuỗi tiếng Việt có dấu thành slug không dấu chuẩn ASCII cho anchor ID và URL.
+ * Ví dụ: "📝 Bảng Ghi Nhận Bài Làm Của Bạn" -> "bang-ghi-nhan-bai-lam-cua-ban"
+ */
+export function slugifyText(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
  * Chuyển đổi đường dẫn file Markdown (ví dụ: plans/week-01/test-1-listening-p1-p2.md)
  * thành URL slug sạch chuẩn Web (ví dụ: /plans/week-01/test-1-listening-p1-p2).
  */

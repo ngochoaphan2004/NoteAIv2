@@ -54,7 +54,8 @@ export const RightTocSidebar: React.FC<RightTocSidebarProps> = ({
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveId(id);
-      window.history.replaceState(null, "", `#${id}`);
+      const targetHash = `${window.location.pathname}#${id}`;
+      window.history.replaceState(null, "", targetHash);
     }
   };
 

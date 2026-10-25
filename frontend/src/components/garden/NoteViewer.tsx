@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -18,7 +18,7 @@ import {
 import { CustomAudioPlayer } from "./CustomAudioPlayer";
 import { IeltsAnswerSheet } from "./IeltsAnswerSheet";
 import { IeltsWritingWorkspace } from "./IeltsWritingWorkspace";
-import { pathToSlug } from "../../services/router";
+import { pathToSlug, slugifyText } from "../../services/router";
 import { NoteDetailResponse, EvaluationResponse } from "../../services/api";
 
 interface NoteViewerProps {
@@ -48,13 +48,23 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
     return `[${text}](${link})`;
   });
 
+  // Tự động cuộn tới anchor khi URL có #hash
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const targetId = window.location.hash.replace(/^#/, "");
+      if (targetId) {
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 200);
+      }
+    }
+  }, [note.path]);
+
   const generateHeadingId = (text: string) => {
-    return text
-      .toLowerCase()
-      .replace(/[^\p{L}\p{N}\s-]/gu, "")
-      .trim()
-      .replace(/\s+/g, "-")
-      .replace(/^-+|-+$/g, "");
+    return slugifyText(text);
   };
 
   return (
