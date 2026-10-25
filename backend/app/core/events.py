@@ -43,13 +43,6 @@ class MarkdownChangeHandler(FileSystemEventHandler):
         except Exception as e:
             logger.error(f"Failed to auto-index file {file_path}: {e}")
 
-        # 2. Tự động biên dịch lại Quartz HTML để cập nhật ngay lập tức các thay đổi
-        try:
-            from app.services.plan_service import rebuild_quartz
-            Thread(target=rebuild_quartz, daemon=True).start()
-        except Exception as e:
-            logger.error(f"Failed to trigger auto quartz rebuild: {e}")
-
 class WatchdogDaemon:
     def __init__(self):
         self.observer: Optional[Observer] = None

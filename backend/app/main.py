@@ -18,6 +18,7 @@ from app.api.v1.cron import router as cron_router
 from app.api.v1.system import router as system_router
 from app.api.v1.plans import router as plans_router
 from app.api.v1.auth import router as auth_router
+from app.api.v1.content import router as content_router
 
 # 1. Khởi tạo hệ thống Ghi Log Bền Vững (Persistent Rotating File + Console)
 setup_logging()
@@ -69,14 +70,12 @@ async def log_requests(request: Request, call_next):
         )
     return response
 
-# CORS Middleware cho Vite SPA & Quartz
+# CORS Middleware cho Vite SPA & Clients
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://localhost:8088",
         "http://127.0.0.1:5173",
-        "http://127.0.0.1:8088",
         "*"
     ],
     allow_credentials=True,
@@ -92,41 +91,23 @@ app.include_router(cron_router, prefix="/api/v1")
 app.include_router(system_router, prefix="/api/v1")
 app.include_router(plans_router, prefix="/api/v1")
 app.include_router(auth_router, prefix="/api/v1")
+app.include_router(content_router, prefix="/api/v1")
 
-# Xác định đường dẫn thư mục Frontend build và Quartz Public
+# Xác định đường dẫn thư mục Frontend build và Audio Assets
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 FRONTEND_DIST = os.path.join(PROJECT_ROOT, "frontend", "dist")
 INDEX_HTML_PATH = os.path.join(FRONTEND_DIST, "index.html")
 ASSETS_DIR = os.path.join(FRONTEND_DIST, "assets")
-QUARTZ_PUBLIC = os.path.join(PROJECT_ROOT, "public")
+AUDIO_DIR = os.path.join(PROJECT_ROOT, "content", "assets", "audio")
 
-class QuartzStaticFiles(StaticFiles):
-    """
-    Phục vụ tài nguyên tĩnh Quartz v4 hỗ trợ Clean URLs (tự động giải quyết .html hoặc /index.html).
-    Giúp iframe Daily Session tải mượt mà không cần mở port 8088 ra ngoài Internet.
-    """
-    async def get_response(self, path: str, scope):
-        full_path, stat_result = self.lookup_path(path)
-        if stat_result is None:
-            # 1. Thử thêm đuôi .html nếu đường dẫn chưa có extension
-            html_path = path + ".html"
-            full_html, html_stat = self.lookup_path(html_path)
-            if html_stat is not None:
-                return await super().get_response(html_path, scope)
-            # 2. Thử thêm /index.html nếu là thư mục con
-            index_path = path.rstrip("/") + "/index.html"
-            full_index, index_stat = self.lookup_path(index_path)
-            if index_stat is not None:
-                return await super().get_response(index_path, scope)
-        return await super().get_response(path, scope)
-
-# 1. Mount Quartz v4 Digital Garden tĩnh tại /garden (hỗ trợ clean URLs)
-if os.path.isdir(QUARTZ_PUBLIC):
-    app.mount("/garden", QuartzStaticFiles(directory=QUARTZ_PUBLIC, html=True), name="garden")
+# 1. Mount Audio Assets tĩnh trực tiếp tại /assets/audio và /content/assets/audio (không cần symlink)
+if os.path.isdir(AUDIO_DIR):
+    app.mount("/assets/audio", StaticFiles(directory=AUDIO_DIR), name="audio_assets")
+    app.mount("/content/assets/audio", StaticFiles(directory=AUDIO_DIR), name="content_audio_assets")
 
 # 2. Mount thư mục tài nguyên JS/CSS của React SPA tại /assets (nếu đã build)
 if os.path.isdir(ASSETS_DIR):
-    app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
+    app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="spa_assets")
 
 def get_system_health():
     db_port = 5432 if ":5432" in settings.DATABASE_URL else 5433
@@ -138,8 +119,7 @@ def get_system_health():
         "ports": {
             "gateway_unified": settings.PORT,
             "database_pg": db_port,
-            "qdrant": 6333,
-            "quartz_preview": 8088
+            "qdrant": 6333
         },
         "cloudflare_tunnel": {
             "status": "active",
@@ -169,8 +149,8 @@ def health_check(request: Request):
 # SPA Fallback & Root Static Files Router (phục vụ favicon.ico, logo.svg, icon-*.png và SPA routes)
 @app.get("/{full_path:path}")
 def serve_spa_or_static(request: Request, full_path: str):
-    # Bỏ qua các endpoint API, docs, openapi, garden
-    if full_path.startswith(("api/", "docs", "openapi.json", "garden/")):
+    # Bỏ qua các endpoint API, docs, openapi
+    if full_path.startswith(("api/", "docs", "openapi.json")):
         raise HTTPException(status_code=404, detail="Not Found")
 
     # Phục vụ file tĩnh trực tiếp trong frontend/dist (nếu tồn tại)

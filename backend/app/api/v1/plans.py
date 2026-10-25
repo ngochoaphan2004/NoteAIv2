@@ -25,13 +25,9 @@ def trigger_plan_sync() -> Dict[str, Any]:
     và tình trạng hoàn thành bài thi từ CSDL PostgreSQL.
     """
     try:
-        from app.services.plan_service import plan_service, rebuild_quartz
-        import threading
+        from app.services.plan_service import plan_service
 
         res = plan_service.sync_all_plans()
-        if res.get("updated_files"):
-            threading.Thread(target=rebuild_quartz, daemon=True).start()
-            res["quartz_rebuilding"] = True
         return res
     except Exception as e:
         logger.error(f"Lỗi khi kích hoạt đồng bộ kế hoạch: {e}", exc_info=True)

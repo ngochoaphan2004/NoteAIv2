@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 from app.main import app
+from app.core.config import settings
 
 client = TestClient(app)
 
@@ -66,7 +67,7 @@ def test_auth_login_and_verify_flow():
     assert bad_res.status_code == 401
 
     # 2. Thử login đúng mật khẩu -> 200
-    good_res = client.post("/api/v1/auth/login", json={"username": "admin", "password": "noteai2026"})
+    good_res = client.post("/api/v1/auth/login", json={"username": settings.AUTH_USERNAME, "password": settings.AUTH_PASSWORD})
     assert good_res.status_code == 200
     data = good_res.json()
     assert data["status"] == "success"

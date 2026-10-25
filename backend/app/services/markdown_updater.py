@@ -88,12 +88,25 @@ class MarkdownNoteUpdater:
         elif skill_lower == "writing":
             default_path = os.path.join(content_dir, "plans", "week-01", "test-1-writing.md")
         else:
-            default_path = os.path.join(content_dir, "template-test-attempt.md")
+            return None
 
         if os.path.isfile(default_path):
             return default_path
 
         return None
+
+    @staticmethod
+    def sanitize_table_cell(text: str) -> str:
+        """
+        Làm sạch ô dữ liệu trong bảng Markdown GFM:
+        - Chuyển đổi các dấu xuống dòng \r\n hoặc \n thành <br>
+        - Thay thế dấu gạch đứng | thành \| để không làm vỡ cột bảng
+        """
+        if not text:
+            return ""
+        t = text.replace("|", "\\|")
+        t = re.sub(r"\r?\n+", "<br>", t).strip()
+        return t
 
     @classmethod
     def update_test_table(
@@ -139,6 +152,7 @@ class MarkdownNoteUpdater:
                 exp = (q_data.get("explanation") or "").strip()
 
                 note = f"{trap}: {exp}".strip(": ") if (trap or exp) else ""
+                clean_note = cls.sanitize_table_cell(note)
 
                 # Định dạng bảng 5 cột: | STT | Bài Làm Lúc Thi | Đáp Án Chính Thức | Kết Quả | Ghi Chú |
                 if len(cells) >= 5:
@@ -146,7 +160,7 @@ class MarkdownNoteUpdater:
                     if user_ans:
                         cells[1] = f"`{user_ans}`"
                     if corr_ans:
-                        cells[2] = corr_ans
+                        cells[2] = cls.sanitize_table_cell(corr_ans)
                     
                     if is_corr is True:
                         cells[3] = "✅"
@@ -155,10 +169,7 @@ class MarkdownNoteUpdater:
                     else:
                         cells[3] = "⚪"
 
-                    if note:
-                        cells[4] = note
-                    elif not cells[4]:
-                        cells[4] = ""
+                    cells[4] = clean_note
 
                     parts = [f" {c.strip()} " if c.strip() else " " for c in cells]
                     new_line = "|" + "|".join(parts) + "|"
@@ -178,8 +189,8 @@ class MarkdownNoteUpdater:
                     else:
                         cells[2] = "[x]" if user_ans else "[ ]"
 
-                    if note:
-                        cells[3] = note
+                    if clean_note:
+                        cells[3] = clean_note
 
                     parts = [f" {c.strip()} " if c.strip() else " " for c in cells]
                     new_line = "|" + "|".join(parts) + "|"

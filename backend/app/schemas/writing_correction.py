@@ -43,7 +43,7 @@ class WritingCorrectionSchema(BaseModel):
     recommended_drills: List[str] = Field(default_factory=list, description="2-3 bài tập micro-session trọng tâm")
 
 class WritingDiffResponse(BaseModel):
-    """Output hoàn chỉnh trả về cho API, Quartz & Frontend"""
+    """Output hoàn chỉnh trả về cho API & Frontend SPA"""
     task_num: int
     word_count: int
     total_edits: int

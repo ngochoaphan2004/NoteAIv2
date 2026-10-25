@@ -173,7 +173,6 @@ def get_system_config():
             "qdrant_rest": 6333,
             "qdrant_grpc": 6334,
             "fastapi_backend": settings.PORT,
-            "quartz_preview": 8088,
             "frontend_spa": settings.PORT
         }
     }
