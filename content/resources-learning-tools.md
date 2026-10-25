@@ -104,12 +104,11 @@ tags:
 
 ## 4. 📝 Mẫu Ghi Chép & Biểu Mẫu Chuẩn (Templates)
 
-- 📋 **[[template-test-attempt|Mẫu Ghi Nhận Bài Test & Đối Soát Đáp Án (40 Câu)]]:** Biểu mẫu chuẩn hóa kẻ sẵn 40 câu Listening/Reading kèm hướng dẫn nhập liệu nhanh (Shorthand Syntax) và khung phân tích bẫy.
+- 📋 **Hệ Thống Mẫu Tương Tác Chuẩn:** Các bài làm Listening, Reading và Writing được chuẩn hóa với bảng điền đáp án tương tác (`.ielts-grid-answers`), đếm giờ và lưu kết quả trực tiếp theo kế hoạch học tập trong [[plans/week-01/|Kế Hoạch Tuần 1]].
 
 ---
 
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan (Knowledge Network)
 
 - 🎯 **Lộ trình áp dụng:** [[roadmap-5.0-to-7.5|Lộ Trình Từ 5.0 Lên 7.5]] _(Xem chi tiết các giai đoạn áp dụng các tài liệu này)_
-- 📅 **Kế hoạch học tập:** [[plans/week-01/|Kế Hoạch Tuần 1 (08/10 – 11/10/2026)]] _(Kế hoạch thực thi 4 ngày)_
-- 📋 **Biểu mẫu bài thi:** [[template-test-attempt|Mẫu Ghi Nhận Bài Test (40 Câu)]]
+- 📅 **Kế hoạch học tập:** [[plans/week-01/|Kế Hoạch Tuần 1 (19/10 – 25/10/2026)]] _(Kế hoạch thực thi tuần 1)_

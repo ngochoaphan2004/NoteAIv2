@@ -90,5 +90,5 @@ tags:
 ## 🔗 Mạng Lưới Kiến Thức Liên Quan
 
 - 📅 **Kế hoạch cha:** [[plans/week-01/|Kế Hoạch Tuần 1]]
-- 🔄 **Bài tiếp theo:** [[plans/week-01/review-week-01|Phiên Ôn Tập & Tổng Kết Tuần 1]]
+- 🔄 **Bài tiếp theo:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]

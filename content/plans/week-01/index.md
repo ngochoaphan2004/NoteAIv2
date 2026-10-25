@@ -29,7 +29,7 @@ tags:
 | **Thứ 5**<br>_(22/10/2026)_ | **Reading Passage 3**<br>`35 phút` | • **20p:** Xử lý chuyên sâu Passage 3 (_Conquering Earth's space junk problem_).<br>• **15p:** Phân tích bẫy Yes/No/Not Given và bẫy suy diễn thông tin. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]** | ⏳ **Cần hoàn thành bù** |
 | **Thứ 6**<br>_(23/10/2026)_ | **Writing Task 1**<br>`35 phút` | • **15p:** Phân tích biểu đồ đường tỷ lệ dân thành thị châu Á (1970–2040).<br>• **20p:** Viết báo cáo Task 1 trên Split-Screen, chuẩn hóa ngữ pháp nội động từ. 👉 **[[plans/week-01/test-1-writing\|Viết bài Writing Task 1]]** | ✅ **Đã hoàn thành** |
 | **Thứ 7**<br>_(24/10/2026)_ | **Speaking Part 2 Routine**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A challenge at work_).<br>• **20p:** Thu âm 2 phút liên tục, kiểm soát độ trôi chảy và đếm lỗi ngập ngừng. 👉 **[[plans/week-01/test-1-speaking\|Luyện Speaking Part 2]]** | ⏳ **Cần hoàn thành bù** |
-| **Chủ Nhật (Hôm nay)**<br>_(25/10/2026)_ | **Core Review & FSRS Flashcards**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần 1 và tạo Tuần 2. 👉 **[[plans/week-01/review-week-01\|Mở Bài Review Tuần 1]]** | 🎯 **Hôm nay** |
+| **Chủ Nhật (Hôm nay)**<br>_(25/10/2026)_ | **Core Review & FSRS Flashcards**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần 1 và tạo Tuần 2. 👉 **[[plans/week-01/vocab-week-01\|Mở Sổ Từ Vựng Tuần 1]]** | 🎯 **Hôm nay** |
 
 ---
 
@@ -40,7 +40,7 @@ tags:
 - [ ] **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.
 - [ ] **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần 1 và tạo Tuần 2.
 - [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Nộp Bài & Chấm Điểm Trực Tiếp"_.
-- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/review-week-01|Mở Bài Review Tuần 1]]
+- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-01/vocab-week-01|Mở Sổ Từ Vựng Tuần 1]]
 - 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
 
 ## 🔗 3. Mạng Lưới Kiến Thức Liên Quan
@@ -51,7 +51,6 @@ tags:
 - 📖 **Bài làm Reading P3:** [[plans/week-01/test-1-reading-p3|Test 1 Reading P3 (Cam 18)]]
 - ✍️ **Bài làm Writing Task 1:** [[plans/week-01/test-1-writing|Test 1 Writing Task 1 (Cam 18)]]
 - 🗣️ **Bài luyện Speaking Part 2:** [[plans/week-01/test-1-speaking|Test 1 Speaking Part 2 (Cam 18)]]
-- 🔄 **Bài Review Tuần 1:** [[plans/week-01/review-week-01|Phiên Ôn Tập Trọng Tâm Tuần 1]]
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]
 - 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5]]
 - 🌐 **Tài nguyên học tập:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ Luyện Thi IELTS]]
