@@ -77,6 +77,46 @@ export interface QuestionResult {
   explanation?: string;
 }
 
+export interface ExamConfigMetadata {
+  has_exam: boolean;
+  exam_type?: "sheet" | "writing" | "speaking" | null;
+  sheet_id?: string | null;
+  task_id?: string | null;
+  skill?: string | null;
+  start_q: number;
+  end_q: number;
+  timer_minutes: number;
+  target_words?: number | null;
+}
+
+export interface ContentTreeItem {
+  id: string;
+  title: string;
+  slug: string;
+  path: string;
+  type: "folder" | "note";
+  tags: string[];
+  icon?: string | null;
+  order: number;
+  children: ContentTreeItem[];
+}
+
+export interface HeadingItem {
+  level: number;
+  text: string;
+  id: string;
+}
+
+export interface NoteDetailResponse {
+  title: string;
+  slug: string;
+  path: string;
+  frontmatter: Record<string, any>;
+  raw_content: string;
+  exam_metadata: ExamConfigMetadata;
+  headings: HeadingItem[];
+}
+
 export interface ContextSource {
   source_file: string;
   heading: string;
@@ -344,6 +384,32 @@ export const api = {
     if (!res.ok) throw new Error("Lỗi kích hoạt đồng bộ kế hoạch");
     return res.json();
   },
+
+  // Content & Digital Garden (SSOT Markdown)
+  async getContentTree(): Promise<ContentTreeItem[]> {
+    const res = await request(`${API_BASE}/content/tree`);
+    if (!res.ok) throw new Error("Không thể tải cây thư mục tri thức");
+    return res.json();
+  },
+
+  async getNote(path: string): Promise<NoteDetailResponse> {
+    const res = await request(`${API_BASE}/content/note?path=${encodeURIComponent(path)}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.detail || `Không tìm thấy tài liệu: ${path}`);
+    }
+    return res.json();
+  },
+
+  async saveNote(path: string, content: string): Promise<{ success: boolean; path: string }> {
+    const res = await request(`${API_BASE}/content/note`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path, content }),
+    });
+    if (!res.ok) throw new Error("Không thể lưu nội dung ghi chú");
+    return res.json();
+  },
 };
 
 export interface SystemConfig {
@@ -367,7 +433,6 @@ export interface SystemConfig {
     qdrant_rest: number;
     qdrant_grpc: number;
     fastapi_backend: number;
-    quartz_preview: number;
     frontend_spa: number;
   };
 }

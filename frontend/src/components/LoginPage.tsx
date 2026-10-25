@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   AlertCircle,
   RotateCw,
-  Sparkles,
 } from "lucide-react";
 
 interface LoginPageProps {
@@ -45,12 +44,6 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleFillDemo = () => {
-    setUsername("admin");
-    setPassword("noteai2026");
-    setErrorMessage(null);
   };
 
   return (
@@ -143,8 +136,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
               </div>
             </div>
 
-            {/* Remember Me & Quick fill hint */}
-            <div className="flex items-center justify-between text-xs pt-1">
+            {/* Remember Me */}
+            <div className="flex items-center text-xs pt-1">
               <label className="flex items-center gap-2 cursor-pointer text-gray-600 dark:text-gray-400 select-none">
                 <input
                   type="checkbox"
@@ -154,16 +147,6 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 />
                 <span>Ghi nhớ phiên đăng nhập</span>
               </label>
-
-              <button
-                type="button"
-                onClick={handleFillDemo}
-                className="text-[11px] font-medium text-apple-blue hover:underline flex items-center gap-1"
-                title="Điền tự động tài khoản mặc định"
-              >
-                <Sparkles className="w-3 h-3" />
-                <span>Mặc định (admin)</span>
-              </button>
             </div>
 
             {/* Submit Button */}

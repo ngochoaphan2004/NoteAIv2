@@ -12,6 +12,7 @@ import {
   getAuthToken,
   getStoredUser,
 } from "./services/api";
+import { useRouter, TabType } from "./services/router";
 import {
   CalendarDays,
   BookOpen,
@@ -31,9 +32,7 @@ const queryClient = new QueryClient({
   },
 });
 
-type Tab = "session" | "flashcards" | "rag" | "stats" | "config";
-
-const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string; mobileLabel: string }[] = [
+const NAV_ITEMS: { id: TabType; icon: React.ReactNode; label: string; mobileLabel: string }[] = [
   {
     id: "session",
     icon: <CalendarDays className="w-4 h-4" />,
@@ -67,7 +66,7 @@ const NAV_ITEMS: { id: Tab; icon: React.ReactNode; label: string; mobileLabel: s
 ];
 
 export const AppContent: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("session");
+  const { tab: activeTab, notePath, navigate } = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() =>
     Boolean(getAuthToken())
   );
@@ -91,7 +90,6 @@ export const AppContent: React.FC = () => {
   const handleLoginSuccess = (user: { username: string; role: string }) => {
     setIsAuthenticated(true);
     setCurrentUser(user);
-    setActiveTab("session");
   };
 
   const handleLogout = async () => {
@@ -115,7 +113,7 @@ export const AppContent: React.FC = () => {
           {/* Brand */}
           <div
             className="flex items-center gap-2 flex-shrink-0 cursor-pointer"
-            onClick={() => setActiveTab("session")}
+            onClick={() => navigate("session")}
             title="Về Phiên Học Hôm Nay"
           >
             <Logo size={32} showText={true} />
@@ -126,7 +124,7 @@ export const AppContent: React.FC = () => {
             {NAV_ITEMS.map(({ id, icon, label }) => (
               <button
                 key={id}
-                onClick={() => setActiveTab(id)}
+                onClick={() => navigate(id)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 whitespace-nowrap ${
                   activeTab === id
                     ? "bg-white dark:bg-apple-cardDark text-apple-blue shadow-sm"
@@ -170,7 +168,9 @@ export const AppContent: React.FC = () => {
       >
         {activeTab === "session" && (
           <DailySession
-            onNavigateToFlashcards={() => setActiveTab("flashcards")}
+            onNavigateToFlashcards={() => navigate("flashcards")}
+            routeNotePath={notePath}
+            onSelectNotePath={(newPath, replace) => navigate(newPath, replace)}
           />
         )}
         {activeTab === "flashcards" && <FlashcardReviewer />}
@@ -186,7 +186,7 @@ export const AppContent: React.FC = () => {
           return (
             <button
               key={id}
-              onClick={() => setActiveTab(id)}
+              onClick={() => navigate(id)}
               className={`flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition-all relative flex-1 max-w-[72px] ${
                 isActive
                   ? "text-apple-blue font-bold scale-105"
