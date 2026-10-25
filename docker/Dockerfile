@@ -25,16 +25,15 @@ WORKDIR /app
 COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
-# 2. Cài đặt Quartz v4 root dependencies
-COPY package.json package-lock.json* /app/
-RUN npm install
-
-# 3. Cài đặt Frontend React SPA dependencies
+# 2. Cài đặt Frontend React SPA dependencies
 COPY frontend/package.json frontend/package-lock.json* /app/frontend/
 RUN cd /app/frontend && npm install
 
-# 4. Sao chép toàn bộ mã nguồn dự án
+# 3. Sao chép toàn bộ mã nguồn dự án
 COPY . /app/
+
+# 4. Biên dịch Frontend React SPA thành static bundle cho FastAPI
+RUN cd /app/frontend && npm run build
 
 # 5. Tạo thư mục log cần thiết cho Supervisor và ứng dụng
 RUN mkdir -p /app/logs/supervisor /app/backend/logs
@@ -42,9 +41,8 @@ RUN mkdir -p /app/logs/supervisor /app/backend/logs
 # 6. Cấu hình Supervisor
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Mở các cổng dịch vụ (FastAPI: 8000, Vite: 5173, Quartz: 8088)
-EXPOSE 8000 5173 8088
+# Mở các cổng dịch vụ (FastAPI Core Gateway: 8000, Vite Dev: 5173)
+EXPOSE 8000 5173
 
 # Khởi chạy toàn bộ hệ thống qua Supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-

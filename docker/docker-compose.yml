@@ -1,3 +1,4 @@
+name: noteai
 services:
   postgres:
     image: postgres:16-alpine
@@ -43,7 +44,7 @@ services:
         max-size: "10m"
         max-file: "3"
 
-  # Container hợp nhất toàn bộ dự án: Backend (FastAPI), Frontend (Vite React), và Static Garden (Quartz v4)
+  # Container hợp nhất toàn bộ dự án: Backend (FastAPI Core Gateway) & Frontend (Vite React SPA)
   app:
     build:
       context: ..
@@ -52,9 +53,8 @@ services:
     restart: unless-stopped
     ports:
       # Khóa chặt các cổng trên 127.0.0.1: Chặn đứng truy cập trực tiếp từ IP Public VPS, bắt buộc qua Cloudflare Tunnel
-      - "127.0.0.1:8000:8000" # FastAPI Backend & Swagger Docs (/docs)
-      - "127.0.0.1:5173:5173" # Interactive React SPA Frontend
-      - "127.0.0.1:8088:8088" # Quartz v4 Digital Garden Preview
+      - "127.0.0.1:8000:8000" # FastAPI Backend & Swagger Docs (/docs) + React SPA Production
+      - "127.0.0.1:5173:5173" # Interactive React SPA Frontend (Dev Server)
     environment:
       - DATABASE_URL=postgresql://noteai:noteai_secret_password@postgres:5432/noteai_pkm
       - QDRANT_URL=http://qdrant:6333
@@ -66,15 +66,11 @@ services:
     env_file:
       - ../backend/.env
     volumes:
-      # Mount thư mục ghi chú Markdown để Watchdog & Quartz live-reload khi bạn sửa note
+      # Mount thư mục ghi chú Markdown (SSOT) để Watchdog & React SPA tự động reload/nhận ghi chú mới
       - ../content:/app/content
       # Mount thư mục backend & frontend code để cập nhật nóng (Hot-Reload)
       - ../backend:/app/backend
       - ../frontend/src:/app/frontend/src
-      # Mount quartz code & layouts để Quartz tự cập nhật khi sửa component
-      - ../quartz:/app/quartz
-      - ../quartz.layout.ts:/app/quartz.layout.ts
-      - ../quartz.config.ts:/app/quartz.config.ts
       # Persistent Logging: Lưu trữ bền vững toàn bộ log trên máy host/VPS (Tránh mất log khi container restart)
       - ../logs:/app/logs
     depends_on:
