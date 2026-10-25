@@ -17,6 +17,19 @@ import {
 import { IeltsAnswerSheet } from "./IeltsAnswerSheet";
 import { IeltsWritingWorkspace } from "./IeltsWritingWorkspace";
 import { CustomAudioPlayer } from "./CustomAudioPlayer";
+import {
+  MarkdownBlockquote,
+  MarkdownTable,
+  MarkdownThead,
+  MarkdownTbody,
+  MarkdownTr,
+  MarkdownTh,
+  MarkdownTd,
+  MarkdownCode,
+  MarkdownUl,
+  MarkdownOl,
+  MarkdownLi,
+} from "./markdownComponents";
 import { NoteDetailResponse, EvaluationResponse } from "../../services/api";
 
 interface SplitExamWorkspaceProps {
@@ -297,21 +310,19 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
                   return <div className={cls} {...props} />;
                 },
 
-                // Table styling
-                table: ({ children }) => (
-                  <div className="my-3 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a1d26]">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-left text-xs font-sans">
-                      {children}
-                    </table>
-                  </div>
-                ),
-                thead: ({ children }) => (
-                  <thead className="bg-gray-100/90 dark:bg-gray-800/90 font-semibold text-gray-800 dark:text-gray-100 uppercase text-[11px]">
-                    {children}
-                  </thead>
-                ),
-                th: ({ children }) => <th className="py-2 px-3 text-xs font-semibold">{children}</th>,
-                td: ({ children }) => <td className="py-2 px-3 text-xs leading-relaxed">{children}</td>,
+                blockquote: MarkdownBlockquote,
+                ul: MarkdownUl,
+                ol: MarkdownOl,
+                li: MarkdownLi,
+                code: MarkdownCode,
+
+                // Table styling (macOS HIG & Quartz)
+                table: MarkdownTable,
+                thead: MarkdownThead,
+                tbody: MarkdownTbody,
+                tr: MarkdownTr,
+                th: MarkdownTh,
+                td: MarkdownTd,
               }}
             >
               {leftMarkdown}

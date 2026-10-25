@@ -13,6 +13,9 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
+  Check,
+  X,
+  Lightbulb,
 } from "lucide-react";
 import { api, EvaluationResponse } from "../../services/api";
 
@@ -454,11 +457,12 @@ export const IeltsAnswerSheet: React.FC<IeltsAnswerSheetProps> = ({
 
           {/* Feedback & Detailed comparison table */}
           {showResultDetails && (
-            <div className="space-y-3">
+            <div className="space-y-4 pt-2">
               {evaluation.feedback && (
-                <div className="p-3 bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/50 dark:border-blue-900/40 rounded-xl text-xs text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-                  <div className="font-bold text-apple-blue mb-1">
-                    💡 Nhận xét từ AI:
+                <div className="p-3.5 bg-blue-50/70 dark:bg-blue-950/25 border border-blue-200/80 dark:border-blue-900/60 border-l-4 border-l-blue-500 rounded-xl text-xs sm:text-[13px] text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line shadow-2xs">
+                  <div className="flex items-center gap-1.5 font-bold text-blue-700 dark:text-blue-300 mb-1.5">
+                    <Lightbulb className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span>Nhận Xét & Đối Soát Từ AI</span>
                   </div>
                   {evaluation.feedback}
                 </div>
@@ -466,48 +470,68 @@ export const IeltsAnswerSheet: React.FC<IeltsAnswerSheetProps> = ({
 
               {/* Table */}
               {evaluation.questions && evaluation.questions.length > 0 && (
-                <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold border-b border-gray-200 dark:border-gray-700">
-                      <tr>
-                        <th className="py-2 px-3 w-12 text-center">Câu</th>
-                        <th className="py-2 px-3">Bạn đã chọn</th>
-                        <th className="py-2 px-3">Đáp án chuẩn</th>
-                        <th className="py-2 px-3 w-20 text-center">Trạng thái</th>
-                        <th className="py-2 px-3">Giải thích & Bẫy</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800 bg-white dark:bg-[#1a1d26]">
-                      {evaluation.questions.map((q) => (
-                        <tr key={q.question_number} className="hover:bg-gray-50 dark:hover:bg-gray-800/40">
-                          <td className="py-2 px-3 font-bold text-center">
-                            {q.question_number}
-                          </td>
-                          <td className="py-2 px-3 font-mono font-semibold text-gray-800 dark:text-gray-200">
-                            {q.user_answer || "—"}
-                          </td>
-                          <td className="py-2 px-3 font-mono font-bold text-emerald-600 dark:text-emerald-400">
-                            {q.correct_answer || "—"}
-                          </td>
-                          <td className="py-2 px-3 text-center">
-                            {q.is_correct ? (
-                              <span className="text-emerald-500 font-bold">✅</span>
-                            ) : (
-                              <span className="text-red-500 font-bold">❌</span>
-                            )}
-                          </td>
-                          <td className="py-2 px-3 text-gray-600 dark:text-gray-400">
-                            {q.trap_type && (
-                              <span className="font-semibold text-amber-600 dark:text-amber-400 mr-1.5">
-                                [{q.trap_type}]
-                              </span>
-                            )}
-                            {q.explanation || "—"}
-                          </td>
+                <div className="table-container my-3 overflow-hidden rounded-xl border border-gray-200/90 dark:border-gray-800/90 shadow-2xs bg-white dark:bg-[#151720]">
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-left text-xs sm:text-[13px] font-sans border-collapse">
+                      <thead className="bg-gray-50/90 dark:bg-[#1a1d27] text-gray-700 dark:text-gray-200 font-bold uppercase tracking-wider text-[11px] border-b border-gray-200 dark:border-gray-800">
+                        <tr>
+                          <th className="py-3 px-3.5 w-14 min-w-[56px] text-center whitespace-nowrap">Câu</th>
+                          <th className="py-3 px-3.5 min-w-[130px] text-center whitespace-nowrap">Bạn Đã Chọn</th>
+                          <th className="py-3 px-3.5 min-w-[140px] text-center whitespace-nowrap">Đáp Án Chuẩn</th>
+                          <th className="py-3 px-3.5 min-w-[95px] text-center whitespace-nowrap">Trạng Thái</th>
+                          <th className="py-3 px-3.5 min-w-[300px] text-left">Giải Thích & Bẫy</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-800/60 bg-white dark:bg-[#151720]">
+                        {evaluation.questions.map((q) => (
+                          <tr key={q.question_number} className="border-b border-gray-100 dark:border-gray-800/60 hover:bg-gray-50/80 dark:hover:bg-gray-800/35 transition-colors">
+                            <td className="py-3 px-3.5 font-bold text-center text-gray-900 dark:text-gray-100">
+                              {q.question_number}
+                            </td>
+                            <td className="py-3 px-3.5 text-center">
+                              {q.user_answer ? (
+                                <code className="px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800/90 text-blue-700 dark:text-blue-300 font-mono text-[12px] font-semibold border border-gray-200/80 dark:border-gray-700/70">
+                                  {q.user_answer}
+                                </code>
+                              ) : (
+                                <span className="text-gray-400 dark:text-gray-500">—</span>
+                              )}
+                            </td>
+                            <td className="py-3 px-3.5 text-center">
+                              {q.correct_answer ? (
+                                <code className="px-1.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-mono text-[12px] font-bold border border-emerald-200/70 dark:border-emerald-800/70">
+                                  {q.correct_answer}
+                                </code>
+                              ) : (
+                                <span className="text-gray-400 dark:text-gray-500">—</span>
+                              )}
+                            </td>
+                            <td className="py-3 px-3.5 text-center">
+                              {q.is_correct ? (
+                                <span className="inline-flex items-center justify-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-900/60 shadow-2xs whitespace-nowrap">
+                                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                                  <span>Đúng</span>
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center justify-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 dark:bg-rose-950/70 dark:text-rose-300 border border-rose-200/80 dark:border-rose-900/60 shadow-2xs whitespace-nowrap">
+                                  <X className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                                  <span>Sai</span>
+                                </span>
+                              )}
+                            </td>
+                            <td className="py-3 px-3.5 text-gray-700 dark:text-gray-300 text-xs sm:text-[13px] leading-relaxed">
+                              {q.trap_type && (
+                                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-blue-50/90 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200/70 dark:border-blue-900/60 mr-1.5 shadow-2xs select-none">
+                                  {q.trap_type}
+                                </span>
+                              )}
+                              {q.explanation || "—"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
             </div>

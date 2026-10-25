@@ -5,16 +5,24 @@ import remarkMath from "remark-math";
 import rehypeRaw from "rehype-raw";
 import rehypeKatex from "rehype-katex";
 import {
-  Info,
-  Lightbulb,
-  AlertTriangle,
-  AlertOctagon,
-  Flame,
   FileText,
   Calendar,
   Tag,
   Columns,
 } from "lucide-react";
+import {
+  MarkdownBlockquote,
+  MarkdownTable,
+  MarkdownThead,
+  MarkdownTbody,
+  MarkdownTr,
+  MarkdownTh,
+  MarkdownTd,
+  MarkdownCode,
+  MarkdownUl,
+  MarkdownOl,
+  MarkdownLi,
+} from "./markdownComponents";
 import { CustomAudioPlayer } from "./CustomAudioPlayer";
 import { IeltsAnswerSheet } from "./IeltsAnswerSheet";
 import { IeltsWritingWorkspace } from "./IeltsWritingWorkspace";
@@ -156,19 +164,9 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
             ),
 
             // Lists
-            ul: ({ children }) => (
-              <ul className="list-disc list-outside pl-5 space-y-1 my-3 text-[13.5px] leading-relaxed text-gray-800 dark:text-gray-200">
-                {children}
-              </ul>
-            ),
-            ol: ({ children }) => (
-              <ol className="list-decimal list-outside pl-5 space-y-1 my-3 text-[13.5px] leading-relaxed text-gray-800 dark:text-gray-200">
-                {children}
-              </ol>
-            ),
-            li: ({ children }) => (
-              <li className="leading-relaxed pl-0.5">{children}</li>
-            ),
+            ul: MarkdownUl,
+            ol: MarkdownOl,
+            li: MarkdownLi,
 
             // Typography formatting
             strong: ({ children }) => (
@@ -182,20 +180,7 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
             ),
 
             // Inline and block code
-            code: ({ inline, className, children, ...props }: any) => {
-              if (inline || !className) {
-                return (
-                  <code className="px-1.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/40 text-apple-blue font-mono text-[12px] font-semibold border border-blue-200/50 dark:border-blue-900/40">
-                    {children}
-                  </code>
-                );
-              }
-              return (
-                <code className={`${className} font-mono text-xs`} {...props}>
-                  {children}
-                </code>
-              );
-            },
+            code: MarkdownCode,
             pre: ({ children }) => (
               <pre className="p-4 my-3 rounded-xl bg-gray-900 dark:bg-[#12141a] text-gray-100 text-xs font-mono overflow-x-auto border border-gray-800 shadow-sm leading-relaxed">
                 {children}
@@ -347,124 +332,16 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
               );
             },
 
-            // Blockquote / GitHub Alert Callouts
-            blockquote: ({ children }) => {
-              const content = React.Children.toArray(children);
-              const firstChild = content[0] as any;
-              let alertType: "note" | "tip" | "important" | "warning" | "caution" | null = null;
-              let cleanChildren = children;
+            // Blockquote / GitHub Alert Callouts (Quartz style)
+            blockquote: MarkdownBlockquote,
 
-              if (
-                firstChild &&
-                firstChild.props &&
-                firstChild.props.children
-              ) {
-                const text = String(firstChild.props.children[0] || "");
-                if (text.startsWith("[!NOTE]")) {
-                  alertType = "note";
-                } else if (text.startsWith("[!TIP]")) {
-                  alertType = "tip";
-                } else if (text.startsWith("[!IMPORTANT]")) {
-                  alertType = "important";
-                } else if (text.startsWith("[!WARNING]")) {
-                  alertType = "warning";
-                } else if (text.startsWith("[!CAUTION]")) {
-                  alertType = "caution";
-                }
-              }
-
-              if (alertType) {
-                const config = {
-                  note: {
-                    border: "border-blue-500",
-                    bg: "bg-blue-50/70 dark:bg-blue-950/30",
-                    icon: <Info className="w-4 h-4 text-blue-500" />,
-                    title: "GHI CHÚ",
-                    titleColor: "text-blue-700 dark:text-blue-300",
-                  },
-                  tip: {
-                    border: "border-emerald-500",
-                    bg: "bg-emerald-50/70 dark:bg-emerald-950/30",
-                    icon: <Lightbulb className="w-4 h-4 text-emerald-500" />,
-                    title: "MẸO HỌC",
-                    titleColor: "text-emerald-700 dark:text-emerald-300",
-                  },
-                  important: {
-                    border: "border-purple-500",
-                    bg: "bg-purple-50/70 dark:bg-purple-950/30",
-                    icon: <Flame className="w-4 h-4 text-purple-500" />,
-                    title: "QUAN TRỌNG",
-                    titleColor: "text-purple-700 dark:text-purple-300",
-                  },
-                  warning: {
-                    border: "border-amber-500",
-                    bg: "bg-amber-50/70 dark:bg-amber-950/30",
-                    icon: <AlertTriangle className="w-4 h-4 text-amber-500" />,
-                    title: "CẢNH BÁO",
-                    titleColor: "text-amber-700 dark:text-amber-300",
-                  },
-                  caution: {
-                    border: "border-red-500",
-                    bg: "bg-red-50/70 dark:bg-red-950/30",
-                    icon: <AlertOctagon className="w-4 h-4 text-red-500" />,
-                    title: "CHÚ Ý",
-                    titleColor: "text-red-700 dark:text-red-300",
-                  },
-                }[alertType];
-
-                return (
-                  <div
-                    className={`my-4 p-3.5 rounded-xl border-l-4 ${config.border} ${config.bg} space-y-1.5`}
-                  >
-                    <div className={`flex items-center gap-1.5 text-xs font-bold ${config.titleColor}`}>
-                      {config.icon}
-                      <span>{config.title}</span>
-                    </div>
-                    <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {children}
-                    </div>
-                  </div>
-                );
-              }
-
-              return (
-                <blockquote className="my-4 pl-4 border-l-4 border-gray-300 dark:border-gray-700 italic text-gray-600 dark:text-gray-400">
-                  {children}
-                </blockquote>
-              );
-            },
-
-            // Table styling (macOS HIG)
-            table: ({ children }) => (
-              <div className="my-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-[#1a1d26]">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-left text-xs font-sans">
-                  {children}
-                </table>
-              </div>
-            ),
-            thead: ({ children }) => (
-              <thead className="bg-gray-100/90 dark:bg-gray-800/90 font-semibold text-gray-800 dark:text-gray-100 uppercase tracking-wider text-[11px]">
-                {children}
-              </thead>
-            ),
-            tbody: ({ children }) => (
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-800/60 bg-white dark:bg-[#1a1d26]">
-                {children}
-              </tbody>
-            ),
-            tr: ({ children }) => (
-              <tr className="hover:bg-gray-50/80 dark:hover:bg-gray-800/40 transition-colors">
-                {children}
-              </tr>
-            ),
-            th: ({ children }) => (
-              <th className="py-2.5 px-3.5 text-xs font-semibold">{children}</th>
-            ),
-            td: ({ children }) => (
-              <td className="py-2.5 px-3.5 text-xs text-gray-800 dark:text-gray-200 leading-relaxed">
-                {children}
-              </td>
-            ),
+            // Table styling (macOS HIG & Quartz style)
+            table: MarkdownTable,
+            thead: MarkdownThead,
+            tbody: MarkdownTbody,
+            tr: MarkdownTr,
+            th: MarkdownTh,
+            td: MarkdownTd,
           }}
         >
           {markdown}

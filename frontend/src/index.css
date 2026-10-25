@@ -108,3 +108,50 @@ details img,
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
+/* Quartz Callout Box Enhancements */
+.callout {
+  box-sizing: border-box;
+}
+
+.callout > .callout-content > :first-child {
+  margin-top: 0 !important;
+}
+
+.callout > .callout-content > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.callout ul {
+  margin-top: 0.35rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.callout ul ul {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-left: 1.25rem !important;
+  border-left: 2px solid rgba(16, 185, 129, 0.25);
+}
+
+.callout li {
+  line-height: 1.65;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Quartz Responsive Table Styling */
+.table-container {
+  box-sizing: border-box;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  box-sizing: border-box;
+}
+
+
