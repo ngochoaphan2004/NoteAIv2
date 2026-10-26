@@ -17,7 +17,13 @@ def evaluator_node(state: AgentState) -> AgentState:
 
 def planner_node(state: AgentState) -> AgentState:
     logger.info("LangGraph: Routing to PlannerAgent...")
-    plan = planner_agent.generate_plan(week_number=2, telemetry_summary={})
+    week_num = 2
+    if state.input_text:
+        import re
+        m = re.search(r"\d+", state.input_text)
+        if m:
+            week_num = int(m.group(0))
+    plan = planner_agent.generate_plan(week_number=week_num)
     state.plan_output = plan
     return state
 
