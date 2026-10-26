@@ -18,4 +18,25 @@ export default defineConfig({
     host: "127.0.0.1",
     port: 5173,
   },
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // React core
+          "vendor-react": ["react", "react-dom"],
+          // KaTeX (math rendering) — rất nặng, tách riêng
+          "vendor-katex": ["katex", "rehype-katex", "remark-math"],
+          // Markdown rendering
+          "vendor-markdown": ["react-markdown", "remark-gfm", "rehype-raw"],
+          // Charts
+          "vendor-recharts": ["recharts"],
+          // React Query
+          "vendor-query": ["@tanstack/react-query"],
+          // Icons
+          "vendor-icons": ["lucide-react"],
+        },
+      },
+    },
+  },
 });

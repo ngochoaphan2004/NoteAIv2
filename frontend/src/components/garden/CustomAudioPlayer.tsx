@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Play, Pause, RotateCcw, Volume2, FastForward } from "lucide-react";
+import { Play, Pause, RotateCcw, FastForward, Volume2, VolumeX } from "lucide-react";
 
 interface CustomAudioPlayerProps {
   src: string;
@@ -17,6 +17,7 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1.0);
+  const [isMuted, setIsMuted] = useState(false);
 
   // Normalize path to backend static mount /assets/audio/
   let normalizedSrc = src;
@@ -29,6 +30,15 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
   }
 
   const rates = [0.8, 1.0, 1.2, 1.5];
+
+  useEffect(() => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.load();
+    }
+  }, [normalizedSrc]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -47,7 +57,7 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
       audio.removeEventListener("ended", onEnded);
     };
-  }, []);
+  }, [normalizedSrc]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -58,6 +68,14 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
     } else {
       audio.play().then(() => setIsPlaying(true)).catch((e) => console.warn("Audio play blocked:", e));
     }
+  };
+
+  const handleSkip = (seconds: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const target = Math.min(duration || 1000, Math.max(0, audio.currentTime + seconds));
+    audio.currentTime = target;
+    setCurrentTime(target);
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +102,13 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
     setCurrentTime(0);
   };
 
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
   const formatTime = (seconds: number) => {
     if (isNaN(seconds) || seconds < 0) return "00:00";
     const m = Math.floor(seconds / 60);
@@ -93,12 +118,21 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
 
   return (
     <div
-      className={`my-3 px-4 py-3 bg-gradient-to-r from-blue-50/70 to-indigo-50/50 dark:from-[#1e2330] dark:to-[#1a1d26] border border-blue-200/60 dark:border-blue-900/40 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 transition ${className}`}
+      className={`my-3 px-4 py-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/60 dark:from-[#1e2330] dark:to-[#1a1d26] border border-blue-200/70 dark:border-blue-900/50 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 transition ${className}`}
     >
       <audio ref={audioRef} src={normalizedSrc} preload="metadata" />
 
       {/* Main Controls */}
-      <div className="flex items-center gap-2 flex-shrink-0">
+      <div className="flex items-center gap-1.5 flex-shrink-0">
+        <button
+          type="button"
+          onClick={() => handleSkip(-5)}
+          className="p-1.5 text-gray-500 hover:text-apple-blue dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/80 dark:hover:bg-gray-800 rounded-lg transition"
+          title="Tua lại 5 giây (-5s)"
+        >
+          <RotateCcw className="w-4 h-4" />
+        </button>
+
         <button
           type="button"
           onClick={togglePlay}
@@ -110,11 +144,11 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
 
         <button
           type="button"
-          onClick={handleRestart}
-          className="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/80 dark:hover:bg-gray-800 rounded-lg transition"
-          title="Phát lại từ đầu"
+          onClick={() => handleSkip(5)}
+          className="p-1.5 text-gray-500 hover:text-apple-blue dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/80 dark:hover:bg-gray-800 rounded-lg transition"
+          title="Tua tới 5 giây (+5s)"
         >
-          <RotateCcw className="w-4 h-4" />
+          <FastForward className="w-4 h-4" />
         </button>
       </div>
 
@@ -144,10 +178,19 @@ export const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({
         <button
           type="button"
           onClick={handleRateChange}
-          className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-white/80 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:text-apple-blue transition"
+          className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-white/90 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:text-apple-blue transition"
           title="Điều chỉnh tốc độ phát"
         >
           {playbackRate}x
+        </button>
+
+        <button
+          type="button"
+          onClick={toggleMute}
+          className="p-1.5 rounded-lg bg-white/90 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-apple-blue transition"
+          title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
+        >
+          {isMuted ? <VolumeX className="w-4 h-4 text-red-500" /> : <Volume2 className="w-4 h-4" />}
         </button>
 
         {title && (

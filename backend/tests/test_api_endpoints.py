@@ -10,10 +10,10 @@ def test_health_check_endpoint():
     data = response.json()
     assert data["status"] == "online"
     assert data["ports"]["gateway_unified"] == 8000
-    assert data["ports"]["database_pg"] in (5432, 5433)
+    assert data["ports"]["database_pg"] == 5432
     assert data["ports"]["qdrant"] == 6333
 
-def test_flashcard_stats_endpoint():
+def test_flashcard_stats_endpoint(client):
     response = client.get("/api/v1/flashcards/stats")
     assert response.status_code == 200
     data = response.json()
@@ -21,7 +21,7 @@ def test_flashcard_stats_endpoint():
     assert "retention_rate" in data
     assert data["total_cards"] >= 0
 
-def test_flashcards_due_endpoint():
+def test_flashcards_due_endpoint(client):
     response = client.get("/api/v1/flashcards/due?limit=5")
     assert response.status_code == 200
     cards = response.json()
@@ -42,7 +42,7 @@ def test_system_config_endpoints():
     assert "llm_models" in data
     assert "cron_timezone" in data
     assert data["cron_timezone"] == "Asia/Ho_Chi_Minh"
-    assert data["ports"]["database_postgres"] == 5433
+    assert data["ports"]["database_postgres"] == 5432
 
     # 2. POST /api/v1/system/config update in-memory
     update_payload = {

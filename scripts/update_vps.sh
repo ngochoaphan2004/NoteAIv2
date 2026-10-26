@@ -22,7 +22,7 @@ echo -e "${BLUE}====================================================${NC}"
 
 # 0. Chuẩn hóa cấu hình VPS: Khóa cổng nội bộ 127.0.0.1 (chỉ qua Cloudflare Tunnel)
 if [ -f "$PROJECT_DIR/backend/.env" ]; then
-    sed -i 's/localhost:5433/127.0.0.1:5433/g' "$PROJECT_DIR/backend/.env"
+    sed -i 's/localhost:5432/127.0.0.1:5432/g' "$PROJECT_DIR/backend/.env"
     sed -i 's/HOST=0.0.0.0/HOST=127.0.0.1/g' "$PROJECT_DIR/backend/.env"
 fi
 
@@ -49,10 +49,10 @@ if [ -f "$VENV_PIP" ] && [ -f "$PROJECT_DIR/backend/requirements.txt" ]; then
     "$VENV_PIP" install --no-cache-dir -r "$PROJECT_DIR/backend/requirements.txt"
 fi
 
-# 2.1 Đảm bảo hạ tầng Docker (PostgreSQL 5433 & Qdrant 6333) luôn chạy
+# 2.1 Đảm bảo Qdrant (Docker) luôn chạy — PostgreSQL chạy native trên VPS (port 5432)
 if [ -f "$PROJECT_DIR/docker/docker-compose.yml" ] && command -v docker >/dev/null 2>&1; then
-    echo -e "${YELLOW}🐳 Đảm bảo Docker Containers (PostgreSQL :5433 & Qdrant :6333) đang hoạt động...${NC}"
-    docker compose -f "$PROJECT_DIR/docker/docker-compose.yml" up -d postgres qdrant || true
+    echo -e "${YELLOW}🐳 Đảm bảo Docker Container (Qdrant :6333) đang hoạt động...${NC}"
+    docker compose -f "$PROJECT_DIR/docker/docker-compose.yml" up -d qdrant || true
     sleep 2
 fi
 

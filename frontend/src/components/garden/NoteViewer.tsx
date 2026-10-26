@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -24,6 +24,7 @@ import {
   MarkdownLi,
 } from "./markdownComponents";
 import { CustomAudioPlayer } from "./CustomAudioPlayer";
+import { StickyListeningAudioBar, extractAudioTracksFromMarkdown } from "./StickyListeningAudioBar";
 import { IeltsAnswerSheet } from "./IeltsAnswerSheet";
 import { IeltsWritingWorkspace } from "./IeltsWritingWorkspace";
 import { pathToSlug, slugifyText } from "../../services/router";
@@ -75,8 +76,15 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
     return slugifyText(text);
   };
 
+  const audioTracks = useMemo(() => {
+    return extractAudioTracksFromMarkdown(note.raw_content);
+  }, [note.raw_content]);
+
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      {audioTracks.length > 0 && (
+        <StickyListeningAudioBar tracks={audioTracks} className="rounded-2xl shadow-sm mb-4" />
+      )}
       {/* Frontmatter Header Title & Meta */}
       <header className="pb-4 border-b border-gray-200 dark:border-gray-800 space-y-2">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
@@ -225,9 +233,21 @@ export const NoteViewer: React.FC<NoteViewerProps> = ({
             },
 
             // Audio Element override
-            audio: ({ src, ...props }) => {
-              if (!src) return null;
-              return <CustomAudioPlayer src={src} />;
+            audio: ({ src, children, node, ...props }: any) => {
+              let audioSrc = src;
+              if (!audioSrc && node?.children) {
+                const sourceEl = node.children.find((c: any) => c.tagName === "source" && c.properties?.src);
+                if (sourceEl) audioSrc = sourceEl.properties.src;
+              }
+              if (!audioSrc && children) {
+                React.Children.forEach(children, (child: any) => {
+                  if (child?.props?.src) audioSrc = child.props.src;
+                });
+              }
+              if (audioSrc) {
+                return <CustomAudioPlayer src={audioSrc} />;
+              }
+              return <audio controls className="w-full my-2" {...props}>{children}</audio>;
             },
 
             // Interactive IELTS Cards (Sheets & Writing)

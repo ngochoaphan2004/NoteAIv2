@@ -333,7 +333,7 @@ export const IeltsAnswerSheet: React.FC<IeltsAnswerSheetProps> = ({
       </div>
 
       {/* Answer Inputs Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2.5">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] gap-2 sm:gap-2.5">
         {qNumbers.map((qNum, idx) => {
           const evalItem = evalMap.get(qNum);
           const hasCorrect = evalItem?.is_correct === true;
