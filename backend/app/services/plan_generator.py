@@ -147,43 +147,127 @@ class AutonomousPlanGenerator:
 
     def evaluate_past_week(self, week_number: int) -> Dict[str, Any]:
         """
-        Truy vấn PostgreSQL để bóc tách kết quả làm bài của tuần cũ,
+        Bóc tách kết quả làm bài của tuần cũ từ Markdown SSOT và PostgreSQL,
         sau đó gọi LLM Gemini để viết bản nhận xét tổng kết tuần (Weekly Retrospective).
         """
         attempts_summary: List[Dict[str, Any]] = []
         trap_counts: Dict[str, int] = {}
         total_questions_done = 0
         total_correct = 0
+        flashcards_total = 0
+        completed_sessions = 0
+        total_sessions = 7
 
+        # 1. Trích xuất trực tiếp từ Markdown SSOT (content/plans/week-XX/)
+        plans_dir = os.path.join(self.content_dir, "plans")
+        week_dir = os.path.join(plans_dir, f"week-{week_number:02d}")
+
+        if os.path.exists(week_dir):
+            # A. Đọc bảng tiến độ từ index.md
+            index_path = os.path.join(week_dir, "index.md")
+            if os.path.exists(index_path):
+                try:
+                    with open(index_path, "r", encoding="utf-8") as f:
+                        ic = f.read()
+                    lines = ic.splitlines()
+                    table_rows = [l for l in lines if ("| **Thứ" in l or "| **Chủ Nhật" in l)]
+                    if table_rows:
+                        total_sessions = len(table_rows)
+                        completed_sessions = len([l for l in table_rows if "Đã hoàn thành" in l])
+                except Exception as e:
+                    logger.warning(f"[PLAN GEN] Lỗi đọc index tuần {week_number}: {e}")
+
+            # B. Đọc số thẻ từ vựng từ vocab-week-XX.md
+            vocab_path = os.path.join(week_dir, f"vocab-week-{week_number:02d}.md")
+            if os.path.exists(vocab_path):
+                try:
+                    with open(vocab_path, "r", encoding="utf-8") as f:
+                        vc = f.read()
+                    v_words = [l for l in vc.splitlines() if l.startswith("| **")]
+                    flashcards_total = len(v_words)
+                except Exception as e:
+                    logger.warning(f"[PLAN GEN] Lỗi đọc vocab tuần {week_number}: {e}")
+
+            # C. Đọc điểm số và bẫy lỗi từ các bài test trong tuần
+            for fname in os.listdir(week_dir):
+                if fname.startswith("test-") and fname.endswith(".md"):
+                    fpath = os.path.join(week_dir, fname)
+                    try:
+                        with open(fpath, "r", encoding="utf-8") as f:
+                            tc = f.read()
+
+                        # Trích xuất điểm Listening / Reading
+                        score_m = re.search(r"\*\*Số câu đúng:\*\*\s*\*\*(\d+)/(\d+)\*\*", tc)
+                        band_m = re.search(r"\*\*Ước lượng Band Score:\*\*\s*\*\*([\d.]+)\*\*", tc)
+                        if score_m:
+                            sc = int(score_m.group(1))
+                            tot = int(score_m.group(2))
+                            band = float(band_m.group(1)) if band_m else None
+                            total_correct += sc
+                            total_questions_done += tot
+                            attempts_summary.append({
+                                "title": fname.replace(".md", ""),
+                                "skill": "listening" if "listening" in fname else "reading",
+                                "score": sc,
+                                "total": tot,
+                                "band_score": band
+                            })
+                        elif "writing" in fname and ("Bản Sửa Chi Tiết" in tc or "### 1. 📊 Đánh giá năng lực" in tc):
+                            band_w = re.search(r"Band\s*([\d.]+)", tc)
+                            attempts_summary.append({
+                                "title": fname.replace(".md", ""),
+                                "skill": "writing",
+                                "score": None,
+                                "total": None,
+                                "band_score": float(band_w.group(1)) if band_w else 5.0
+                            })
+
+                        # Trích xuất bẫy sai từ các dòng ❌
+                        for l in tc.splitlines():
+                            if "❌" in l and "|" in l:
+                                parts = [p.strip() for p in l.split("|")]
+                                if len(parts) >= 6:
+                                    note = parts[5]
+                                    tm = re.match(r"^(Gap-fill|Multiple choice|Matching|Bẫy[^:]*):", note)
+                                    tkey = tm.group(1) if tm else "Lỗi đối soát"
+                                    trap_counts[tkey] = trap_counts.get(tkey, 0) + 1
+                    except Exception as e:
+                        logger.warning(f"[PLAN GEN] Lỗi đọc bài test {fname}: {e}")
+
+        # 2. Truy vấn bổ sung từ PostgreSQL nếu CSDL đang hoạt động
         try:
             with Session(engine) as session:
-                attempts = session.exec(select(TestAttempt)).all()
-                for att in attempts:
-                    att_dict = {
-                        "title": att.title,
-                        "skill": att.skill,
-                        "score": att.score,
-                        "total": att.total_questions,
-                        "band_score": att.band_score,
-                        "created_at": att.created_at.strftime("%Y-%m-%d %H:%M")
-                    }
-                    attempts_summary.append(att_dict)
-                    if att.score and att.total_questions:
-                        total_correct += att.score
-                        total_questions_done += att.total_questions
+                db_attempts = session.exec(select(TestAttempt)).all()
+                if db_attempts:
+                    for att in db_attempts:
+                        # Tránh trùng lặp nếu đã trích xuất từ file Markdown
+                        if not any(att.title in a.get("title", "") for a in attempts_summary):
+                            attempts_summary.append({
+                                "title": att.title,
+                                "skill": att.skill,
+                                "score": att.score,
+                                "total": att.total_questions,
+                                "band_score": att.band_score,
+                                "created_at": att.created_at.strftime("%Y-%m-%d %H:%M")
+                            })
+                            if att.score and att.total_questions:
+                                total_correct += att.score
+                                total_questions_done += att.total_questions
 
-                analyses = session.exec(select(QuestionAnalysis)).all()
-                for q in analyses:
+                db_analyses = session.exec(select(QuestionAnalysis)).all()
+                for q in db_analyses:
                     if q.trap_type:
                         trap_counts[q.trap_type] = trap_counts.get(q.trap_type, 0) + 1
 
-                flashcards_total = len(session.exec(select(Flashcard)).all())
+                db_cards = len(session.exec(select(Flashcard)).all())
+                if db_cards > flashcards_total:
+                    flashcards_total = db_cards
         except Exception as e:
-            logger.warning(f"[PLAN GEN] Lỗi truy vấn PostgreSQL cho tuần cũ: {e}")
-            flashcards_total = 0
+            logger.info(f"[PLAN GEN] CSDL PostgreSQL offline hoặc chưa đồng bộ, sử dụng dữ liệu Markdown SSOT: {e}")
 
-        # Nếu chưa có bài làm nào trên DB, cung cấp thông số khởi điểm tuần 1
-        has_real_data = len(attempts_summary) > 0
+        # Tính toán tỷ lệ chính xác và tổng số bài
+        total_attempts = max(len(attempts_summary), completed_sessions)
+        has_real_data = total_attempts > 0
         overall_accuracy = round((total_correct / total_questions_done * 100), 1) if total_questions_done > 0 else 0
 
         # Gọi LLM sinh bản tổng kết tuần
@@ -192,6 +276,7 @@ class AutonomousPlanGenerator:
             f"Bạn là Chuyên gia Khảo thí và Lập Kế Hoạch Học Tập IELTS NoteAI.v2.\n"
             f"Nhiệm vụ: Viết bản nhận xét tổng kết tuần cũ (Tuần {week_number}) để bàn giao sang Tuần {week_number + 1}.\n"
             f"Dữ liệu thực tế: {attempts_summary if has_real_data else 'Tuần 1 khởi động làm quen nền tảng, tập trung bóc tách bẫy và luyện thói quen micro-sessions 30-35p'}.\n"
+            f"Tiến độ hoàn thành: {completed_sessions}/{total_sessions} phiên micro-sessions.\n"
             f"Thống kê bẫy âm/lỗi sai: {trap_counts if trap_counts else 'Bẫy số đuôi -teen vs -ty, chia thì quá khứ đơn, nội động từ Writing Task 1'}.\n"
             f"Số thẻ từ vựng FSRS: {flashcards_total} thẻ.\n\n"
             f"Yêu cầu định dạng đầu ra (Markdown súc tích, chuyên nghiệp, không dài dòng):\n"
@@ -211,8 +296,8 @@ class AutonomousPlanGenerator:
             logger.warning(f"[PLAN GEN] Lỗi gọi LLM cho Retrospective ({e}), tạo fallback.")
             ai_retrospective_md = (
                 f"### 🎯 Tổng Kết Tiến Độ Tuần {week_number}\n\n"
-                f"- **Kỷ luật học tập:** Đã duy trì nhịp độ làm quen các phiên Micro-sessions 30–35 phút.\n"
-                f"- **Điểm sáng:** Nắm vững cấu trúc bảng đối soát và phương pháp nhập liệu Shorthand Syntax.\n"
+                f"- **Kỷ luật học tập:** Đã hoàn thành {completed_sessions}/{total_sessions} phiên Micro-sessions 30–35 phút, duy trì nhịp độ học tập ổn định.\n"
+                f"- **Điểm sáng:** Nắm vững cấu trúc bảng đối soát và phương pháp nhập liệu Shorthand Syntax. Listening Test 1 P1-P2 đạt {total_correct}/{total_questions_done} câu ({overall_accuracy}%).\n"
                 f"- **Lỗ hổng trọng tâm:** Cần củng cố phân biệt bẫy âm số đuôi `-teen` / `-ty` và quy tắc không chia bị động cho nội động từ trong Writing Task 1.\n"
                 f"- **Định hướng Tuần {week_number + 1}:** Tăng tốc độ phản xạ Listening Part 2 & 3 và đẩy mạnh kỹ năng Keyword Mapping ở Reading Passage 3."
             )
@@ -220,7 +305,9 @@ class AutonomousPlanGenerator:
         return {
             "week_number": week_number,
             "has_real_data": has_real_data,
-            "total_attempts": len(attempts_summary),
+            "total_attempts": total_attempts,
+            "completed_sessions": completed_sessions,
+            "total_sessions": total_sessions,
             "total_questions_done": total_questions_done,
             "total_correct": total_correct,
             "accuracy_percent": overall_accuracy,
@@ -421,14 +508,21 @@ class AutonomousPlanGenerator:
             clean_retro = re.sub(r"(?<!\*)\*([^* \n][^*\n]*?[^* \n])\*(?!\*)", r"_\1_", clean_retro)
             clean_retro = re.sub(r"[ \t]+$", "", clean_retro, flags=re.MULTILINE)
 
+            completed_count = retrospective_data.get("completed_sessions", retrospective_data.get("total_attempts", 0))
+            total_sessions = retrospective_data.get("total_sessions", 7)
+            completion_pct = round(completed_count / total_sessions * 100) if total_sessions > 0 else 0
+
             retro_section = f"""
 ---
 
 ## 📊 4. Đánh Giá & Tổng Kết Tuần Cũ (Weekly Retrospective)
 
-> **Trạng thái:** Đã kết thúc trọn vẹn — Đã chuyển giao lịch trình sang [[plans/week-{next_week_num:02d}/|Kế Hoạch Tuần {next_week_num}]].  
-> **Tổng số bài thi hoàn thành:** {retrospective_data['total_attempts']} bài  
-> **Tổng số thẻ FSRS:** {retrospective_data['flashcards_total']} thẻ từ vựng  
+> [!TIP] **Tổng Kết Tiến Độ & Chuyển Giao Tuần {next_week_num - 1}**
+>
+> - **Trạng thái:** Đã kết thúc trọn vẹn — Đã chuyển giao lịch trình sang [[plans/week-{next_week_num:02d}/|Kế Hoạch Tuần {next_week_num}]].
+> - **Tiến độ hoàn thành:** **{completed_count}/{total_sessions}** phiên micro-sessions ({completion_pct}%).
+> - **Tổng số bài thi khảo thí:** **{retrospective_data['total_attempts']}** bài làm đã được lưu trữ & đối soát.
+> - **Kho thẻ từ vựng FSRS:** **{retrospective_data['flashcards_total']}** thẻ từ vựng trọng tâm.
 
 {clean_retro}
 """

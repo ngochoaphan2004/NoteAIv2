@@ -57,40 +57,42 @@ tags:
 
 ---
 
----
-
 ## 📊 4. Đánh Giá & Tổng Kết Tuần Cũ (Weekly Retrospective)
 
-> **Trạng thái:** Đã kết thúc trọn vẹn — Đã chuyển giao lịch trình sang [[plans/week-02/|Kế Hoạch Tuần 2]].  
-> **Tổng số bài thi hoàn thành:** 0 bài  
-> **Tổng số thẻ FSRS:** 0 thẻ từ vựng  
+> [!TIP] **Tổng Kết Tiến Độ & Chuyển Giao Tuần 1**
+>
+> - **Trạng thái:** Đã kết thúc trọn vẹn — Đã chuyển giao lịch trình sang [[plans/week-02/|Kế Hoạch Tuần 2]].
+> - **Tiến độ hoàn thành:** **3/7** phiên micro-sessions (43%).
+> - **Tổng số bài thi khảo thí:** **3** bài làm đã được lưu trữ & đối soát.
+> - **Kho thẻ từ vựng FSRS:** **20** thẻ từ vựng trọng tâm.
 
-Chào bạn, tôi là Chuyên gia Cố vấn IELTS NoteAI. Dưới đây là bản tổng kết Tuần 1 và định hướng chiến lược cho Tuần 2, được thiết kế tối ưu theo mô hình _Cognitive Load Control_.
+Chào bạn, tôi là Chuyên gia Cố vấn IELTS NoteAI. Dưới đây là bản tổng kết hiệu suất Tuần 1 và định hướng chiến lược cho Tuần 2 theo nguyên tắc tối ưu hóa nhận thức (Cognitive Load Control).
 
 ---
 
 ### 1. Tổng quan tiến độ (Tuần 1)
 
-- Bạn đã hoàn thành xuất sắc việc làm quen với nền tảng và duy trì nhịp độ học tập ổn định.
-- Kỷ luật tuân thủ khung thời gian **micro-sessions 30-35 phút** bước đầu được thiết lập thành công.
-- Cần đẩy mạnh tính chủ động trong việc tích lũy từ vựng để tạo đà bứt phá cho các tuần tiếp theo.
+- **Tiến độ thực tế:** Hoàn thành 3/7 phiên micro-sessions (Đạt ~43% khối lượng công việc dự kiến).
+- **Mức độ kỷ luật:** Chưa đạt chỉ tiêu thời gian biểu đề ra, cần siết chặt lại nhịp độ học tập trong tuần tới.
+- **Tín hiệu tích cực:** Năng lực tiếp thu kiến thức tốt, thể hiện qua điểm số các bài test đã hoàn thành.
 
 ### 2. Điểm sáng đã đạt
 
-- **Tư duy chiến thuật:** Bắt đầu hình thành phản xạ bóc tách các dạng bẫy cơ bản trong đề thi thay vì chỉ làm bài theo bản năng.
-- **Quản trị thời gian:** Hiệu suất tiếp thu cao trong các phiên ngắn (30-35 phút), hạn chế tối đa tình trạng quá tải nhận thức.
+- **Listening (Band 7.5 - 17/20):** Khả năng nghe hiểu và bắt từ khóa (keywords) phần P1 và P2 ở mức khá tốt, phản xạ nhạy bén với thông tin trực diện.
+- **Writing (Band 8.0):** Tư duy logic, cấu trúc bài viết và từ vựng đạt chuẩn mực học thuật cao, thể hiện tiềm năng phát triển rất lớn ở kỹ năng này.
+- **Từ vựng FSRS:** Đã khởi động và duy trì đều đặn 20 thẻ đầu tiên, tạo nền tảng ghi nhớ dài hạn.
 
 ### 3. Lỗ hổng & Bẫy âm cần khắc phục
 
-- **Listening (-teen vs -ty):** Vẫn bị nhầm lẫn trọng âm khi nghe các số có đuôi `-teen` (nhấn mạnh âm đuôi) và `-ty` (nhấn mạnh âm đầu).
-- **Grammar (Thì quá khứ đơn):** Lỗi sai tự động dịch từ tiếng Việt dẫn đến việc quên chia động từ hoặc dùng sai dạng V2/ed khi kể sự việc trong quá khứ.
-- **Writing Task 1 (Nội động từ):** Lạm dụng thể bị động với các nội động từ (ví dụ: _increase, decrease, rise, fall_ không bao giờ dùng ở dạng bị động _was increased_).
-- **Vocabulary (FSRS):** **0 thẻ từ vựng** được nạp vào hệ thống. Đây là lỗ hổng lớn nhất cần khắc phục ngay để tránh "cháy" từ vựng khi viết và nói.
+- **Gap-fill (8 lỗi - Trọng điểm yếu):** Lỗi chủ yếu đến từ việc mất tập trung khi audio đọc lướt, nghe sót thông tin số ít/số nhiều hoặc sai chính tả từ điền.
+- **Multiple choice (6 lỗi):** Dễ sa vào bẫy "distractors" (thông tin nhiễu/bẫy đồng nghĩa) mà đề bài giăng ra ở các câu hỏi trắc nghiệm.
+- **Matching (1 lỗi):** Kiểm soát tương đối tốt, chỉ cần duy trì độ cẩn trọng.
 
 ### 4. Chiến lược thích ứng cho Tuần 2
 
-- **Phiên 1 (Listening - 35p):** Chuyên trị bẫy số đếm. Luyện nghe chép chính tả (dictation) phân biệt rõ `-teen` và `-ty`.
-- **Phiên 2 (Writing - 35p):** Rà soát cấu trúc câu, lập danh sách các nội động từ cốt lõi trong Task 1 và thực hành viết câu đơn hoàn toàn không dùng thể bị động sai quy tắc.
-- **Phiên 3 (Vocabulary - 15p bắt buộc):** Thiết lập ngay **ít nhất 30 thẻ từ vựng FSRS** đầu tiên trong tuần này, tuân thủ nguyên tắc "Học ít nhưng ôn đều mỗi ngày".
+- **Tăng tốc micro-sessions:** Đảm bảo hoàn thành đủ 7/7 phiên (chia nhỏ 30-35 phút/ngày) để bù đắp tiến độ bị chậm ở Tuần 1.
+- **Kỹ thuật xử lý Gap-fill:** Áp dụng chiến thuật "Predicting" (đoán trước loại từ/ngữ pháp cần điền) trước khi audio chạy và chú ý bẫy "sửa đáp án" (self-correction của speakers).
+- **Chiến thuật Multiple choice:** Luyện kỹ năng gạch chân từ khóa cố định trong câu hỏi, chủ động nghe từ đồng nghĩa (synonyms) thay vì chờ đợi từ khóa y hệt trong đề.
+- **Duy trì Flashcards:** Tiếp tục ôn tập 20 thẻ FSRS cũ và bổ sung từ vựng sai từ các bài test Listening vào chu kỳ lặp ngắt quãng.
 
-_Hãy giữ vững kỷ luật micro-sessions, Tuần 2 sẽ là lúc chúng ta siết chặt độ chính xác (Accuracy)!_
+_Hành động nhỏ, ngách sâu, kết quả thật. Sẵn sàng bứt phá cho Tuần 2 chưa? Tiến lên!_
