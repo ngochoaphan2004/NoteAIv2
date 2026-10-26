@@ -329,25 +329,25 @@ export const MarkdownTh: React.FC<any> = ({ children, style, ...props }) => {
     .toLowerCase();
 
   let alignmentClass = "text-left";
-  let widthClass = "min-w-[120px]";
+  let widthClass = "min-w-[100px]";
 
   if (text === "stt" || text === "#" || text === "câu" || text === "no.") {
     alignmentClass = "text-center";
-    widthClass = "w-14 min-w-[56px] whitespace-nowrap";
+    widthClass = "w-10 min-w-[38px] px-2 whitespace-nowrap";
   } else if (
     text.includes("bài làm") ||
     text.includes("bạn đã chọn") ||
     text.includes("your answer")
   ) {
     alignmentClass = "text-center";
-    widthClass = "min-w-[130px] whitespace-nowrap";
+    widthClass = "min-w-[70px] sm:min-w-[80px] px-2 sm:px-3 whitespace-nowrap";
   } else if (
     text.includes("đáp án") ||
     text.includes("chuẩn") ||
     text.includes("correct")
   ) {
     alignmentClass = "text-center";
-    widthClass = "min-w-[140px] whitespace-nowrap";
+    widthClass = "min-w-[75px] sm:min-w-[85px] px-2 sm:px-3 whitespace-nowrap";
   } else if (
     text.includes("kết quả") ||
     text.includes("trạng thái") ||
@@ -355,7 +355,7 @@ export const MarkdownTh: React.FC<any> = ({ children, style, ...props }) => {
     text.includes("result")
   ) {
     alignmentClass = "text-center";
-    widthClass = "min-w-[95px] whitespace-nowrap";
+    widthClass = "min-w-[60px] sm:min-w-[70px] px-2 whitespace-nowrap";
   } else if (
     text.includes("ghi chú") ||
     text.includes("phân tích") ||
@@ -365,7 +365,7 @@ export const MarkdownTh: React.FC<any> = ({ children, style, ...props }) => {
     text.includes("explanation")
   ) {
     alignmentClass = "text-left";
-    widthClass = "min-w-[320px]";
+    widthClass = "min-w-[180px] sm:min-w-[220px] px-2 sm:px-3";
   } else if (style?.textAlign === "center") {
     alignmentClass = "text-center";
     widthClass = "whitespace-nowrap";
@@ -373,7 +373,7 @@ export const MarkdownTh: React.FC<any> = ({ children, style, ...props }) => {
 
   return (
     <th
-      className={`py-3 px-3.5 text-xs font-bold tracking-tight select-none ${alignmentClass} ${widthClass}`}
+      className={`py-2.5 px-2.5 text-xs font-bold tracking-tight select-none ${alignmentClass} ${widthClass}`}
       style={style}
       {...props}
     >
@@ -417,7 +417,7 @@ export const MarkdownTd: React.FC<any> = ({ children, style, ...props }) => {
 
   return (
     <td
-      className={`py-3 px-3.5 text-xs sm:text-[13px] text-gray-800 dark:text-gray-200 leading-relaxed align-middle ${
+      className={`py-2 sm:py-2.5 px-2 sm:px-3 text-xs sm:text-[13px] text-gray-800 dark:text-gray-200 leading-relaxed align-middle break-words [overflow-wrap:anywhere] ${
         isCenter ? "text-center font-medium" : "text-left"
       }`}
       style={style}
@@ -432,10 +432,10 @@ export const MarkdownTd: React.FC<any> = ({ children, style, ...props }) => {
  * Container Bảng Responsive chuẩn Quartz
  */
 export const MarkdownTable: React.FC<any> = ({ children, ...props }) => (
-  <div className="table-container my-5 overflow-hidden rounded-xl border border-gray-200/90 dark:border-gray-800/90 shadow-xs bg-white dark:bg-[#151720]">
-    <div className="overflow-x-auto">
+  <div className="table-container my-4 overflow-hidden rounded-xl border border-gray-200/90 dark:border-gray-800/90 shadow-xs bg-white dark:bg-[#151720]">
+    <div className="overflow-x-auto scrollbar-thin">
       <table
-        className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 border-collapse text-left font-sans text-xs sm:text-[13px]"
+        className="w-full min-w-full divide-y divide-gray-200 dark:divide-gray-800 border-collapse text-left font-sans text-xs sm:text-[13px]"
         {...props}
       >
         {children}

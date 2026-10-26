@@ -118,6 +118,15 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
     return { sections: extracted, workspaceMarkdown: cleanWorkspace.trim() };
   }, [note.raw_content]);
 
+  // Khóa thanh cuộn trang chính khi ở chế độ 2 cột để loại bỏ hoàn toàn double scrollbars
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, []);
+
   // Phím tắt Esc để thoát, Alt+S để chuyển đổi
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -196,16 +205,21 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
       {/* Nội dung đề bài & Hình ảnh cuộn độc lập */}
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-4 select-text">
         {activeSection ? (
-          <div className="space-y-4 max-w-3xl mx-auto">
+          <div className="space-y-4 w-full min-w-0 max-w-full">
             <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
                 audio: renderAudioComponent,
-                p: ({ children }) => (
-                  <p className="my-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-gray-800 dark:text-gray-200">
+                h1: ({ children }) => (
+                  <h1 className="text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mt-5 mb-2 pb-1 border-b border-gray-200 dark:border-gray-800">
                     {children}
-                  </p>
+                  </h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-base sm:text-lg font-bold tracking-tight text-gray-900 dark:text-gray-100 mt-4 mb-2 pb-1 border-b border-gray-200/80 dark:border-gray-800/80">
+                    {children}
+                  </h2>
                 ),
                 h3: ({ children }) => (
                   <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 mt-4 mb-2 pb-1 border-b border-gray-200/60 dark:border-gray-800">
@@ -216,6 +230,20 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
                   <h4 className="text-xs font-bold uppercase tracking-wider text-apple-blue mt-3 mb-1">
                     {children}
                   </h4>
+                ),
+                p: ({ children }) => (
+                  <p className="my-2.5 text-[13px] sm:text-[13.5px] leading-relaxed text-gray-800 dark:text-gray-200">
+                    {children}
+                  </p>
+                ),
+                strong: ({ children }) => (
+                  <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>
+                ),
+                em: ({ children }) => (
+                  <em className="italic text-gray-700 dark:text-gray-300">{children}</em>
+                ),
+                hr: () => (
+                  <hr className="my-4 border-gray-200 dark:border-gray-800" />
                 ),
                 img: ({ src, alt }) => (
                   <div className="my-3 text-center">
@@ -280,13 +308,48 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
       </div>
 
       {/* Nội dung bài làm cuộn độc lập */}
-      <div className="flex-1 overflow-y-auto px-4 sm:px-5 py-4 space-y-4">
-        <div className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-sans max-w-2xl mx-auto">
+      <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-4 space-y-4">
+        <div className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-sans w-full min-w-0 max-w-full">
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               audio: renderAudioComponent,
+
+              h1: ({ children }) => (
+                <h1 className="text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50 mt-5 mb-2.5 pb-1.5 border-b border-gray-200 dark:border-gray-800">
+                  {children}
+                </h1>
+              ),
+              h2: ({ children }) => (
+                <h2 className="text-base sm:text-lg font-bold tracking-tight text-gray-900 dark:text-gray-100 mt-4 mb-2 pb-1 border-b border-gray-100 dark:border-gray-800/80">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="text-sm sm:text-base font-bold text-gray-800 dark:text-gray-200 mt-4 mb-2">
+                  {children}
+                </h3>
+              ),
+              h4: ({ children }) => (
+                <h4 className="text-xs font-bold uppercase tracking-wider text-apple-blue mt-3 mb-1">
+                  {children}
+                </h4>
+              ),
+              p: ({ children }) => (
+                <p className="my-2 text-[13px] sm:text-[13.5px] leading-relaxed text-gray-800 dark:text-gray-200">
+                  {children}
+                </p>
+              ),
+              strong: ({ children }) => (
+                <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>
+              ),
+              em: ({ children }) => (
+                <em className="italic text-gray-700 dark:text-gray-300">{children}</em>
+              ),
+              hr: () => (
+                <hr className="my-4 border-gray-200 dark:border-gray-800" />
+              ),
 
               // Interactive IELTS Sheet & Writing cards
               div: ({ className, ...props }: any) => {
@@ -356,10 +419,10 @@ export const SplitExamWorkspace: React.FC<SplitExamWorkspaceProps> = ({
 
   return (
     <div
-      className={`w-full flex flex-col bg-white dark:bg-[#1a1d26] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden select-text animate-fadeIn transition-all duration-200 ${
+      className={`w-full flex flex-col bg-white dark:bg-[#1a1d26] select-text animate-fadeIn transition-all duration-200 ${
         isFullscreen
           ? "fixed inset-0 z-50 rounded-none h-screen"
-          : "h-[calc(100vh-120px)] min-h-[620px]"
+          : "fixed top-14 bottom-0 left-0 right-0 z-30 rounded-none h-[calc(100vh-56px)] border-t border-gray-200 dark:border-gray-800"
       }`}
     >
       {/* 1. Exam Split Topbar (Apple HIG Glassmorphism) */}
