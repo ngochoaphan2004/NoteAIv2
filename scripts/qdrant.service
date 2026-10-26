@@ -1,0 +1,16 @@
+[Unit]
+Description=Qdrant Vector Database Service (Local 127.0.0.1)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/noteai
+ExecStart=/usr/local/bin/qdrant
+Restart=always
+RestartSec=5s
+Environment="QDRANT__SERVICE__HTTP_PORT=6333"
+Environment="QDRANT__SERVICE__GRPC_PORT=6334"
+
+[Install]
+WantedBy=multi-user.target

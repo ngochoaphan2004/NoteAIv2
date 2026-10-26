@@ -15,7 +15,7 @@ tags:
 > **Khung thời gian:** Thứ 2 (19/10/2026) đến hết Chủ Nhật (25/10/2026)  
 > **Nguyên tắc cốt lõi:** Cố định mỗi phiên ở mức **30 – 35 phút (Micro-sessions)** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
 > **Quy tắc chu kỳ tuần:** Lịch trình tuần kết thúc trọn vẹn vào ngày **Chủ Nhật (25/10)**, không kéo dài sang tuần sau.  
-> **Trạng thái tuần:** Đang diễn ra — Ngày 7 (Hôm nay: Chủ Nhật, 25/10/2026)
+> **Trạng thái tuần:** Đã kết thúc trọn vẹn (19/10 – 25/10/2026)
 
 ---
 
@@ -29,7 +29,7 @@ tags:
 | **Thứ 5**<br>_(22/10/2026)_ | **Reading Passage 3**<br>`35 phút` | • **20p:** Xử lý chuyên sâu Passage 3 (_Conquering Earth's space junk problem_).<br>• **15p:** Phân tích bẫy Yes/No/Not Given và bẫy suy diễn thông tin. 👉 **[[plans/week-01/test-1-reading-p3\|Làm bài Reading Passage 3]]** | ⏳ **Cần hoàn thành bù** |
 | **Thứ 6**<br>_(23/10/2026)_ | **Writing Task 1**<br>`35 phút` | • **15p:** Phân tích biểu đồ đường tỷ lệ dân thành thị châu Á (1970–2040).<br>• **20p:** Viết báo cáo Task 1 trên Split-Screen, chuẩn hóa ngữ pháp nội động từ. 👉 **[[plans/week-01/test-1-writing\|Viết bài Writing Task 1]]** | ✅ **Đã hoàn thành** |
 | **Thứ 7**<br>_(24/10/2026)_ | **Speaking Part 2 Routine**<br>`30 phút` | • **10p:** Lập dàn ý 1 phút theo công thức WH-Questions (_A challenge at work_).<br>• **20p:** Thu âm 2 phút liên tục, kiểm soát độ trôi chảy và đếm lỗi ngập ngừng. 👉 **[[plans/week-01/test-1-speaking\|Luyện Speaking Part 2]]** | ⏳ **Cần hoàn thành bù** |
-| **Chủ Nhật (Hôm nay)**<br>_(25/10/2026)_ | **Core Review & FSRS Flashcards**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần 1 và tạo Tuần 2. 👉 **[[plans/week-01/vocab-week-01\|Mở Sổ Từ Vựng Tuần 1]]** | 🎯 **Hôm nay** |
+| **Chủ Nhật**<br>_(25/10/2026)_ | **Core Review & FSRS Flashcards**<br>`35 phút` | • **15p:** Drill bẫy âm số đuôi `-teen` vs `-ty` và quy tắc số ít/số nhiều.<br>• **20p:** Ôn tập 100% thẻ từ vựng FSRS, AI tự động tổng kết tuần 1 và tạo Tuần 2. 👉 **[[plans/week-01/vocab-week-01\|Mở Sổ Từ Vựng Tuần 1]]** | ⏳ **Cần hoàn thành bù** |
 
 ---
 
