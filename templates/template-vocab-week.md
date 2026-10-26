@@ -32,6 +32,7 @@ sr-due: "{{SR_DUE_DATE}}"
 
 > [!TIP]
 > **Quy trình nạp thẻ và ôn luyện:**
+>
 > 1. Toàn bộ từ vựng trên được backend tự động trích xuất và nạp vào CSDL PostgreSQL (`flashcards`).
 > 2. Mở ứng dụng React SPA (`http://localhost:5173`) hoặc Anki trên điện thoại (`IELTS_Master_Deck.apkg`) hàng ngày để hoàn thành các thẻ đến hạn (`sr-due`).
 > 3. Đánh giá thành thật theo 4 nút: `Again (1)`, `Hard (2)`, `Good (3)`, `Easy (4)` để FSRS tính toán chu kỳ lặp lại tối ưu.

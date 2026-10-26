@@ -20,14 +20,17 @@ tags:
 ## 🎯 1. Phân Tích Bẫy Âm & Chiến Thuật Nghe Trọng Tâm
 
 ### 🔹 Bẫy Số Đuôi `-teen` và `-ty`
+
 - **Hiện tượng:** Âm đuôi `-teen` nhận trọng âm mạnh `/tiːn/` và nguyên âm kéo dài; âm đuôi `-ty` không nhận trọng âm `/ti/` với âm ngắn và lướt nhanh.
 - **Quy tắc thực hành:** Nếu người nói nhấn mạnh vào âm tiết thứ hai thì đó là `-teen`; nếu nhấn mạnh âm tiết đầu và lướt nhanh âm cuối thì đó là `-ty`.
 
 ### 🔹 Bẫy Đổi Ý (Self-Correction & Distractor Signals)
+
 - **Dấu hiệu nhận biết:** `actually...`, `sorry, I meant...`, `in fact...`, `instead of...`.
 - **Chiến thuật:** Không vội vàng điền ngay phương án đầu tiên nghe được; luôn đợi người nói hoàn tất câu để xem có bước sửa đổi hay không.
 
 ### 🔹 Bẫy Số Nhiều / Số Ít (Final 's')
+
 - **Hiện tượng:** Thiếu âm cuối `-s` là lỗi sai mất điểm phổ biến nhất trong IELTS Listening Section 1 & 4.
 - **Quy tắc:** Dựa vào mạo từ (`a/an`, `every`, `each`) và động từ đi kèm để dự đoán trước chỗ trống là danh từ đếm được số ít hay số nhiều trước khi nghe.
 
@@ -36,11 +39,13 @@ tags:
 ## 📖 2. Bẫy Tư Duy Trong Reading (Passage 1 – 3)
 
 ### 🔹 Phân Biệt FALSE vs NOT GIVEN
+
 - **FALSE:** Thông tin trong bài mâu thuẫn trực tiếp hoặc đối lập hoàn toàn với mệnh đề câu hỏi.
 - **NOT GIVEN:** Mệnh đề nghe có vẻ hợp lý theo kiến thức thực tế bên ngoài, nhưng trong bài văn **hoàn toàn không xác nhận hay phủ định**.
 - **Nguyên tắc vàng:** Tuyệt đối không dùng suy đoán logic cá nhân để khẳng định thông tin không có trong văn bản.
 
 ### 🔹 Kỹ Thuật Đọc Dò Tìm (Scanning & Paraphrasing)
+
 - Xác định từ khóa không thể thay đổi (tên riêng, năm tháng, thuật ngữ chuyên ngành).
 - Nhận diện các cặp từ đồng nghĩa (synonyms) giữa câu hỏi và bài đọc.
 

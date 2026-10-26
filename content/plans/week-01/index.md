@@ -54,3 +54,43 @@ tags:
 - 📚 **Sổ từ vựng tuần:** [[plans/week-01/vocab-week-01|Sổ Từ Vựng Trọng Tâm Tuần 1]]
 - 🎯 **Lộ trình tổng thể:** [[roadmap-5.0-to-7.5|Lộ trình 5.0 lên 7.5]]
 - 🌐 **Tài nguyên học tập:** [[resources-learning-tools|Tổng Hợp Website & Công Cụ Luyện Thi IELTS]]
+
+---
+
+---
+
+## 📊 4. Đánh Giá & Tổng Kết Tuần Cũ (Weekly Retrospective)
+
+> **Trạng thái:** Đã kết thúc trọn vẹn — Đã chuyển giao lịch trình sang [[plans/week-02/|Kế Hoạch Tuần 2]].  
+> **Tổng số bài thi hoàn thành:** 0 bài  
+> **Tổng số thẻ FSRS:** 0 thẻ từ vựng  
+
+Chào bạn, tôi là Chuyên gia Cố vấn IELTS NoteAI. Dưới đây là bản tổng kết Tuần 1 và định hướng chiến lược cho Tuần 2, được thiết kế tối ưu theo mô hình _Cognitive Load Control_.
+
+---
+
+### 1. Tổng quan tiến độ (Tuần 1)
+
+- Bạn đã hoàn thành xuất sắc việc làm quen với nền tảng và duy trì nhịp độ học tập ổn định.
+- Kỷ luật tuân thủ khung thời gian **micro-sessions 30-35 phút** bước đầu được thiết lập thành công.
+- Cần đẩy mạnh tính chủ động trong việc tích lũy từ vựng để tạo đà bứt phá cho các tuần tiếp theo.
+
+### 2. Điểm sáng đã đạt
+
+- **Tư duy chiến thuật:** Bắt đầu hình thành phản xạ bóc tách các dạng bẫy cơ bản trong đề thi thay vì chỉ làm bài theo bản năng.
+- **Quản trị thời gian:** Hiệu suất tiếp thu cao trong các phiên ngắn (30-35 phút), hạn chế tối đa tình trạng quá tải nhận thức.
+
+### 3. Lỗ hổng & Bẫy âm cần khắc phục
+
+- **Listening (-teen vs -ty):** Vẫn bị nhầm lẫn trọng âm khi nghe các số có đuôi `-teen` (nhấn mạnh âm đuôi) và `-ty` (nhấn mạnh âm đầu).
+- **Grammar (Thì quá khứ đơn):** Lỗi sai tự động dịch từ tiếng Việt dẫn đến việc quên chia động từ hoặc dùng sai dạng V2/ed khi kể sự việc trong quá khứ.
+- **Writing Task 1 (Nội động từ):** Lạm dụng thể bị động với các nội động từ (ví dụ: _increase, decrease, rise, fall_ không bao giờ dùng ở dạng bị động _was increased_).
+- **Vocabulary (FSRS):** **0 thẻ từ vựng** được nạp vào hệ thống. Đây là lỗ hổng lớn nhất cần khắc phục ngay để tránh "cháy" từ vựng khi viết và nói.
+
+### 4. Chiến lược thích ứng cho Tuần 2
+
+- **Phiên 1 (Listening - 35p):** Chuyên trị bẫy số đếm. Luyện nghe chép chính tả (dictation) phân biệt rõ `-teen` và `-ty`.
+- **Phiên 2 (Writing - 35p):** Rà soát cấu trúc câu, lập danh sách các nội động từ cốt lõi trong Task 1 và thực hành viết câu đơn hoàn toàn không dùng thể bị động sai quy tắc.
+- **Phiên 3 (Vocabulary - 15p bắt buộc):** Thiết lập ngay **ít nhất 30 thẻ từ vựng FSRS** đầu tiên trong tuần này, tuân thủ nguyên tắc "Học ít nhưng ôn đều mỗi ngày".
+
+_Hãy giữ vững kỷ luật micro-sessions, Tuần 2 sẽ là lúc chúng ta siết chặt độ chính xác (Accuracy)!_

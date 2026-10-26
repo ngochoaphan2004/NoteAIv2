@@ -413,6 +413,14 @@ class AutonomousPlanGenerator:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
+            # Chuẩn hóa markdown của LLM để đảm bảo linter pass 100%
+            clean_retro = retrospective_data['ai_retrospective_md'].strip()
+            clean_retro = re.sub(r"(?m)^\s*\*\s+", "- ", clean_retro)
+            clean_retro = re.sub(r"(?m)^(?<!\n)(###\s+[^\n]+)", r"\n\1", clean_retro)
+            clean_retro = re.sub(r"(?m)^(###\s+[^\n]+)(?!\n\n)", r"\1\n", clean_retro)
+            clean_retro = re.sub(r"(?<!\*)\*([^* \n][^*\n]*?[^* \n])\*(?!\*)", r"_\1_", clean_retro)
+            clean_retro = re.sub(r"[ \t]+$", "", clean_retro, flags=re.MULTILINE)
+
             retro_section = f"""
 ---
 
@@ -422,7 +430,7 @@ class AutonomousPlanGenerator:
 > **Tổng số bài thi hoàn thành:** {retrospective_data['total_attempts']} bài  
 > **Tổng số thẻ FSRS:** {retrospective_data['flashcards_total']} thẻ từ vựng  
 
-{retrospective_data['ai_retrospective_md']}
+{clean_retro}
 """
             # Nếu đã có mục 4 thì thay thế, nếu chưa thì append
             if "## 📊 4. Đánh Giá & Tổng Kết Tuần Cũ" in content:
@@ -756,21 +764,27 @@ class AutonomousPlanGenerator:
             "DATE_DD_MM": day_str,
             "TEST_NUM": str(test_num),
             "PART_LABEL_SHORT": "P1-P2",
+            "PASSAGE_LABEL_SHORT": "P1-P2",
             "SOURCE_SLUG": "cam18",
             "PART_SLUG": "p1-p2",
+            "PASSAGE_SLUG": "p1-p2",
             "SOURCE_TAG": "cambridge18",
             "PASSAGE_TAG_1": "passage-1",
             "PASSAGE_TAG_2": "passage-2",
             "WEEK_PADDED": week_padded,
             "SOURCE_NAME": "Cambridge 18",
             "PASSAGE_LABEL_FULL": "Passage 1 & Passage 2",
+            "PAGE_RANGE_STR": "Hình Ảnh Sách Gốc Trang 18 – 26",
+            "PASSAGE_TOPICS": "> - **Passage 1:** Questions 1 – 13 (Urban farming)\n> - **Passage 2:** Questions 14 – 26 (Forest management in Pennsylvania)",
             "WEEK_NUM": str(week_num),
             "START_DD_MM": (day_date - timedelta(days=2)).strftime("%d/%m"),
             "END_DD_MM": (day_date + timedelta(days=4)).strftime("%d/%m"),
             "DAY_NAME": f"Thứ 4 ({day_date.strftime('%d/%m/%Y')})",
             "READ_TIMER": "25",
+            "TEST_TIMER": "25",
             "REVIEW_TIMER": "10",
             "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
+            "PASSAGE_IMAGE_BLOCKS": prompt_image_blocks,
             "SHEET_ID": f"cam18-test{test_num}-reading-p1-p2",
             "START_Q": "1",
             "END_Q": "26",
@@ -819,21 +833,27 @@ class AutonomousPlanGenerator:
             "DATE_DD_MM": day_str,
             "TEST_NUM": str(test_num),
             "PART_LABEL_SHORT": "P3",
+            "PASSAGE_LABEL_SHORT": "P3",
             "SOURCE_SLUG": "cam18",
             "PART_SLUG": "p3",
+            "PASSAGE_SLUG": "p3",
             "SOURCE_TAG": "cambridge18",
             "PASSAGE_TAG_1": "passage-3",
             "PASSAGE_TAG_2": "academic",
             "WEEK_PADDED": week_padded,
             "SOURCE_NAME": "Cambridge 18",
             "PASSAGE_LABEL_FULL": "Passage 3",
+            "PAGE_RANGE_STR": "Hình Ảnh Sách Gốc Trang 27 – 32",
+            "PASSAGE_TOPICS": "> - **Passage 3:** Questions 27 – 40 (Leonardo da Vinci's ideal city / Academic Discussion)",
             "WEEK_NUM": str(week_num),
             "START_DD_MM": (day_date - timedelta(days=3)).strftime("%d/%m"),
             "END_DD_MM": (day_date + timedelta(days=3)).strftime("%d/%m"),
             "DAY_NAME": f"Thứ 5 ({day_date.strftime('%d/%m/%Y')})",
             "READ_TIMER": "20",
+            "TEST_TIMER": "20",
             "REVIEW_TIMER": "15",
             "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
+            "PASSAGE_IMAGE_BLOCKS": prompt_image_blocks,
             "SHEET_ID": f"cam18-test{test_num}-reading-p3",
             "START_Q": "27",
             "END_Q": "40",
@@ -979,6 +999,14 @@ class AutonomousPlanGenerator:
             "TASK_TOPIC": "Bar Chart (Thu Nhập Hộ Gia Đình)",
             "PROMPT_IMAGE_BLOCKS": prompt_image_blocks,
             "OUTLINE_STEPS": outline_steps,
+            "TA_FOCUS": "Nêu bật được xu hướng chính và 2 đặc điểm nổi bật nhất (Overview rõ ràng)",
+            "TA_AVOID": "Liệt kê dàn trải toàn bộ từng số liệu mà không gom nhóm phân tích xu hướng",
+            "CC_FOCUS": "Sử dụng linh hoạt các từ nối tương phản (While, In contrast, Compared to)",
+            "CC_AVOID": "Lạm dụng liên từ đầu câu máy móc hoặc ngắt đoạn rời rạc",
+            "LR_FOCUS": "Sử dụng đa dạng từ vựng mô tả xu hướng và tỷ lệ (dramatic increase, steady plateau)",
+            "LR_AVOID": "Lặp từ vựng cơ bản (increase, decrease) hoặc dùng sai collocation",
+            "GRA_FOCUS": "Kết hợp đa dạng câu phức (mệnh đề quan hệ, cấu trúc so sánh hơn/nhất)",
+            "GRA_AVOID": "Lỗi chia sai thì quá khứ đơn đối với số liệu năm cũ, hoặc nhầm lẫn chia bị động",
             "NEXT_PART_FILE": f"test-{test_num}-speaking",
             "NEXT_PART_TITLE": f"Test {test_num} Speaking Part 2"
         }

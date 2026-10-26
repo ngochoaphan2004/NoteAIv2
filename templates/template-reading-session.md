@@ -16,7 +16,9 @@ tags:
 
 > **Tuần thực hiện:** [[plans/week-{{WEEK_PADDED}}/|Kế Hoạch Tuần {{WEEK_NUM}} ({{START_DD_MM}} – {{END_DD_MM}})]] — Phiên {{DAY_NAME}}: Reading {{PASSAGE_LABEL_FULL}}  
 > **Chủ đề bài đọc:**  
+>
 {{PASSAGE_TOPICS}}
+>
 > **Thời lượng:** 35 phút ({{TEST_TIMER}} phút làm {{TOTAL_QUESTIONS}} câu + {{REVIEW_TIMER}} phút lập bảng Keyword Mapping và trích xuất từ vựng)  
 > **Mục đích:** Rèn kỹ năng quét từ khóa (Scanning), định vị thông tin nhanh (Skimming) và xử lý các bẫy True/False/Not Given, Matching Information.
 

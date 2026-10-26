@@ -49,6 +49,13 @@ if [ -f "$VENV_PIP" ] && [ -f "$PROJECT_DIR/backend/requirements.txt" ]; then
     "$VENV_PIP" install --no-cache-dir -r "$PROJECT_DIR/backend/requirements.txt"
 fi
 
+# 2.1 Đảm bảo hạ tầng Docker (PostgreSQL 5433 & Qdrant 6333) luôn chạy
+if [ -f "$PROJECT_DIR/docker/docker-compose.yml" ] && command -v docker >/dev/null 2>&1; then
+    echo -e "${YELLOW}🐳 Đảm bảo Docker Containers (PostgreSQL :5433 & Qdrant :6333) đang hoạt động...${NC}"
+    docker compose -f "$PROJECT_DIR/docker/docker-compose.yml" up -d postgres qdrant || true
+    sleep 2
+fi
+
 # 3. Đồng bộ cấu trúc bảng PostgreSQL (nếu có model mới)
 VENV_PYTHON="$PROJECT_DIR/venv/bin/python"
 if [ -f "$VENV_PYTHON" ]; then

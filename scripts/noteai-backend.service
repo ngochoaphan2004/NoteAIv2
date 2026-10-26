@@ -1,6 +1,7 @@
 [Unit]
 Description=NoteAI.v2 Backend FastAPI Service (Khóa cổng 127.0.0.1 qua Cloudflare Tunnel)
-After=network.target
+After=network.target docker.service
+Wants=docker.service
 
 [Service]
 Type=simple
