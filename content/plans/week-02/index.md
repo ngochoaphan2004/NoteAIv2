@@ -15,7 +15,7 @@ tags:
 > **Khung thời gian:** Thứ 2 (26/10/2026) đến hết Chủ Nhật (01/11/2026)  
 > **Nguyên tắc cốt lõi:** Cố định mỗi phiên ở mức **30 – 35 phút (Micro-sessions)** để tối ưu hóa tải trọng nhận thức (Cognitive Load Control).  
 > **Quy tắc chu kỳ tuần:** Lịch trình tuần kết thúc trọn vẹn vào ngày **Chủ Nhật (01/11)**, không kéo dài sang tuần sau.  
-> **Trạng thái tuần:** Đang diễn ra — Ngày 1 (Hôm nay: Thứ 2, 26/10/2026)
+> **Trạng thái tuần:** Đang diễn ra — Ngày 2 (Hôm nay: Thứ 3, 27/10/2026)
 
 ---
 
@@ -23,8 +23,8 @@ tags:
 
 | Ngày & Thứ | Kỹ Năng & Thời Lượng | Phương Pháp Thực Thi Trọng Tâm (Execution Focus) | Trạng Thái |
 | :--- | :--- | :--- | :---: |
-| **Thứ 2 (Hôm nay)**<br>_(26/10/2026)_ | **Listening Part 1 & 2**<br>`35 phút` | • **15p:** Part 1. Luyện bắt bẫy số và ngày tháng.<br>• **15p:** Part 2. Rèn kỹ năng đọc đề đón đầu.<br>• **5p:** Gửi câu trả lời cho AI lưu trữ trung thực. 👉 **[[plans/week-02/test-2-listening-p1-p2\|Làm bài Test 2 Listening P1-P2]]** | 🎯 **Hôm nay** |
-| **Thứ 3**<br>_(27/10/2026)_ | **Listening Part 3 & 4**<br>`35 phút` | • **15p:** Part 3 (Trắc nghiệm nhiều người nói).<br>• **15p:** Part 4 (Độc thoại học thuật).<br>• **5p:** Đối chiếu bảng lỗi sai bẫy âm. 👉 **[[plans/week-02/test-2-listening-p3-p4\|Làm bài Test 2 Listening P3-P4]]** | [ ] Sắp tới |
+| **Thứ 2**<br>_(26/10/2026)_ | **Listening Part 1 & 2**<br>`35 phút` | • **15p:** Part 1. Luyện bắt bẫy số và ngày tháng.<br>• **15p:** Part 2. Rèn kỹ năng đọc đề đón đầu.<br>• **5p:** Gửi câu trả lời cho AI lưu trữ trung thực. 👉 **[[plans/week-02/test-2-listening-p1-p2\|Làm bài Test 2 Listening P1-P2]]** | ⏳ **Cần hoàn thành bù** |
+| **Thứ 3 (Hôm nay)**<br>_(27/10/2026)_ | **Listening Part 3 & 4**<br>`35 phút` | • **15p:** Part 3 (Trắc nghiệm nhiều người nói).<br>• **15p:** Part 4 (Độc thoại học thuật).<br>• **5p:** Đối chiếu bảng lỗi sai bẫy âm. 👉 **[[plans/week-02/test-2-listening-p3-p4\|Làm bài Test 2 Listening P3-P4]]** | 🎯 **Hôm nay** |
 | **Thứ 4**<br>_(28/10/2026)_ | **Reading Passage 1 & 2**<br>`35 phút` | • **20p:** Xử lý Passage 1 & 2.<br>• **15p:** Rèn kỹ năng Keyword Mapping và quét vị trí thông tin nhanh. 👉 **[[plans/week-02/test-2-reading-p1-p2\|Làm bài Reading Passage 1 & 2]]** | [ ] Sắp tới |
 | **Thứ 5**<br>_(29/10/2026)_ | **Reading Passage 3**<br>`35 phút` | • **20p:** Xử lý chuyên sâu Passage 3.<br>• **15p:** Phân tích bẫy Yes/No/Not Given và bẫy suy diễn thông tin. 👉 **[[plans/week-02/test-2-reading-p3\|Làm bài Reading Passage 3]]** | [ ] Sắp tới |
 | **Thứ 6**<br>_(30/10/2026)_ | **Writing Task 1**<br>`35 phút` | • **15p:** Phân tích đề thi, lập dàn ý theo tiêu chí chấm điểm.<br>• **20p:** Viết báo cáo Task 1 trên Split-Screen, kiểm tra lỗi ngữ pháp. 👉 **[[plans/week-02/test-2-writing\|Viết bài Writing Task 1]]** | [ ] Sắp tới |
@@ -33,15 +33,15 @@ tags:
 
 ---
 
-## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 2 (26/10/2026)
+## 📝 2. Chi Tiết Nhiệm Vụ Hôm Nay: Thứ 3 (27/10/2026)
 
-### 🎯 Listening Part 1 & 2 — 35 phút
+### 🎯 Listening Part 3 & 4 — 35 phút
 
-- [ ] **15p:** Part 1. Luyện bắt bẫy số và ngày tháng.
-- [ ] **15p:** Part 2. Rèn kỹ năng đọc đề đón đầu.
-- [ ] **5p:** Gửi câu trả lời cho AI lưu trữ trung thực.
+- [ ] **15p:** Part 3 (Trắc nghiệm nhiều người nói).
+- [ ] **15p:** Part 4 (Độc thoại học thuật).
+- [ ] **5p:** Đối chiếu bảng lỗi sai bẫy âm.
 - [ ] **Nộp bài cho AI:** Hoàn thành các câu hỏi trên bảng tương tác và nhấn nút _"🚀 Nộp Bài & Chấm Điểm Trực Tiếp"_.
-- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-02/test-2-listening-p1-p2|Làm bài Test 2 Listening P1-P2]]
+- 🔗 **Mở bài làm chi tiết:** 👉 [[plans/week-02/test-2-listening-p3-p4|Làm bài Test 2 Listening P3-P4]]
 - 💡 **Nguyên tắc:** Mỗi phiên cố định 30–35 phút để đảm bảo Cognitive Load Control.
 
 ## 🔗 3. Mạng Lưới Kiến Thức Liên Quan
